@@ -1700,8 +1700,8 @@ par expert#</dia:string>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="8.1697,68.1242"/>
-        <dia:point val="9.59906,68.1242"/>
-        <dia:point val="9.59906,68.1518"/>
+        <dia:point val="9.59905,68.1242"/>
+        <dia:point val="9.59905,68.1518"/>
         <dia:point val="11.0284,68.1518"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -1728,10 +1728,10 @@ par expert#</dia:string>
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:attribute name="trigger_text_pos">
-        <dia:point val="9.09906,66.6379"/>
+        <dia:point val="9.09905,66.6379"/>
       </dia:attribute>
       <dia:attribute name="guard_text_pos">
-        <dia:point val="9.09906,67.6379"/>
+        <dia:point val="9.09905,67.6379"/>
       </dia:attribute>
       <dia:attribute name="direction_inverted">
         <dia:boolean val="false"/>
@@ -1779,7 +1779,7 @@ par expert#</dia:string>
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="33.6881,63.7761"/>
+            <dia:point val="33.6882,63.7761"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000"/>
@@ -1958,7 +1958,7 @@ informations liées au specatcle#</dia:string>
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="44.1454,77.2291"/>
+            <dia:point val="44.1455,77.2291"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000"/>
@@ -1984,7 +1984,7 @@ informations liées au specatcle#</dia:string>
         <dia:point val="21.0609,68.1518"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="13.621,67.6518;32.9685,76.9579"/>
+        <dia:rectangle val="13.6209,67.6518;32.9684,76.9579"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -2139,17 +2139,17 @@ informations liées au specatcle#</dia:string>
     </dia:object>
     <dia:object type="UML - Transition" version="2" id="O41">
       <dia:attribute name="obj_pos">
-        <dia:point val="44.1454,79.5341"/>
+        <dia:point val="44.1455,79.5341"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="22.7586,78.6579;44.6454,81.0841"/>
+        <dia:rectangle val="22.7586,78.6579;44.6455,81.0841"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="44.1454,79.5341"/>
-        <dia:point val="44.1454,81.0341"/>
+        <dia:point val="44.1455,79.5341"/>
+        <dia:point val="44.1455,81.0341"/>
         <dia:point val="23.2586,81.0341"/>
         <dia:point val="23.2586,78.7079"/>
       </dia:attribute>
@@ -2473,7 +2473,7 @@ informations liées au specatcle#</dia:string>
         <dia:point val="44.2575,65.6871"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="33.1881,64.4311;44.7575,67.2371"/>
+        <dia:rectangle val="33.1882,64.4311;44.7575,67.2371"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -2481,8 +2481,8 @@ informations liées au specatcle#</dia:string>
       <dia:attribute name="orth_points">
         <dia:point val="44.2575,65.6871"/>
         <dia:point val="44.2575,67.1871"/>
-        <dia:point val="33.6881,67.1871"/>
-        <dia:point val="33.6881,64.4811"/>
+        <dia:point val="33.6882,67.1871"/>
+        <dia:point val="33.6882,64.4811"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
