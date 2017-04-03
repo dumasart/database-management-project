@@ -5,6 +5,7 @@
  */
 package Model.DataAccessLayer;
 
+import Model.Business.Numero;
 import java.util.Collection;
 
 /**
@@ -27,5 +28,6 @@ public class DAO {
     
     public Collection<Numero> getNumeros() {
         //TODO
+        return null;
     }
 }

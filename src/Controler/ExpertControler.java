@@ -5,7 +5,10 @@
  */
 package Controler;
 
+import Model.Business.Numero;
 import Model.DataAccessLayer.DAO;
+import View.UserInterface;
+import java.util.Collection;
 
 /**
  *
@@ -13,19 +16,29 @@ import Model.DataAccessLayer.DAO;
  */
 public class ExpertControler {
     private Collection<Numero> listeNumeros;
-    private UserInterface view;
+    private UserInterface tView;
     
-    public void commentaire(Numero num, String com) {
-        DAO dao = new DAO();
-        dao.ajouteCommentairePourNumero(num, com);
+    public ExpertControler(Collection<Numero> nums, UserInterface view) {
+        this.listeNumeros = nums;
+        this.tView = view;
     }
     
-    public void ajouteNote(Numero num, int note) {
+    public void commentaire(int codeNum, String com) {
         DAO dao = new DAO();
-        dao.ajouteNotePourNumero(num, note);
+        dao.ajouteCommentairePourNumero(codeNum, com);
     }
     
-    public void valideNumero(Numero num) {
+    public void ajouteNote(int codeNum, int note) {
+        DAO dao = new DAO();
+        dao.ajouteNotePourNumero(codeNum, note);
+    }
+    
+    public void valideNumero(int codeNum) {
         // TODO
     }
+    
+    public void afficheNumeros() {
+        this.tView.displayNumeros(this.listeNumeros.iterator());
+    }
+    
 }

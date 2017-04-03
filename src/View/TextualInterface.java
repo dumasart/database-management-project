@@ -5,6 +5,7 @@
  */
 package View;
 
+import Model.Business.Numero;
 import java.util.Iterator;
 
 /**
@@ -12,7 +13,8 @@ import java.util.Iterator;
  * @author luud
  */
 public class TextualInterface extends UserInterface {
-    public void printListeDesNumero(Iterator<Numero> it) {
+    @Override
+    public void displayNumeros(Iterator<Numero> it) {
         Numero num;
         while(it.hasNext()) {
             num = it.next();

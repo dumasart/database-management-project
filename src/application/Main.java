@@ -1,6 +1,7 @@
 package application;
 
 import Controler.ExpertControler;
+import Model.Business.Numero;
 import Model.DataAccessLayer.DAO;
 import View.*;
 import java.util.Collection;
@@ -38,7 +39,7 @@ public class Main extends Application {
         expCtrl.afficheNumeros();
         System.out.printf("Choix le numero pour saisir des evalutations");
         Scanner terminalInput = new Scanner(System.in);
-        int code 
+        int code = terminalInput.nextInt();
     }
     
 }
