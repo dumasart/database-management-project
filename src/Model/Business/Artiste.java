@@ -31,4 +31,8 @@ public class Artiste {
         this.listeNumeros = listeNumero;
     }
     
+    public ArrayList<Numero> getListeNumeros(){
+        return this.listeNumeros;
+    }
+    
 }
