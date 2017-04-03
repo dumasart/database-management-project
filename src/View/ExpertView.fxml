@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" 
+            maxWidth="-Infinity" 
+            minHeight="-Infinity" 
+            minWidth="-Infinity" 
+            prefHeight="400.0" 
+            prefWidth="600.0" 
+            xmlns="http://javafx.com/javafx/8" 
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controler.LoginViewController">
+   <center>
+      <VBox>
+         <children>
+            <ListView fx:id="listeNumero" prefHeight="200.0" prefWidth="200.0" />
+            <GridPane visible="false">
+               <children>
+                  <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                        <Button mnemonicParsing="false" text="Annuler" />
+                        <Button mnemonicParsing="false" text="Valider" />
+                     </children>
+                  </HBox>
+                  <Label text="Commentaire : " />
+                  <Label text="Note : " GridPane.rowIndex="1" />
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

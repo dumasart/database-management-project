@@ -1,9 +1,7 @@
-package application;
+package Application;
 
-import Controler.ExpertControler;
 import Model.Business.Numero;
 import Model.DataAccessLayer.DAO;
-import View.*;
 import java.util.Collection;
 import java.util.Scanner;
 import javafx.application.Application;
@@ -13,7 +11,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-public class Main extends Application {
+public class GraphicApplication extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -29,17 +27,6 @@ public class Main extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-        DAO dao = new DAO();
-        Collection<Numero> listeNumeros = dao.getNumeros();
-        
-        UserInterface usrInf = new TextualInterface();
-        
-        ExpertControler expCtrl = new ExpertControler(listeNumeros, usrInf);
-       
-        expCtrl.afficheNumeros();
-        System.out.printf("Choix le numero pour saisir des evalutations");
-        Scanner terminalInput = new Scanner(System.in);
-        int code = terminalInput.nextInt();
     }
     
 }

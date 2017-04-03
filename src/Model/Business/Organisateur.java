@@ -11,15 +11,17 @@ import java.util.ArrayList;
  *
  * @author nabem
  */
-public class Jury {
+public class Organisateur {
     private ArrayList<Artiste> listeExpert;
     
-    public Jury(ArrayList<Artiste> listeExpert) {
-        
+    public Organisateur(ArrayList<Artiste> listeExpert) {
+        this.listeExpert = listeExpert;
     }
     
     public void ajouteExpert(Expert exp) {
-        
+        if(! listeExpert.contains(exp)) {
+            listeExpert.add(exp);
+        }
     }
     
     public void ajouteSpectacle(Spectacle spectacle) {

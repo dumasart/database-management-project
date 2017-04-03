@@ -37,7 +37,7 @@ public class TheConnection {
         }
 	
     }
-    public void close () { conn.close (); }
+    public void close () { conn.close(); }
     
     Connection getConnection () { return conn; } // bof...
 
