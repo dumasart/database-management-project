@@ -40,9 +40,10 @@ class ExpertViewController implements Initializable {
     
     private Collection<Numero> listeNumeros;
     
-    //public ExpertViewControler() {
-    //    this.listeNumeros = nums;
-    //}
+    public ExpertViewController(int expertId) {
+        DAO dao = new DAO();
+        this.listeNumeros = dao.getNumeros();
+    }
     
     public void commentaire(int codeNum, String com) {
         DAO dao = new DAO();

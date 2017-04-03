@@ -27,7 +27,10 @@ public class DAO {
     }
     
     public Collection<Numero> getNumeros() {
-        //TODO
+        //RequeteExpert ret = new RequetExpert();
+        //Collection<Numero> rets= ret.getNumeros();
+        //return rets;
         return null;
     }
 }
+    
