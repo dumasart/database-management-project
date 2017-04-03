@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.net.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="parentNode" 
+            xmlns="http://javafx.com/javafx/8" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="Controler.MainWindowController">
+    <stylesheets>
+        <URL value="@application.css" />
+    </stylesheets>
+   <top>
+          <Text id="welcome-text" text="Application de gestion du festival du cirque" BorderPane.alignment="CENTER" />
+   </top>
+   <bottom>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="logoutButton" text="déconnexion" onMouseClicked="#logoutClickAction"/>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

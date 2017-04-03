@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.net.*?>
+
+<GridPane id="inputGrid" alignment="CENTER" 
+          hgap="10" maxHeight="-Infinity" 
+          maxWidth="-Infinity" minHeight="-Infinity" 
+          minWidth="-Infinity" prefHeight="400.0" 
+          prefWidth="600.0" vgap="10" 
+          xmlns:fx="http://javafx.com/fxml/1" 
+          xmlns="http://javafx.com/javafx/8" 
+          fx:controller="Controler.LoginViewController">
+    <children>
+        <Text fx:id="errorMessage" text="Wrong login and/or password" visible="false" GridPane.columnIndex="1" />
+        <Label text="User Name :" GridPane.rowIndex="1" />
+        <Label text="Password :" GridPane.rowIndex="2" />
+        <TextField fx:id="loginField" promptText="your login here..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <PasswordField fx:id="passwordField" promptText="Your password here..." GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="4">
+           <children>
+               <Button fx:id="connexionButton" disable="true" onMouseClicked="#loginClickAction" text="Connexion" />
+           </children>
+        </HBox>
+    </children>
+    <padding>
+        <Insets bottom="10.0" left="25.0" right="25.0" top="25.0" />
+    </padding>
+</GridPane>
