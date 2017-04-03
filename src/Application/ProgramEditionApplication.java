@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controler;
+package Application;
 
 /**
  *
- * @author luud
+ * @author nomezing
  */
-public class ExpertControler {
+public class ProgramEditionApplication {
     
+    public static void main(String[] args) {
+        
+    }
+
 }

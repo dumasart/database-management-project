@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package Application;
 
 /**
  *
- * @author luud
+ * @author nomezing
  */
-public class TextualInterface extends UserInterface {
+public class ExpertApplication {
+    
+    public static void main(String[] args) {
+        
+    }
     
 }
