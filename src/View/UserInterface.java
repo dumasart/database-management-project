@@ -5,10 +5,13 @@
  */
 package View;
 
+import Model.Business.Numero;
+import java.util.Iterator;
+
 /**
  *
  * @author luud
  */
-public class UserInterface {
-    
+public abstract class UserInterface {
+    abstract public void displayNumeros(Iterator<Numero> it);
 }

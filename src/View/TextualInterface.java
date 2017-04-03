@@ -5,10 +5,20 @@
  */
 package View;
 
+import Model.Business.Numero;
+import java.util.Iterator;
+
 /**
  *
  * @author luud
  */
 public class TextualInterface extends UserInterface {
-    
+    @Override
+    public void displayNumeros(Iterator<Numero> it) {
+        Numero num;
+        while(it.hasNext()) {
+            num = it.next();
+            System.out.println(num);
+        }
+    }
 }
