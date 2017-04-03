@@ -34,5 +34,16 @@ public class Artiste {
     public ArrayList<Numero> getListeNumeros(){
         return this.listeNumeros;
     }
+    public int getCode() {
+        return this.code;
+    }
+    
+    public String getNom() {
+        return this.nom;
+    }
+    
+    public String getPrenom() {
+        return this.prenom;
+    }
     
 }
