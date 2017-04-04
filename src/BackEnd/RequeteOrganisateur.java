@@ -5,6 +5,7 @@
  */
 package BackEnd;
 
+import Model.Business.Expert;
 import Model.Business.Numero;
 import Model.Business.Spectacle;
 
@@ -13,21 +14,36 @@ import Model.Business.Spectacle;
  * @author milang
  */
 public class RequeteOrganisateur extends Requete {
-    ResultatsSpectacles getSpectacles() {
+    public static ResultatsSpectacles getSpectacles() {
         System.out.println("Not yet Implemented!\n");
         return null;
     }
-    ResultatsNumeros getNumeros() {
+    public static ResultatsNumeros getNumeros() {
         System.out.println("Not yet Implemented!\n");
         return null;
     }
-    ResultatsNumeros getNumeros(Spectacle spectacle) {
+    public static ResultatsNumeros getNumeros(Spectacle spectacle) {
         System.out.println("Not yet Implemented!\n");
         return null;
     }
-    ResulatsInformation infoJury(Numero numero) {
+    public static ResulatsInformation getInfoJury(Numero numero) {
         System.out.println("Not yet Implemented!\n");
         return null;
     }
-   
+    public static boolean addExpert(Expert expert) {
+        System.out.println("Not yet Implemented!\n");
+        return false;
+    } 
+    public static boolean addSpectacle(Spectacle spectacle) {
+        System.out.println("Not yet Implemented!\n");
+        return false;
+    }
+    public static boolean addNumero(Numero numero) {
+        System.out.println("Not yet Implemented!\n");
+        return false;
+    } 
+    public static boolean addNumeroToSpectacl(Spectacle spectacle,Numero numero) {
+        System.out.println("Not yet Implemented!\n");
+        return false;
+    }
 }
