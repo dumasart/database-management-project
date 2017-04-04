@@ -10,6 +10,7 @@ import Model.Business.Numero;
 import Model.Business.Spectacle;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,12 +19,17 @@ import java.sql.SQLException;
 public class RequeteOrganisateur extends Requete {
 
     public static ResultatsSpectacles getSpectacles() {
-        ResultSet rs = Getter.request("SELECT * FROM Festival");
-        //Ici à compléter
+        ResultSet rs = Getter.request("SELECT * FROM Spectacle");
         ResultatsSpectacles spectacles = new ResultatsSpectacles();
         try {
             while(rs.next()) {
-                
+                Spectacle spec=new Spectacle(
+                        rs.getInt("codeSpectacle"),
+                        rs.getDate("jourSpectacle").toString(),
+                        rs.getInt("heureDebut"),
+                        rs.getInt("heureFin"),
+                        rs.getDouble("prixSpectacle")
+                );
             }
         }
         catch (SQLException e) {
@@ -42,18 +48,18 @@ public class RequeteOrganisateur extends Requete {
         System.out.println("Not yet Implemented!\n");
         return null;
     }
-    public static ResultatsInformation getEvaluations(Numero numero) {
+    public static ResultatsEvaluations getEvaluations(Numero numero) {
         String cmd = "SELECT * FROM Evaluation WHERE codeNumero = " + numero.getID();
         ResultSet rs = Getter.request(cmd);
         System.out.println("Not yet Implemented!\n");
         return null;
     }
      
-    public static ResultatsInformation getMoyenneNumero(Numero numero){
+    public static ResultatsEvaluations getMoyenneNumero(Numero numero){
         // Je sais pas comment on remplit ResultatsInformation
         String cmd = "SELECT AVG(Notes) , codeNumero, TitreNumero FROM (evaluation INNER JOIN Numero WHERE evaluation.codeNumero = Numero.codeNumero)";
         ResultSet rs = Getter.request(cmd);
-        ResultatsInformation info = new ResultatsInformation();
+        ResultatsEvaluations info = new ResultatsEvaluations();
         // COMMENT ON STOCKE DES DATA QUI NE SONT PAS UN TYPE DONNÉ ?
         
         /* try {
