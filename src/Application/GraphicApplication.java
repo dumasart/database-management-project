@@ -1,13 +1,5 @@
 package Application;
 
-import Controler.ExpertControler;
-import Model.Business.Numero;
-import Model.DataAccessLayer.DAO;
-import View.*;
-import Model.Business.Numero;
-import Model.DataAccessLayer.DAO;
-import java.util.Collection;
-import java.util.Scanner;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -31,17 +23,6 @@ public class GraphicApplication extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-        DAO dao = new DAO();
-        Collection<Numero> listeNumeros = dao.getNumeros();
-        
-        UserInterface usrInf = new TextualInterface();
-        
-        ExpertControler expCtrl = new ExpertControler(listeNumeros, usrInf);
-       
-        expCtrl.afficheNumeros();
-        System.out.printf("Choix le numero pour saisir des evalutations");
-        Scanner terminalInput = new Scanner(System.in);
-        int code = terminalInput.nextInt();
     }
     
 }

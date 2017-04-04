@@ -5,8 +5,9 @@
  */
 package Model.DataAccessLayer;
 
+
+import BackEnd.RequeteExpert;
 import Model.Business.Artiste;
-import Model.Business.Numero;
 import Model.Business.Expert;
 import Model.Business.Numero;
 import Model.Business.Spectacle;
@@ -18,8 +19,6 @@ import java.util.Collection;
  * @author luud
  */
 public class DAO {
-    private TheConnection cntion;
-    //
     
     // Des méthodes pour manipuler la donnée
     public void ajouteCommentairePourNumero(int codeNum, String com) {
@@ -33,11 +32,9 @@ public class DAO {
     }
     
     public Collection<Numero> getNumeros() {
-        System.out.println("Not yet Implemented!\n");
-        //RequeteExpert ret = new RequetExpert();
-        //Collection<Numero> rets= ret.getNumeros();
-        //return rets;
-        return null;
+        RequeteExpert ret = new RequeteExpert();
+        Collection<Numero> rets= ret.getNumeros().getNumeros();
+        return rets;
     }
     
     
