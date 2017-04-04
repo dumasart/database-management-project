@@ -4,6 +4,8 @@ import Controler.ExpertControler;
 import Model.Business.Numero;
 import Model.DataAccessLayer.DAO;
 import View.*;
+import Model.Business.Numero;
+import Model.DataAccessLayer.DAO;
 import java.util.Collection;
 import java.util.Scanner;
 import javafx.application.Application;

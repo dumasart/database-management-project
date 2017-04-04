@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model.Business;
+package BackEnd;
 
 /**
  *
- * 
  * @author milang
  */
-public class Evaluation {
-    // Cela correspond évaluation d'un expert
+class ResulatsInformation extends ResultatRequete{
+        
 }

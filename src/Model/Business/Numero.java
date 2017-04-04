@@ -37,7 +37,9 @@ public class Numero {
     public boolean getValid() {
         return this.valide;
     }
-    
+    public int getID(){
+        return this.codeNumero;
+    }
     @Override
     public String toString() {
         return "Code : " + codeNumero + " Titre : " + titreNumero + " resume : " + resumeNumero + " Duree : " + dureeNumero + " Nombre d'artistes : " + nbrArtisteNumero + "\n";

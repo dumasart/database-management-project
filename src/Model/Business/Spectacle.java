@@ -18,19 +18,16 @@ public class Spectacle {
     private int heureFin;
     private double prixSpectacle;
     
-    private ArrayList<Numero> listeNumeros; //un spectacle contient un ou plusieurs numéros
     
-    public Spectacle(int code, String jour, int debut, int fin, double prix, ArrayList<Numero> listeNumero) {
+    public Spectacle(int code, String jour, int debut, int fin, double prix) {
         this.codeSpectacle = code;
         this.jourSpectacle = jour;
         this.heureDebut = debut;
         this.heureFin = fin;
         this.prixSpectacle = prix;
-        
-        this.listeNumeros = listeNumero;
     }
     
-    public int getCode() {
+    public int getID() {
         return this.codeSpectacle;
     }
     public int getDebut(){
@@ -41,9 +38,6 @@ public class Spectacle {
         return this.heureFin;
     }
     
-    public ArrayList<Numero> getListeNumeros() {
-        return this.listeNumeros;
-    }
     @Override
     public String toString() {
         String affiche = "";

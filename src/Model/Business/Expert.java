@@ -48,6 +48,10 @@ public class Expert extends Artiste{
         }
     }
     
+    public int getId(){
+        return super.getID();
+    }
+    
     @Override
     public String toString() {
         return "" + "Monsieur " + this.getNom() + " " + this.getPrenom() + "est expert en : " + this.getTheme();

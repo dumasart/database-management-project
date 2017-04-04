@@ -5,7 +5,7 @@
  */
 package Model.DataAccessLayer;
 import java.sql.*;
-import jdbcSTUB.*;
+//import jdbcSTUB.*;
 /**
  *
  * @author luud
@@ -17,6 +17,7 @@ public class TheConnection {
     private ConnectionInfo info;
     private Connection conn;
 
+    /*
     public void open () {
 	try {
 	    // Enregistrement du driver Oracle
@@ -37,8 +38,8 @@ public class TheConnection {
         }
 	
     }
-    public void close () { conn.close (); }
-    
+    public void close () { conn.close(); }
+    */
     Connection getConnection () { return conn; } // bof...
 
     public TheConnection (ConnectionInfo info) { this.info = info; }
