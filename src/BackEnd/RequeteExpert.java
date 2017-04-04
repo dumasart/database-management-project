@@ -5,10 +5,17 @@
  */
 package BackEnd;
 
+import java.sql.ResultSet;
+
 /**
  *
- * @author milang
+ * @author Geoffrey b2o
  */
 public class RequeteExpert extends Requete{
-    
+    String s = "SELECT * FROM ArtisteExpert";
+    Getter bj;
+    public RequeteExpert(){
+        ResultSet b = bj.request(s);
+        //il faut analyser le ResultSet
+    }
 }
