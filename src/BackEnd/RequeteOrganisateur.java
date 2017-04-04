@@ -16,15 +16,19 @@ import java.sql.ResultSet;
  */
 public class RequeteOrganisateur extends Requete {
     public static ResultatsSpectacles getSpectacles() {
-        ResultSet listeSpectacle = Getter.request("SELECT * FROM ");
+        ResultSet listeSpectacle = Getter.request("SELECT * FROM Festival");
+        //Ici à compléter
         System.out.println("Not yet Implemented!\n");
         return null;
     }
     public static ResultatsNumeros getNumeros() {
+        ResultSet listeSpectacle = Getter.request("SELECT NumTelExpert FROM ArtisteExpert");
         System.out.println("Not yet Implemented!\n");
         return null;
     }
     public static ResultatsNumeros getNumeros(Spectacle spectacle) {
+        String s = "SELECT FROM NumeroAccepte WHERE spectacle = " + spectacle.toString();
+        ResultSet listeSpectacle = Getter.request(s);
         System.out.println("Not yet Implemented!\n");
         return null;
     }
