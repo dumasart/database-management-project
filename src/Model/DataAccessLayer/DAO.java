@@ -31,9 +31,8 @@ public class DAO {
         //TODO
     }
     
-    public Collection<Numero> getNumeros() {
-        RequeteExpert ret = new RequeteExpert();
-        Collection<Numero> rets= ret.getNumeros().getNumeros();
+    public Collection<Numero> getNumerosPourEvaluer() {
+        Collection<Numero> rets= RequeteExpert.getNumeros().getNumeros();
         return rets;
     }
     
@@ -57,6 +56,11 @@ public class DAO {
     public User getUserByUserNameAndPassword(String username, String password) {
         System.out.println("Not yet Implemented!\n");
         return new User(username, password);
+    }
+
+    public Collection<Expert> getAllExperts() {
+        // TODO
+        return null;
     }
 }
     

@@ -115,7 +115,7 @@ public class RequeteOrganisateur extends Requete {
      * @param numero
      * @return 
      */
-    public static boolean addNumeroToSpectacl(Spectacle spectacle,Numero numero) {
+    public static boolean addNumeroToSpectacle(Spectacle spectacle,Numero numero) {
         System.out.println("Not yet Implemented!\n");
         return false;
     }
