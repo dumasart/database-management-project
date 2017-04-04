@@ -5,36 +5,36 @@
  */
 package Model.Business;
 
-import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  *
  * @author nabem
  */
 public class Organisateur {
-    private ArrayList<Expert> listeExpert;
-    private ArrayList<Spectacle> listeSpectacle;
-    private ArrayList<Numero> listeNumero;
-    public ArrayList<Artiste> listeArtiste;
+    private Collection<Expert> listeExpert;
+    private Collection<Spectacle> listeSpectacle;
+    private Collection<Numero> listeNumero;
+    public Collection<Artiste> listeArtiste;
     
-    public Organisateur(ArrayList<Expert> listeExpert, ArrayList<Spectacle> listeSpectacle, ArrayList<Numero> listeNumero, ArrayList<Artiste> listeArtiste) {
+    public Organisateur(Collection<Expert> listeExpert, Collection<Spectacle> listeSpectacle, Collection<Numero> listeNumero, Collection<Artiste> listeArtiste) {
         this.listeExpert = listeExpert;
         this.listeSpectacle = listeSpectacle;
         this.listeNumero = listeNumero;
         this.listeArtiste = listeArtiste;
     }
    
-    public ArrayList<Expert> getListeExpert() {
+    public Collection<Expert> getListeExpert() {
         return this.listeExpert;
     }
     
-    public ArrayList<Spectacle> getListeSpectacle() {
+    public Collection<Spectacle> getListeSpectacle() {
         return this.listeSpectacle;
     }
-    public ArrayList<Artiste> getListeArtiste() {
+    public Collection<Artiste> getListeArtiste() {
         return this.listeArtiste;
     }
-    public ArrayList<Numero> getListeNumero() {
+    public Collection<Numero> getListeNumero() {
         return this.listeNumero;
     }
 }

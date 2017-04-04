@@ -10,5 +10,11 @@ package BackEnd;
  * @author milang
  */
 public class ResultatsEvaluations {
+    private float noteMoyenne;
     
+    public float getNoteMoyenne() {
+        return noteMoyenne;
+    }
+    
+    // TO COMPLETE
 }

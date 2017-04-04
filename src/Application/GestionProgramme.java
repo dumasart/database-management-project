@@ -5,10 +5,8 @@
  */
 package Application;
 
-import BackEnd.ResultatsSpectacles;
+import BackEnd.ConnectionPacket;
 import Model.Business.Spectacle;
-import Model.DataAccessLayer.DAO;
-import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -17,34 +15,16 @@ import java.util.Collection;
  *          -Afficher le programme pour chaque spectacle
  * @author nabem
  */
-public class GestionProgramme {
-    private static Collection<Spectacle> listeSpectacle;
-    
-    //il faut lui fournir une liste de spectacles dans la base de données
-    public GestionProgramme() {
-        GestionProgramme.listeSpectacle = Factory.getDAO().getSpectacles();
-    }
-    
-    public Collection<Spectacle> getListeSpectacle() {
-        return GestionProgramme.listeSpectacle;
-    }
-    /**
-     * Fonction pour calculer la durée totale du festival
-     * @return la duree totale du festival 
-     */
-    public static int dureeFestival() {
-        int duree = 0;
-        for(Spectacle s : listeSpectacle) {
-            duree += s.getFin() - s.getDebut();
-        }
-        return duree;
-    }
+public class GestionProgramme {  
     
     public  static void main(String args[]) {
+        ConnectionPacket.openConnection(null, null, null);
+        Collection<Spectacle> listeSpectacle = Factory.getDAO().getSpectacles();
         
-        System.out.print("Durée du festival :  " + dureeFestival());
         for(Spectacle s : listeSpectacle) {
             System.out.println(s.toString());
         }
+        
+        ConnectionPacket.closeConnection();
     }
 }

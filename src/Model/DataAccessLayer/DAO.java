@@ -9,11 +9,15 @@ import BackEnd.RequeteOrganisateur;
 import BackEnd.RequeteExpert;
 import BackEnd.RequeteOrganisateur;
 import Model.Business.Artiste;
+import Model.Business.Enum_theme;
 import Model.Business.Expert;
 import Model.Business.Numero;
 import Model.Business.Spectacle;
 import Model.Business.User;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  *
@@ -51,9 +55,7 @@ public class DAO {
     
     
     public void ajouteExpert(Expert exp) {
-        RequeteOrganisateur req = new RequeteOrganisateur();
-        
-        req.addExpert(exp);
+        RequeteOrganisateur.addExpert(exp);
     }
     
     public void ajouteArtiste(Artiste artiste) {
@@ -61,15 +63,11 @@ public class DAO {
     }
     
     public void ajouteSpectacle(Spectacle spectacle) {
-        RequeteOrganisateur req = new RequeteOrganisateur();
-        
-        req.addSpectacle(spectacle);
+        RequeteOrganisateur.addSpectacle(spectacle);
     }  
     
     public void ajouteNumero(Numero numero) {
-        RequeteOrganisateur req = new RequeteOrganisateur();
-        
-        req.addNumero(numero);
+        RequeteOrganisateur.addNumero(numero);
     }
     
     public Collection<Expert> getAllExperts() {
@@ -103,15 +101,6 @@ public class DAO {
     }
 
     /**
-     * Prendre tous les numéros déjà évalués pour ajouter dans les spectacles
-     * @return liste des numeros validés
-     */
-    public Collection<Numero> getNumerosValides() {
-        // TODO
-        return null;
-    }
-
-    /**
      * Ajouter un numéro à un spectacle
      * @param num
      * @param spec 
@@ -120,10 +109,23 @@ public class DAO {
         RequeteOrganisateur.addNumeroToSpectacle(spec, num);
     }
 
-    public Collection<Spectacle> getAllSpectacles() {
-        //TODO:
-        System.out.println("Not yet Implemented!\n");
-        return null;
+
+    /**
+     * @param theme
+     * @return liste des meilleurs numéros par theme
+     */
+    public Map<Float, Numero> getMeilleursNumerosParTheme(Enum_theme theme) {
+        // Get all numeros par theme
+        Collection<Numero> listeNumerosParTheme = RequeteOrganisateur.getNumerosByTheme(theme).getNumeros();
+        Map<Float, Numero> classement = new TreeMap<Float, Numero>(Collections.reverseOrder());
+        
+        for (Numero num: listeNumerosParTheme) {
+            float noteMoyenne = RequeteOrganisateur.getMoyenneNumero(num).getNoteMoyenne();
+            classement.put(noteMoyenne, num);
+        }
+        
+        // Résultats
+        return classement;
     }
 
 }

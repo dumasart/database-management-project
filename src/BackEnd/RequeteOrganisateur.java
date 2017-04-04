@@ -6,6 +6,7 @@
  */
 package BackEnd;
 
+import Model.Business.Enum_theme;
 import Model.Business.Expert;
 import Model.Business.Numero;
 import Model.Business.Spectacle;
@@ -43,6 +44,18 @@ public class RequeteOrganisateur extends Requete {
         System.out.println("Not yet Implemented!\n");
         return null;
     }
+    
+    
+    /**
+     * Prendre tous les numéros de thème
+     * @param theme
+     * @return 
+     */
+    public static ResultatsNumeros getNumerosByTheme(Enum_theme theme) {
+        System.out.println("Not yet Implemented!\n");
+        return null;
+    }
+    
     public static ResultatsNumeros getNumeros(int codeSpec) {
         String s = "SELECT FROM NumeroAccepte WHERE spectacle = " + codeSpec;
         ResultSet rs = Getter.request(s);

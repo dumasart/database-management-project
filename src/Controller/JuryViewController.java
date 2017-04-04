@@ -6,26 +6,28 @@
 package Controller;
 
 import Application.Factory;
+import Model.Business.Enum_theme;
 import Model.Business.Numero;
 import Model.Business.Spectacle;
 import Model.DataAccessLayer.DAO;
 import java.util.Collection;
+import java.util.Map;
 
 /**
  * Ce contrôleur va vérifier et ajouter les numéros dans le Spectacle
  * @author luud
  */
 public class JuryViewController {
-    private Collection<Numero> listeMeilleursNumeros;
+    private Map<Float, Numero> listeMeilleursNumeros;
     private Collection<Spectacle> listeSpectacles;
     
     public JuryViewController() {
-        updateData();
+        updateData(Enum_theme.Acrobatie);
     }
     
-    public void updateData() {
+    public void updateData(Enum_theme theme) {
         DAO dao = Factory.getDAO();
-        this.listeMeilleursNumeros = dao.getNumerosValides();
+        this.listeMeilleursNumeros = dao.getMeilleursNumerosParTheme(theme);
         this.listeSpectacles = dao.getSpectacles();
     }
     
