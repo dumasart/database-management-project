@@ -9,6 +9,6 @@ package BackEnd;
  *
  * @author milang
  */
-class ResulatsInformation extends ResultatRequete{
+class ResultatsInformation extends ResultatRequete{
         
 }
