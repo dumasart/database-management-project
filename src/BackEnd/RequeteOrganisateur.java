@@ -47,7 +47,7 @@ public class RequeteOrganisateur extends Requete {
         System.out.println("Not yet Implemented!\n");
         return null;
     }
-    public static ResultatsInformation getEvaluations(Numero numero) {
+    public static ResultatsEvaluations getEvaluations(Numero numero) {
         String cmd = "SELECT * FROM Evaluation WHERE codeNumero = " + numero.getID();
         ResultSet rs = Getter.request(cmd);
         System.out.println("Not yet Implemented!\n");
