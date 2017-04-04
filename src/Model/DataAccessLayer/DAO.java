@@ -5,6 +5,7 @@
  */
 package Model.DataAccessLayer;
 
+import BackEnd.RequeteOrganisateur;
 import Model.Business.Artiste;
 import Model.Business.Numero;
 import Model.Business.Expert;
@@ -42,19 +43,25 @@ public class DAO {
     
     
     public void ajouteExpert(Expert exp) {
-        // TODO
+        RequeteOrganisateur req = new RequeteOrganisateur();
+        
+        req.addExpert(exp);
     }
     
     public void ajouteArtiste(Artiste artiste) {
-        //TODO:
+        
     }
     
     public void ajouteSpectacle(Spectacle spectacle) {
-        //TODO:
+        RequeteOrganisateur req = new RequeteOrganisateur();
+        
+        req.addSpectacle(spectacle);
     }  
     
     public void ajouteNumero(Numero numero) {
-        //TODO:
+        RequeteOrganisateur req = new RequeteOrganisateur();
+        
+        req.addNumero(numero);
     }
     
     public User getUserByUserNameAndPassword(String username, String password) {

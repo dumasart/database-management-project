@@ -49,5 +49,7 @@ public class OrganisateurViewController implements Initializable {
     public void ajouteNumero(Numero numero) {
         DAO dao = Factory.getDAO();
         dao.ajouteNumero(numero);
+        
+        
     }
 }

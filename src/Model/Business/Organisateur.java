@@ -53,7 +53,6 @@ public class Organisateur {
                 }
             }
         }
-        
     }
     
     public ArrayList<Expert> getListeExpert() {
