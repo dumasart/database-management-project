@@ -31,7 +31,8 @@ public class RequeteOrganisateur extends Requete {
         return null;
     }
     public static boolean addExpert(Expert expert) {
-        System.out.println("Not yet Implemented!\n");
+        //String req="insert into ArtisteExpert values("+expert.+")";
+        
         return false;
     } 
     public static boolean addSpectacle(Spectacle spectacle) {
