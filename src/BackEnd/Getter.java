@@ -13,9 +13,12 @@ import java.sql.*;
  * class local qui ne sert qu'à effectuer les requètes 
  */
 class Getter {
-    public ResultSet request(String requete) {
+    private static Statement stmt=null;
+    public static ResultSet request(String requete) {
         try {
-        Statement stmt = ConnectionPacket.getConnectionAccess().createStatement();
+            if(stmt==null)
+                stmt = ConnectionPacket.getConnectionAccess().createStatement();  
+            return stmt.executeQuery(requete);
         }
         catch(SQLException e) {
             System.out.println("Statement non crée");
