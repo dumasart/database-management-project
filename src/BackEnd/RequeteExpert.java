@@ -13,9 +13,9 @@ import java.sql.ResultSet;
  */
 public class RequeteExpert extends Requete{
     String s = "SELECT * FROM ArtisteExpert";
-    Getter bj;
-    public RequeteExpert(){
-        ResultSet b = bj.request(s);
-        //il faut analyser le ResultSet
+    public ResultSet getNumeros(){
+        ResultSet b = Getter.request(s);
+        //il faut analyser le ResultSet et renvoyer je ne sais quoi?
+        return null;
     }
 }
