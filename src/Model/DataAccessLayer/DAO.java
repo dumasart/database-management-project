@@ -22,13 +22,12 @@ public class DAO {
     
     // Des méthodes pour manipuler la donnée
     public void ajouteCommentairePourNumero(int codeNum, String com) {
-        //TODO
-        System.out.println("Not yet Implemented!\n");
+        RequeteExpert.updateComment(codeNum, com);
     }
     
     
     public void ajouteNotePourNumero(int codeNum, int note) {
-        //TODO
+        RequeteExpert.updateNote(codeNum, note);
     }
     
     public Collection<Numero> getNumerosPourEvaluer() {
@@ -53,14 +52,15 @@ public class DAO {
         //TODO:
     }
     
+    public Collection<Expert> getAllExperts() {
+        // TODO
+        return null;
+    }
+    
     public User getUserByUserNameAndPassword(String username, String password) {
         System.out.println("Not yet Implemented!\n");
         return new User(username, password);
     }
 
-    public Collection<Expert> getAllExperts() {
-        // TODO
-        return null;
-    }
 }
     

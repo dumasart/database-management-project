@@ -28,4 +28,8 @@ public class Factory {
     public static void setUser(String username, String password) {
         user = getDAO().getUserByUserNameAndPassword(username, password);
     }
+    
+    public static void setUser(User user) {
+        user = user;
+    }
 }
