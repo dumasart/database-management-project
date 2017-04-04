@@ -15,6 +15,7 @@ import java.util.Collection;
  */
 public class ResultatsNumeros extends ResultatRequete {
     private ArrayList<Numero> numeros;
+
     ResultatsNumeros() {
         numeros= new ArrayList<>();
     }

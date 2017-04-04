@@ -5,6 +5,10 @@
  */
 package BackEnd;
 
+/**
+ *
+ * @author milang
+ */ 
 import Application.Factory;
 import Model.Business.Evaluation;
 import Model.Business.Numero;
@@ -28,8 +32,7 @@ public class RequeteExpert extends Requete{
                         b.getString("TitreNumero"),
                         b.getString("ResumeNumero"),
                         b.getInt("DureeNumero"),
-                        b.getInt("NbArtiste"),
-                        false
+                        b.getInt("NbArtiste")
                 );
                 nums.add(num);
             }

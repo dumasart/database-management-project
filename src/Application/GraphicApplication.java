@@ -1,9 +1,5 @@
 package Application;
 
-import Model.Business.Numero;
-import Model.DataAccessLayer.DAO;
-import java.util.Collection;
-import java.util.Scanner;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

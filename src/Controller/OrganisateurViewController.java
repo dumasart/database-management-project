@@ -8,6 +8,8 @@ package Controller;
 import Application.Factory;
 import Model.Business.Artiste;
 import Model.Business.Expert;
+import Model.Business.Numero;
+import Model.Business.Spectacle;
 import Model.DataAccessLayer.DAO;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,5 +34,20 @@ public class OrganisateurViewController implements Initializable {
     public void ajouteExpert(Expert expert) {
         DAO dao = Factory.getDAO();
         dao.ajouteExpert(expert);
+    }
+    
+    public void ajouteArtiste(Artiste artiste) {
+        DAO dao = Factory.getDAO();
+        dao.ajouteArtiste(artiste);
+    }
+    
+    public void ajouteSpectacle(Spectacle spectacle) {
+        DAO dao = Factory.getDAO();
+        dao.ajouteSpectacle(spectacle);
+    }  
+    
+    public void ajouteNumero(Numero numero) {
+        DAO dao = Factory.getDAO();
+        dao.ajouteNumero(numero);
     }
 }
