@@ -51,6 +51,25 @@ public class RequeteOrganisateur extends Requete {
         // Je sais pas comment on remplit ResultatsInformation
         String cmd = "SELECT AVG(Notes) , codeNumero, TitreNumero FROM (evaluation INNER JOIN Numero WHERE evaluation.codeNumero = Numero.codeNumero)";
         ResultSet rs = Getter.request(cmd);
+        ResultatsInformation info = new ResultatsInformation();
+        // COMMENT ON STOCKE DES DATA QUI NE SONT PAS UN TYPE DONNÉ ?
+        
+        /* try {
+            ResultSet b = Getter.request(cmd);
+            while(b.next()) {
+                Data = new (
+                        b.getInt("Average"),
+                        b.getString("codeNumero"),
+                        b.getString("TitreNumero"),
+                        false
+                );
+                info.add(Data);
+            }
+        }
+        catch(SQLException e) {
+            
+        } */
+        
         System.out.println("Not yet Implemented!\n");
         return null;
     }
