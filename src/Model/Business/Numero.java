@@ -15,17 +15,22 @@ public class Numero {
     private String resumeNumero;
     private int dureeNumero;
     private int nbrArtisteNumero;
+    static int nbrEvaluateur; //le nombre d'expert qui évalue le numéro
     private boolean valide;
     
-    public Numero(int code, String titre, String resume, int duree, int nbrArtiste, boolean valid) {
+    public Numero(int code, String titre, String resume, int duree, int nbrArtiste) {
         this.codeNumero = code;
         this.titreNumero = titre;
         this.resumeNumero = resume;
         this.dureeNumero = duree;
         this.nbrArtisteNumero = nbrArtiste;
-        this.valide = valid;
+        this.valide = true;
+        this.nbrEvaluateur = 0;
     }
     
+    public int getNbrEvaluateur() {
+        return this.nbrEvaluateur;
+    }
     public int getNumero() {
         return this.codeNumero;
     }
