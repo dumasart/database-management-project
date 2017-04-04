@@ -19,7 +19,7 @@ public class ConnectionPacket {
         if(co==null) {
             try {
                 Class.forName("oracle.jdbc.OracleDriver");
-                DriverManager.getConnection(BD_URL,BD_USER,BD_PWD);
+                co = DriverManager.getConnection(BD_URL,BD_USER,BD_PWD);
             }
             catch(SQLException e) {
                 System.out.println("Oups!\n");
