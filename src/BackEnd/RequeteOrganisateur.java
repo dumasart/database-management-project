@@ -48,6 +48,7 @@ public class RequeteOrganisateur extends Requete {
         System.out.println("Not yet Implemented!\n");
         return null;
     }
+     
     public static ResultatsInformation getMoyenneNumero(Numero numero){
         // Je sais pas comment on remplit ResultatsInformation
         String cmd = "SELECT AVG(Notes) , codeNumero, TitreNumero FROM (evaluation INNER JOIN Numero WHERE evaluation.codeNumero = Numero.codeNumero)";
@@ -74,20 +75,46 @@ public class RequeteOrganisateur extends Requete {
         System.out.println("Not yet Implemented!\n");
         return null;
     }
+    
+    /**
+     * Vérifier si l'artiste expert est dans Artiste
+     * Ajouter son/ses thème/s d'expertise dans EstExpertEn
+     * @param expert
+     * @return 
+     */
     public static boolean addExpert(Expert expert) {
-        String req= "insert into ArtisteExpert values(" +expert.getID() + ")";
+        String req= "INSERT INTO ArtisteExpert VALUES (" +expert.getID() + ")";
         ResultSet listeSpectacle = Getter.request(req);
         System.out.println("Not yet Implemented!\n");
         return false;
     } 
+    /**
+     * Vérifier que l'artiste présentateur est dans Artiste
+     * Vérifier que le festival existe
+     * @param spectacle
+     * @return 
+     */
     public static boolean addSpectacle(Spectacle spectacle) {
         System.out.println("Not yet Implemented!\n");
         return false;
     }
+    /**
+     * Vérifier que l'artiste principal est dans ArtistePrincipal, ArtisteParticipant et Artiste
+     * @param numero
+     * @return 
+     */
     public static boolean addNumero(Numero numero) {
         System.out.println("Not yet Implemented!\n");
         return false;
     } 
+    /**
+     * Vérifier que le numéro existe
+     * Vérifier que le spectacle existe
+     * Vérifier l'heure si pas déjà fait
+     * @param spectacle
+     * @param numero
+     * @return 
+     */
     public static boolean addNumeroToSpectacl(Spectacle spectacle,Numero numero) {
         System.out.println("Not yet Implemented!\n");
         return false;
