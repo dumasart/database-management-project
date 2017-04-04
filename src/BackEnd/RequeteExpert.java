@@ -18,7 +18,6 @@ import java.sql.SQLException;
 public class RequeteExpert extends Requete{
     //
     public static ResultatsNumeros getNumeros(){
-<<<<<<< HEAD
         String s = "SELECT * FROM Evaluation JOIN Numero ON Evaluation.codeNumero=Numero.codeNumero WHERE codeArtiste="+Factory.getUser().getUserId();
         ResultatsNumeros nums = new ResultatsNumeros();
         try {
