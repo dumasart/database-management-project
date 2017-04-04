@@ -12,3 +12,4 @@ package BackEnd;
 class ResulatsInformation extends ResultatRequete{
         
 }
+
