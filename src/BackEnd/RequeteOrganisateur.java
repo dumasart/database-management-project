@@ -10,6 +10,7 @@ import Model.Business.Numero;
 import Model.Business.Spectacle;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,12 +18,17 @@ import java.sql.SQLException;
  */
 public class RequeteOrganisateur extends Requete {
     public static ResultatsSpectacles getSpectacles() {
-        ResultSet rs = Getter.request("SELECT * FROM Festival");
-        //Ici à compléter
+        ResultSet rs = Getter.request("SELECT * FROM Spectacle");
         ResultatsSpectacles spectacles = new ResultatsSpectacles();
         try {
             while(rs.next()) {
-                
+                Spectacle spec=new Spectacle(
+                        rs.getInt("codeSpectacle"),
+                        rs.getDate("jourSpectacle").toString(),
+                        rs.getInt("heureDebut"),
+                        rs.getInt("heureFin"),
+                        rs.getDouble("prixSpectacle")
+                );
             }
         }
         catch (SQLException e) {
