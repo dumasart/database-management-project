@@ -6,6 +6,7 @@
 package Model.DataAccessLayer;
 
 import Model.Business.Numero;
+import Model.Business.User;
 import java.util.Collection;
 
 /**
@@ -31,6 +32,13 @@ public class DAO {
         //Collection<Numero> rets= ret.getNumeros();
         //return rets;
         return null;
+    }
+    
+    
+    
+    public User getUserByUserNameAndPassword(String username, String password) {
+        //
+        return new User(username, password);
     }
 }
     
