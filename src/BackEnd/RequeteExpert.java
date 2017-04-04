@@ -32,7 +32,8 @@ public class RequeteExpert extends Requete{
                         b.getString("TitreNumero"),
                         b.getString("ResumeNumero"),
                         b.getInt("DureeNumero"),
-                        b.getInt("NbArtiste")
+                        b.getInt("NbArtiste"),
+                        b.getString("theme")
                 );
                 nums.add(num);
             }

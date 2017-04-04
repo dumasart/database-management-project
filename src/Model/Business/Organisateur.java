@@ -23,44 +23,18 @@ public class Organisateur {
         this.listeNumero = listeNumero;
         this.listeArtiste = listeArtiste;
     }
-    
-    public void ajouteExpert(Expert exp) {
-        if(! listeExpert.contains(exp) && listeExpert.size() < 30) {
-            listeExpert.add(exp);
-        }
-    }
-    
-    public void ajouteSpectacle(Spectacle spectacle) {
-        if(! listeSpectacle.contains(spectacle)) {
-            listeSpectacle.add(spectacle);
-        }
-    }
-    
-    public void ajouteArtiste(Artiste artiste) {
-        if(! listeArtiste.contains(artiste)) {
-            listeArtiste.add(artiste);
-        }
-    }
-    
-    public void ajouteNumero(Numero numero) {
-        if(! listeNumero.contains(numero)) {
-            listeNumero.add(numero);
-            //on l'assigne à un expert pour l'évaluer
-            for(Expert exp : getListeExpert()) {
-                if(numero.nbrEvaluateur < 5) {
-                    exp.ajouteNumero(numero);
-                    numero.nbrEvaluateur ++;
-                }
-            }
-        }
-        
-    }
-    
+   
     public ArrayList<Expert> getListeExpert() {
         return this.listeExpert;
     }
     
     public ArrayList<Spectacle> getListeSpectacle() {
         return this.listeSpectacle;
+    }
+    public ArrayList<Artiste> getListeArtiste() {
+        return this.listeArtiste;
+    }
+    public ArrayList<Numero> getListeNumero() {
+        return this.listeNumero;
     }
 }

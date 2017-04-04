@@ -21,14 +21,7 @@ public class Expert extends Artiste{
         this.theme = theme;
         this.nbrNumeroEvaluer = 0;
     }
-    
-    public void ajouteNumero(Numero numero) {
-        if(! getListeNumeros().contains(numero) && this.nbrNumeroEvaluer < 15) {
-            getListeNumeros().add(numero);
-            this.nbrNumeroEvaluer ++;
-        }
-    }
-    
+     
     public void retireNumero(Numero numero) {
         getListeNumeros().remove(numero);
     }

@@ -5,7 +5,9 @@
  */
 package Application;
 
+import BackEnd.ResultatsSpectacles;
 import Model.Business.Spectacle;
+import Model.DataAccessLayer.DAO;
 import java.util.ArrayList;
 import java.util.Collection;
 

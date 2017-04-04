@@ -5,7 +5,7 @@
  */
 package Model.DataAccessLayer;
 
-
+import BackEnd.RequeteOrganisateur;
 import BackEnd.RequeteExpert;
 import BackEnd.RequeteOrganisateur;
 import Model.Business.Artiste;
@@ -51,19 +51,25 @@ public class DAO {
     
     
     public void ajouteExpert(Expert exp) {
-        // TODO
+        RequeteOrganisateur req = new RequeteOrganisateur();
+        
+        req.addExpert(exp);
     }
     
     public void ajouteArtiste(Artiste artiste) {
-        //TODO:
+        
     }
     
     public void ajouteSpectacle(Spectacle spectacle) {
-        //TODO:
+        RequeteOrganisateur req = new RequeteOrganisateur();
+        
+        req.addSpectacle(spectacle);
     }  
     
     public void ajouteNumero(Numero numero) {
-        //TODO:
+        RequeteOrganisateur req = new RequeteOrganisateur();
+        
+        req.addNumero(numero);
     }
     
     public Collection<Expert> getAllExperts() {
@@ -112,6 +118,12 @@ public class DAO {
      */
     public void ajouteNumeroASpectacle(Numero num, Spectacle spec) {
         RequeteOrganisateur.addNumeroToSpectacle(spec, num);
+    }
+
+    public Collection<Spectacle> getAllSpectacles() {
+        //TODO:
+        System.out.println("Not yet Implemented!\n");
+        return null;
     }
 
 }

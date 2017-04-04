@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -124,5 +125,13 @@ public class RequeteOrganisateur extends Requete {
     public static boolean addNumeroToSpectacle(Spectacle spectacle,Numero numero) {
         System.out.println("Not yet Implemented!\n");
         return false;
+    }
+    /**
+     * Associer un numéro à un expert
+     * @param get
+     * @param numero 
+     */
+    public void associeNumeroExpert(Expert exp, Numero numero) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
