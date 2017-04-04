@@ -7,6 +7,7 @@ package Application;
 
 import Model.Business.Spectacle;
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  *La classe pour gérer les programmes de façon globale :
@@ -15,14 +16,14 @@ import java.util.ArrayList;
  * @author nabem
  */
 public class GestionProgramme {
-    private static ArrayList<Spectacle> listeSpectacle;
+    private static Collection<Spectacle> listeSpectacle;
     
     //il faut lui fournir une liste de spectacles dans la base de données
-    public GestionProgramme(ArrayList<Spectacle> listeSpectacles) {
-        GestionProgramme.listeSpectacle = listeSpectacles;
+    public GestionProgramme() {
+        GestionProgramme.listeSpectacle = Factory.getDAO().getSpectacles();
     }
     
-    public ArrayList<Spectacle> getListeSpectacle() {
+    public Collection<Spectacle> getListeSpectacle() {
         return GestionProgramme.listeSpectacle;
     }
     /**

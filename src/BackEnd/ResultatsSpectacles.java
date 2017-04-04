@@ -5,10 +5,25 @@
  */
 package BackEnd;
 
+import Model.Business.Spectacle;
+import java.util.Collection;
+import java.util.LinkedList;
+
 /**
  *
  * @author milang
  */
 public class ResultatsSpectacles extends ResultatRequete{
+    private LinkedList<Spectacle> spectacles;
+
+    ResultatsSpectacles() {
+        this.spectacles = new LinkedList<Spectacle>();
+    }
+   
     
+    public Collection<Spectacle> getSpectacles() {
+        return this.spectacles;
+    }
+    
+    // TO COMPLETE
 }

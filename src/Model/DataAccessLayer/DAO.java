@@ -22,15 +22,28 @@ import java.util.Collection;
 public class DAO {
     
     // Des méthodes pour manipuler la donnée
+    /**
+     * Un expert saisit des commentaires pour un numero
+     * @param codeNum
+     * @param com 
+     */
     public void ajouteCommentairePourNumero(int codeNum, String com) {
         RequeteExpert.updateComment(codeNum, com);
     }
     
-    
+    /**
+     * Un expert saisit la note pour un numéro
+     * @param codeNum
+     * @param note 
+     */
     public void ajouteNotePourNumero(int codeNum, int note) {
         RequeteExpert.updateNote(codeNum, note);
     }
     
+    /**
+     * Un expert reprend la liste des numéros qu'il doit évaluer
+     * @return liste des numéros
+     */
     public Collection<Numero> getNumerosPourEvaluer() {
         Collection<Numero> rets= RequeteExpert.getNumeros().getNumeros();
         return rets;
@@ -57,16 +70,48 @@ public class DAO {
         // TODO
         return null;
     }
+
+    public Collection<Numero> getProgrammeSpectacle(int codeSpec) {
+        return RequeteOrganisateur.getNumeros(codeSpec).getNumeros();
+    }
+
     
+    /**
+     * S'authentifier
+     * @param username
+     * @param password
+     * @return un user (expert ou organisateur)
+     */    
     public User getUserByUserNameAndPassword(String username, String password) {
         System.out.println("Not yet Implemented!\n");
         return new User(username, password);
+        // TO COMPLETE
     }
 
-    public Collection<Numero> getProgrammeSpectacle(int codeSpec) {
-        Collection<Numero> rets;
-        rets = RequeteOrganisateur.getNumeros(codeSpec).getNumeros();
-        return rets;
+    /**
+     * Prendre le programme du festival
+     * @return liste des spectacles dans le festival
+     */
+    public Collection<Spectacle> getSpectacles() {
+        return RequeteOrganisateur.getSpectacles().getSpectacles();
+    }
+
+    /**
+     * Prendre tous les numéros déjà évalués pour ajouter dans les spectacles
+     * @return liste des numeros validés
+     */
+    public Collection<Numero> getNumerosValides() {
+        // TODO
+        return null;
+    }
+
+    /**
+     * Ajouter un numéro à un spectacle
+     * @param num
+     * @param spec 
+     */
+    public void ajouteNumeroASpectacle(Numero num, Spectacle spec) {
+        RequeteOrganisateur.addNumeroToSpectacle(spec, num);
     }
 
 }

@@ -43,8 +43,7 @@ public class ExpertViewController implements Initializable {
     private Collection<Numero> listeNumeros;
     
     public ExpertViewController() {
-        DAO dao = Factory.getDAO();
-        this.listeNumeros = dao.getNumerosPourEvaluer();
+        updateData();
     }
     
     public Iterator<Numero> getNumerosIterator() {
@@ -57,14 +56,21 @@ public class ExpertViewController implements Initializable {
     public void commentaire(int codeNum, String com) {
         DAO dao = Factory.getDAO();
         dao.ajouteCommentairePourNumero(codeNum, com);
+        updateData();
     }
     
     public void ajouteNote(int codeNum, int note) {
         DAO dao = Factory.getDAO();
         dao.ajouteNotePourNumero(codeNum, note);
+        updateData();
     }
     
     public void valideNumero(int codeNum) {
         // TODO
+    }
+    
+    public void updateData() {
+        DAO dao = Factory.getDAO();
+        this.listeNumeros = dao.getNumerosPourEvaluer();
     }
 }

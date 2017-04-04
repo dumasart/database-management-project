@@ -19,6 +19,7 @@ public class ResultatsNumeros extends ResultatRequete {
     ResultatsNumeros() {
         numeros= new ArrayList<>();
     }
+    
     public Numero getNumeroById(int id) {
         return numeros.get(id);
     }
