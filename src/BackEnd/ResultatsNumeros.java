@@ -14,5 +14,13 @@ import java.util.ArrayList;
  */
 public class ResultatsNumeros extends ResultatRequete {
     private ArrayList<Numero> numeros;
-    
+    ResultatsNumeros() {
+        numeros= new ArrayList<>();
+    }
+    public Numero getNumeroById(int id) {
+        return numeros.get(id);
+    }
+    public void add(Numero num) {
+        numeros.add(num);
+    }
 }
