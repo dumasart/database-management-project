@@ -27,17 +27,20 @@ public class RequeteOrganisateur extends Requete {
         return null;
     }
     public static ResultatsNumeros getNumeros(Spectacle spectacle) {
-        String s = "SELECT FROM NumeroAccepte WHERE spectacle = " + spectacle.toString();
+        String s = "SELECT FROM NumeroAccepte WHERE spectacle = " + spectacle.getID();
         ResultSet listeSpectacle = Getter.request(s);
         System.out.println("Not yet Implemented!\n");
         return null;
     }
-    public static ResultatsInformation getInfoJury(Numero numero) {
+    public static ResultatsInformation getEvaluations(Numero numero) {
+        String cmd = "SELECT * FROM Evaluation WHERE codeNumero = " + numero.getID();
+        ResultSet listeSpectacle = Getter.request(cmd);
         System.out.println("Not yet Implemented!\n");
         return null;
     }
     public static boolean addExpert(Expert expert) {
-        //String req="insert into ArtisteExpert values("+expert.+")";
+        String req= "insert into ArtisteExpert values(" +expert.getID() + ")";
+        
         System.out.println("Not yet Implemented!\n");
         return false;
     } 

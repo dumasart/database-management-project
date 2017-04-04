@@ -30,7 +30,7 @@ public class Spectacle {
         this.listeNumeros = listeNumero;
     }
     
-    public int getCode() {
+    public int getID() {
         return this.codeSpectacle;
     }
     public int getDebut(){

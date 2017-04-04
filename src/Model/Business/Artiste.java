@@ -34,7 +34,7 @@ public class Artiste {
     public ArrayList<Numero> getListeNumeros(){
         return this.listeNumeros;
     }
-    public int getCode() {
+    public int getID() {
         return this.code;
     }
     
