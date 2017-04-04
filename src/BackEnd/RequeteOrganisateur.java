@@ -38,6 +38,13 @@ public class RequeteOrganisateur extends Requete {
         System.out.println("Not yet Implemented!\n");
         return null;
     }
+    public static ResultatsInformation getMoyenneNumero(Numero numero){
+        // Je sais pas comment on remplit ResultatsInformation
+        String cmd = "SELECT AVG(Notes) , codeNumero, TitreNumero FROM (evaluation INNER JOIN Numero WHERE evaluation.codeNumero = Numero.codeNumero)";
+        ResultSet rs = Getter.request(cmd);
+        System.out.println("Not yet Implemented!\n");
+        return null;
+    }
     public static boolean addExpert(Expert expert) {
         String req= "insert into ArtisteExpert values(" +expert.getID() + ")";
         ResultSet listeSpectacle = Getter.request(req);
