@@ -7,6 +7,7 @@ package Model.DataAccessLayer;
 
 
 import BackEnd.RequeteExpert;
+import BackEnd.RequeteOrganisateur;
 import Model.Business.Artiste;
 import Model.Business.Expert;
 import Model.Business.Numero;
@@ -60,6 +61,12 @@ public class DAO {
     public User getUserByUserNameAndPassword(String username, String password) {
         System.out.println("Not yet Implemented!\n");
         return new User(username, password);
+    }
+
+    public Collection<Numero> getProgrammeSpectacle(int codeSpec) {
+        Collection<Numero> rets;
+        rets = RequeteOrganisateur.getNumeros(codeSpec).getNumeros();
+        return rets;
     }
 
 }
