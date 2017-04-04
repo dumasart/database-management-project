@@ -5,6 +5,7 @@
  */
 package Model.DataAccessLayer;
 
+import Model.Business.Expert;
 import Model.Business.Numero;
 import Model.Business.User;
 import java.util.Collection;
@@ -37,6 +38,10 @@ public class DAO {
         return null;
     }
     
+    
+    public void ajouteExpert(Expert exp) {
+        // TODO
+    }
     
     
     public User getUserByUserNameAndPassword(String username, String password) {
