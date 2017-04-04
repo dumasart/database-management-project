@@ -5,6 +5,10 @@
  */
 package Controller;
 
+import Application.Factory;
+import Model.Business.Artiste;
+import Model.Business.Expert;
+import Model.DataAccessLayer.DAO;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
@@ -24,4 +28,9 @@ public class OrganisateurViewController implements Initializable {
         // TODO
     }    
     
+    
+    public void ajouteExpert(Expert expert) {
+        DAO dao = Factory.getDAO();
+        dao.ajouteExpert(expert);
+    }
 }

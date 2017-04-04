@@ -67,8 +67,4 @@ public class ExpertViewController implements Initializable {
     public void valideNumero(int codeNum) {
         // TODO
     }
-    
-    public void afficheNumeros() {
-        //
-    }
 }
