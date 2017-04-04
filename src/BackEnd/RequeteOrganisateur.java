@@ -32,7 +32,7 @@ public class RequeteOrganisateur extends Requete {
     }
     public static boolean addExpert(Expert expert) {
         //String req="insert into ArtisteExpert values("+expert.+")";
-        
+        System.out.println("Not yet Implemented!\n");
         return false;
     } 
     public static boolean addSpectacle(Spectacle spectacle) {
