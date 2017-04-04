@@ -3,16 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Application;
+package BackEnd;
 
 /**
  *
- * @author nomezing
+ * @author milang
  */
-public class ProgramEditionApplication {
+public class TraducteurNumero extends TraducteurReq{
     
-    public static void main(String[] args) {
-        
-    }
-
 }

@@ -5,6 +5,9 @@
  */
 package Model.DataAccessLayer;
 
+import Model.Business.Numero;
+import java.util.Collection;
+
 /**
  *
  * @author luud
@@ -14,4 +17,17 @@ public class DAO {
     //
     
     // Des méthodes pour manipuler la donnée
+    public void ajouteCommentairePourNumero(int codeNum, String com) {
+        //TODO
+    }
+    
+    
+    public void ajouteNotePourNumero(int codeNum, int note) {
+        //TODO
+    }
+    
+    public Collection<Numero> getNumeros() {
+        //TODO
+        return null;
+    }
 }
