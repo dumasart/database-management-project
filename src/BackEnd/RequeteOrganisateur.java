@@ -9,6 +9,7 @@ import Model.Business.Expert;
 import Model.Business.Numero;
 import Model.Business.Spectacle;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -17,25 +18,59 @@ import java.sql.ResultSet;
 public class RequeteOrganisateur extends Requete {
 
     public static ResultatsSpectacles getSpectacles() {
-        ResultSet listeSpectacle = Getter.request("SELECT * FROM Festival");
+        ResultSet rs = Getter.request("SELECT * FROM Festival");
         //Ici à compléter
-        System.out.println("Not yet Implemented!\n");
+        ResultatsSpectacles spectacles = new ResultatsSpectacles();
+        try {
+            while(rs.next()) {
+                
+            }
+        }
+        catch (SQLException e) {
+            System.out.println("Euh!\n");
+        }
         return null;
     }
     public static ResultatsNumeros getNumeros() {
-        ResultSet listeSpectacle = Getter.request("SELECT NumTelExpert FROM ArtisteExpert");
+        ResultSet rs = Getter.request("SELECT NumTelExpert FROM ArtisteExpert");
         System.out.println("Not yet Implemented!\n");
         return null;
     }
     public static ResultatsNumeros getNumeros(Spectacle spectacle) {
         String s = "SELECT FROM NumeroAccepte WHERE spectacle = " + spectacle.getID();
-        ResultSet listeSpectacle = Getter.request(s);
+        ResultSet rs = Getter.request(s);
         System.out.println("Not yet Implemented!\n");
         return null;
     }
     public static ResultatsInformation getEvaluations(Numero numero) {
         String cmd = "SELECT * FROM Evaluation WHERE codeNumero = " + numero.getID();
-        ResultSet listeSpectacle = Getter.request(cmd);
+        ResultSet rs = Getter.request(cmd);
+        System.out.println("Not yet Implemented!\n");
+        return null;
+    }
+    public static ResultatsInformation getMoyenneNumero(Numero numero){
+        // Je sais pas comment on remplit ResultatsInformation
+        String cmd = "SELECT AVG(Notes) , codeNumero, TitreNumero FROM (evaluation INNER JOIN Numero WHERE evaluation.codeNumero = Numero.codeNumero)";
+        ResultSet rs = Getter.request(cmd);
+        ResultatsInformation info = new ResultatsInformation();
+        // COMMENT ON STOCKE DES DATA QUI NE SONT PAS UN TYPE DONNÉ ?
+        
+        /* try {
+            ResultSet b = Getter.request(cmd);
+            while(b.next()) {
+                Data = new (
+                        b.getInt("Average"),
+                        b.getString("codeNumero"),
+                        b.getString("TitreNumero"),
+                        false
+                );
+                info.add(Data);
+            }
+        }
+        catch(SQLException e) {
+            
+        } */
+        
         System.out.println("Not yet Implemented!\n");
         return null;
     }

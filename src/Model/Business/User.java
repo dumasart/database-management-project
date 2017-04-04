@@ -18,4 +18,8 @@ public class User {
         this.username = username;
         this.password = password;
     }
+
+    public String getUserId() {
+        return this.username;
+    }
 }
