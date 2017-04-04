@@ -20,14 +20,17 @@ public class DAO {
     // Des méthodes pour manipuler la donnée
     public void ajouteCommentairePourNumero(int codeNum, String com) {
         //TODO
+        System.out.println("Not yet Implemented!\n");
     }
     
     
     public void ajouteNotePourNumero(int codeNum, int note) {
         //TODO
+        System.out.println("Not yet Implemented!\n");
     }
     
     public Collection<Numero> getNumeros() {
+        System.out.println("Not yet Implemented!\n");
         //RequeteExpert ret = new RequetExpert();
         //Collection<Numero> rets= ret.getNumeros();
         //return rets;
@@ -37,7 +40,7 @@ public class DAO {
     
     
     public User getUserByUserNameAndPassword(String username, String password) {
-        //
+        System.out.println("Not yet Implemented!\n");
         return new User(username, password);
     }
 }
