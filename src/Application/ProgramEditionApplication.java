@@ -3,15 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package Application;
 
 import Model.Business.Numero;
 import java.util.Iterator;
 
 /**
  *
- * @author luud
+ * @author nomezing
  */
-public abstract class UserInterface {
-    abstract public void displayNumeros(Iterator<Numero> it);
+public class ProgramEditionApplication {
+    
+    public static void main(String[] args) {
+        
+    }
 }

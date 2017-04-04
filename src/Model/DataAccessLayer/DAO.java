@@ -6,6 +6,7 @@
 package Model.DataAccessLayer;
 
 import Model.Business.Numero;
+import Model.Business.User;
 import java.util.Collection;
 
 /**
@@ -27,7 +28,17 @@ public class DAO {
     }
     
     public Collection<Numero> getNumeros() {
-        //TODO
+        //RequeteExpert ret = new RequetExpert();
+        //Collection<Numero> rets= ret.getNumeros();
+        //return rets;
         return null;
     }
+    
+    
+    
+    public User getUserByUserNameAndPassword(String username, String password) {
+        //
+        return new User(username, password);
+    }
 }
+    

@@ -7,9 +7,8 @@ package Model.Business;
 
 /**
  *
- * @author milang
+ * @author luud
  */
 public class Evaluation {
-    
-    
+    // Cela correspond évaluation d'un expert
 }

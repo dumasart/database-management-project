@@ -11,19 +11,38 @@ import java.util.*;
  *
  * @author nabem
  */
-public class Expert {
-    private ArrayList<Artiste> listeNumeros;
+public class Expert extends Artiste{
+    //private ArrayList<Numero> listeNumero;
     Enum_theme theme;
     
-    public Expert(ArrayList<Artiste> listeNumero, Enum_theme theme) {
-        
+    public Expert(int code, String nom, String prenom, String dateNaissance, String  adresse, ArrayList<Numero> listeNumero, Enum_theme theme) {
+        super(code,nom,prenom,dateNaissance,adresse,listeNumero);
+        this.theme = theme;
     }
     
     public void ajouteNumero(Numero numero) {
-        
+        if(! getListeNumeros().contains(numero)) {
+            getListeNumeros().add(numero);
+        }
     }
     
     public void retireNumero(Numero numero) {
-        
+        getListeNumeros().remove(numero);
+    }
+    
+    public Enum_theme getTheme() {
+        return this.theme;
+    }
+    
+    public void afficheNumeros() {
+        System.out.println("Liste des numéros associés : ");
+        for(Numero num : getListeNumeros()) {
+            System.out.println(num.toString());
+        }
+    }
+    
+    @Override
+    public String toString() {
+        return "" + "Monsieur " + this.getNom() + " " + this.getPrenom() + "est expert en : " + this.getTheme();
     }
 }
