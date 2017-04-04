@@ -14,6 +14,7 @@ import java.util.ArrayList;
  */
 public class ResultatsNumeros extends ResultatRequete {
     private ArrayList<Numero> numeros;
+
     ResultatsNumeros() {
         numeros= new ArrayList<>();
     }

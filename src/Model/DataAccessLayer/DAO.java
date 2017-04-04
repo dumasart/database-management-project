@@ -5,8 +5,11 @@
  */
 package Model.DataAccessLayer;
 
+import Model.Business.Artiste;
+import Model.Business.Numero;
 import Model.Business.Expert;
 import Model.Business.Numero;
+import Model.Business.Spectacle;
 import Model.Business.User;
 import java.util.Collection;
 
@@ -27,7 +30,6 @@ public class DAO {
     
     public void ajouteNotePourNumero(int codeNum, int note) {
         //TODO
-        System.out.println("Not yet Implemented!\n");
     }
     
     public Collection<Numero> getNumeros() {
@@ -43,6 +45,17 @@ public class DAO {
         // TODO
     }
     
+    public void ajouteArtiste(Artiste artiste) {
+        //TODO:
+    }
+    
+    public void ajouteSpectacle(Spectacle spectacle) {
+        //TODO:
+    }  
+    
+    public void ajouteNumero(Numero numero) {
+        //TODO:
+    }
     
     public User getUserByUserNameAndPassword(String username, String password) {
         System.out.println("Not yet Implemented!\n");
