@@ -8,6 +8,7 @@ package BackEnd;
 import Model.Business.Expert;
 import Model.Business.Numero;
 import Model.Business.Spectacle;
+import java.sql.ResultSet;
 
 /**
  *
@@ -15,23 +16,31 @@ import Model.Business.Spectacle;
  */
 public class RequeteOrganisateur extends Requete {
     public static ResultatsSpectacles getSpectacles() {
+        ResultSet listeSpectacle = Getter.request("SELECT * FROM Festival");
+        //Ici à compléter
         System.out.println("Not yet Implemented!\n");
         return null;
     }
     public static ResultatsNumeros getNumeros() {
+        ResultSet listeSpectacle = Getter.request("SELECT NumTelExpert FROM ArtisteExpert");
         System.out.println("Not yet Implemented!\n");
         return null;
     }
     public static ResultatsNumeros getNumeros(Spectacle spectacle) {
+        String s = "SELECT FROM NumeroAccepte WHERE spectacle = " + spectacle.getID();
+        ResultSet listeSpectacle = Getter.request(s);
         System.out.println("Not yet Implemented!\n");
         return null;
     }
-    public static ResulatsInformation getInfoJury(Numero numero) {
+    public static ResultatsInformation getEvaluations(Numero numero) {
+        String cmd = "SELECT * FROM Evaluation WHERE codeNumero = " + numero.getID();
+        ResultSet listeSpectacle = Getter.request(cmd);
         System.out.println("Not yet Implemented!\n");
         return null;
     }
     public static boolean addExpert(Expert expert) {
-        //String req="insert into ArtisteExpert values("+expert.+")";
+        String req= "insert into ArtisteExpert values(" +expert.getID() + ")";
+        ResultSet listeSpectacle = Getter.request(req);
         System.out.println("Not yet Implemented!\n");
         return false;
     } 

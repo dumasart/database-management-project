@@ -18,6 +18,7 @@ import java.sql.SQLException;
 public class RequeteExpert extends Requete{
     //
     public static ResultatsNumeros getNumeros(){
+<<<<<<< HEAD
         String s = "SELECT * FROM Evaluation JOIN Numero ON Evaluation.codeNumero=Numero.codeNumero WHERE codeArtiste="+Factory.getUser().getUserId();
         ResultatsNumeros nums = new ResultatsNumeros();
         try {
@@ -41,6 +42,9 @@ public class RequeteExpert extends Requete{
         return nums;
     }
     public static ResultatsEvaluations getEvaluation() {
+        String s = "SELECT * FROM Evaluation WHERE codeArtiste="+Factory.getUser().getUserId();
+        ResultSet b = Getter.request(s);
+        
         System.out.println("Not yest implemented!\n");
         return null;
     }
