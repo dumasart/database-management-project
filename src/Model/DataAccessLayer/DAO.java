@@ -6,8 +6,8 @@
 package Model.DataAccessLayer;
 
 import BackEnd.RequeteOrganisateur;
+import BackEnd.RequeteExpert;
 import Model.Business.Artiste;
-import Model.Business.Numero;
 import Model.Business.Expert;
 import Model.Business.Numero;
 import Model.Business.Spectacle;
@@ -19,8 +19,6 @@ import java.util.Collection;
  * @author luud
  */
 public class DAO {
-    private TheConnection cntion;
-    //
     
     // Des méthodes pour manipuler la donnée
     public void ajouteCommentairePourNumero(int codeNum, String com) {
@@ -33,12 +31,9 @@ public class DAO {
         //TODO
     }
     
-    public Collection<Numero> getNumeros() {
-        System.out.println("Not yet Implemented!\n");
-        //RequeteExpert ret = new RequetExpert();
-        //Collection<Numero> rets= ret.getNumeros();
-        //return rets;
-        return null;
+    public Collection<Numero> getNumerosPourEvaluer() {
+        Collection<Numero> rets= RequeteExpert.getNumeros().getNumeros();
+        return rets;
     }
     
     
@@ -67,6 +62,16 @@ public class DAO {
     public User getUserByUserNameAndPassword(String username, String password) {
         System.out.println("Not yet Implemented!\n");
         return new User(username, password);
+    }
+
+    public Collection<Expert> getAllExperts() {
+        // TODO
+        return null;
+    }
+    public Collection<Spectacle> getAllSpectacles() {
+        //TODO:
+        System.out.println("Not yet Implemented!\n");
+        return null;
     }
 }
     

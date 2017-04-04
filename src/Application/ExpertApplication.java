@@ -5,6 +5,7 @@
  */
 package Application;
 
+import BackEnd.ConnectionPacket;
 import java.util.Scanner;
 import Controller.ExpertViewController;
 import Model.Business.Numero;
@@ -19,7 +20,8 @@ public class ExpertApplication {
     
     public static void main(String[] args) {
         Scanner terminalInput = new Scanner(System.in);
-        
+        // Connection à la base de données
+        ConnectionPacket.openConnection(null, null, null);
         while (Factory.getUser() == null) {    
             System.out.printf("ID: ");
             String username = terminalInput.nextLine();
@@ -50,19 +52,20 @@ public class ExpertApplication {
 
                 int note = terminalInput.nextInt();
 
-                Factory.getDAO().ajouteNotePourNumero(code, note);
+                expCtrl.ajouteNote(code, note);
                 
                 System.out.printf("Saisir le commentaire pour ce numero");
                 
                 String cmt = terminalInput.nextLine();
                 
-                Factory.getDAO().ajouteCommentairePourNumero(code, cmt);
+                expCtrl.commentaire(code, cmt);
 
                 System.out.printf("Saisir 1 pour continuer, 0 pour quitter:");
 
                 cond = terminalInput.nextInt();
             }
         }
+        ConnectionPacket.closeConnection();
     }
     
 }

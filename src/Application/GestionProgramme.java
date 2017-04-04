@@ -5,7 +5,9 @@
  */
 package Application;
 
+import BackEnd.ResultatsSpectacles;
 import Model.Business.Spectacle;
+import Model.DataAccessLayer.DAO;
 import java.util.ArrayList;
 
 /**
@@ -18,8 +20,9 @@ public class GestionProgramme {
     private static ArrayList<Spectacle> listeSpectacle;
     
     //il faut lui fournir une liste de spectacles dans la base de données
-    public GestionProgramme(ArrayList<Spectacle> listeSpectacles) {
-        GestionProgramme.listeSpectacle = listeSpectacles;
+    public GestionProgramme() {
+        DAO dao = Factory.getDAO();
+        GestionProgramme.listeSpectacle = (ArrayList<Spectacle>) dao.getAllSpectacles();
     }
     
     public ArrayList<Spectacle> getListeSpectacle() {

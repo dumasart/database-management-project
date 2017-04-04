@@ -44,7 +44,7 @@ public class ExpertViewController implements Initializable {
     
     public ExpertViewController() {
         DAO dao = Factory.getDAO();
-        this.listeNumeros = dao.getNumeros();
+        this.listeNumeros = dao.getNumerosPourEvaluer();
     }
     
     public Iterator<Numero> getNumerosIterator() {

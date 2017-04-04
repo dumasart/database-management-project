@@ -51,16 +51,36 @@ public class RequeteExpert extends Requete{
         return null;
     }
     
+    /**
+     * Vérifier si le numéro existe
+     * @param numero
+     * @param evaluation
+     * @return boolean
+     */
     public static boolean setEvaluation(Numero numero,Evaluation evaluation) {
         System.out.println("Not yet implemented!\n");
         return false;
     }
     
+    /**
+     * Vérifier si le numéro existe
+     * Vérifier si il a déjà une évaluation
+     * @param numero
+     * @param comment
+     * @return boolean
+     */
     public static boolean updateComment(Numero numero,String comment) {
         System.out.println("Not yet implemented!\n");
         return false;
     }
     
+    /**
+     * Vérifier si le numéro existe
+     * Vérifier si il a déjà une évaluation
+     * @param numero
+     * @param note
+     * @return boolean
+     */
     public static boolean updateNote(Numero numero,int note) {
         System.out.println("Not yet implemented!\n");
         return false;

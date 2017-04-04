@@ -7,6 +7,7 @@ package BackEnd;
 
 import Model.Business.Numero;
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  *
@@ -21,6 +22,11 @@ public class ResultatsNumeros extends ResultatRequete {
     public Numero getNumeroById(int id) {
         return numeros.get(id);
     }
+    
+    public Collection<Numero> getNumeros() {
+        return this.numeros;
+    }
+    
     public void add(Numero num) {
         numeros.add(num);
     }

@@ -18,12 +18,15 @@ public class Numero {
     static int nbrEvaluateur; //le nombre d'expert qui évalue le numéro
     private boolean valide;
     
-    public Numero(int code, String titre, String resume, int duree, int nbrArtiste) {
+    private Enum_theme themeNumero;
+    
+    public Numero(int code, String titre, String resume, int duree, int nbrArtiste, Enum_theme theme) {
         this.codeNumero = code;
         this.titreNumero = titre;
         this.resumeNumero = resume;
         this.dureeNumero = duree;
         this.nbrArtisteNumero = nbrArtiste;
+        this.themeNumero = theme;
         this.valide = true;
         this.nbrEvaluateur = 0;
     }
@@ -39,6 +42,9 @@ public class Numero {
     }
     public int getID(){
         return this.codeNumero;
+    }
+    public Enum_theme getTheme() {
+        return this.themeNumero;
     }
     @Override
     public String toString() {
