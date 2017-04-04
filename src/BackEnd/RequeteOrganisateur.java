@@ -8,6 +8,7 @@ package BackEnd;
 import Model.Business.Expert;
 import Model.Business.Numero;
 import Model.Business.Spectacle;
+import java.sql.ResultSet;
 
 /**
  *
@@ -15,6 +16,7 @@ import Model.Business.Spectacle;
  */
 public class RequeteOrganisateur extends Requete {
     public static ResultatsSpectacles getSpectacles() {
+        ResultSet listeSpectacle = Getter.request("SELECT * FROM ");
         System.out.println("Not yet Implemented!\n");
         return null;
     }
@@ -26,7 +28,7 @@ public class RequeteOrganisateur extends Requete {
         System.out.println("Not yet Implemented!\n");
         return null;
     }
-    public static ResulatsInformation getInfoJury(Numero numero) {
+    public static ResultatsInformation getInfoJury(Numero numero) {
         System.out.println("Not yet Implemented!\n");
         return null;
     }
