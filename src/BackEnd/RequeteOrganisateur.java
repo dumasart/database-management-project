@@ -55,11 +55,11 @@ public class RequeteOrganisateur extends Requete {
         return null;
     }
      
-    public static ResultatsInformation getMoyenneNumero(Numero numero){
+    public static ResultatsEvaluations getMoyenneNumero(Numero numero){
         // Je sais pas comment on remplit ResultatsInformation
         String cmd = "SELECT AVG(Notes) , codeNumero, TitreNumero FROM (evaluation INNER JOIN Numero WHERE evaluation.codeNumero = Numero.codeNumero)";
         ResultSet rs = Getter.request(cmd);
-        ResultatsInformation info = new ResultatsInformation();
+        ResultatsEvaluations info = new ResultatsEvaluations();
         // COMMENT ON STOCKE DES DATA QUI NE SONT PAS UN TYPE DONNÉ ?
         
         /* try {
