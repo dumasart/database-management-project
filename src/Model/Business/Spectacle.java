@@ -5,7 +5,9 @@
  */
 package Model.Business;
 
+import Application.Factory;
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  *
@@ -17,6 +19,7 @@ public class Spectacle {
     private int heureDebut;
     private int heureFin;
     private double prixSpectacle;
+    private Collection<Numero> programme;
     
     
     public Spectacle(int code, String jour, int debut, int fin, double prix) {
@@ -25,6 +28,7 @@ public class Spectacle {
         this.heureDebut = debut;
         this.heureFin = fin;
         this.prixSpectacle = prix;
+        this.programme = Factory.getDAO().getProgrammeSpectacle(this.codeSpectacle);
     }
     
     public int getID() {
@@ -44,7 +48,7 @@ public class Spectacle {
         int duree = heureFin - heureDebut;
         System.out.println("Code du spectacle : " + codeSpectacle + " " + "Jour : " + jourSpectacle + " " + "Dure : " + " " + duree + " " + "Coute : " + prixSpectacle) ;
         
-        for(Numero numero : getListeNumeros()) {
+        for(Numero numero : this.programme) {
             affiche += numero.toString();
         }
         return affiche;

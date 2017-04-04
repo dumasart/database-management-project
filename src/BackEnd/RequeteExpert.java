@@ -65,11 +65,11 @@ public class RequeteExpert extends Requete{
     /**
      * Vérifier si le numéro existe
      * Vérifier si il a déjà une évaluation
-     * @param numero
+     * @param codeNumero
      * @param comment
      * @return boolean
      */
-    public static boolean updateComment(Numero numero,String comment) {
+    public static boolean updateComment(int codeNumero,String comment) {
         System.out.println("Not yet implemented!\n");
         return false;
     }
@@ -77,11 +77,11 @@ public class RequeteExpert extends Requete{
     /**
      * Vérifier si le numéro existe
      * Vérifier si il a déjà une évaluation
-     * @param numero
+     * @param codeNumero
      * @param note
      * @return boolean
      */
-    public static boolean updateNote(Numero numero,int note) {
+    public static boolean updateNote(int codeNumero,int note) {
         System.out.println("Not yet implemented!\n");
         return false;
     }

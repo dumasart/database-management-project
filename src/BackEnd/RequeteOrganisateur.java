@@ -43,8 +43,8 @@ public class RequeteOrganisateur extends Requete {
         System.out.println("Not yet Implemented!\n");
         return null;
     }
-    public static ResultatsNumeros getNumeros(Spectacle spectacle) {
-        String s = "SELECT FROM NumeroAccepte WHERE spectacle = " + spectacle.getID();
+    public static ResultatsNumeros getNumeros(int codeSpec) {
+        String s = "SELECT FROM NumeroAccepte WHERE spectacle = " + codeSpec;
         ResultSet rs = Getter.request(s);
         System.out.println("Not yet Implemented!\n");
         return null;
@@ -132,7 +132,6 @@ public class RequeteOrganisateur extends Requete {
      * @param numero 
      */
     public void associeNumeroExpert(Expert exp, Numero numero) {
-        String cmd = ""
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -5,6 +5,9 @@
  */
 package Controller;
 
+import Application.Factory;
+import Model.Business.User;
+import Model.DataAccessLayer.DAO;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -96,4 +99,16 @@ public class LoginViewController implements Initializable {
         });
     }    
     
+    
+    public boolean idenfieUser(String username, String password) {
+        DAO dao = Factory.getDAO();
+        User user = dao.getUserByUserNameAndPassword(username, password);
+        
+        if (user != null) {
+            Factory.setUser(user);
+            return true;
+        }
+        
+        return false;
+    }
 }
