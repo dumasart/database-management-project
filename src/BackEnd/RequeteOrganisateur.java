@@ -47,7 +47,7 @@ public class RequeteOrganisateur extends Requete {
         System.out.println("Not yet Implemented!\n");
         return null;
     }
-    
+     
     /**
      * Vérifier si l'artiste expert est dans Artiste
      * Ajouter son/ses thème/s d'expertise dans EstExpertEn
@@ -55,7 +55,7 @@ public class RequeteOrganisateur extends Requete {
      * @return 
      */
     public static boolean addExpert(Expert expert) {
-        String req= "insert into ArtisteExpert values(" +expert.getID() + ")";
+        String req= "INSERT INTO ArtisteExpert VALUES (" +expert.getID() + ")";
         ResultSet listeSpectacle = Getter.request(req);
         System.out.println("Not yet Implemented!\n");
         return false;
