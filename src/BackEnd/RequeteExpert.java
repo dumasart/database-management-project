@@ -17,12 +17,15 @@ import java.sql.ResultSet;
 public class RequeteExpert extends Requete{
     //
     public static ResultatsNumeros getNumeros(){
-        String s = "SELECT * FROM Evaluation WHERE codeArtiste="+Factory.getUser().getUserId();
+        String s = "SELECT codeNumero, TitreNumero, ResumeNumero, DureeNumero, NbArtisteNumero,  EstCreation, codeArtiste, theme FROM Evaluation INNER JOIN ArtisteExpert WHERE (Evaluation.CodeArtiste = ArtisteExper.CodeArtiste AND codeArtiste="+Factory.getUser().getUserId() + ")";
         ResultSet b = Getter.request(s);
         //il faut analyser le ResultSet et renvoyer je ne sais quoi?
         return null;
     }
     public static ResultatsEvaluations getEvaluation() {
+        String s = "SELECT * FROM Evaluation WHERE codeArtiste="+Factory.getUser().getUserId();
+        ResultSet b = Getter.request(s);
+        
         System.out.println("Not yest implemented!\n");
         return null;
     }

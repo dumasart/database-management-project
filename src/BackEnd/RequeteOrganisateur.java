@@ -40,7 +40,7 @@ public class RequeteOrganisateur extends Requete {
     }
     public static boolean addExpert(Expert expert) {
         String req= "insert into ArtisteExpert values(" +expert.getID() + ")";
-        
+        ResultSet listeSpectacle = Getter.request(req);
         System.out.println("Not yet Implemented!\n");
         return false;
     } 
