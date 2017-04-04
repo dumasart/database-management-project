@@ -18,6 +18,23 @@ public class Numero {
     private boolean valide;
     
     public Numero(int code, String titre, String resume, int duree, int nbrArtiste, boolean valid) {
-        
+        this.codeNumero = code;
+        this.titreNumero = titre;
+        this.resumeNumero = resume;
+        this.dureeNumero = duree;
+        this.nbrArtisteNumero = nbrArtiste;
+        this.valide = valid;
+    }
+    
+    public int getNumero() {
+        return this.codeNumero;
+    }
+    public boolean getValid() {
+        return this.valide;
+    }
+    
+    @Override
+    public String toString() {
+        return "Code : " + codeNumero + " Titre : " + titreNumero + " resume : " + resumeNumero + " Duree : " + dureeNumero + " Nombre d'artistes : " + nbrArtisteNumero + "\n";
     }
 }
