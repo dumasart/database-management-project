@@ -39,17 +39,32 @@ public class RequeteExpert extends Requete{
             }
         }
         catch(SQLException e) {
-            
+            System.out.println("Wololo");
         }
         //il faut analyser le ResultSet et renvoyer je ne sais quoi?
         return nums;
     }
     public static ResultatsEvaluations getEvaluation() {
         String s = "SELECT * FROM Evaluation WHERE codeArtiste="+Factory.getUser().getUserId();
-        ResultSet b = Getter.request(s);
-        
-        System.out.println("Not yest implemented!\n");
-        return null;
+        ResultatsEvaluations eval = new ResultatsEvaluations();
+
+        try {
+            ResultSet b = Getter.request(s);
+            while(b.next()) {
+                Evaluation num = new Evaluation(
+                        b.getInt("codeArtiste"),
+                        b.getInt("codeNumero"),
+                        b.getString("Evaluation"),
+                        b.getInt("note")
+                );
+                eval.add(num);
+            }
+        }
+        catch(SQLException e) {
+            System.out.println("Wololo");
+
+        }
+        return eval;
     }
     
     /**
@@ -59,7 +74,25 @@ public class RequeteExpert extends Requete{
      * @return boolean
      */
     public static boolean setEvaluation(Numero numero,Evaluation evaluation) {
-        System.out.println("Not yet implemented!\n");
+        String s = "SELECT * FROM Evaluation WHERE codeNumero=" + numero.getID() + " AND codeArtiste= " + Factory.getUser().getUserId();
+        String s2 = "SELECT * FROM Numero WHERE codeNumero=" + numero.getID();
+
+        try {
+            ResultSet b = Getter.request(s);
+            ResultSet b2 = Getter.request(s2);
+            if (b.next() && "No".equals(b.getString("yolo")) && "selected".equals(b.getString("yolo")) && "rows".equals(b.getString("yolo"))){
+                if (b2.next() && "No".equals(b2.getString("yolo")) && "selected".equals(b2.getString("yolo")) && "rows".equals(b2.getString("yolo"))){
+                    // On est bon là
+                    Getter.request("INSERT INTO Evaluation (codeArtiste, codeNumero, evaluation, note) VALUES (" +Factory.getUser().getUserId() + " , "
+                    + numero.getID() + " , " + evaluation.getEvaluation() + " , " + evaluation.getNote() + " ) " );
+                    return true;
+                }
+            }
+        }
+        catch(SQLException e) {
+            System.out.println("Wololo \n");
+        }
+        
         return false;
     }
     
@@ -70,8 +103,25 @@ public class RequeteExpert extends Requete{
      * @param comment
      * @return boolean
      */
-    public static boolean updateComment(int codeNumero,String comment) {
-        System.out.println("Not yet implemented!\n");
+    public static boolean updateComment(int codeNumero, String comment) {
+        String s = "SELECT * FROM Numero WHERE codeNumero=" + codeNumero;
+        String s2 = "SELECT * FROM Evaluation WHERE codeNumero=" + codeNumero + " AND codeArtiste= " + Factory.getUser().getUserId();
+
+        try {
+            ResultSet b = Getter.request(s);
+            ResultSet b2 = Getter.request(s2);
+            if (b.next() && "No".equals(b.getString("yolo")) && "selected".equals(b.getString("yolo")) && "rows".equals(b.getString("yolo"))){
+                if (b2.next() && "No".equals(b2.getString("yolo")) && "selected".equals(b2.getString("yolo")) && "rows".equals(b2.getString("yolo"))){
+                    // On est bon là
+                    Getter.request("UPDATE Evaluation SET evaluation = " + comment + " WHERE codeNumero = " + codeNumero + " AND codeArtiste = " +  Factory.getUser().getUserId() );
+                    return true;
+                }
+            }
+        }
+        catch(SQLException e) {
+            System.out.println("Wololo \n");
+        }
+        
         return false;
     }
     
@@ -83,7 +133,24 @@ public class RequeteExpert extends Requete{
      * @return boolean
      */
     public static boolean updateNote(int codeNumero,int note) {
-        System.out.println("Not yet implemented!\n");
+        String s = "SELECT * FROM Numero WHERE codeNumero=" + codeNumero;
+        String s2 = "SELECT * FROM Evaluation WHERE codeNumero=" + codeNumero + " AND codeArtiste= " + Factory.getUser().getUserId();
+
+        try {
+            ResultSet b = Getter.request(s);
+            ResultSet b2 = Getter.request(s2);
+            if (b.next() && "No".equals(b.getString("yolo")) && "selected".equals(b.getString("yolo")) && "rows".equals(b.getString("yolo"))){
+                if (b2.next() && "No".equals(b2.getString("yolo")) && "selected".equals(b2.getString("yolo")) && "rows".equals(b2.getString("yolo"))){
+                    // On est bon là
+                    Getter.request("UPDATE Evaluation SET note = " + note + " WHERE codeNumero = " + codeNumero + " AND codeArtiste = " +  Factory.getUser().getUserId() );
+                    return true;
+                }
+            }
+        }
+        catch(SQLException e) {
+            System.out.println("Wololo \n");
+        }
+
         return false;
     }
 }

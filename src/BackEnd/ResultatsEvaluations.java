@@ -5,16 +5,24 @@
  */
 package BackEnd;
 
+import Model.Business.Evaluation;
+import java.util.ArrayList;
+
 /**
  *
  * @author milang
  */
 public class ResultatsEvaluations {
+    private ArrayList<Evaluation> evals;
+
     private float noteMoyenne;
     
     public float getNoteMoyenne() {
         return noteMoyenne;
     }
     
+    public void add(Evaluation e){
+        evals.add(e);
+    }
     // TO COMPLETE
 }

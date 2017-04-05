@@ -9,6 +9,7 @@ package BackEnd;
 import Model.Business.Enum_theme;
 import Model.Business.Expert;
 import Model.Business.Numero;
+import Model.Business.Organisateur;
 import Model.Business.Spectacle;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -40,7 +41,7 @@ public class RequeteOrganisateur extends Requete {
         return null;
     }
     public static ResultatsNumeros getNumeros() {
-        ResultSet rs = Getter.request("SELECT NumTelExpert FROM ArtisteExpert");
+        //USELESS
         System.out.println("Not yet Implemented!\n");
         return null;
     }
