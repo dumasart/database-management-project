@@ -14,18 +14,18 @@ import java.util.*;
 public class Festival {
 
 	private int codeFestival;
-	private ArrayList<int> listeSpectacle;
+	private ArrayList<Integer> listeSpectacle;
 
 	public Festival(int codeFestival) {
 		this.codeFestival = codeFestival;
-		this.listeSpectacle = new ArrayList<int>();
+		this.listeSpectacle = new ArrayList<Integer>();
 	}
 
 	public int getCodeFestival() {
 		return this.codeFestival;
 	}
 
-	public ArrayList<int> getListeSpectacle() {
+	public ArrayList<Integer> getListeSpectacle() {
 		return this.listeSpectacle;
 	}
 
@@ -37,7 +37,7 @@ public class Festival {
 	public String toString() {
 		String content = new String("Voici le contenu du festival numéro ");
 		content = content + this.getCodeFestival() + "\n";
-		for(int codeSpectacle : this.getListeSpectacle()) {
+		for(Integer codeSpectacle : this.getListeSpectacle()) {
 			content = content + codeSpectacle + " \n";
 		}
 
