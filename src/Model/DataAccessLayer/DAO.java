@@ -76,7 +76,7 @@ public class DAO {
     }
 
     public Collection<Numero> getProgrammeSpectacle(int codeSpec) {
-        return RequeteOrganisateur.getNumeros(codeSpec).getNumeros();
+        return RequeteOrganisateur.getNumerosInSpectacle(codeSpec).getNumeros();
     }
 
     

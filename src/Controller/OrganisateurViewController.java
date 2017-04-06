@@ -66,7 +66,7 @@ public class OrganisateurViewController implements Initializable {
         Enum_theme theme = numero.getTheme();
         
         for(Expert exp : listeExperts) {
-            if(exp.getTheme().equals(theme) && liste1.size() < 3) {
+            if(exp.getThemes().contains(theme) && liste1.size() < 3) {
                 if(exp.getNbrNumeros() < 15)
                     liste1.add(exp);
             } else {

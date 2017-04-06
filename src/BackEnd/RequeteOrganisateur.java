@@ -57,13 +57,13 @@ public class RequeteOrganisateur extends Requete {
         return null;
     }
     
-    public static ResultatsNumeros getNumeros(int codeSpec) {
-        String s = "SELECT FROM NumeroAccepte WHERE spectacle = " + codeSpec;
+    public static ResultatsNumeros getNumerosInSpectacle(int codeSpec) {
+        String s = "SELECT * FROM NumeroAccepte WHERE codeSpectacle = " + codeSpec;
         ResultSet rs = Getter.request(s);
         System.out.println("Not yet Implemented!\n");
         return null;
     }
-    public static ResultatsEvaluations getEvaluations(Numero numero) {
+    public static ResultatsEvaluations getNumeroEvaluations(Numero numero) {
         String cmd = "SELECT * FROM Evaluation WHERE codeNumero = " + numero.getID();
         ResultSet rs = Getter.request(cmd);
         System.out.println("Not yet Implemented!\n");
@@ -72,7 +72,7 @@ public class RequeteOrganisateur extends Requete {
      
     public static ResultatsEvaluations getMoyenneNumero(Numero numero){
         // Je sais pas comment on remplit ResultatsInformation
-        String cmd = "SELECT AVG(Notes) , codeNumero, TitreNumero FROM (evaluation INNER JOIN Numero WHERE evaluation.codeNumero = Numero.codeNumero)";
+        String cmd = "SELECT AVG(Note) , codeNumero, TitreNumero FROM (evaluation INNER JOIN Numero WHERE evaluation.codeNumero = Numero.codeNumero)";
         ResultSet rs = Getter.request(cmd);
         ResultatsEvaluations info = new ResultatsEvaluations();
         // COMMENT ON STOCKE DES DATA QUI NE SONT PAS UN TYPE DONNÉ ?
@@ -105,6 +105,8 @@ public class RequeteOrganisateur extends Requete {
      */
     public static boolean addExpert(Expert expert) {
         String req= "INSERT INTO ArtisteExpert VALUES (" +expert.getID() + ")";
+        String s = "SELECT * FROM ArtisteExpert WHERE codeArtiste=" + expert.getId();
+        String s2 = "INSERT INTO EstExpertEn VALUES (" + expert.getID() + ", " + expert.getThemes().toString() + ")"; //virer le tostring
         ResultSet listeSpectacle = Getter.request(req);
         System.out.println("Not yet Implemented!\n");
         return false;

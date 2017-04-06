@@ -10,5 +10,5 @@ package Model.Business;
  * @author nabem
  */
 public enum Enum_theme {
-    Magie, Acrobatie, DressageAnimaux, Clown;
+    Magie, Acrobatie, Dressage, Clown, Contorsionniste, Danse, Dextérité, Orchestre;
 }
