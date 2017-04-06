@@ -13,6 +13,7 @@ import Model.Business.Numero;
 import Model.Business.Spectacle;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Iterator;
 
 /**
  *
