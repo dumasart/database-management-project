@@ -13,12 +13,12 @@ import java.util.*;
  */
 public class Expert extends Artiste{
     //private ArrayList<Numero> listeNumero;
-    Enum_theme theme;
+    private ArrayList<Enum_theme> themes;
     private int nbrNumeroEvaluer; //pour dire s'il peut tjrs évaluer un numéro (nbr < 15)
     
     public Expert(int code, String nom, String prenom, String dateNaissance, String  adresse, ArrayList<Numero> listeNumero, Enum_theme theme) {
         super(code,nom,prenom,dateNaissance,adresse,listeNumero);
-        this.theme = theme;
+        this.themes.add(theme);
         this.nbrNumeroEvaluer = 0;
     }
      
@@ -26,8 +26,8 @@ public class Expert extends Artiste{
         getListeNumeros().remove(numero);
     }
     
-    public Enum_theme getTheme() {
-        return this.theme;
+    public ArrayList<Enum_theme> getThemes() {
+        return this.themes;
     }
     
     public int getNbrNumeros() {
@@ -47,6 +47,6 @@ public class Expert extends Artiste{
     
     @Override
     public String toString() {
-        return "" + "Monsieur " + this.getNom() + " " + this.getPrenom() + "est expert en : " + this.getTheme();
+        return "" + "Monsieur " + this.getNom() + " " + this.getPrenom() + "est expert en : " + this.getThemes().toString();
     }
 }

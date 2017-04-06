@@ -77,13 +77,13 @@ public class RequeteOrganisateur extends Requete {
 
     }
     
-    public static ResultatsNumeros getNumeros(int codeSpec) {
-        String s = "SELECT FROM NumeroAccepte WHERE spectacle = " + codeSpec;
+    public static ResultatsNumeros getNumerosInSpectacle(int codeSpec) {
+        String s = "SELECT * FROM NumeroAccepte WHERE codeSpectacle = " + codeSpec;
         ResultSet rs = Getter.request(s);
         System.out.println("Not yet Implemented!\n");
         return null;
     }
-    public static ResultatsEvaluations getEvaluations(Numero numero) {
+    public static ResultatsEvaluations getNumeroEvaluations(Numero numero) {
         String cmd = "SELECT * FROM Evaluation WHERE codeNumero = " + numero.getID();
         ResultSet rs = Getter.request(cmd);
         System.out.println("Not yet Implemented!\n");
@@ -92,7 +92,7 @@ public class RequeteOrganisateur extends Requete {
      
     public static int getMoyenneNumero(Numero numero){
         // Je sais pas comment on remplit ResultatsInformation
-        String cmd = "SELECT AVG(Notes) FROM (evaluation INNER JOIN Numero WHERE evaluation.codeNumero = Numero.codeNumero) WHERE evaluation.codeNumero = " + numero.getID();
+        String cmd = "SELECT AVG(Note) FROM (evaluation INNER JOIN Numero WHERE evaluation.codeNumero = Numero.codeNumero) WHERE evaluation.codeNumero = " + numero.getID();
         // COMMENT ON STOCKE DES DATA QUI NE SONT PAS UN TYPE DONNÉ ?
         try {
             ResultSet b = Getter.request(cmd);
@@ -115,6 +115,8 @@ public class RequeteOrganisateur extends Requete {
      */
     public static boolean addExpert(Expert expert) {
         String req= "INSERT INTO ArtisteExpert VALUES (" +expert.getID() + ")";
+        String s = "SELECT * FROM ArtisteExpert WHERE codeArtiste=" + expert.getId();
+        String s2 = "INSERT INTO EstExpertEn VALUES (" + expert.getID() + ", " + expert.getThemes().toString() + ")"; //virer le tostring
         ResultSet listeSpectacle = Getter.request(req);
         System.out.println("Not yet Implemented!\n");
         return false;
