@@ -16,6 +16,11 @@ public class Cirque {
 	private int codeCirque;
 	private String nomCirque;
 
+	public Cirque(int codeCirque, String nomCirque) {
+		this.codeCirque = codeCirque;
+		this.nomCirque = nomCirque;
+	}
+
 	public int getCodeCirque() {
 		return this.codeCirque;
 	}
