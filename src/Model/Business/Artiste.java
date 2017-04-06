@@ -12,7 +12,7 @@ import java.util.*;
  * @author nabem
  */
 public class Artiste {
-	private int code;
+	private int codeArtiste;
 	private int codeCirque;
 	private String nom;
 	private String prenom;
@@ -22,8 +22,8 @@ public class Artiste {
 	/**
 	 * Constructeur
 	 */
-	public Artiste(int code, int codeCirque, String nom, String prenom, String dateNaissance, String adresse) {
-		this.code = codeArtiste;
+	public Artiste(int codeArtiste, int codeCirque, String nom, String prenom, String dateNaissance, String adresse) {
+		this.codeArtiste = codeArtiste;
 		this.codeCirque = codeCirque;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -57,6 +57,6 @@ public class Artiste {
 
 	@Override
 	public String toString() {
-		return "" + "Salut, je m'appelle " + this.getNom() + " " + this.getPrenom() + ", je suis né le " + this.getDate() + " et j'habite au " + this.getAdresse() + ". Je travaille au cirque numéro " + this.codeCirque() + " et mon code est " + this.getID();
+		return "" + "Salut, je m'appelle " + this.getNom() + " " + this.getPrenom() + ", je suis né le " + this.getDate() + " et j'habite au " + this.getAdresse() + ". Je travaille au cirque numéro " + this.getCodeCirque() + " et mon code est " + this.getID();
 	}
 }

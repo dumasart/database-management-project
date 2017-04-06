@@ -11,6 +11,7 @@ package Model.Business;
  */
 public class Numero {
     private int codeNumero;
+    private int codeArtistePrincipal;
     private String titreNumero;
     private String resumeNumero;
     private int dureeNumero;

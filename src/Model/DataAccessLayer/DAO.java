@@ -120,7 +120,7 @@ public class DAO {
         Map<Float, Numero> classement = new TreeMap<Float, Numero>(Collections.reverseOrder());
         
         for (Numero num: listeNumerosParTheme) {
-            float noteMoyenne = RequeteOrganisateur.getMoyenneNumero(num).getNoteMoyenne();
+            float noteMoyenne = RequeteOrganisateur.getMoyenneNumero(num);
             classement.put(noteMoyenne, num);
         }
         
