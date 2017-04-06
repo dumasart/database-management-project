@@ -116,7 +116,7 @@ public class RequeteOrganisateur extends Requete {
      */
     public static boolean addExpert(Expert expert) {
         String req= "INSERT INTO ArtisteExpert VALUES (" +expert.getID() + ")";
-        String test = "SELECT * FROM ArtisteExpert WHERE codeArtiste=" + expert.getId();
+        String test = "SELECT codeArtiste FROM ArtisteExpert WHERE codeArtiste=" + expert.getId();
         try {
             ResultSet b = Getter.request(test);
             if (!b.next()) {
@@ -127,13 +127,15 @@ public class RequeteOrganisateur extends Requete {
                 Enum_theme theme = it.next();
                 String s2 = "INSERT INTO EstExpertEn VALUES (" + expert.getID() + ", " + theme + ")";
                 b = Getter.request(s2);
+                if (!b.next()) {
+                    throw new SQLException();
+                }
             }
+            ResultSet listeSpectacle = Getter.request(req);
+            return true;
         } catch (SQLException e) {
             System.out.println("Wololo \n");
         }
-        ResultSet listeSpectacle = Getter.request(req);
-        //fin try
-        System.out.println("Not yet Implemented!\n");
         return false;
     } 
     /**
@@ -143,6 +145,12 @@ public class RequeteOrganisateur extends Requete {
      * @return 
      */
     public static boolean addSpectacle(Spectacle spectacle) {
+        String testArt = "SELECT codeArtiste FROM Artiste INNER JOIN Spectacle ON Artiste.codeArtiste=Spectacle.codeArtiste";
+        try  {
+            
+        } catch (SQLException e) {
+            System.out.println('')
+        }
         System.out.println("Not yet Implemented!\n");
         return false;
     }
