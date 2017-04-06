@@ -12,7 +12,7 @@ import java.util.*;
  * @author nabem
  */
 public class Expert extends Artiste{
-    //private ArrayList<Numero> listeNumero;
+    //private ArrayList<Numero> listeNumeros;
     private ArrayList<Enum_theme> themes;
     private int nbrNumeroEvaluer; //pour dire s'il peut tjrs évaluer un numéro (nbr < 15)
     
@@ -23,7 +23,7 @@ public class Expert extends Artiste{
     }
      
     public void retireNumero(Numero numero) {
-        getListeNumeros().remove(numero);
+        this.getListeNumeros().remove(numero);
     }
     
     public ArrayList<Enum_theme> getThemes() {

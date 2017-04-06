@@ -13,6 +13,7 @@ import Model.Business.Numero;
 import Model.Business.Spectacle;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Iterator;
 
 /**
  *
@@ -115,9 +116,23 @@ public class RequeteOrganisateur extends Requete {
      */
     public static boolean addExpert(Expert expert) {
         String req= "INSERT INTO ArtisteExpert VALUES (" +expert.getID() + ")";
-        String s = "SELECT * FROM ArtisteExpert WHERE codeArtiste=" + expert.getId();
-        String s2 = "INSERT INTO EstExpertEn VALUES (" + expert.getID() + ", " + expert.getThemes().toString() + ")"; //virer le tostring
+        String test = "SELECT * FROM ArtisteExpert WHERE codeArtiste=" + expert.getId();
+        try {
+            ResultSet b = Getter.request(test);
+            if (!b.next()) {
+                throw new SQLException();
+            }
+            Iterator<Enum_theme> it = expert.getThemes().iterator();
+            while (it.hasNext()) {
+                Enum_theme theme = it.next();
+                String s2 = "INSERT INTO EstExpertEn VALUES (" + expert.getID() + ", " + theme + ")";
+                b = Getter.request(s2);
+            }
+        } catch (SQLException e) {
+            System.out.println("Wololo \n");
+        }
         ResultSet listeSpectacle = Getter.request(req);
+        //fin try
         System.out.println("Not yet Implemented!\n");
         return false;
     } 
