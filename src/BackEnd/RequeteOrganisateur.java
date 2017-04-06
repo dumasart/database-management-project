@@ -30,7 +30,10 @@ public class RequeteOrganisateur extends Requete {
                         rs.getDate("jourSpectacle").toString(),
                         rs.getInt("heureDebut"),
                         rs.getInt("heureFin"),
-                        rs.getDouble("prixSpectacle")
+                        rs.getDouble("prixSpectacle"),
+                        rs.getInt("codeArtiste"),
+                        Enum_theme.valueOf(rs.getString("theme")),
+                        rs.getInt("codeFestival")
                 );
             }
         }
@@ -117,8 +120,17 @@ public class RequeteOrganisateur extends Requete {
         String req= "INSERT INTO ArtisteExpert VALUES (" +expert.getID() + ")";
         String s = "SELECT * FROM ArtisteExpert WHERE codeArtiste=" + expert.getId();
         String s2 = "INSERT INTO EstExpertEn VALUES (" + expert.getID() + ", " + expert.getThemes().toString() + ")"; //virer le tostring
-        ResultSet listeSpectacle = Getter.request(req);
-        System.out.println("Not yet Implemented!\n");
+        try {
+            ResultSet b = Getter.request(s);
+            if (!b.next()) {
+                Getter.request(req);
+                Getter.request(s2);
+                return true;
+            }
+        }
+        catch(SQLException e) {
+            System.out.println("Wololo \n");
+        } 
         return false;
     } 
     /**
@@ -128,7 +140,19 @@ public class RequeteOrganisateur extends Requete {
      * @return 
      */
     public static boolean addSpectacle(Spectacle spectacle) {
-        System.out.println("Not yet Implemented!\n");
+        String s = "SELECT * FROM Spectacle WHERE codeSpectacle = " + spectacle.getID() ;
+        String req = "INSERT INTO Spectacle (CodeSpectacle, JourSpectacle, HeureDebut, HeureFin, PrixSpectacle, CodeArtiste, Theme, codeFestival) VALUES (" + spectacle.getID() + " , " + spectacle.getJour() + " , " + spectacle.getDebut() + " , " + spectacle.getFin() + " , " + spectacle.getPrix()
+                + " , " + spectacle.getPresentateur() + " , " + spectacle.getTheme() + " , " + spectacle.getCodeFestival() + ")";
+        try {
+            ResultSet b = Getter.request(s);
+            if (!b.next()) {
+                Getter.request(req);
+                return true;
+            }
+        }
+        catch(SQLException e) {
+            System.out.println("Wololo \n");
+        }
         return false;
     }
     /**
