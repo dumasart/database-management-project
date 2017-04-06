@@ -25,6 +25,6 @@ public class ArtistePrincipal extends ArtisteParticipant {
 
 	@Override
 	public String toString() {
-		return super.toString() + " Vous pouvez m'appeler au " + this.numTelPrincipal;;
+		return super.toString() + " Vous pouvez m'appeler au " + this.numTelPrincipal;
 	}
 }
