@@ -90,31 +90,21 @@ public class RequeteOrganisateur extends Requete {
         return null;
     }
      
-    public static ResultatsEvaluations getMoyenneNumero(Numero numero){
+    public static int getMoyenneNumero(Numero numero){
         // Je sais pas comment on remplit ResultatsInformation
-        String cmd = "SELECT AVG(Notes) , codeNumero, TitreNumero FROM (evaluation INNER JOIN Numero WHERE evaluation.codeNumero = Numero.codeNumero)";
-        ResultSet rs = Getter.request(cmd);
-        ResultatsEvaluations info = new ResultatsEvaluations();
+        String cmd = "SELECT AVG(Notes) FROM (evaluation INNER JOIN Numero WHERE evaluation.codeNumero = Numero.codeNumero) WHERE evaluation.codeNumero = " + numero.getID();
         // COMMENT ON STOCKE DES DATA QUI NE SONT PAS UN TYPE DONNÉ ?
-        
-        /* try {
+        try {
             ResultSet b = Getter.request(cmd);
-            while(b.next()) {
-                Data = new (
-                        b.getInt("Average"),
-                        b.getString("codeNumero"),
-                        b.getString("TitreNumero"),
-                        false
-                );
-                info.add(Data);
+            if (b.next()) {
+                return b.getInt("Average");
             }
         }
         catch(SQLException e) {
-            
-        } */
+            System.out.println("Wololo \n");
+        } 
         
-        System.out.println("Not yet Implemented!\n");
-        return null;
+        return -1;
     }
     
     /**
