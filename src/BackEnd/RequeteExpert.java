@@ -80,8 +80,8 @@ public class RequeteExpert extends Requete{
         try {
             ResultSet b = Getter.request(s);
             ResultSet b2 = Getter.request(s2);
-            if (b.next() && "No".equals(b.getString("yolo")) && "selected".equals(b.getString("yolo")) && "rows".equals(b.getString("yolo"))){
-                if (b2.next() && "No".equals(b2.getString("yolo")) && "selected".equals(b2.getString("yolo")) && "rows".equals(b2.getString("yolo"))){
+            if (!b.next()){
+                if (!b2.next()){
                     // On est bon là
                     Getter.request("INSERT INTO Evaluation (codeArtiste, codeNumero, evaluation, note) VALUES (" +Factory.getUser().getUserId() + " , "
                     + numero.getID() + " , " + evaluation.getEvaluation() + " , " + evaluation.getNote() + " ) " );
@@ -110,8 +110,8 @@ public class RequeteExpert extends Requete{
         try {
             ResultSet b = Getter.request(s);
             ResultSet b2 = Getter.request(s2);
-            if (b.next() && "No".equals(b.getString("yolo")) && "selected".equals(b.getString("yolo")) && "rows".equals(b.getString("yolo"))){
-                if (b2.next() && "No".equals(b2.getString("yolo")) && "selected".equals(b2.getString("yolo")) && "rows".equals(b2.getString("yolo"))){
+            if (!b.next()){
+                if (!b2.next() ){
                     // On est bon là
                     Getter.request("UPDATE Evaluation SET evaluation = " + comment + " WHERE codeNumero = " + codeNumero + " AND codeArtiste = " +  Factory.getUser().getUserId() );
                     return true;
@@ -139,8 +139,8 @@ public class RequeteExpert extends Requete{
         try {
             ResultSet b = Getter.request(s);
             ResultSet b2 = Getter.request(s2);
-            if (b.next() && "No".equals(b.getString("yolo")) && "selected".equals(b.getString("yolo")) && "rows".equals(b.getString("yolo"))){
-                if (b2.next() && "No".equals(b2.getString("yolo")) && "selected".equals(b2.getString("yolo")) && "rows".equals(b2.getString("yolo"))){
+            if (!b.next()){
+                if (!b2.next()){
                     // On est bon là
                     Getter.request("UPDATE Evaluation SET note = " + note + " WHERE codeNumero = " + codeNumero + " AND codeArtiste = " +  Factory.getUser().getUserId() );
                     return true;

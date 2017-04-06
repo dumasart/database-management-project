@@ -7,13 +7,12 @@
 package BackEnd;
 
 import Model.Business.Enum_theme;
+import Model.Business.Evaluation;
 import Model.Business.Expert;
 import Model.Business.Numero;
-import Model.Business.Organisateur;
 import Model.Business.Spectacle;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 /**
  *
@@ -53,8 +52,29 @@ public class RequeteOrganisateur extends Requete {
      * @return 
      */
     public static ResultatsNumeros getNumerosByTheme(Enum_theme theme) {
-        System.out.println("Not yet Implemented!\n");
-        return null;
+        String s = "SELECT * FROM Numero WHERE theme = " + theme;
+        ResultatsNumeros eval = new ResultatsNumeros();
+
+        try {
+            ResultSet b = Getter.request(s);
+            while(b.next()) {
+                Numero num = new Numero(
+                        b.getInt("codeNumero"),
+                        b.getString("titreNumero"),
+                        b.getString("resumeNumero"),
+                        b.getInt("dureeNumero"),
+                        b.getInt("nbArtisteNumero"),
+                        b.getString("themeNumero")                        
+                );
+                eval.add(num);
+            }
+        }
+        catch(SQLException e) {
+            System.out.println("Wololo");
+
+        }
+        return eval;
+
     }
     
     public static ResultatsNumeros getNumerosInSpectacle(int codeSpec) {
@@ -70,31 +90,21 @@ public class RequeteOrganisateur extends Requete {
         return null;
     }
      
-    public static ResultatsEvaluations getMoyenneNumero(Numero numero){
+    public static int getMoyenneNumero(Numero numero){
         // Je sais pas comment on remplit ResultatsInformation
-        String cmd = "SELECT AVG(Note) , codeNumero, TitreNumero FROM (evaluation INNER JOIN Numero WHERE evaluation.codeNumero = Numero.codeNumero)";
-        ResultSet rs = Getter.request(cmd);
-        ResultatsEvaluations info = new ResultatsEvaluations();
+        String cmd = "SELECT AVG(Note) FROM (evaluation INNER JOIN Numero WHERE evaluation.codeNumero = Numero.codeNumero) WHERE evaluation.codeNumero = " + numero.getID();
         // COMMENT ON STOCKE DES DATA QUI NE SONT PAS UN TYPE DONNÉ ?
-        
-        /* try {
+        try {
             ResultSet b = Getter.request(cmd);
-            while(b.next()) {
-                Data = new (
-                        b.getInt("Average"),
-                        b.getString("codeNumero"),
-                        b.getString("TitreNumero"),
-                        false
-                );
-                info.add(Data);
+            if (b.next()) {
+                return b.getInt("Average");
             }
         }
         catch(SQLException e) {
-            
-        } */
+            System.out.println("Wololo \n");
+        } 
         
-        System.out.println("Not yet Implemented!\n");
-        return null;
+        return -1;
     }
     
     /**
