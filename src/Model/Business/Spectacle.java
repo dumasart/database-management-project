@@ -19,16 +19,30 @@ public class Spectacle {
     private int heureDebut;
     private int heureFin;
     private double prixSpectacle;
+    private int artistePresentateur;
+    private int codeFestival;
+    private Enum_theme theme;
     private Collection<Numero> programme;
     
     
-    public Spectacle(int code, String jour, int debut, int fin, double prix) {
+    public Spectacle(int code, String jour, int debut, int fin, double prix, int codeArtistePresentateur, Enum_theme theme, int codeFest) {
         this.codeSpectacle = code;
         this.jourSpectacle = jour;
         this.heureDebut = debut;
         this.heureFin = fin;
         this.prixSpectacle = prix;
+        this.theme = theme;
+        this.codeFestival = codeFest;
         this.programme = Factory.getDAO().getProgrammeSpectacle(this.codeSpectacle);
+        this.artistePresentateur = codeArtistePresentateur;
+    }
+    
+    public int getCodeFestival(){
+        return this.codeFestival;
+    }
+    
+    public Enum_theme getTheme(){
+        return this.theme;
     }
     
     public int getID() {
@@ -41,6 +55,19 @@ public class Spectacle {
     public int getFin(){
         return this.heureFin;
     }
+    
+    public String getJour(){
+        return this.jourSpectacle;
+    }
+    
+    public double getPrix(){
+        return this.prixSpectacle;
+    }
+    
+    public int getPresentateur(){
+        return this.artistePresentateur;
+    }
+    
     
     @Override
     public String toString() {

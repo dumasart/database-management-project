@@ -31,7 +31,10 @@ public class RequeteOrganisateur extends Requete {
                         rs.getDate("jourSpectacle").toString(),
                         rs.getInt("heureDebut"),
                         rs.getInt("heureFin"),
-                        rs.getDouble("prixSpectacle")
+                        rs.getDouble("prixSpectacle"),
+                        rs.getInt("codeArtiste"),
+                        Enum_theme.valueOf(rs.getString("theme")),
+                        rs.getInt("codeFestival")
                 );
             }
         }
@@ -119,20 +122,16 @@ public class RequeteOrganisateur extends Requete {
         String test = "SELECT codeArtiste FROM ArtisteExpert WHERE codeArtiste=" + expert.getId();
         try {
             ResultSet b = Getter.request(test);
-            if (!b.next()) {
-                throw new SQLException();
-            }
-            Iterator<Enum_theme> it = expert.getThemes().iterator();
-            while (it.hasNext()) {
-                Enum_theme theme = it.next();
-                String s2 = "INSERT INTO EstExpertEn VALUES (" + expert.getID() + ", " + theme + ")";
-                b = Getter.request(s2);
-                if (!b.next()) {
-                    throw new SQLException();
+            if (b.next()) {
+                Iterator<Enum_theme> it = expert.getThemes().iterator();
+                while (it.hasNext()) {
+                    Enum_theme theme = it.next();
+                    String s2 = "INSERT INTO EstExpertEn VALUES (" + expert.getID() + ", " + theme + ")";
+                    Getter.request(s2);
                 }
-            }
-            ResultSet listeSpectacle = Getter.request(req);
+                Getter.request(req);
             return true;
+            }
         } catch (SQLException e) {
             System.out.println("Wololo \n");
         }
@@ -140,18 +139,23 @@ public class RequeteOrganisateur extends Requete {
     } 
     /**
      * Vérifier que l'artiste présentateur est dans Artiste
-     * Vérifier que le festival existe
      * @param spectacle
      * @return 
      */
     public static boolean addSpectacle(Spectacle spectacle) {
         String testArt = "SELECT codeArtiste FROM Artiste INNER JOIN Spectacle ON Artiste.codeArtiste=Spectacle.codeArtiste";
-        try  {
-            
-        } catch (SQLException e) {
-            System.out.println('')
+        String req = "INSERT INTO Spectacle (CodeSpectacle, JourSpectacle, HeureDebut, HeureFin, PrixSpectacle, CodeArtiste, Theme, codeFestival) VALUES (" + spectacle.getID() + " , " + spectacle.getJour() + " , " + spectacle.getDebut() + " , " + spectacle.getFin() + " , " + spectacle.getPrix()
+                + " , " + spectacle.getPresentateur() + " , " + spectacle.getTheme() + " , " + spectacle.getCodeFestival() + ")";
+        try {
+            ResultSet b = Getter.request(testArt);
+            if (!b.next()) {
+                Getter.request(req);
+                return true;
+            }
         }
-        System.out.println("Not yet Implemented!\n");
+        catch(SQLException e) {
+            System.out.println("Wololo \n");
+        }
         return false;
     }
     /**
