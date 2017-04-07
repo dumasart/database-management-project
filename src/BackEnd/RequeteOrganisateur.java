@@ -255,10 +255,25 @@ public class RequeteOrganisateur extends Requete {
      * Vérifie l'heure si pas déjà fait
      * @param spectacle
      * @param numero
+     * @param heure
      * @return boolean
      */
-    public static boolean addNumeroToSpectacle(Spectacle spectacle,Numero numero) {
-        System.out.println("Not yet Implemented!\n");
+    public static boolean addNumeroToSpectacle(Spectacle spectacle,Numero numero, int heure) {
+        String test1 = "SELECT * FROM Numero WHERE codeNumero=" + numero.getID();
+        String test2 = "SELECT * FROM Spectacle WHERE codeSpectacle =" + spectacle.getID();
+        String cmd = "INSERT INTO NumeroAccepte(codeNumero, codeSpectacle, HeureNumero ) VALUES ( " + numero.getID() + " , " + spectacle.getID() + " , " + heure + ")";
+        try {
+            ResultSet b = Getter.request(test1);
+            if (b.next()) {
+                b = Getter.request(test2);
+                if (b.next()) {
+                    Getter.request(cmd);
+                    return true;
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur SQL : Spectacle ou Numero invalide");            
+        }
         return false;
     }
     
