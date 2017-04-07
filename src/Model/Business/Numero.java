@@ -32,6 +32,10 @@ public class Numero {
         this.nbrEvaluateur = 0;
     }
     
+    public int getArtistePrincipal() {
+        return this.codeArtistePrincipal;
+    }
+    
     public int getNbrEvaluateur() {
         return this.nbrEvaluateur;
     }

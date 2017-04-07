@@ -21,6 +21,10 @@ import java.util.Iterator;
  */
 public class RequeteOrganisateur extends Requete {
 
+    /**
+     * Prendre tous les spectacles.
+     * @return ResultatsSpectacles
+     */
     public static ResultatsSpectacles getSpectacles() {
         ResultSet rs = Getter.request("SELECT * FROM Spectacle");
         ResultatsSpectacles spectacles = new ResultatsSpectacles();
@@ -39,7 +43,7 @@ public class RequeteOrganisateur extends Requete {
             }
         }
         catch (SQLException e) {
-            System.out.println("Euh!\n");
+            System.out.println("Erreur SQL : Aucun spectacle");
         }
         return null;
     }
@@ -51,9 +55,9 @@ public class RequeteOrganisateur extends Requete {
     
     
     /**
-     * Prendre tous les numéros de thème
+     * Prendre tous les numéros de thème theme.
      * @param theme
-     * @return 
+     * @return ResultatsNumeros
      */
     public static ResultatsNumeros getNumerosByTheme(Enum_theme theme) {
         String s = "SELECT * FROM Numero WHERE theme = " + theme;
@@ -74,24 +78,73 @@ public class RequeteOrganisateur extends Requete {
             }
         }
         catch(SQLException e) {
-            System.out.println("Wololo");
+            System.out.println("Erreur SQL : Aucun numéro au thème" + theme);
 
         }
         return eval;
 
     }
     
+    /**
+     * Prendre tous les numeros du spectacle.
+     * Verifie que le spectacle existe
+     * @param codeSpec
+     * @return ResultatsNumeros
+     */
     public static ResultatsNumeros getNumerosInSpectacle(int codeSpec) {
         String s = "SELECT * FROM NumeroAccepte WHERE codeSpectacle = " + codeSpec;
-        ResultSet rs = Getter.request(s);
-        System.out.println("Not yet Implemented!\n");
-        return null;
+        String test = "SELECT codeSpectacle FROM Spectacle WHERE codeSpectacle=" + codeSpec;
+        ResultatsNumeros res = new ResultatsNumeros();
+        try {
+            ResultSet b = Getter.request(test);
+            if (b.next()) {
+                b = Getter.request(s);
+                while(b.next()) {
+                Numero num = new Numero(
+                        b.getInt("codeNumero"),
+                        b.getString("titreNumero"),
+                        b.getString("resumeNumero"),
+                        b.getInt("dureeNumero"),
+                        b.getInt("nbArtisteNumero"),
+                        b.getString("themeNumero")                        
+                );
+                res.add(num);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur SQL : Spectacle inconnu");
+        }
+        return res;
     }
+    
+    /**
+     * Prendre toutes les evaluations relatives au numero.
+     * Vérifie que le numéro existe
+     * @param numero
+     * @return ResultatsEvaluations
+     */
     public static ResultatsEvaluations getNumeroEvaluations(Numero numero) {
         String cmd = "SELECT * FROM Evaluation WHERE codeNumero = " + numero.getID();
-        ResultSet rs = Getter.request(cmd);
-        System.out.println("Not yet Implemented!\n");
-        return null;
+        String test = "SELECT codeNumero FROM Numero WHERE codeNumero=" + numero;
+        ResultatsEvaluations res = new ResultatsEvaluations();
+        try {
+            ResultSet b = Getter.request(test);
+            if (b.next()) {
+                b = Getter.request(cmd);
+                while (b.next()) {
+                    Evaluation eval = new Evaluation(
+                        b.getInt("codeArtiste"),
+                        b.getInt("codeNumero"),
+                        b.getString("evaluation"),
+                        b.getInt("note")
+                    );
+                    res.add(eval);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur SQL : Numéro inconnu");
+        }
+        return res;
     }
      
     public static int getMoyenneNumero(Numero numero){
@@ -105,17 +158,18 @@ public class RequeteOrganisateur extends Requete {
             }
         }
         catch(SQLException e) {
-            System.out.println("Wololo \n");
+            System.out.println("Wololo");
         } 
         
         return -1;
     }
     
     /**
-     * Vérifier si l'artiste expert est dans Artiste
-     * Ajouter son/ses thème/s d'expertise dans EstExpertEn
+     * Ajoute un expert dans la BD.
+     * Vérifie si l'artiste expert est dans Artiste
+     * Ajoute son/ses thème/s d'expertise dans EstExpertEn
      * @param expert
-     * @return 
+     * @return boolean
      */
     public static boolean addExpert(Expert expert) {
         String req= "INSERT INTO ArtisteExpert VALUES (" +expert.getID() + ")";
@@ -133,14 +187,16 @@ public class RequeteOrganisateur extends Requete {
             return true;
             }
         } catch (SQLException e) {
-            System.out.println("Wololo \n");
+            System.out.println("Erreur SQL : Artiste inconnu");
         }
         return false;
     } 
+    
     /**
-     * Vérifier que l'artiste présentateur est dans Artiste
+     * Ajoute un spectacle dans la base.
+     * Vérifie que l'artiste présentateur est dans Artiste
      * @param spectacle
-     * @return 
+     * @return boolean
      */
     public static boolean addSpectacle(Spectacle spectacle) {
         String testArt = "SELECT codeArtiste FROM Artiste INNER JOIN Spectacle ON Artiste.codeArtiste=Spectacle.codeArtiste";
@@ -154,31 +210,53 @@ public class RequeteOrganisateur extends Requete {
             }
         }
         catch(SQLException e) {
-            System.out.println("Wololo \n");
+            System.out.println("Erreur SQL : Artiste inconnu");
         }
         return false;
     }
+    
     /**
-     * Vérifier que l'artiste principal est dans ArtistePrincipal, ArtisteParticipant et Artiste
+     * Ajoute un numéro dans la BD.
+     * Vérifie que l'artiste principal est dans ArtistePrincipal, ArtisteParticipant et Artiste
      * @param numero
-     * @return 
+     * @return boolean
      */
     public static boolean addNumero(Numero numero) {
+        String test1 = "SELECT codeArtiste FROM Artiste WHERE codeArtiste=" + numero.getArtistePrincipal();
+        String test2 = "SELECT codeArtiste FROM ArtisteParticipant WHERE codeArtiste=" + numero.getArtistePrincipal();
+        String test3 = "SELECT codeArtiste FROM ArtistePrincipal WHERE codeArtiste=" + numero.getArtistePrincipal();
+        String cmd = "INSERT INTO ";
+        try {
+            ResultSet b = Getter.request(test1);
+            if (b.next()) {
+                b = Getter.request(test2);
+                if (b.next()) {
+                    b = Getter.request(test3);
+                    if (b.next()) {
+                        b = Getter.request(cmd);
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            
+        }
         System.out.println("Not yet Implemented!\n");
         return false;
     } 
     /**
-     * Vérifier que le numéro existe
-     * Vérifier que le spectacle existe
-     * Vérifier l'heure si pas déjà fait
+     * Ajoute un numero à un spectacle dans la BD.
+     * Vérifie que le numéro existe
+     * Vérifie que le spectacle existe
+     * Vérifie l'heure si pas déjà fait
      * @param spectacle
      * @param numero
-     * @return 
+     * @return boolean
      */
     public static boolean addNumeroToSpectacle(Spectacle spectacle,Numero numero) {
         System.out.println("Not yet Implemented!\n");
         return false;
     }
+    
     /**
      * Associer un numéro à un expert
      * @param get
