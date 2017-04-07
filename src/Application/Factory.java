@@ -34,7 +34,9 @@ public class Factory {
         user = getDAO().getUserByUserNameAndPassword(username, password);
     }
     
-    
+    public static void resetUser(){
+        user = null;
+    }
     /*
     public static void setUser(User user) {
         this.user = user;
