@@ -15,7 +15,12 @@ import Model.DataAccessLayer.DAO;
 public class Factory {
     private static DAO dao = null;
     private static User user;
+    private static int x = 0;
     
+    public static String createCodeArtiste(){
+        x++;
+        return "" + x;
+    }
     
     public static synchronized DAO getDAO() {
         return dao == null ? dao = new DAO() : dao;
@@ -29,7 +34,10 @@ public class Factory {
         user = getDAO().getUserByUserNameAndPassword(username, password);
     }
     
+    
+    /*
     public static void setUser(User user) {
-        user = user;
+        this.user = user;
     }
+*/
 }
