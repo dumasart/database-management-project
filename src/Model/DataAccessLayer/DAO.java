@@ -106,7 +106,7 @@ public class DAO {
      * @param spec 
      */
     public void ajouteNumeroASpectacle(Numero num, Spectacle spec) {
-        RequeteOrganisateur.addNumeroToSpectacle(spec, num);
+        RequeteOrganisateur.addNumeroToSpectacle(spec, num, 0); //heure à rajouter TODO
     }
 
 
