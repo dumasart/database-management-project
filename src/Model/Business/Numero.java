@@ -18,10 +18,11 @@ public class Numero {
     private int nbrArtisteNumero;
     static int nbrEvaluateur; //le nombre d'expert qui évalue le numéro
     private boolean valide;
+    private boolean isCreation;
     
     private Enum_theme themeNumero;
     
-    public Numero(int code, String titre, String resume, int duree, int nbrArtiste, String theme) {
+    public Numero(int code, String titre, String resume, int duree, int nbrArtiste, boolean creation, int artistePrincipal, String theme) {
         this.codeNumero = code;
         this.titreNumero = titre;
         this.resumeNumero = resume;
@@ -30,26 +31,39 @@ public class Numero {
         this.themeNumero = Enum_theme.valueOf(theme);
         this.valide = true;
         this.nbrEvaluateur = 0;
+        this.codeArtistePrincipal = artistePrincipal;
+        this.isCreation = creation;
     }
     
     public int getArtistePrincipal() {
         return this.codeArtistePrincipal;
     }
-    
-    public int getNbrEvaluateur() {
-        return this.nbrEvaluateur;
-    }
-    public int getNumero() {
+    public int getID(){
         return this.codeNumero;
+    }
+    public String getTitre() {
+        return this.titreNumero;
+    }
+    public String getResume() {
+        return this.resumeNumero;
+    }
+    public int getDuree() {
+        return this.getDuree();
+    }
+    public int getNbArtiste() {
+        return this.nbrArtisteNumero;
+    }
+    public boolean getCreation() {
+        return this.isCreation;
+    }
+    public Enum_theme getTheme() {
+        return this.themeNumero;
     }
     public boolean getValid() {
         return this.valide;
     }
-    public int getID(){
-        return this.codeNumero;
-    }
-    public Enum_theme getTheme() {
-        return this.themeNumero;
+    public int getNbrEvaluateur() {
+        return this.nbrEvaluateur;
     }
     @Override
     public String toString() {

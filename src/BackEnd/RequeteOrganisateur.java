@@ -72,6 +72,8 @@ public class RequeteOrganisateur extends Requete {
                         b.getString("resumeNumero"),
                         b.getInt("dureeNumero"),
                         b.getInt("nbArtisteNumero"),
+                        b.getBoolean("estCreation"),
+                        b.getInt("codeArtiste"),
                         b.getString("themeNumero")                        
                 );
                 eval.add(num);
@@ -106,6 +108,8 @@ public class RequeteOrganisateur extends Requete {
                         b.getString("resumeNumero"),
                         b.getInt("dureeNumero"),
                         b.getInt("nbArtisteNumero"),
+                        b.getBoolean("estCreation"),
+                        b.getInt("codeArtiste"),
                         b.getString("themeNumero")                        
                 );
                 res.add(num);
@@ -225,7 +229,8 @@ public class RequeteOrganisateur extends Requete {
         String test1 = "SELECT codeArtiste FROM Artiste WHERE codeArtiste=" + numero.getArtistePrincipal();
         String test2 = "SELECT codeArtiste FROM ArtisteParticipant WHERE codeArtiste=" + numero.getArtistePrincipal();
         String test3 = "SELECT codeArtiste FROM ArtistePrincipal WHERE codeArtiste=" + numero.getArtistePrincipal();
-        String cmd = "INSERT INTO ";
+        String cmd = "INSERT INTO Numero VALUES (" + numero.getID() +", " + numero.getTitre() + ", " + numero.getResume() + ", " + numero.getDuree()
+                + ", " + numero.getNbArtiste() + ", " + numero.getCreation() + ", " + numero.getArtistePrincipal() + ", " + numero.getTheme() + ")";
         try {
             ResultSet b = Getter.request(test1);
             if (b.next()) {
@@ -234,13 +239,13 @@ public class RequeteOrganisateur extends Requete {
                     b = Getter.request(test3);
                     if (b.next()) {
                         b = Getter.request(cmd);
+                        return true;
                     }
                 }
             }
         } catch (SQLException e) {
-            
+            System.out.println("Erreur SQL : Artiste Principal inconnu");
         }
-        System.out.println("Not yet Implemented!\n");
         return false;
     } 
     /**
