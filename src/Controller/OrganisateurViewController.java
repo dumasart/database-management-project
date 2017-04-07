@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Application.Factory;
+import Model.Business.Factory;
 import BackEnd.RequeteOrganisateur;
 import Model.Business.Artiste;
 import Model.Business.Enum_theme;

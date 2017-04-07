@@ -5,6 +5,7 @@
  */
 package Application;
 
+import Model.Business.Factory;
 import BackEnd.ConnectionPacket;
 import Model.Business.Spectacle;
 import java.util.Collection;

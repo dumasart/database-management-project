@@ -5,6 +5,7 @@
  */
 package Application;
 
+import Model.Business.Factory;
 import BackEnd.ConnectionPacket;
 import java.util.Scanner;
 import Controller.ExpertViewController;

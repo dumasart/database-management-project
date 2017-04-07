@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Application.Factory;
+import Model.Business.Factory;
 import Model.Business.User;
 import Model.DataAccessLayer.DAO;
 import java.io.IOException;

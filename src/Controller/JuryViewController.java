@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Application.Factory;
+import Model.Business.Factory;
 import Model.Business.Enum_theme;
 import Model.Business.Numero;
 import Model.Business.Spectacle;

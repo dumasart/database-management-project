@@ -5,7 +5,7 @@
  */
 package BackEnd;
 
-import Application.Factory;
+import Model.Business.Factory;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

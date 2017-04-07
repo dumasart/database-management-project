@@ -5,7 +5,6 @@
  */
 package Model.Business;
 
-import Application.Factory;
 import java.util.ArrayList;
 import java.util.Collection;
 
