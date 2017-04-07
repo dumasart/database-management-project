@@ -162,9 +162,8 @@ public class RequeteOrganisateur extends Requete {
             }
         }
         catch(SQLException e) {
-            System.out.println("Wololo");
+            System.out.println("Erreur SQL : Aucune note");
         } 
-        
         return -1;
     }
     

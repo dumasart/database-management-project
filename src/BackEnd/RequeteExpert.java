@@ -20,7 +20,7 @@ import java.sql.SQLException;
  * @author Geoffrey b2o
  */
 public class RequeteExpert extends Requete{
-    //
+    
     public static ResultatsNumeros getNumeros(){
         String s = "SELECT * FROM Evaluation JOIN Numero ON Evaluation.codeNumero=Numero.codeNumero WHERE codeArtiste="+Factory.getUser().getUserId();
         ResultatsNumeros nums = new ResultatsNumeros();
@@ -41,7 +41,7 @@ public class RequeteExpert extends Requete{
             }
         }
         catch(SQLException e) {
-            System.out.println("Wololo");
+            System.out.println("SQL erreur : Aucun numéro");
         }
         //il faut analyser le ResultSet et renvoyer je ne sais quoi?
         return nums;
@@ -63,8 +63,7 @@ public class RequeteExpert extends Requete{
             }
         }
         catch(SQLException e) {
-            System.out.println("Wololo");
-
+            System.out.println("Erreur SQL : Aucune évaluation");
         }
         return eval;
     }
