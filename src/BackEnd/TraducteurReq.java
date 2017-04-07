@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model.Business;
+package BackEnd;
 
 /**
  *
- * @author nabem
+ * @author milang
  */
-public enum Enum_theme {
-    Magie, Acrobatie, Dressage, Clown, Contorsionniste, Danse, Dextérité, Orchestre;
+public abstract class TraducteurReq {
+    
 }

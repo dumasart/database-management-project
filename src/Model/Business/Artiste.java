@@ -12,38 +12,51 @@ import java.util.*;
  * @author nabem
  */
 public class Artiste {
-    private int code;
-    private String nom;
-    private String prenom;
-    private String dateNaissance;
-    private String adresse;
-    private ArrayList<Numero> listeNumeros;
+	private int codeArtiste;
+	private int codeCirque;
+	private String nom;
+	private String prenom;
+	private String dateNaissance;
+	private String adresse;
     
-    /**
-     * Constructeur
-     */
-    public Artiste(int code, String nom,String prenom,String dateNaissance, String adresse, ArrayList<Numero> listeNumero) {
-        this.code = code;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.dateNaissance = dateNaissance;
-        this.adresse = adresse;
-        this.listeNumeros = listeNumero;
-    }
+	/**
+	 * Constructeur
+	 */
+	public Artiste(int codeArtiste, int codeCirque, String nom, String prenom, String dateNaissance, String adresse) {
+		this.codeArtiste = codeArtiste;
+		this.codeCirque = codeCirque;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
+		this.adresse = adresse;
+	}
     
-    public ArrayList<Numero> getListeNumeros(){
-        return this.listeNumeros;
-    }
-    public int getCode() {
-        return this.code;
-    }
+	public int getID() {
+		return this.codeArtiste;
+	}
+
+	public int getCodeCirque() {
+		return this.codeCirque;
+	}
     
-    public String getNom() {
-        return this.nom;
-    }
+	public String getNom() {
+		return this.nom;
+	}
     
-    public String getPrenom() {
-        return this.prenom;
-    }
-    
+	public String getPrenom() {
+		return this.prenom;
+	}
+	
+	public String getDate() {
+		return this.dateNaissance;
+	}
+
+	public String getAdresse() {
+		return this.adresse;
+	}
+
+	@Override
+	public String toString() {
+		return "" + "Salut, je m'appelle " + this.getNom() + " " + this.getPrenom() + ", je suis né le " + this.getDate() + " et j'habite au " + this.getAdresse() + ". Je travaille au cirque numéro " + this.getCodeCirque() + " et mon code est " + this.getID();
+	}
 }

@@ -1,6 +1,7 @@
 #netbeans config files
 nbproject/
 build/
+lib/
 dist/
 .metadata
 build.xml

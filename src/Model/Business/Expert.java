@@ -12,26 +12,31 @@ import java.util.*;
  * @author nabem
  */
 public class Expert extends Artiste{
-    //private ArrayList<Numero> listeNumero;
-    Enum_theme theme;
+    private ArrayList<Numero> listeNumeros;
+    private ArrayList<Enum_theme> themes;
+    private int nbrNumeroEvaluer; //pour dire s'il peut tjrs évaluer un numéro (nbr < 15)
     
-    public Expert(int code, String nom, String prenom, String dateNaissance, String  adresse, ArrayList<Numero> listeNumero, Enum_theme theme) {
-        super(code,nom,prenom,dateNaissance,adresse,listeNumero);
-        this.theme = theme;
+    public Expert(int code, int codeCirque, String nom, String prenom, String dateNaissance, String  adresse, ArrayList<Numero> listeNumero, Enum_theme theme) {
+        super(code,codeCirque,nom,prenom,dateNaissance,adresse);
+        this.themes.add(theme);
+        this.nbrNumeroEvaluer = 0;
+        this.listeNumeros = listeNumero;
     }
     
-    public void ajouteNumero(Numero numero) {
-        if(! getListeNumeros().contains(numero)) {
-            getListeNumeros().add(numero);
-        }
+    public ArrayList<Numero> getListeNumeros() {
+        return this.listeNumeros;
     }
-    
+     
     public void retireNumero(Numero numero) {
-        getListeNumeros().remove(numero);
+        this.getListeNumeros().remove(numero);
     }
     
-    public Enum_theme getTheme() {
-        return this.theme;
+    public ArrayList<Enum_theme> getThemes() {
+        return this.themes;
+    }
+    
+    public int getNbrNumeros() {
+        return this.nbrNumeroEvaluer;
     }
     
     public void afficheNumeros() {
@@ -41,8 +46,12 @@ public class Expert extends Artiste{
         }
     }
     
+    public int getId(){
+        return super.getID();
+    }
+    
     @Override
     public String toString() {
-        return "" + "Monsieur " + this.getNom() + " " + this.getPrenom() + "est expert en : " + this.getTheme();
+        return "" + "Monsieur " + this.getNom() + " " + this.getPrenom() + "est expert en : " + this.getThemes().toString();
     }
 }
