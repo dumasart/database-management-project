@@ -12,13 +12,11 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 
-public class LoginViewController implements Initializable {
+public class LoginViewController extends Controller implements Initializable {
 
     @FXML
     private TextField loginField;
@@ -33,43 +31,40 @@ public class LoginViewController implements Initializable {
     private Text errorMessage;
     
     private static boolean LOGIN_EMPTY=true, PASSWORD_EMPTY=true;
-    
+
+       
     /**
-     *
      * @param event
      * @throws java.io.IOException
      */
     @FXML
-    public void loginClickAction(Event event) throws IOException {
+    private void loginClickAction(Event event) throws IOException {
         String ressource;
         /* vérifcation du login et du mot de passe
-         * retourne le type de compte (organisateur, expert,..)*/
-        //userType=checkAuthentification(loginField.getText(),passwordField.getText());
-        /* si type vide (login et/ou mot de passe invalide) :
+         * retourne un User contenant le type de compte (organisateur, expert,..)
+         * le nom de l'utilisateur,... */
+        //User user = checkAuthentification(loginField.getText(),passwordField.getText());
+        /* si user vaut NULL (login et/ou mot de passe invalide) :
          *   afficher message d'erreur et rester sur la fenetre d'accueil */
         //if(userType.isNull())
         //{
         //    errorMessage.setVisible(true);
         //    return;
         //}
+        /* sinon on affiche l'écran correspondant au type d'utilisateur connecté */
         //switch(UserType) {
         //    case EXPERT : 
-        ressource="/GUI/ExpertView.fxml";
+        ressource="/View/ExpertView.fxml";
         //        break;
         //    case ORGANISATEUR :
-        //        ressource="/GUI/OrganisateurView.fxml";
+        //        ressource="/View/OrganisateurView.fxml";
         //        break;
         //    default:
                 
         //}
-        
-        // Ouvre la fenetre correspondant au type utilisateur connecté
-        BorderPane parent = (BorderPane) ((Node) event.getSource()).getScene().getRoot();
-        Node centerPane = FXMLLoader.load(getClass().getResource(ressource));
-        parent.setCenter(centerPane);
-        
-        //parentNode.setCenter(centerPane);
-
+        MainWindowController mainCtrl = (MainWindowController) this.getMainControler();
+        mainCtrl.setBorderPaneCenter(ressource);
+        mainCtrl.showLogoutButton();    
     }
     
     /**
@@ -78,10 +73,9 @@ public class LoginViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        
         /* ajoute un change listener au champ "login" et "mot de passe"
-         * pour désactiver le bouton connexion si le champ login et/ou mot de passe sont vides
-         * et changer le contour des champs en rouge s'ils sont vides 
+         * pour désactiver le bouton connexion et changer le contour des champs 
+         * en rouge si le champ login et/ou mot de passe sont vides
          */
         loginField.textProperty().addListener((observable, oldValue,newValue) -> {
             LOGIN_EMPTY = newValue.trim().isEmpty();

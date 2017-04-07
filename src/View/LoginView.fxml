@@ -9,27 +9,26 @@
 <?import javafx.geometry.*?>
 <?import java.net.*?>
 
-<GridPane id="inputGrid" alignment="CENTER" 
-          hgap="10" maxHeight="-Infinity" 
-          maxWidth="-Infinity" minHeight="-Infinity" 
-          minWidth="-Infinity" prefHeight="400.0" 
-          prefWidth="600.0" vgap="10" 
-          xmlns:fx="http://javafx.com/fxml/1" 
-          xmlns="http://javafx.com/javafx/8" 
-          fx:controller="Controler.LoginViewController">
+<VBox id="centerRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.LoginViewController">
     <children>
-        <Text fx:id="errorMessage" text="Wrong login and/or password" visible="false" GridPane.columnIndex="1" />
-        <Label text="User Name :" GridPane.rowIndex="1" />
-        <Label text="Password :" GridPane.rowIndex="2" />
-        <TextField fx:id="loginField" promptText="your login here..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <PasswordField fx:id="passwordField" promptText="Your password here..." GridPane.columnIndex="1" GridPane.rowIndex="2" />
-        <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="4">
-           <children>
-               <Button fx:id="connexionButton" disable="true" onMouseClicked="#loginClickAction" text="Connexion" />
-           </children>
-        </HBox>
+        <Text id="Title2" text="Veuillez vous identifier pour acceder à l'application" GridPane.columnSpan="1" />
+        <GridPane alignment="TOP_CENTER" hgap="10" vgap="10">
+            <children>
+                <Text fx:id="errorMessage" text="Wrong login and/or password" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label text="Identifiant :" GridPane.rowIndex="2" />
+                <Label text="Mot de Passe :" GridPane.rowIndex="3" />
+                <TextField fx:id="loginField" promptText="Your login here..." GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <PasswordField fx:id="passwordField" promptText="Your password here..." GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                   <children>
+                       <Button fx:id="connexionButton" disable="true" onMouseClicked="#loginClickAction" text="Connexion" />
+                   </children>
+                </HBox>
+            </children>
+        </GridPane>
     </children>
-    <padding>
-        <Insets bottom="10.0" left="25.0" right="25.0" top="25.0" />
-    </padding>
-</GridPane>
+   <padding>
+      <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+   </padding>
+    
+</VBox>

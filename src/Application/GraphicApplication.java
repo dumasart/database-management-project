@@ -11,8 +11,9 @@ public class GraphicApplication extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/MainWindow.fxml"));
-        Scene scene = new Scene(root,800,600);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MainWindow.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
         stage.setTitle("Festival du cirque manager");
         stage.setScene(scene);
         stage.show();
