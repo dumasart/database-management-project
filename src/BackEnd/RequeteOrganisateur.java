@@ -216,16 +216,44 @@ public class RequeteOrganisateur extends Requete {
      * @param numero 
      */
     public static boolean associeNumeroExpert(Expert exp, Numero numero) {
-        // TODO à vérifier et si y'a pas autre chose à faire
         String cmd = "INSERT INTO Evaluation VALUES (" + exp.getId() + ", " + numero.getID() + ")";
+        Getter.update(cmd);
+        exp.ajouteNumero(numero);
         return true;
     }
     
-    public static boolean getRankedNumeroByTheme(Enum_theme theme) {
-        String cmd = "SELECT codeNumero, Theme, AVG(Note) FROM (Numero INNER JOIN Evaluation " 
-                + "ON Numero.codeNumero=Evaluation.codeNumero) "
-                + "GROUP BY Theme, AVG(Note)"
-                + "ORDER BY AVG(Note)";
-        return false;
+    /**
+     * Renvoi les numéros du thème donné classés par moyenne des notes
+     * Ne renvoi pas la moyenne des notes !
+     * Les numéros sont ajoutés dans ResultatsNumeros du mieux noté au moindre
+     * @param theme
+     * @return ResultatsNumeros
+     */
+    public static ResultatsNumeros getRankedNumeroByTheme(Enum_theme theme) {
+        String cmd = "SELECT Numero.codeNumero, TitreNumero, ResumeNumero, DureeNumero, NbArtisteNumero, EstCreation, CodeArtiste, Theme "
+                + "FROM Numero FULL JOIN (SELECT CodeNumero, AVG(Note) as Moyenne FROM Evaluation GROUP BY CodeNumero) Moy "
+                + "ON Numero.CodeNumero=Moy.CodeNumero WHERE Theme=" + theme
+                + "ORDER BY Moyenne DESC";
+        ResultatsNumeros res = new ResultatsNumeros();
+        try {
+            ResultSet b = Getter.request(cmd);
+            while(b.next()) {
+                Numero num = new Numero(
+                        b.getInt("codeNumero"),
+                        b.getString("titreNumero"),
+                        b.getString("resumeNumero"),
+                        b.getInt("dureeNumero"),
+                        b.getInt("nbArtisteNumero"),
+                        b.getBoolean("estCreation"),
+                        b.getInt("codeArtiste"),
+                        b.getString("themeNumero")                        
+                );
+                res.add(num);
+            }
+        }
+        catch(SQLException e) {
+            System.out.println("Erreur SQL : Aucun numéro au thème" + theme);
+        }
+        return res;
     }
 }

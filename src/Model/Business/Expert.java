@@ -28,7 +28,13 @@ public class Expert extends Artiste{
     }
      
     public void retireNumero(Numero numero) {
-        this.getListeNumeros().remove(numero);
+        this.listeNumeros.remove(numero);
+        this.nbrNumeroEvaluer--;
+    }
+    
+    public void ajouteNumero(Numero numero) {
+        this.listeNumeros.add(numero);
+        this.nbrNumeroEvaluer++;
     }
     
     public ArrayList<Enum_theme> getThemes() {
