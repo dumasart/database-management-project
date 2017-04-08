@@ -9,6 +9,7 @@ import Model.Business.Factory;
 import java.util.Scanner;
 import Controller.ExpertViewController;
 import Model.Business.Numero;
+import Model.Business.User;
 import java.util.Iterator;
 /**
  * Exécutable de saisie des évaluations: un expert se connecte, chosit un 
@@ -26,7 +27,8 @@ public class ExpertApplication {
             String username = terminalInput.nextLine();
             System.out.printf("Password: ");
             String password = terminalInput.nextLine();
-            Factory.setUser(username, password);
+            User user = Factory.getDAO().getUserByUserNameAndPassword(username, password);
+            Factory.setUser(user);
         }
         
         ExpertViewController expCtrl = new ExpertViewController();

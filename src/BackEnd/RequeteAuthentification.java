@@ -30,7 +30,8 @@ public class RequeteAuthentification extends Requete{
                 String pwd = b.getString("motDePasse");
                 if (pwd.equals(oldPwd)){
                     Getter.request("UPDATE Login Set MotDePasse="+newPwd+" WHERE codeArtiste = " + Factory.getUser().getUserId());
-                    Factory.setUser(Factory.getUser().getUserId(), newPwd);
+                    // TODO: Factory.setUser est mal utilisé
+                    // Factory.setUser(Factory.getUser().getUserId(), newPwd);
                     return true;
                 }
             }
@@ -56,7 +57,8 @@ public class RequeteAuthentification extends Requete{
             ResultSet b = Getter.request(test);
             if (b.next()) {
                 Getter.request("INSERT INTO Login VALUES ( " + codeArt + " , " + Pwd+ " )");
-                Factory.setUser(codeArt, Pwd);
+                // TODO: Factory.setUser est mal utilisé
+                // Factory.setUser(codeArt, Pwd);
                 return true;
             }
         }
@@ -80,7 +82,8 @@ public class RequeteAuthentification extends Requete{
             if (b.next()) {
                 String pwd = b.getString("motDePasse");
                 if (pwd.equals(Pwd)){
-                    Factory.setUser(login, Pwd);
+                    // TODO: Factory.setUser est mal ultilisé
+                    //Factory.setUser(login, Pwd);
                     return true;
                 }
             }

@@ -29,16 +29,11 @@ public class Factory {
         return user;
     }
     
-    public static void setUser(String username, String password) {
-        user = getDAO().getUserByUserNameAndPassword(username, password);
-    }
-    
     public static void resetUser(){
         user = null;
     }
-    /*
+    
     public static void setUser(User user) {
-        this.user = user;
+        user = user;
     }
-*/
 }

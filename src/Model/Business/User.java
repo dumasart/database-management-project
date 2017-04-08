@@ -11,7 +11,7 @@ package Model.Business;
  */
 public class User {
     
-    public enum UserType {EXPERT, ORGANISATEUR};
+    public enum UserType {EXPERT, ORGANISATEUR, JURY};
     
     private String username;
     private String password;
@@ -20,11 +20,10 @@ public class User {
     // TODO 
     /*réduire la portée du constructeur pour qu'on ne puisse pas
       y acceder en dehors du modèle (question de sécurité) */
-    public User(String username, String password) {
+    public User(String username, String password, UserType type) {
         this.username = username;
         this.password = password;
-        // TODO rajouter le type d'utilisateur
-        this.type=UserType.EXPERT;
+        this.type = type;
     }
 
     public String getUserId() {

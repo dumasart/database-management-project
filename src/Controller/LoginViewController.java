@@ -51,7 +51,8 @@ public class LoginViewController implements Initializable {
          * retourne un User contenant le type de compte (organisateur, expert,..)
          * le nom de l'utilisateur,... */
         // TODO appel fonction d'authentification
-        User user = new User("Grissom","MotDePasse");
+        User user = Factory.getDAO().getUserByUserNameAndPassword(loginField.getText().trim(),
+                passwordField.getText().trim());
                 //checkAuthentification(loginField.getText(),passwordField.getText());
         
         /* si user vaut NULL (login et/ou mot de passe invalide) :
@@ -87,20 +88,6 @@ public class LoginViewController implements Initializable {
             passwordField.setStyle(PASSWORD_EMPTY?"-fx-border-color:red":"-fx-border-color:white");
         });
     }    
-    
-    
-    public boolean idenfieUser(String username, String password) {
-        
-        DAO dao = Factory.getDAO();
-        User user = dao.getUserByUserNameAndPassword(username, password);
-        
-        if (user != null) {
-            //Factory.setUser(user);
-            return true;
-        }
-        
-        return false;
-    }
     
     
     /**

@@ -18,7 +18,7 @@ import java.util.Map;
  * @author luud
  */
 public class JuryViewController {
-    private Map<Float, Numero> listeMeilleursNumeros;
+    private Collection<Numero> listeMeilleursNumeros;
     private Collection<Spectacle> listeSpectacles;
     
     public JuryViewController() {
