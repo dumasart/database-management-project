@@ -95,11 +95,12 @@ public class LoginViewController extends Controller implements Initializable {
     
     
     public boolean idenfieUser(String username, String password) {
+        
         DAO dao = Factory.getDAO();
         User user = dao.getUserByUserNameAndPassword(username, password);
         
         if (user != null) {
-            Factory.setUser(user);
+            //Factory.setUser(user);
             return true;
         }
         

@@ -5,7 +5,6 @@
  */
 package Model.Business;
 
-import Model.Business.User;
 import Model.DataAccessLayer.DAO;
 
 /**

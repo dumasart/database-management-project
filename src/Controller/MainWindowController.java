@@ -4,30 +4,19 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.DialogPane;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Window;
-import javafx.util.Pair;
 
 
 public class MainWindowController extends Controller implements Initializable {
@@ -72,12 +61,7 @@ public class MainWindowController extends Controller implements Initializable {
         alert.initModality(Modality.WINDOW_MODAL);
         
         Optional<ButtonType> result = alert.showAndWait();
-        
-        DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.getStylesheets().add(
-        getClass().getResource("../Resources/application.css").toExternalForm());
-        //dialogPane.getStyleClass().add("myDialog");
-        
+           
         if (result.get() == ButtonType.OK) {
             logoutButton.setVisible(false);
             this.setBorderPaneCenter("/View/LoginView.fxml");

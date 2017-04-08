@@ -8,43 +8,40 @@ package Controller;
 import Model.Business.Factory;
 import Model.Business.Numero;
 import Model.DataAccessLayer.DAO;
-
 import java.net.URL;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ListView;
 
-/**
- * FXML Controller class
- *
- * @author nomezing
- */
-public class ExpertViewController implements Initializable {
 
-    @FXML
-    ListView<String> listeNumero;
-    
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        ObservableList<String> l = FXCollections.observableArrayList("toto","tutu","tata");
-        listeNumero.setItems(l);
-        // TODO
-    }    
-    
-    
+public class ExpertViewController extends Controller implements Initializable {
+
     private Collection<Numero> listeNumeros;
     
+    /*          __
+              .'  '.
+             | STOP |
+              '.__.'
+                ||
+                ||
+                ||
+              \\||///
+           ^^^^^^^^^^^^^
+    Ne pas décommenter le constructeur, car il n'est pas possible d'avoir 
+    un constructeur dans un controleur javafx (en gros ça fait planter ma belle 
+    application graphique) il faudrait faire un héritage pour mettre les méthodes
+    communes, entre l'application console et graphique, dans une classe mère 
+    mais pour l'instant le soucis c'est que ce controleur hérite déjà de quelqu'un
+     et en java on peut pas faire d'héritage multiple!!! dès que j'ai la solution 
+    je lui règle son compte
+    */
+    
+    /*
     public ExpertViewController() {
         updateData();
     }
+    */
     
     public Iterator<Numero> getNumerosIterator() {
         if (this.listeNumeros != null) {
@@ -72,5 +69,14 @@ public class ExpertViewController implements Initializable {
     public void updateData() {
         DAO dao = Factory.getDAO();
         this.listeNumeros = dao.getNumerosPourEvaluer();
+    }
+    
+    /**
+     * Initializes the controller class.
+     * @param url
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
     }
 }
