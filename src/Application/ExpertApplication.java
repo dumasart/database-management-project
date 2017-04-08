@@ -21,8 +21,7 @@ public class ExpertApplication {
     
     public static void main(String[] args) {
         Scanner terminalInput = new Scanner(System.in);
-        // Connection à la base de données
-        ConnectionPacket.openConnection(null, null, null);
+
         while (Factory.getUser() == null) {    
             System.out.printf("ID: ");
             String username = terminalInput.nextLine();

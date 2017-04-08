@@ -19,7 +19,7 @@ import java.util.Collection;
 public class GestionProgramme {  
     
     public  static void main(String args[]) {
-        ConnectionPacket.openConnection(null, null, null);
+
         Collection<Spectacle> listeSpectacle = Factory.getDAO().getSpectacles();
         
         for(Spectacle s : listeSpectacle) {
