@@ -6,7 +6,6 @@
 package Application;
 
 import Model.Business.Factory;
-import BackEnd.ConnectionPacket;
 import java.util.Scanner;
 import Controller.ExpertViewController;
 import Model.Business.Numero;
@@ -65,7 +64,6 @@ public class ExpertApplication {
                 cond = terminalInput.nextInt();
             }
         }
-        ConnectionPacket.closeConnection();
     }
     
 }

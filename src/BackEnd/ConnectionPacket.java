@@ -13,34 +13,30 @@ import java.sql.SQLException;
  *
  * @author milang
  */
-public class ConnectionPacket {
-    private static Connection co=null;
-    public static void openConnection(String BD_URL,String BD_USER,String BD_PWD){
-        if(co==null) {
-            try {
-                Class.forName("oracle.jdbc.OracleDriver");
-                co = DriverManager.getConnection(BD_URL,BD_USER,BD_PWD);
-            }
-            catch(SQLException e) {
-                System.out.println("Oups!\n");
-            }
-            catch(ClassNotFoundException e) {
-                System.out.println("Demander pourquoi pas le bon driver!\n");
-            }
+class ConnectionPacket {
+
+    /* parametres de connexion écrits en dur */
+    private static final String BD_URL    = "";
+    private static final String BD_USER   = "";
+    private static final String BD_PWD    = "";
+    
+    /**
+     * Méthode pour récupérer une connection à la base de données
+     * @return 
+     */
+    static Connection getDBConnection() throws RuntimeException {
+        try {
+            //TODO 
+            /* quand on aura fini il faudrait pouvoir changer le type de base de donnée */
+            Class.forName("oracle.jdbc.OracleDriver");
+            return DriverManager.getConnection(BD_URL,BD_USER,BD_PWD);
+        }
+        catch(SQLException ex) {
+            throw new RuntimeException("Impossible de se connecter à la base de donnée!\n",ex);
+        }
+        catch(ClassNotFoundException ex) {
+            throw new RuntimeException("Driver de base de données incorrect!\n",ex);
         }
     }
-    public static Connection getConnectionAccess() {
-        return co;
-    }
-    public static void closeConnection() {
-        while(co!=null) {
-            try {
-                co.close();
-                co=null;
-            }
-            catch(SQLException e) {
-                System.out.println("RIP le systeme de l'imag!!!!\n");
-            }
-        }
-    }
+
 }

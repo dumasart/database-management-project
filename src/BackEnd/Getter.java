@@ -15,10 +15,17 @@ import java.sql.*;
 class Getter {
     private static Statement stmt = null;
     public static ResultSet request(String requete) {
+        Connection connection;
+        Statement stmt;
+        ResultSet rs;
         try {
-            if(stmt==null)
-                stmt = ConnectionPacket.getConnectionAccess().createStatement();  
-            return stmt.executeQuery(requete);
+            connection = ConnectionPacket.getDBConnection();
+            stmt = connection.createStatement();
+            rs = stmt.executeQuery(requete);
+            // libère les ressources de la base de données
+            connection.close();
+            stmt.close();
+            return rs;
         }
         catch(SQLException e) {
             System.out.println("Statement non crée");
@@ -29,7 +36,7 @@ class Getter {
     public static int update(String request) {
         try {
             if (stmt == null) {
-                stmt = ConnectionPacket.getConnectionAccess().createStatement();
+                stmt = ConnectionPacket.getDBConnection().createStatement();
             }
             return stmt.executeUpdate(request);
         } catch (SQLException e) {
