@@ -11,7 +11,7 @@
 <VBox   id="centerRoot"
         xmlns="http://javafx.com/javafx/8" 
         xmlns:fx="http://javafx.com/fxml/1"
-        fx:controller="Controler.ExpertViewController">
+        fx:controller="Controller.ExpertViewController">
     <children>
         <ListView fx:id="listeNumero" prefHeight="200.0" prefWidth="200.0" >
                 <!-- sample items il faut binder la liste de numero sur la liste view-->

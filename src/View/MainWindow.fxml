@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="800.0" stylesheets="@../Resources/application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.MainWindowController">
+<VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="800.0" stylesheets="@../Resources/application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainWindowController">
     <children>
         <Text id="Title1" text="Application de gestion du festival du cirque">
          <VBox.margin>
