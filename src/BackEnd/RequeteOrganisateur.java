@@ -226,6 +226,7 @@ public class RequeteOrganisateur extends Requete {
      * Renvoi les numéros du thème donné classés par moyenne des notes
      * Ne renvoi pas la moyenne des notes !
      * Les numéros sont ajoutés dans ResultatsNumeros du mieux noté au moindre
+     * Le numéro le mieux noté est donc le premier de l'ArrayList...
      * @param theme
      * @return ResultatsNumeros
      */
