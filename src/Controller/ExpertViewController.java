@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
 
-public class ExpertViewController extends Controller implements Initializable {
+public class ExpertViewController implements Initializable {
 
     private Collection<Numero> listeNumeros;
     

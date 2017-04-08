@@ -5,6 +5,7 @@
  */
 package Controller;
 
+
 import Model.Business.Factory;
 import Model.Business.User;
 import Model.DataAccessLayer.DAO;
@@ -12,14 +13,17 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.Event;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
-public class LoginViewController extends Controller implements Initializable {
+
+public class LoginViewController implements Initializable {
 
     @FXML
     private TextField loginField;
@@ -42,11 +46,14 @@ public class LoginViewController extends Controller implements Initializable {
      */
     @FXML
     private void loginClickAction(Event event) throws IOException {
-        String ressource;
+        
         /* vérifcation du login et du mot de passe
          * retourne un User contenant le type de compte (organisateur, expert,..)
          * le nom de l'utilisateur,... */
-        //User user = checkAuthentification(loginField.getText(),passwordField.getText());
+        // TODO appel fonction d'authentification
+        User user = new User("Grissom","MotDePasse");
+                //checkAuthentification(loginField.getText(),passwordField.getText());
+        
         /* si user vaut NULL (login et/ou mot de passe invalide) :
          *   afficher message d'erreur et rester sur la fenetre d'accueil */
         //if(userType.isNull())
@@ -54,20 +61,8 @@ public class LoginViewController extends Controller implements Initializable {
         //    errorMessage.setVisible(true);
         //    return;
         //}
-        /* sinon on affiche l'écran correspondant au type d'utilisateur connecté */
-        //switch(UserType) {
-        //    case EXPERT : 
-        ressource="/View/ExpertView.fxml";
-        //        break;
-        //    case ORGANISATEUR :
-        //        ressource="/View/OrganisateurView.fxml";
-        //        break;
-        //    default:
-                
-        //}
-        MainWindowController mainCtrl = (MainWindowController) this.getMainControler();
-        mainCtrl.setBorderPaneCenter(ressource);
-        mainCtrl.showLogoutButton();    
+        Event ev = new LoggedInEvent(user);
+        ((Node)event.getSource()).fireEvent(ev);  
     }
     
     /**
@@ -106,4 +101,37 @@ public class LoginViewController extends Controller implements Initializable {
         
         return false;
     }
+    
+    
+    /**
+     * Déclaration d'un type d'évènement personnalisé pour gérer la connexion
+     * d'un utilisateur au niveau du controleur principal
+     */
+    static class LoggedInEvent extends Event {
+        
+        public static final EventType<LoggedInEvent> LOGIN_SUCCESS 
+                = new EventType<>(Event.ANY, "LOGIN_SUCCESS");
+        
+        private User loggedUser;
+        
+        /**
+         * On ne peut pas déclencher l'évenement en dehors de ce controleur
+         * pour éviter les connexions pirate 
+         * @param user l'utilisateur qui s'est connecté
+         */
+        private LoggedInEvent(User user) {
+            super(LOGIN_SUCCESS);
+            this.loggedUser = user;
+        }
+        
+        /**
+         * Fonction pour récupérer l'utilisateur connecté
+         * @return l'utilisateur connecté
+         */
+        public User getUser() {
+            // TODO ajouter le User au constructeur
+            return this.loggedUser;
+        }
+    }
+    
 }

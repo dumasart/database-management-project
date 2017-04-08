@@ -1,5 +1,7 @@
 package Controller;
 
+import Controller.LoginViewController.LoggedInEvent;
+import Model.Business.User;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -19,7 +21,7 @@ import javafx.stage.Modality;
 import javafx.stage.Window;
 
 
-public class MainWindowController extends Controller implements Initializable {
+public class MainWindowController implements Initializable {
 
     @FXML
     private BorderPane rootNode;
@@ -28,7 +30,9 @@ public class MainWindowController extends Controller implements Initializable {
     private Button logoutButton;
     
     @FXML
-    private Pane centerView; 
+    private Pane centerView;
+    
+    private User connectedUser;
 
     
     /**
@@ -86,17 +90,43 @@ public class MainWindowController extends Controller implements Initializable {
      * 
      * @param fxmlSource 
      */
-    void setBorderPaneCenter(String source) {
+    private void setBorderPaneCenter(String source) {
         try {
             FXMLLoader loader = new FXMLLoader(this.getClass().getResource(source));
             Node centerPane = loader.load();
-            Controller controller = loader.getController();
-            controller.initOwner(this);
             rootNode.setCenter(centerPane);
         } catch (IOException e){
             System.out.println(e.getMessage() + "unable to initialize center");
         }
     }
+    
+    /**
+     * Gestionnaire d'évenement pour la connction d'un utilisateur
+     * @param event 
+     */
+    private void LoggedInEventHandler(LoggedInEvent event) {
+        String ressource;
+        /* récupère l'utilisateur qui s'est connecté pour avoir 
+           le nom, le type de compte,... */
+        connectedUser = event.getUser();
+        
+        /* Récupère le type de compte pour afficher l'écran correspondant
+           au type d'utilisateur connecté */
+        switch(connectedUser.getUserType()) {
+            case EXPERT : 
+                ressource="/View/ExpertView.fxml";
+                break;
+            case ORGANISATEUR :
+                ressource="/View/OrganisateurView.fxml";
+                break;
+            default:
+                throw new RuntimeException("Connexion impossible, utilisateur corrompu");
+        }
+        
+        setBorderPaneCenter(ressource);
+        showLogoutButton();
+    }
+    
     
     /**
      * 
@@ -106,5 +136,8 @@ public class MainWindowController extends Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setBorderPaneCenter("/View/LoginView.fxml");
+        // défini le gestionnaire d'évenement pour la connection
+        rootNode.addEventHandler(LoggedInEvent.LOGIN_SUCCESS,
+                event -> LoggedInEventHandler(event));
     }
 }
