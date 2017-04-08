@@ -13,7 +13,7 @@ import java.sql.*;
  * class local qui ne sert qu'à effectuer les requètes 
  */
 class Getter {
-    private static Statement stmt = null;
+
     public static ResultSet request(String requete) {
         Connection connection;
         Statement stmt;
@@ -34,11 +34,17 @@ class Getter {
     }
     
     public static int update(String request) {
+        Connection connection;
+        Statement stmt;
+        int res;
         try {
-            if (stmt == null) {
-                stmt = ConnectionPacket.getDBConnection().createStatement();
-            }
-            return stmt.executeUpdate(request);
+            connection = ConnectionPacket.getDBConnection();
+            stmt = connection.createStatement();
+            res = stmt.executeUpdate(request);
+            // libère les ressources de la base de données
+            connection.close();
+            stmt.close();
+            return res;
         } catch (SQLException e) {
             System.out.println("Update non traitée");
         }
