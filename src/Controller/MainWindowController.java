@@ -16,12 +16,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
-import javafx.stage.Window;
 
 
-public class MainWindowController implements Initializable {
+public class MainWindowController extends MainController implements Initializable {
 
     @FXML
     private BorderPane rootNode;
@@ -29,47 +27,36 @@ public class MainWindowController implements Initializable {
     @FXML
     private Button logoutButton;
     
-    @FXML
-    private Pane centerView;
-    
-    private User connectedUser;
-
-    
     /**
      * 
      * @param event 
      */
     @FXML
     private void logoutButtonAction(Event event) {
-        Window owner = ((Node)(event.getSource())).getScene().getWindow();
         /* ouvre une fenetre pour demander la confirmation
          * avant de quitter */
-        showLogoutDialog(owner);
-    }
-
-    /**
-     * 
-     */
-    void showLogoutButton() {
-        logoutButton.setVisible(true);
-    }
-    
-    
-    private void showLogoutDialog(Window owner) {
-        
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation déconnexion");
-        //alert.setHeaderText("Look, a Confirmation Dialog");
-        alert.setContentText("Etes-vous sur de vouloir vous déconnecter?");
-        alert.initOwner(owner);
-        alert.initModality(Modality.WINDOW_MODAL);
-        
-        Optional<ButtonType> result = alert.showAndWait();
+        Optional<ButtonType> result = showLogoutDialog();
            
         if (result.get() == ButtonType.OK) {
             logoutButton.setVisible(false);
             this.setBorderPaneCenter("/View/LoginView.fxml");
         }
+    }
+    
+    /**
+     * Fonction pour ouvrir une fenetre pop-up de confirmation
+     * @param owner fenetre mère 
+     */
+    private Optional<ButtonType> showLogoutDialog() {
+        
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation déconnexion");
+        //alert.setHeaderText("Look, a Confirmation Dialog");
+        alert.setContentText("Etes-vous sur de vouloir vous déconnecter?");
+        alert.initOwner(rootNode.getScene().getWindow());
+        alert.initModality(Modality.WINDOW_MODAL);
+        
+        return alert.showAndWait();
     }
     
 
@@ -87,8 +74,9 @@ public class MainWindowController implements Initializable {
    
       
     /**
-     * 
-     * @param fxmlSource 
+     * Fonction interne pour modifier l'affichage dans le center
+     * Permet de naviguer entre les vues sans ouvrir un tas de nouvelles fenêtres 
+     * @param source Le nom du fichier fxml à charger (chemin absolu) 
      */
     private void setBorderPaneCenter(String source) {
         try {
@@ -108,11 +96,11 @@ public class MainWindowController implements Initializable {
         String ressource;
         /* récupère l'utilisateur qui s'est connecté pour avoir 
            le nom, le type de compte,... */
-        connectedUser = event.getUser();
+        setConnectedUser(event.getUser());
         
         /* Récupère le type de compte pour afficher l'écran correspondant
            au type d'utilisateur connecté */
-        switch(connectedUser.getUserType()) {
+        switch(this.getConnectedUser().getUserType()) {
             case EXPERT : 
                 ressource="/View/ExpertView.fxml";
                 break;
@@ -123,8 +111,10 @@ public class MainWindowController implements Initializable {
                 throw new RuntimeException("Connexion impossible, utilisateur corrompu");
         }
         
+        // affiche la bonne interface utilisateur
         setBorderPaneCenter(ressource);
-        showLogoutButton();
+        // rend visible le bouton de déconnexion
+        logoutButton.setVisible(true);
     }
     
     

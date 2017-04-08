@@ -23,7 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 
-public class LoginViewController implements Initializable {
+public class LoginViewController extends LoginController implements Initializable {
 
     @FXML
     private TextField loginField;
@@ -50,19 +50,20 @@ public class LoginViewController implements Initializable {
         /* vérifcation du login et du mot de passe
          * retourne un User contenant le type de compte (organisateur, expert,..)
          * le nom de l'utilisateur,... */
-        // TODO appel fonction d'authentification
-        User user = new User("Grissom","MotDePasse");
-                //checkAuthentification(loginField.getText(),passwordField.getText());
+        User user = this.identifieUser(loginField.getText(),passwordField.getText());
         
         /* si user vaut NULL (login et/ou mot de passe invalide) :
          *   afficher message d'erreur et rester sur la fenetre d'accueil */
-        //if(userType.isNull())
-        //{
-        //    errorMessage.setVisible(true);
-        //    return;
-        //}
-        Event ev = new LoggedInEvent(user);
-        ((Node)event.getSource()).fireEvent(ev);  
+        if(user == null)
+        {
+            errorMessage.setVisible(true);
+            return;
+        /* Sinon on lance un evenement LOGIN_SUCCESS pour
+           la vue principale */
+        } else {
+            Event ev = new LoggedInEvent(user);
+            ((Node)event.getSource()).fireEvent(ev);     
+        }
     }
     
     /**
@@ -87,20 +88,7 @@ public class LoginViewController implements Initializable {
             passwordField.setStyle(PASSWORD_EMPTY?"-fx-border-color:red":"-fx-border-color:white");
         });
     }    
-    
-    
-    public boolean idenfieUser(String username, String password) {
-        
-        DAO dao = Factory.getDAO();
-        User user = dao.getUserByUserNameAndPassword(username, password);
-        
-        if (user != null) {
-            //Factory.setUser(user);
-            return true;
-        }
-        
-        return false;
-    }
+
     
     
     /**
@@ -129,7 +117,6 @@ public class LoginViewController implements Initializable {
          * @return l'utilisateur connecté
          */
         public User getUser() {
-            // TODO ajouter le User au constructeur
             return this.loggedUser;
         }
     }
