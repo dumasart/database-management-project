@@ -142,9 +142,7 @@ public class RequeteOrganisateur extends Requete {
     }
      
     public static int getMoyenneNumero(Numero numero){
-        // Je sais pas comment on remplit ResultatsInformation
         String cmd = "SELECT AVG(Note) FROM (evaluation INNER JOIN Numero WHERE evaluation.codeNumero = Numero.codeNumero) WHERE evaluation.codeNumero = " + numero.getID();
-        // COMMENT ON STOCKE DES DATA QUI NE SONT PAS UN TYPE DONNÉ ?
         try {
             ResultSet b = Getter.request(cmd);
             if (b.next()) {
@@ -201,9 +199,6 @@ public class RequeteOrganisateur extends Requete {
     } 
     /**
      * Ajoute un numero à un spectacle dans la BD.
-     * Vérifie que le numéro existe
-     * Vérifie que le spectacle existe
-     * Vérifie l'heure si pas déjà fait
      * @param spectacle
      * @param numero
      * @param heure
@@ -220,7 +215,17 @@ public class RequeteOrganisateur extends Requete {
      * @param exp
      * @param numero 
      */
-    public void associeNumeroExpert(Expert exp, Numero numero) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static boolean associeNumeroExpert(Expert exp, Numero numero) {
+        // TODO à vérifier et si y'a pas autre chose à faire
+        String cmd = "INSERT INTO Evaluation VALUES (" + exp.getId() + ", " + numero.getID() + ")";
+        return true;
+    }
+    
+    public static boolean getRankedNumeroByTheme(Enum_theme theme) {
+        String cmd = "SELECT codeNumero, Theme, AVG(Note) FROM (Numero INNER JOIN Evaluation " 
+                + "ON Numero.codeNumero=Evaluation.codeNumero) "
+                + "GROUP BY Theme, AVG(Note)"
+                + "ORDER BY AVG(Note)";
+        return false;
     }
 }

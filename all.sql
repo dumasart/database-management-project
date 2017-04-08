@@ -43,21 +43,24 @@ create table Festival
 create table ArtisteParticipant
 (
 	codeArtiste int  not null, 
-	foreign key (codeArtiste) references Artiste(codeArtiste)
+	foreign key (codeArtiste) references Artiste(codeArtiste),
+	primary key (codeArtiste)
 );
 
 create table ArtistePrincipal
 (
 	codeArtiste integer  not null, 
 	NumTelPrincipal varchar(20) not null,
-	foreign key (codeArtiste) references Artiste(codeArtiste)
+	foreign key (codeArtiste) references Artiste(codeArtiste),
+	primary key (codeArtiste)
 );
 
 create table ArtisteExpert
 (
 	codeArtiste integer  not null, 
 	NumTelExpert varchar(20) not null,
-	foreign key (codeArtiste) references Artiste(codeArtiste)
+	foreign key (codeArtiste) references Artiste(codeArtiste),
+	primary key (codeArtiste)
 );
 
 create table ArtisteOrganisateur
@@ -65,7 +68,8 @@ create table ArtisteOrganisateur
       codeArtiste integer not null,
       codeFestival integer not null,
       foreign key (codeArtiste) references Artiste(codeArtiste),
-      foreign key (codeFestival) references Festival(codeFestival) 
+      foreign key (codeFestival) references Festival(codeFestival),
+	primary key (codeArtiste, codeFestival)
 );
 
 create table Numero
@@ -106,7 +110,8 @@ create table NumeroAccepte
 	codeSpectacle integer not null,
 	HeureNumero integer not null check(heureNumero >= 0),
 	foreign key (codeNumero) references Numero(codeNumero),
-	foreign key (codeSpectacle) references Spectacle(codeSpectacle)
+	foreign key (codeSpectacle) references Spectacle(codeSpectacle),
+	primary key (codeNumero, codeSpectacle)
 );
 
 create table EstSurnomme
@@ -122,7 +127,8 @@ create table EstExpertEn
 	codeArtiste integer not null,
 	theme varchar(20) not null,
 	foreign key (codeArtiste) references Artiste(codeArtiste),
-	foreign key (theme) references Theme(theme)
+	foreign key (theme) references Theme(theme),
+	primary key (codeArtiste, theme)
 );
 
 create table AppartientA
@@ -130,7 +136,8 @@ create table AppartientA
 	codeArtiste integer not null,
 	codeJury integer not null,
 	foreign key (codeArtiste) references Artiste(codeArtiste),
-	foreign key (codeJury) references Jury(codeJury)
+	foreign key (codeJury) references Jury(codeJury),
+	primary key (codeArtiste, codeJury)
 );
 
 create table ParticipeA
@@ -138,7 +145,8 @@ create table ParticipeA
 	codeArtiste integer not null,
 	codeNumero integer not null,
 	foreign key (codeArtiste) references Artiste(codeArtiste),
-	foreign key (codeNumero) references Numero(codeNumero)
+	foreign key (codeNumero) references Numero(codeNumero),
+	primary key (codeArtiste, codeNumero)
 );
 
 create table Evaluation
@@ -148,12 +156,14 @@ create table Evaluation
 	evaluation varchar(1000) not null,
 	note integer not null check(note >= 0 and note <= 10),
 	foreign key (codeArtiste) references Artiste(codeArtiste),
-	foreign key (codeNumero) references Numero(codeNumero)
+	foreign key (codeNumero) references Numero(codeNumero),
+	primary key (codeArtiste, codeNumero)
 );
 
 create table Login
 (
 	codeArtiste integer not null,
 	motDePasse varchar(25) not null,
-	foreign key (codeArtiste) references Artiste(codeArtiste)
+	foreign key (codeArtiste) references Artiste(codeArtiste),
+	primary key (codeArtiste)
 );
