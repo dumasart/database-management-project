@@ -36,7 +36,8 @@ public class SpectacleDOASQL implements SpectacleDAO{
                 spectacle.getPresentateur()+
                 " AND theme = "+ 
                 spectacle.getTheme() +
-                " ;";
+                " WHERE codeSpectacle = "+
+                spectacle.getID()+";";
         int res=Getter.update(cmd);
         if(res==0)
             return false;
