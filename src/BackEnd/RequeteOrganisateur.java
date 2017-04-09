@@ -6,6 +6,9 @@
  */
 package BackEnd;
 
+import Model.Business.Artiste;
+import Model.Business.ArtisteParticipant;
+import Model.Business.ArtistePrincipal;
 import Model.Business.Theme;
 import Model.Business.Evaluation;
 import Model.Business.Expert;
@@ -157,23 +160,68 @@ public class RequeteOrganisateur extends Requete {
     }
     
     /**
+     * Crée un artiste dans la BD
+     * @param a
+     * @return 
+     */
+    public static boolean addArtiste(Artiste a) {
+        String req= "INSERT INTO Artiste VALUES (" +a.getID() + " , " + a.getCodeCirque() + " , " + a.getNom() + " , " + a.getPrenom() + " , " + a.getDate() + " , " + a.getAdresse() + ")";
+        Getter.update(req);
+        return true;
+    }
+
+
+    /**
      * Ajoute un expert dans la BD.
      * Ajoute son/ses thème/s d'expertise dans EstExpertEn
      * @param expert
      * @return boolean
      */
     public static boolean addExpert(Expert expert) {
+        addArtiste(expert);
         String req= "INSERT INTO ArtisteExpert VALUES (" +expert.getID() + ")";
         Iterator<Theme> it = expert.getThemes().iterator();
         while (it.hasNext()) {
             Theme theme = it.next();
             String s2 = "INSERT INTO EstExpertEn VALUES (" + expert.getID() + ", " + theme + ")";
             Getter.update(s2);
-            return true;
         }
         Getter.update(req);
         return true;
     } 
+    
+    
+    /**
+     * Ajoute un participant dans la BD.
+     * Ajoute son/ses thème/s d'expertise dans EstExpertEn
+     * @param ap
+     * @return boolean
+     */
+    public static boolean addParticipant(ArtisteParticipant ap) {
+        addArtiste(ap);
+        String req= "INSERT INTO ArtisteParticipant VALUES (" +ap.getID() + ")";
+        Iterator<Integer> it = ap.getListeNumero().iterator();
+        while (it.hasNext()) {
+            Integer i = it.next();
+            String s2 = "INSERT INTO ParticipeA VALUES (" + ap.getID() + ", " + i + ")";
+            Getter.update(s2);
+        }
+        Getter.update(req);
+        return true;
+    }     
+    
+    /**
+     * crée un article principal
+     * @param ap
+     * @return 
+     */
+    public static boolean addPrincipal (ArtistePrincipal ap) {
+        addParticipant(ap);
+        String req= "INSERT INTO ArtistePrincipal VALUES (" +ap.getNumTel() + ")";
+        return true;
+    }     
+
+
     
     /**
      * Ajoute un spectacle dans la base.
