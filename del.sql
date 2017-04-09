@@ -1,4 +1,5 @@
-drop table Login;
+drop table TypeCompte;
+drop table CompteUtilisateur;
 drop table EstSurnomme;
 drop table ParticipeA;
 drop table AppartientA;

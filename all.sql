@@ -160,10 +160,21 @@ create table Evaluation
 	primary key (codeArtiste, codeNumero)
 );
 
-create table Login
+-- A vérifier : permet d'avoir un type de compte pour les utilisateurs
+-- de la base de données (expert ou admin)
+create table TypeCompte
 (
-	codeArtiste integer not null,
+	typeCompte varchar(20) not null check(userType in ('Expert', 'Admin')),
+	primary key (userType)
+);
+
+create table CompteUtilisateur
+(
+	identifiant integer not null,
 	motDePasse varchar(25) not null,
+	typeCompte varchar(20) not null,		
 	foreign key (codeArtiste) references Artiste(codeArtiste),
+	foreign key (typeCompte) reference TypeCompte(typeCompte),
 	primary key (codeArtiste, motDePasse)
 );
+
