@@ -21,6 +21,17 @@ public class Numero {
     private boolean isCreation;
     private Theme themeNumero;
     
+    /**
+     * Constructeur Numero
+     * @param code
+     * @param titre
+     * @param resume
+     * @param duree
+     * @param nbrArtiste
+     * @param creation
+     * @param artistePrincipal
+     * @param theme 
+     */
     public Numero(int code, String titre, String resume, int duree, int nbrArtiste, boolean creation, int artistePrincipal, String theme) {
         this.codeNumero = code;
         this.titreNumero = titre;
@@ -63,6 +74,9 @@ public class Numero {
     }
     public int getNbrEvaluateur() {
         return this.nbrEvaluateur;
+    }
+    public void setNbrEvaluateur(int nbrEval) {
+        this.nbrEvaluateur = nbrEval;
     }
     @Override
     public String toString() {

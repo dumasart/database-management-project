@@ -24,6 +24,10 @@ public class Evaluation {
         this.note = note;
     }
     
+    public int getCodeNumero(){
+        return this.codeNumero;
+    }
+    
     public int getID(){
         return codeArtiste;
     }
