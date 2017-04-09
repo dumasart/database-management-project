@@ -16,9 +16,9 @@ import java.sql.SQLException;
 class ConnectionSQL {
 
     /* parametres de connexion écrits en dur */
-    private static final String BD_URL    = "";
-    private static final String BD_USER   = "";
-    private static final String BD_PWD    = "";
+    private static final String BD_URL    = "ensioracle1";
+    private static final String BD_USER   = "dumasart";
+    private static final String BD_PWD    = "dumasart";
     private static Connection connection=null;
     /**
      * Méthode pour récupérer une connection à la base de données
