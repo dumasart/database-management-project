@@ -6,11 +6,11 @@
 package Model.DataAccessLayer;
 
 import BackEnd.Getter;
-import BackEnd.ResultatsNumeros;
 import Model.Business.Expert;
 import Model.Business.Numero;
 import Model.Business.Spectacle;
 import Model.Business.Theme;
+import Model.Business.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -59,9 +59,8 @@ public class NumeroDAOSQL implements NumeroDAO {
         }
     }
 
-    @Override
-    public List<Numero> getAllNumero() {
-        String s = "SELECT * FROM Evaluation JOIN Numero ON Evaluation.codeNumero=Numero.codeNumero WHERE codeArtiste="+Factory.getUser().getUserId();
+    public List<Numero> getAllNumero(User u) {
+        String s = "SELECT * FROM Evaluation JOIN Numero ON Evaluation.codeNumero=Numero.codeNumero WHERE codeArtiste="+u.getUserId();
         ArrayList<Numero> nums = new ArrayList<Numero>();
         try {
             ResultSet b = Getter.request(s);
@@ -85,6 +84,34 @@ public class NumeroDAOSQL implements NumeroDAO {
         return nums;
     }
 
+    
+    @Override
+    public List<Numero> getAllNumero() {
+        String s = "SELECT * FROM Evaluation JOIN Numero ON Evaluation.codeNumero=Numero.codeNumero ";
+        ArrayList<Numero> nums = new ArrayList<Numero>();
+        try {
+            ResultSet b = Getter.request(s);
+            while(b.next()) {
+                Numero num = new Numero(
+                        b.getInt("codeNumero"),
+                        b.getString("TitreNumero"),
+                        b.getString("ResumeNumero"),
+                        b.getInt("DureeNumero"),
+                        b.getInt("NbArtiste"),
+                        b.getBoolean("estCreation"),
+                        b.getInt("codeArtiste"),
+                        b.getString("theme")
+                );
+                nums.add(num);
+            }
+        }
+        catch(SQLException e) {
+            System.out.println("SQL erreur : Aucun numéro");
+        }
+        return nums;
+    }
+
+    
     @Override
     public List<Numero> getNumeroByExpert(Expert expert) {
         String s = "SELECT codeNumero, TitreNumero, ResumeNumero, DureeNumero, "
