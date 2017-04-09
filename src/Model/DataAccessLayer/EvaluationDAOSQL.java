@@ -52,7 +52,7 @@ public class EvaluationDAOSQL implements EvaluationDAO {
 
     @Override
     public boolean insert(Evaluation evaluation, Numero numero, Expert expert) {
-        String cmd = "INSERT INTO Evaluation (codeArtiste, codeNumero, evaluation, note) VALUES (" +Factory.getUser().getUserId() + " , "
+        String cmd = "INSERT INTO Evaluation (codeArtiste, codeNumero, evaluation, note) VALUES (" + expert.getID() + " , "
                     + numero.getID() + " , " + evaluation.getEvaluation() + " , " + evaluation.getNote() + " ) ";
         int res=Getter.update(cmd);
         if(res==0)
