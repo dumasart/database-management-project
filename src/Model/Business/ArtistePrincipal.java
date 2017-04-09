@@ -5,6 +5,8 @@
  */
 package Model.Business;
 
+import java.util.ArrayList;
+
 
 /**
  *
@@ -13,8 +15,8 @@ package Model.Business;
 public class ArtistePrincipal extends ArtisteParticipant {
 	private String numTelPrincipal;
 
-	public ArtistePrincipal(int code, int codeCirque, String nom, String prenom, String dateNaissance, String  adresse, String numTelPrincipal) {
-		super(code, codeCirque, nom, prenom, dateNaissance, adresse);
+	public ArtistePrincipal(int code, int codeCirque, String nom, String prenom, String dateNaissance, String  adresse, String numTelPrincipal, ArrayList<String> pseudos) {
+		super(code, codeCirque, nom, prenom, dateNaissance, adresse, pseudos);
 		this.numTelPrincipal = numTelPrincipal;
 	}
 
