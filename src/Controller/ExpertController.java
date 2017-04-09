@@ -6,10 +6,10 @@
 package Controller;
 
 import Model.Numero;
-import Model.DataAccessLayer.EvaluationDAO;
-import Model.DataAccessLayer.EvaluationDAOSQL;
-import Model.DataAccessLayer.NumeroDAO;
-import Model.DataAccessLayer.NumeroDAOSQL;
+import Model.DataTransfertObject.EvaluationDAO;
+import Model.DataTransfertObject.EvaluationDAOSQL;
+import Model.DataTransfertObject.NumeroDAO;
+import Model.DataTransfertObject.NumeroDAOSQL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;

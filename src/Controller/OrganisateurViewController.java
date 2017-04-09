@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import BackEnd.RequeteOrganisateur;
+import DataAccessLayer.RequeteOrganisateur;
 import Model.Artiste;
 import Model.Theme;
 import Model.Expert;

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model.DataAccessLayer;
+package Model.DataTransfertObject;
 
-import BackEnd.Getter;
+import DataAccessLayer.Getter;
 import Model.Evaluation;
 import Model.Expert;
 import Model.Numero;
