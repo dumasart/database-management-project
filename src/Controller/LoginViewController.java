@@ -9,7 +9,6 @@ package Controller;
 import Model.Business.Factory;
 import Model.Business.User;
 import Model.Business.User.UserType;
-import Model.DataAccessLayer.DAO;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;

@@ -7,7 +7,6 @@ package Controller;
 
 import Model.Business.Factory;
 import Model.Business.User;
-import Model.DataAccessLayer.DAO;
 
 /**
  *
@@ -23,7 +22,7 @@ public abstract class LoginController {
      * @return 
      */
     public User identifieUser(String username, String password) {
-        
+        /*
         DAO dao = Factory.getDAO();
         User user = dao.getUserByUserNameAndPassword(username, password);
         
@@ -31,7 +30,7 @@ public abstract class LoginController {
             //Factory.setUser(user);
             return user;
         }
-        
+        */
         return null;
     }
     

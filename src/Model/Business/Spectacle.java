@@ -32,7 +32,7 @@ public class Spectacle {
         this.prixSpectacle = prix;
         this.theme = theme;
         this.codeFestival = codeFest;
-        this.programme = Factory.getDAO().getProgrammeSpectacle(this.codeSpectacle);
+        //this.programme = Factory.getDAO().getProgrammeSpectacle(this.codeSpectacle);
         this.artistePresentateur = codeArtistePresentateur;
     }
     

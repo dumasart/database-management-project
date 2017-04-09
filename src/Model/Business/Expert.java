@@ -14,11 +14,15 @@ import java.util.*;
 public class Expert extends Artiste{
     private ArrayList<Numero> listeNumeros;
     private ArrayList<Theme> themes;
+    private String numeroTel;
     private int nbrNumeroEvaluer; //pour dire s'il peut tjrs évaluer un numéro (nbr < 15)
     
-    public Expert(int code, int codeCirque, String nom, String prenom, String dateNaissance, String  adresse, ArrayList<Numero> listeNumero, ArrayList<Theme> themes) {
-        super(code,codeCirque,nom,prenom,dateNaissance,adresse);
+    public Expert(int code, int codeCirque, String nom, String prenom, String dateNaissance, 
+            String  adresse, ArrayList<Numero> listeNumero, ArrayList<Theme> themes, String numTel, 
+            ArrayList<String> pseudos) {
+        super(code,codeCirque,nom,prenom,dateNaissance,adresse, pseudos);
         this.themes = themes;
+        this.numeroTel = numTel;
         this.nbrNumeroEvaluer = 0;
         this.listeNumeros = listeNumero;
     }
@@ -35,6 +39,14 @@ public class Expert extends Artiste{
     public void ajouteNumero(Numero numero) {
         this.listeNumeros.add(numero);
         this.nbrNumeroEvaluer++;
+    }
+    
+    public String getNumeroTel(){
+        return this.numeroTel;
+    }
+    
+    public void setNumeroTel(String tel){
+        this.numeroTel = tel;
     }
     
     public ArrayList<Theme> getThemes() {

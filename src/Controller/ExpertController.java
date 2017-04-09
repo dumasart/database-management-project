@@ -7,7 +7,6 @@ package Controller;
 
 import Model.Business.Factory;
 import Model.Business.Numero;
-import Model.DataAccessLayer.DAO;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -33,14 +32,14 @@ public class ExpertController {
     }
     
     public void commentaire(int codeNum, String com) {
-        DAO dao = Factory.getDAO();
-        dao.ajouteCommentairePourNumero(codeNum, com);
+        //DAO dao = Factory.getDAO();
+        //dao.ajouteCommentairePourNumero(codeNum, com);
         //updateData();
     }
     
     public void ajouteNote(int codeNum, int note) {
-        DAO dao = Factory.getDAO();
-        dao.ajouteNotePourNumero(codeNum, note);
+        //DAO dao = Factory.getDAO();
+        //dao.ajouteNotePourNumero(codeNum, note);
         //updateData();
     }
     
@@ -49,8 +48,8 @@ public class ExpertController {
     }
     
     public void updateData() {
-        DAO dao = Factory.getDAO();
-        this.listeNumeros = dao.getNumerosPourEvaluer();
+        //DAO dao = Factory.getDAO();
+        //this.listeNumeros = dao.getNumerosPourEvaluer();
     }
     
 }

@@ -5,14 +5,13 @@
  */
 package Model.Business;
 
-import Model.DataAccessLayer.DAO;
 
 /**
  *
  * @author luud
  */
 public class Factory {
-    private static DAO dao = null;
+    //private static DAO dao = null;
     private static User user;
     private static int x = 0;
     
@@ -21,9 +20,11 @@ public class Factory {
         return "" + x;
     }
     
+    /*
     public static synchronized DAO getDAO() {
         return dao == null ? dao = new DAO() : dao;
     }
+    */
     
     public static User getUser() {
         return user;
