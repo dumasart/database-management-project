@@ -12,7 +12,7 @@ import java.sql.*;
  * @author milang
  * class local qui ne sert qu'à effectuer les requètes 
  */
-class Getter {
+public class Getter {
 
     public static ResultSet request(String requete) {
         Connection connection;
