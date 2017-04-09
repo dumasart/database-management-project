@@ -88,7 +88,6 @@ public class LoginViewController extends LoginController implements Initializabl
             passwordField.setStyle(PASSWORD_EMPTY?"-fx-border-color:red":"-fx-border-color:white");
         });
     }    
-
     
     
     /**

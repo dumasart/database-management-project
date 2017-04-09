@@ -88,7 +88,7 @@ public class DAO {
      */    
     public User getUserByUserNameAndPassword(String username, String password) {
         System.out.println("Not yet Implemented!\n");
-        return new User(username, password);
+        return null;
         // TO COMPLETE
     }
 
@@ -114,18 +114,8 @@ public class DAO {
      * @param theme
      * @return liste des meilleurs numéros par theme
      */
-    public Map<Float, Numero> getMeilleursNumerosParTheme(Enum_theme theme) {
-        // Get all numeros par theme
-        Collection<Numero> listeNumerosParTheme = RequeteOrganisateur.getNumerosByTheme(theme).getNumeros();
-        Map<Float, Numero> classement = new TreeMap<Float, Numero>(Collections.reverseOrder());
-        
-        for (Numero num: listeNumerosParTheme) {
-            float noteMoyenne = RequeteOrganisateur.getMoyenneNumero(num);
-            classement.put(noteMoyenne, num);
-        }
-        
-        // Résultats
-        return classement;
+    public Collection<Numero> getMeilleursNumerosParTheme(Enum_theme theme) {
+        return RequeteOrganisateur.getRankedNumeroByTheme(theme).getNumeros();
     }
 
 }
