@@ -119,7 +119,7 @@ create table EstSurnomme
 	codeArtiste integer not null,
 	pseudo varchar(20) not null,
 	foreign key (codeArtiste) references Artiste(codeArtiste),
-	primary key (pseudo)
+	primary key (codeArtiste, pseudo)
 );
 
 create table EstExpertEn
@@ -165,5 +165,5 @@ create table Login
 	codeArtiste integer not null,
 	motDePasse varchar(25) not null,
 	foreign key (codeArtiste) references Artiste(codeArtiste),
-	primary key (codeArtiste)
+	primary key (codeArtiste, motDePasse)
 );
