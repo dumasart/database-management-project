@@ -9,7 +9,6 @@ package BackEnd;
  *
  * @author milang
  */ 
-import Model.Business.Factory;
 import Model.Business.Evaluation;
 import Model.Business.Numero;
 import java.sql.ResultSet;

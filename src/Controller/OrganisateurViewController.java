@@ -5,7 +5,6 @@
  */
 package Controller;
 
-import Model.Business.Factory;
 import BackEnd.RequeteOrganisateur;
 import Model.Business.Artiste;
 import Model.Business.Theme;
@@ -36,27 +35,22 @@ public class OrganisateurViewController implements Initializable {
     private Collection<Expert> listeExperts;
     
     public OrganisateurViewController() {
-        //DAO dao = Factory.getDAO();
         //this.listeExperts = dao.getAllExperts();
     }
     
     public void ajouteExpert(Expert expert) {
-        //DAO dao = Factory.getDAO();
         //dao.ajouteExpert(expert);
     }
     
     public void ajouteArtiste(Artiste artiste) {
-        //DAO dao = Factory.getDAO();
         //dao.ajouteArtiste(artiste);
     }
     
     public void ajouteSpectacle(Spectacle spectacle) {
-        //DAO dao = Factory.getDAO();
         //dao.ajouteSpectacle(spectacle);
     }  
     
     public void ajouteNumero(Numero numero) {
-        //DAO dao = Factory.getDAO();
         //dao.ajouteNumero(numero);
         
         ArrayList<Expert> liste1 = new ArrayList<>(); // expert du même thème

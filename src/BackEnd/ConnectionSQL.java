@@ -13,23 +13,26 @@ import java.sql.SQLException;
  *
  * @author milang
  */
-class ConnectionPacket {
+class ConnectionSQL {
 
     /* parametres de connexion écrits en dur */
     private static final String BD_URL    = "";
     private static final String BD_USER   = "";
     private static final String BD_PWD    = "";
-    
+    private static Connection connection=null;
     /**
      * Méthode pour récupérer une connection à la base de données
      * @return 
      */
     static Connection getDBConnection() throws RuntimeException {
         try {
-            //TODO 
-            /* quand on aura fini il faudrait pouvoir changer le type de base de donnée */
-            Class.forName("oracle.jdbc.OracleDriver");
-            return DriverManager.getConnection(BD_URL,BD_USER,BD_PWD);
+            if (connection == null) {
+                Class.forName("oracle.jdbc.OracleDriver");
+                connection = DriverManager.getConnection(BD_URL, BD_USER, BD_PWD);
+                return connection;
+            } else {
+                return connection;
+            }
         }
         catch(SQLException ex) {
             throw new RuntimeException("Impossible de se connecter à la base de donnée!\n",ex);

@@ -5,7 +5,6 @@
  */
 package Controller;
 
-import Model.Business.Factory;
 import Model.Business.User;
 
 /**
@@ -14,6 +13,7 @@ import Model.Business.User;
  */
 public abstract class LoginController {
     
+    //private UserDAO dao = new UserDAOSQL();
         
     /**
      * Méthode pour gérer la vérification de l'identifiant et du mot de passe
@@ -23,11 +23,9 @@ public abstract class LoginController {
      */
     public User identifieUser(String username, String password) {
         /*
-        DAO dao = Factory.getDAO();
         User user = dao.getUserByUserNameAndPassword(username, password);
         
         if (user != null) {
-            //Factory.setUser(user);
             return user;
         }
         */

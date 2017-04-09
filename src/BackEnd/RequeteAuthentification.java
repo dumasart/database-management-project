@@ -5,7 +5,6 @@
  */
 package BackEnd;
 
-import Model.Business.Factory;
 import Model.Business.User;
 import Model.Business.User.UserType;
 import static Model.Business.User.UserType.EXPERT;
@@ -26,16 +25,14 @@ public class RequeteAuthentification extends Requete{
      * @return 
      */
     public static boolean setPassword(String newPwd, String oldPwd){
-        String test = "SELECT * FROM Login WHERE codeArtiste = " + Factory.getUser().getUserId();
+        String test = "SELECT * FROM Login WHERE codeArtiste = " + .getUser().getUserId();
         //
         try {
             ResultSet b = Getter.request(test);
             if (b.next()) {
                 String pwd = b.getString("motDePasse");
                 if (pwd.equals(oldPwd)){
-                    Getter.request("UPDATE Login Set MotDePasse="+newPwd+" WHERE codeArtiste = " + Factory.getUser().getUserId());
-                    // TODO: Factory.setUser est mal utilisé
-                    // Factory.setUser(Factory.getUser().getUserId(), newPwd);
+                    //Getter.request("UPDATE Login Set MotDePasse="+newPwd+" WHERE codeArtiste = " + Factory.getUser().getUserId());
                     return true;
                 }
             }
@@ -61,8 +58,6 @@ public class RequeteAuthentification extends Requete{
             ResultSet b = Getter.request(test);
             if (b.next()) {
                 Getter.request("INSERT INTO Login VALUES ( " + codeArt + " , " + Pwd+ " )");
-                // TODO: Factory.setUser est mal utilisé
-                // Factory.setUser(codeArt, Pwd);
                 return true;
             }
         }
@@ -92,12 +87,10 @@ public class RequeteAuthentification extends Requete{
                     b = Getter.request(cmd1);
                     if (b.next()){
                         toi = new User(login, Pwd, ORGANISATEUR);
-                        Factory.setUser(toi);
                     }
                     b = Getter.request(cmd2);
                     if (b.next()){
                         toi = new User(login, Pwd, EXPERT);
-                        Factory.setUser(toi);
                     }
                     return true;
                 }
@@ -144,7 +137,6 @@ public class RequeteAuthentification extends Requete{
     
     
     public static boolean deconnexion(){
-        Factory.resetUser();
         return true;
     }
     
