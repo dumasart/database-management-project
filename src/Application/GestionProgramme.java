@@ -5,7 +5,7 @@
  */
 package Application;
 
-import Model.Business.Spectacle;
+import Model.Spectacle;
 import java.util.Collection;
 
 /**

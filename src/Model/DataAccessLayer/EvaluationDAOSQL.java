@@ -19,6 +19,9 @@ import java.util.List;
  * @author milang
  */
 public class EvaluationDAOSQL implements EvaluationDAO {
+    
+    //TODO à voir si on en à besoin car on est parti du principe qu'une
+    // évaluation ne peut pas etre modifiée après validation (saisie)
     @Override
     public boolean update(Evaluation evaluation) {
         String cmd = "UPDATE Evaluation SET note = " +

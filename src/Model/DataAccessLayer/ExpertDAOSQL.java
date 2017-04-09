@@ -6,8 +6,6 @@
 package Model.DataAccessLayer;
 
 import BackEnd.Getter;
-import BackEnd.ResultatsExperts;
-import Model.Artiste;
 import Model.Expert;
 import Model.Numero;
 import Model.Theme;

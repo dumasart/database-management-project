@@ -5,6 +5,7 @@
  */
 package Model.DataAccessLayer;
 
+import BackEnd.Getter;
 import Model.Artiste;
 
 /**
@@ -18,9 +19,22 @@ public class ArtisteDAOSQL implements ArtisteDAO {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * Ajoute un artiste dans la BD
+     * @param artiste
+     * @return true si l'insertion s'est bien passée
+     */
     @Override
     public boolean insert(Artiste artiste) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String req= "INSERT INTO Artiste VALUES (" +artiste.getID() + " , " +
+                artiste.getCodeCirque() + " , " + artiste.getNom() + " , " +
+                artiste.getPrenom() + " , " + artiste.getDate() + " , " +
+                artiste.getAdresse() + ")";
+        int res = Getter.update(req);
+        if(res==0)
+            return false;
+        else 
+            return true;
     }
 
     @Override
