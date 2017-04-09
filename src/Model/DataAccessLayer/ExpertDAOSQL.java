@@ -7,6 +7,7 @@ package Model.DataAccessLayer;
 
 import BackEnd.Getter;
 import BackEnd.ResultatsExperts;
+import Model.Business.Artiste;
 import Model.Business.Expert;
 import Model.Business.Numero;
 import Model.Business.Theme;
@@ -21,18 +22,24 @@ import java.util.List;
  * @author romain
  */
 public class ExpertDAOSQL implements ExpertDAO {
+    private ArtisteDAOSQL artisteDAOSQL = new ArtisteDAOSQL();
 
     @Override
     public boolean update(Expert expert) {
-        //call ArtisteDAO.update
+        artisteDAOSQL.update(expert);
         String up = "UPDATE ArtisteExpert SET NumTelExpert=" + expert.getNumeroTel()
                 + " WHERE codeArtiste=" + expert.getId();
-        Getter.update(up);
-        return true;
+        int rs = Getter.update(up);
+        if (rs == 0) {
+            return false;
+        } else {
+            return true;
+        }
     }
     
     @Override
     public boolean insert(Expert expert) {
+        artisteDAOSQL.insert(expert);
         String req= "INSERT INTO ArtisteExpert VALUES (" +expert.getID() + ")";
         Iterator<Theme> it = expert.getThemes().iterator();
         while (it.hasNext()) {
@@ -46,7 +53,14 @@ public class ExpertDAOSQL implements ExpertDAO {
 
     @Override
     public boolean delete(Expert expert) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        artisteDAOSQL.delete(expert);
+        String cmd = "DELETE FROM ArtisteExpert WHERE CodeArtiste=" + expert.getId();
+        int rs = Getter.update(cmd);
+        if (rs == 0) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     @Override

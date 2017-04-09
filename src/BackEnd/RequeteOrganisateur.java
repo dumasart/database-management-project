@@ -168,7 +168,7 @@ public class RequeteOrganisateur extends Requete {
         Getter.update(req);
         return true;
     }
-    
+     
     /**
      * Ajoute un numero à un spectacle dans la BD.
      * @param spectacle
