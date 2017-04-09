@@ -5,10 +5,10 @@
  */
 package Model.DataAccessLayer;
 
-import Model.Business.Expert;
-import Model.Business.Numero;
-import Model.Business.Spectacle;
-import Model.Business.Theme;
+import Model.Expert;
+import Model.Numero;
+import Model.Spectacle;
+import Model.Theme;
 import java.util.List;
 
 /**

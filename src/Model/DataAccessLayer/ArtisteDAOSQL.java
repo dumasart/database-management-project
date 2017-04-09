@@ -5,7 +5,7 @@
  */
 package Model.DataAccessLayer;
 
-import Model.Business.Artiste;
+import Model.Artiste;
 
 /**
  *

@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Model.Business.User;
+import Model.User;
 
 /**
  *

@@ -5,7 +5,7 @@
  */
 package Model.DataAccessLayer;
 
-import Model.Business.User;
+import Model.User;
 
 
 /**

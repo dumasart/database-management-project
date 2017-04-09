@@ -7,10 +7,10 @@ package Model.DataAccessLayer;
 
 import BackEnd.Getter;
 import BackEnd.ResultatsExperts;
-import Model.Business.Artiste;
-import Model.Business.Expert;
-import Model.Business.Numero;
-import Model.Business.Theme;
+import Model.Artiste;
+import Model.Expert;
+import Model.Numero;
+import Model.Theme;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -22,11 +22,11 @@ import java.util.List;
  * @author romain
  */
 public class ExpertDAOSQL implements ExpertDAO {
-    private ArtisteDAOSQL artisteDAOSQL = new ArtisteDAOSQL();
+    private ArtisteDAO artisteDAO = new ArtisteDAOSQL();
 
     @Override
     public boolean update(Expert expert) {
-        artisteDAOSQL.update(expert);
+        artisteDAO.update(expert);
         String up = "UPDATE ArtisteExpert SET NumTelExpert=" + expert.getNumeroTel()
                 + " WHERE codeArtiste=" + expert.getId();
         int rs = Getter.update(up);
@@ -39,7 +39,7 @@ public class ExpertDAOSQL implements ExpertDAO {
     
     @Override
     public boolean insert(Expert expert) {
-        artisteDAOSQL.insert(expert);
+        artisteDAO.insert(expert);
         String req= "INSERT INTO ArtisteExpert VALUES (" +expert.getID() + ")";
         Iterator<Theme> it = expert.getThemes().iterator();
         while (it.hasNext()) {
@@ -53,7 +53,7 @@ public class ExpertDAOSQL implements ExpertDAO {
 
     @Override
     public boolean delete(Expert expert) {
-        artisteDAOSQL.delete(expert);
+        artisteDAO.delete(expert);
         String cmd = "DELETE FROM ArtisteExpert WHERE CodeArtiste=" + expert.getId();
         int rs = Getter.update(cmd);
         if (rs == 0) {

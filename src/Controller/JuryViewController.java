@@ -5,9 +5,9 @@
  */
 package Controller;
 
-import Model.Business.Theme;
-import Model.Business.Numero;
-import Model.Business.Spectacle;
+import Model.Theme;
+import Model.Numero;
+import Model.Spectacle;
 import java.util.Collection;
 import java.util.Map;
 

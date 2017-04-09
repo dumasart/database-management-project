@@ -6,8 +6,8 @@
 package View;
 
 import Controller.ExpertConsoleController;
-import Model.Business.Numero;
-import Model.Business.User;
+import Model.Numero;
+import Model.User;
 import java.util.Iterator;
 import java.util.Scanner;
 

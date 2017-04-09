@@ -5,15 +5,14 @@
  */
 package Controller;
 
-import Model.Business.User;
-import Model.Business.User.UserType;
+import Model.User;
+import Model.User.UserType;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.Event;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;

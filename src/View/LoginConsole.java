@@ -6,7 +6,7 @@
 package View;
 
 import Controller.LoginConsoleController;
-import Model.Business.User;
+import Model.User;
 import java.util.Scanner;
 
 /**

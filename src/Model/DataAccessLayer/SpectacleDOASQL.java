@@ -6,9 +6,9 @@
 package Model.DataAccessLayer;
 
 import BackEnd.Getter;
-import Model.Business.Numero;
-import Model.Business.Spectacle;
-import Model.Business.Theme;
+import Model.Numero;
+import Model.Spectacle;
+import Model.Theme;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

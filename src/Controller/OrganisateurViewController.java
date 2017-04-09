@@ -6,11 +6,11 @@
 package Controller;
 
 import BackEnd.RequeteOrganisateur;
-import Model.Business.Artiste;
-import Model.Business.Theme;
-import Model.Business.Expert;
-import Model.Business.Numero;
-import Model.Business.Spectacle;
+import Model.Artiste;
+import Model.Theme;
+import Model.Expert;
+import Model.Numero;
+import Model.Spectacle;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;

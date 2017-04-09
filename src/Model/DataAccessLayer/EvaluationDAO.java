@@ -5,9 +5,9 @@
  */
 package Model.DataAccessLayer;
 
-import Model.Business.Evaluation;
-import Model.Business.Expert;
-import Model.Business.Numero;
+import Model.Evaluation;
+import Model.Expert;
+import Model.Numero;
 import java.util.List;
 
 /**

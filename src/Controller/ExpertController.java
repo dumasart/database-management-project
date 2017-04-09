@@ -5,7 +5,11 @@
  */
 package Controller;
 
-import Model.Business.Numero;
+import Model.Numero;
+import Model.DataAccessLayer.EvaluationDAO;
+import Model.DataAccessLayer.EvaluationDAOSQL;
+import Model.DataAccessLayer.NumeroDAO;
+import Model.DataAccessLayer.NumeroDAOSQL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -16,9 +20,25 @@ import java.util.Iterator;
  */
 public class ExpertController {
     
+    /**
+     * 
+     */
     private Collection<Numero> listeNumeros;
     
+    /**
+     * 
+     */
+    private NumeroDAO numeroDAO = new NumeroDAOSQL();
     
+    /**
+     * 
+     */
+    private EvaluationDAO evaluationDAO = new EvaluationDAOSQL();  
+    
+    /**
+     * 
+     * @return 
+     */
     public Iterator<Numero> getNumerosIterator() {
         if (this.listeNumeros != null) {
             return this.listeNumeros.iterator();

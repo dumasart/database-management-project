@@ -6,7 +6,7 @@
 package Model.DataAccessLayer;
 
 import BackEnd.Getter;
-import Model.Business.User;
+import Model.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

@@ -6,10 +6,9 @@
 package Model.DataAccessLayer;
 
 import BackEnd.Getter;
-import BackEnd.ResultatsEvaluations;
-import Model.Business.Evaluation;
-import Model.Business.Expert;
-import Model.Business.Numero;
+import Model.Evaluation;
+import Model.Expert;
+import Model.Numero;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
