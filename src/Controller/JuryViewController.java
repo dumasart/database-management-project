@@ -6,7 +6,7 @@
 package Controller;
 
 import Model.Business.Factory;
-import Model.Business.Enum_theme;
+import Model.Business.Theme;
 import Model.Business.Numero;
 import Model.Business.Spectacle;
 import Model.DataAccessLayer.DAO;
@@ -22,10 +22,10 @@ public class JuryViewController {
     private Collection<Spectacle> listeSpectacles;
     
     public JuryViewController() {
-        updateData(Enum_theme.Acrobatie);
+        updateData(Theme.Acrobatie);
     }
     
-    public void updateData(Enum_theme theme) {
+    public void updateData(Theme theme) {
         DAO dao = Factory.getDAO();
         this.listeMeilleursNumeros = dao.getMeilleursNumerosParTheme(theme);
         this.listeSpectacles = dao.getSpectacles();

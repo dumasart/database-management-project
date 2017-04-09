@@ -20,11 +20,11 @@ public class Spectacle {
     private double prixSpectacle;
     private int artistePresentateur;
     private int codeFestival;
-    private Enum_theme theme;
+    private Theme theme;
     private Collection<Numero> programme;
     
     
-    public Spectacle(int code, String jour, int debut, int fin, double prix, int codeArtistePresentateur, Enum_theme theme, int codeFest) {
+    public Spectacle(int code, String jour, int debut, int fin, double prix, int codeArtistePresentateur, Theme theme, int codeFest) {
         this.codeSpectacle = code;
         this.jourSpectacle = jour;
         this.heureDebut = debut;
@@ -40,7 +40,7 @@ public class Spectacle {
         return this.codeFestival;
     }
     
-    public Enum_theme getTheme(){
+    public Theme getTheme(){
         return this.theme;
     }
     

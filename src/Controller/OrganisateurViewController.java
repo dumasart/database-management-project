@@ -8,7 +8,7 @@ package Controller;
 import Model.Business.Factory;
 import BackEnd.RequeteOrganisateur;
 import Model.Business.Artiste;
-import Model.Business.Enum_theme;
+import Model.Business.Theme;
 import Model.Business.Expert;
 import Model.Business.Numero;
 import Model.Business.Spectacle;
@@ -63,7 +63,7 @@ public class OrganisateurViewController implements Initializable {
         ArrayList<Expert> liste1 = new ArrayList<>(); // expert du même thème
         ArrayList<Expert> liste2 = new ArrayList<>(); // expert d'un theme différent
         RequeteOrganisateur req = new RequeteOrganisateur();
-        Enum_theme theme = numero.getTheme();
+        Theme theme = numero.getTheme();
         
         for(Expert exp : listeExperts) {
             if(exp.getThemes().contains(theme) && liste1.size() < 3) {
@@ -79,16 +79,21 @@ public class OrganisateurViewController implements Initializable {
         
         if (liste1.size() < 3 || liste2.size() < 2) {
             //TODO: Gérer l'ajout d'expert à la main
-            System.out.println("Saisissez un jury à la main :");
+            System.out.println("Saisissez un expert à la main :");
+            if (liste1.size() < 3) {
+                System.out.println("Voici la liste des experts :");
+                req.getExpertsAvailable(liste1);
+            }
         } else {
 
             for (int i = 0; i < liste1.size(); i++) {
                 req.associeNumeroExpert(liste1.get(i), numero);
                 //Incrémenter le nombre de numéros
-                //MAJ BD
+                liste1.get(i).ajouteNumero(numero); // DONE ?
             }
             for (int j = 0; j < liste2.size(); j++) {
                 req.associeNumeroExpert(liste2.get(j), numero);
+                liste2.get(j).ajouteNumero(numero);
             }
         }
     }

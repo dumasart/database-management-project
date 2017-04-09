@@ -13,10 +13,10 @@ import java.util.*;
  */
 public class Expert extends Artiste{
     private ArrayList<Numero> listeNumeros;
-    private ArrayList<Enum_theme> themes;
+    private ArrayList<Theme> themes;
     private int nbrNumeroEvaluer; //pour dire s'il peut tjrs évaluer un numéro (nbr < 15)
     
-    public Expert(int code, int codeCirque, String nom, String prenom, String dateNaissance, String  adresse, ArrayList<Numero> listeNumero, Enum_theme theme) {
+    public Expert(int code, int codeCirque, String nom, String prenom, String dateNaissance, String  adresse, ArrayList<Numero> listeNumero, Theme theme) {
         super(code,codeCirque,nom,prenom,dateNaissance,adresse);
         this.themes.add(theme);
         this.nbrNumeroEvaluer = 0;
@@ -37,7 +37,7 @@ public class Expert extends Artiste{
         this.nbrNumeroEvaluer++;
     }
     
-    public ArrayList<Enum_theme> getThemes() {
+    public ArrayList<Theme> getThemes() {
         return this.themes;
     }
     

@@ -19,16 +19,26 @@ public class Numero {
     static int nbrEvaluateur; //le nombre d'expert qui évalue le numéro
     private boolean valide;
     private boolean isCreation;
+    private Theme themeNumero;
     
-    private Enum_theme themeNumero;
-    
+    /**
+     * Constructeur Numero
+     * @param code
+     * @param titre
+     * @param resume
+     * @param duree
+     * @param nbrArtiste
+     * @param creation
+     * @param artistePrincipal
+     * @param theme 
+     */
     public Numero(int code, String titre, String resume, int duree, int nbrArtiste, boolean creation, int artistePrincipal, String theme) {
         this.codeNumero = code;
         this.titreNumero = titre;
         this.resumeNumero = resume;
         this.dureeNumero = duree;
         this.nbrArtisteNumero = nbrArtiste;
-        this.themeNumero = Enum_theme.valueOf(theme);
+        this.themeNumero = Theme.valueOf(theme);
         this.valide = true;
         this.nbrEvaluateur = 0;
         this.codeArtistePrincipal = artistePrincipal;
@@ -56,7 +66,7 @@ public class Numero {
     public boolean getCreation() {
         return this.isCreation;
     }
-    public Enum_theme getTheme() {
+    public Theme getTheme() {
         return this.themeNumero;
     }
     public boolean getValid() {
@@ -64,6 +74,9 @@ public class Numero {
     }
     public int getNbrEvaluateur() {
         return this.nbrEvaluateur;
+    }
+    public void setNbrEvaluateur(int nbrEval) {
+        this.nbrEvaluateur = nbrEval;
     }
     @Override
     public String toString() {

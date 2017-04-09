@@ -10,7 +10,7 @@ import BackEnd.RequeteOrganisateur;
 import BackEnd.RequeteExpert;
 import BackEnd.RequeteOrganisateur;
 import Model.Business.Artiste;
-import Model.Business.Enum_theme;
+import Model.Business.Theme;
 import Model.Business.Expert;
 import Model.Business.Numero;
 import Model.Business.Spectacle;
@@ -113,7 +113,7 @@ public class DAO {
      * @param theme
      * @return liste des meilleurs numéros par theme
      */
-    public Collection<Numero> getMeilleursNumerosParTheme(Enum_theme theme) {
+    public Collection<Numero> getMeilleursNumerosParTheme(Theme theme) {
         return RequeteOrganisateur.getRankedNumeroByTheme(theme).getNumeros();
     }
 
