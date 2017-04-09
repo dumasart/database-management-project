@@ -51,75 +51,9 @@ public class RequeteOrganisateur extends Requete {
         }
         return null;
     }
-    public static ResultatsNumeros getNumeros() {
-        //USELESS
-        System.out.println("Not yet Implemented!\n");
-        return null;
-    }
-    
-    
-    /**
-     * Prendre tous les numéros de thème theme.
-     * @param theme
-     * @return ResultatsNumeros
-     */
-    public static ResultatsNumeros getNumerosByTheme(Theme theme) {
-        String s = "SELECT * FROM Numero WHERE theme = " + theme;
-        ResultatsNumeros eval = new ResultatsNumeros();
 
-        try {
-            ResultSet b = Getter.request(s);
-            while(b.next()) {
-                Numero num = new Numero(
-                        b.getInt("codeNumero"),
-                        b.getString("titreNumero"),
-                        b.getString("resumeNumero"),
-                        b.getInt("dureeNumero"),
-                        b.getInt("nbArtisteNumero"),
-                        b.getBoolean("estCreation"),
-                        b.getInt("codeArtiste"),
-                        b.getString("themeNumero")                        
-                );
-                eval.add(num);
-            }
-        }
-        catch(SQLException e) {
-            System.out.println("Erreur SQL : Aucun numéro au thème" + theme);
-
-        }
-        return eval;
-
-    }
-    
-    /**
-     * Prendre tous les numeros du spectacle.
-     * @param codeSpec
-     * @return ResultatsNumeros
-     */
-    public static ResultatsNumeros getNumerosInSpectacle(int codeSpec) {
-        String s = "SELECT * FROM NumeroAccepte WHERE codeSpectacle = " + codeSpec;
-        ResultatsNumeros res = new ResultatsNumeros();
-        try {
-            ResultSet b = Getter.request(s);
-            while(b.next()) {
-                Numero num = new Numero(
-                    b.getInt("codeNumero"),
-                    b.getString("titreNumero"),
-                    b.getString("resumeNumero"),
-                    b.getInt("dureeNumero"),
-                    b.getInt("nbArtisteNumero"),
-                    b.getBoolean("estCreation"),
-                    b.getInt("codeArtiste"),
-                    b.getString("themeNumero")                        
-                );
-                res.add(num);
-            }
-        } catch (SQLException e) {
-            System.out.println("Erreur SQL : Spectacle inconnu");
-        }
-        return res;
-    }
-    
+   
+ 
     /**
      * Prendre toutes les evaluations relatives au numero.
      * @param numero
@@ -236,17 +170,6 @@ public class RequeteOrganisateur extends Requete {
     }
     
     /**
-     * Ajoute un numéro dans la BD.
-     * @param numero
-     * @return boolean
-     */
-    public static boolean addNumero(Numero numero) {
-        String cmd = "INSERT INTO Numero VALUES (" + numero.getID() +", " + numero.getTitre() + ", " + numero.getResume() + ", " + numero.getDuree()
-                + ", " + numero.getNbArtiste() + ", " + numero.getCreation() + ", " + numero.getArtistePrincipal() + ", " + numero.getTheme() + ")";
-        Getter.update(cmd);
-        return true;
-    } 
-    /**
      * Ajoute un numero à un spectacle dans la BD.
      * @param spectacle
      * @param numero
@@ -271,41 +194,6 @@ public class RequeteOrganisateur extends Requete {
         return true;
     }
     
-    /**
-     * Renvoi les numéros du thème donné classés par moyenne des notes
-     * Ne renvoi pas la moyenne des notes !
-     * Les numéros sont ajoutés dans ResultatsNumeros du mieux noté au moindre
-     * Le numéro le mieux noté est donc le premier de l'ArrayList...
-     * @param theme
-     * @return ResultatsNumeros
-     */
-    public static ResultatsNumeros getRankedNumeroByTheme(Theme theme) {
-        String cmd = "SELECT Numero.codeNumero, TitreNumero, ResumeNumero, DureeNumero, NbArtisteNumero, EstCreation, CodeArtiste, Theme "
-                + "FROM Numero FULL JOIN (SELECT CodeNumero, AVG(Note) as Moyenne FROM Evaluation GROUP BY CodeNumero) Moy "
-                + "ON Numero.CodeNumero=Moy.CodeNumero WHERE Theme=" + theme
-                + "ORDER BY Moyenne DESC";
-        ResultatsNumeros res = new ResultatsNumeros();
-        try {
-            ResultSet b = Getter.request(cmd);
-            while(b.next()) {
-                Numero num = new Numero(
-                        b.getInt("codeNumero"),
-                        b.getString("titreNumero"),
-                        b.getString("resumeNumero"),
-                        b.getInt("dureeNumero"),
-                        b.getInt("nbArtisteNumero"),
-                        b.getBoolean("estCreation"),
-                        b.getInt("codeArtiste"),
-                        b.getString("themeNumero")                        
-                );
-                res.add(num);
-            }
-        }
-        catch(SQLException e) {
-            System.out.println("Erreur SQL : Aucun numéro au thème" + theme);
-        }
-        return res;
-    }
     
     public static ResultatsExperts getExpertsAvailable(ArrayList<Expert> listeExp) {
         String cmd = "SELECT codeArtiste FROM ArtisteExpert";
