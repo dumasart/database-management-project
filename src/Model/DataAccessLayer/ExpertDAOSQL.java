@@ -24,7 +24,11 @@ public class ExpertDAOSQL implements ExpertDAO {
 
     @Override
     public boolean update(Expert expert) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //call ArtisteDAO.update
+        String up = "UPDATE ArtisteExpert SET NumTelExpert=" + expert.getNumeroTel()
+                + " WHERE codeArtiste=" + expert.getId();
+        Getter.update(up);
+        return true;
     }
     
     @Override

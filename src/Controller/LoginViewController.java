@@ -5,8 +5,6 @@
  */
 package Controller;
 
-
-import Model.Business.Factory;
 import Model.Business.User;
 import Model.Business.User.UserType;
 import java.io.IOException;

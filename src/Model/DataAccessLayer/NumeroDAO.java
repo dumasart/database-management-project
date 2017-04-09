@@ -8,6 +8,7 @@ package Model.DataAccessLayer;
 import Model.Business.Expert;
 import Model.Business.Numero;
 import Model.Business.Spectacle;
+import Model.Business.Theme;
 import java.util.List;
 
 /**
@@ -21,6 +22,8 @@ public interface NumeroDAO {
     public List<Numero> getAllNumero();
     public List<Numero> getNumeroByExpert(Expert expert);
     public List<Numero> getNumerosBySpectacle(Spectacle spectacle);
+    public List<Numero> getNumerosRankedByTheme(Theme theme);
+    public List<Numero> getNumerosByTheme(Theme theme);
     
     //TODO à compléter
 }
