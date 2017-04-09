@@ -41,7 +41,6 @@ public class Getter {
             connection = ConnectionSQL.getDBConnection();
             stmt = connection.createStatement();
             res = stmt.executeUpdate(request);
-            // libère les ressources de la base de données
             connection.close();
             stmt.close();
             return res;

@@ -6,6 +6,7 @@
 package Model.DataAccessLayer;
 
 import BackEnd.Getter;
+import Model.Business.Numero;
 import Model.Business.Spectacle;
 import Model.Business.Theme;
 import java.sql.ResultSet;
@@ -21,17 +22,47 @@ public class SpectacleDOASQL implements SpectacleDAO{
 
     @Override
     public boolean update(Spectacle spectacle) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String cmd = "UPDATE Spectacle SET codeFestival = " +
+                spectacle.getCodeFestival() +
+                " AND jourSpectacle = " +
+                spectacle.getJour() +
+                " AND heureDebut = " +
+                spectacle.getDebut() +
+                " AND heureFin = " +
+                spectacle.getFin() +
+                " AND prixSpectacle = " +
+                spectacle.getPrix() +
+                " AND codeArtiste = " +
+                spectacle.getPresentateur()+
+                " AND theme = "+ 
+                spectacle.getTheme() +
+                " ;";
+        int res=Getter.update(cmd);
+        if(res==0)
+            return false;
+        else 
+            return true;   
     }
 
     @Override
     public boolean insert(Spectacle spectacle) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String req = "INSERT INTO Spectacle (CodeSpectacle, JourSpectacle, HeureDebut, HeureFin, PrixSpectacle, CodeArtiste, Theme, codeFestival) VALUES (" + spectacle.getID() + " , " + spectacle.getJour() + " , " + spectacle.getDebut() + " , " + spectacle.getFin() + " , " + spectacle.getPrix()
+                + " , " + spectacle.getPresentateur() + " , " + spectacle.getTheme() + " , " + spectacle.getCodeFestival() + ")";
+        int res=Getter.update(req);
+        if(res==0)
+            return false;
+        else 
+            return true;
     }
 
     @Override
     public boolean delete(Spectacle spectacle) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String cmd = "DELETE from SPECTACLE WHERE CODESPECTACLE = "+spectacle.getID()+";";
+        int res=Getter.update(cmd);
+        if(res==0)
+            return false;
+        else 
+            return true;
     }
 
     @Override
@@ -59,5 +90,15 @@ public class SpectacleDOASQL implements SpectacleDAO{
         }
         return null;
     }
-    
+
+    @Override
+    public boolean addNumero(Spectacle spectacle, Numero numero,int heure) {
+        String cmd = "INSERT INTO NumeroAccepte(codeNumero, codeSpectacle, HeureNumero ) VALUES ( " + numero.getID() + " , " + spectacle.getID() + " , " + heure + ")";
+        int res=Getter.update(cmd);
+        if(res==0)
+            return false;
+        else 
+            return true;
+    }
+        
 }
