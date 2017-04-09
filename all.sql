@@ -51,7 +51,7 @@ create table ArtistePrincipal
 (
 	codeArtiste integer  not null, 
 	NumTelPrincipal varchar(20) not null,
-	foreign key (codeArtiste) references Artiste(codeArtiste),
+	foreign key (codeArtiste) references ArtisteParticipant(codeArtiste),
 	primary key (codeArtiste)
 );
 
