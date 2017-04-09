@@ -110,10 +110,10 @@ public class RequeteAuthentification extends Requete{
     }
     
     /**
-     * Permet de se connecter à l'aide d'un login et d'un password
+     * prend un user à l'aide d'un login et d'un password
      * @param login
      * @param Pwd
-     * @return 
+     * @return user
      */
     public static User getUser(String login, String Pwd){
         String test = "SELECT * FROM Login WHERE codeArtiste = " + login;
