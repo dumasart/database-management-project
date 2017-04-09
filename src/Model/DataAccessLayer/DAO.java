@@ -5,6 +5,7 @@
  */
 package Model.DataAccessLayer;
 
+import BackEnd.RequeteAuthentification;
 import BackEnd.RequeteOrganisateur;
 import BackEnd.RequeteExpert;
 import BackEnd.RequeteOrganisateur;
@@ -87,9 +88,7 @@ public class DAO {
      * @return un user (expert ou organisateur)
      */    
     public User getUserByUserNameAndPassword(String username, String password) {
-        System.out.println("Not yet Implemented!\n");
-        return null;
-        // TO COMPLETE
+        return RequeteAuthentification.getUser(username, password);
     }
 
     /**

@@ -80,7 +80,7 @@ public class RequeteAuthentification extends Requete{
      */
     public static boolean connexion(String login, String Pwd){
         String test = "SELECT * FROM Login WHERE codeArtiste = " + login;
-        String cmd1 = "SELECT * FROM ArtisteOraganisateur WHERE codeArtiste = " + login;
+        String cmd1 = "SELECT * FROM ArtisteOrganisateur WHERE codeArtiste = " + login;
         String cmd2 = "SELECT * FROM ArtisteExpert WHERE codeArtiste = " + login;
         User toi;
         try {
@@ -107,6 +107,39 @@ public class RequeteAuthentification extends Requete{
             System.out.println("SQL erreur : Aucun numéro");
         }
         return false;
+    }
+    
+    /**
+     * Permet de se connecter à l'aide d'un login et d'un password
+     * @param login
+     * @param Pwd
+     * @return 
+     */
+    public static User getUser(String login, String Pwd){
+        String test = "SELECT * FROM Login WHERE codeArtiste = " + login;
+        String cmd1 = "SELECT * FROM ArtisteOrganisateur WHERE codeArtiste = " + login;
+        String cmd2 = "SELECT * FROM ArtisteExpert WHERE codeArtiste = " + login;
+        User user = null;
+        try {
+            ResultSet b = Getter.request(test);
+            if (b.next()) {
+                String pwd = b.getString("motDePasse");
+                if (pwd.equals(Pwd)){
+                    // TODO: Factory.setUser est mal ultilisé
+                    b = Getter.request(cmd1);
+                    if (b.next()){
+                        user = new User(login, Pwd, ORGANISATEUR);
+                    }
+                    b = Getter.request(cmd2);
+                    if (b.next()){
+                        user = new User(login, Pwd, EXPERT);
+                    }
+                }
+            }
+        } catch(SQLException e) {
+            System.out.println("SQL erreur : Aucun numéro");
+        }
+        return user;
     }
     
     
