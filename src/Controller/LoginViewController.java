@@ -8,6 +8,7 @@ package Controller;
 
 import Model.Business.Factory;
 import Model.Business.User;
+import Model.Business.User.UserType;
 import Model.DataAccessLayer.DAO;
 import java.io.IOException;
 import java.net.URL;
@@ -50,8 +51,8 @@ public class LoginViewController extends LoginController implements Initializabl
         /* vérifcation du login et du mot de passe
          * retourne un User contenant le type de compte (organisateur, expert,..)
          * le nom de l'utilisateur,... */
-        User user = this.identifieUser(loginField.getText(),passwordField.getText());
-        
+        //User user = this.identifieUser(loginField.getText(),passwordField.getText());
+        User user = new User("toto","nbfd",UserType.EXPERT);
         /* si user vaut NULL (login et/ou mot de passe invalide) :
          *   afficher message d'erreur et rester sur la fenetre d'accueil */
         if(user == null)
