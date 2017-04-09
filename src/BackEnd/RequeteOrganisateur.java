@@ -6,13 +6,14 @@
  */
 package BackEnd;
 
-import Model.Business.Enum_theme;
+import Model.Business.Theme;
 import Model.Business.Evaluation;
 import Model.Business.Expert;
 import Model.Business.Numero;
 import Model.Business.Spectacle;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
@@ -37,7 +38,7 @@ public class RequeteOrganisateur extends Requete {
                         rs.getInt("heureFin"),
                         rs.getDouble("prixSpectacle"),
                         rs.getInt("codeArtiste"),
-                        Enum_theme.valueOf(rs.getString("theme")),
+                        Theme.valueOf(rs.getString("theme")),
                         rs.getInt("codeFestival")
                 );
             }
@@ -59,7 +60,7 @@ public class RequeteOrganisateur extends Requete {
      * @param theme
      * @return ResultatsNumeros
      */
-    public static ResultatsNumeros getNumerosByTheme(Enum_theme theme) {
+    public static ResultatsNumeros getNumerosByTheme(Theme theme) {
         String s = "SELECT * FROM Numero WHERE theme = " + theme;
         ResultatsNumeros eval = new ResultatsNumeros();
 
@@ -163,9 +164,9 @@ public class RequeteOrganisateur extends Requete {
      */
     public static boolean addExpert(Expert expert) {
         String req= "INSERT INTO ArtisteExpert VALUES (" +expert.getID() + ")";
-        Iterator<Enum_theme> it = expert.getThemes().iterator();
+        Iterator<Theme> it = expert.getThemes().iterator();
         while (it.hasNext()) {
-            Enum_theme theme = it.next();
+            Theme theme = it.next();
             String s2 = "INSERT INTO EstExpertEn VALUES (" + expert.getID() + ", " + theme + ")";
             Getter.update(s2);
             return true;
@@ -230,7 +231,7 @@ public class RequeteOrganisateur extends Requete {
      * @param theme
      * @return ResultatsNumeros
      */
-    public static ResultatsNumeros getRankedNumeroByTheme(Enum_theme theme) {
+    public static ResultatsNumeros getRankedNumeroByTheme(Theme theme) {
         String cmd = "SELECT Numero.codeNumero, TitreNumero, ResumeNumero, DureeNumero, NbArtisteNumero, EstCreation, CodeArtiste, Theme "
                 + "FROM Numero FULL JOIN (SELECT CodeNumero, AVG(Note) as Moyenne FROM Evaluation GROUP BY CodeNumero) Moy "
                 + "ON Numero.CodeNumero=Moy.CodeNumero WHERE Theme=" + theme
@@ -254,6 +255,28 @@ public class RequeteOrganisateur extends Requete {
         }
         catch(SQLException e) {
             System.out.println("Erreur SQL : Aucun numéro au thème" + theme);
+        }
+        return res;
+    }
+    
+    public static ResultatsExperts getExpertsAvailable(ArrayList<Expert> listeExp) {
+        String cmd = "SELECT codeArtiste FROM ArtisteExpert";
+        if (listeExp.size() > 0) {
+            cmd += " WHERE codeArtiste!=" + listeExp.get(0);
+        }
+        if (listeExp.size() > 1) {
+            cmd += " and codeArtiste!=" + listeExp.get(1);
+        }
+        ResultatsExperts res = new ResultatsExperts();
+        try {
+            ResultSet b = Getter.request(cmd);
+            while (b.next()) {
+                //Expert exp = new Expert(
+              //          b.getInt("codeArtiste")      
+                //);
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur SQL : Aucun expert");
         }
         return res;
     }

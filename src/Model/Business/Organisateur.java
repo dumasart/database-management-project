@@ -15,7 +15,7 @@ public class Organisateur {
     private Collection<Expert> listeExpert;
     private Collection<Spectacle> listeSpectacle;
     private Collection<Numero> listeNumero;
-    public Collection<Artiste> listeArtiste;
+    private Collection<Artiste> listeArtiste;
     
     public Organisateur(Collection<Expert> listeExpert, Collection<Spectacle> listeSpectacle, Collection<Numero> listeNumero, Collection<Artiste> listeArtiste) {
         this.listeExpert = listeExpert;
