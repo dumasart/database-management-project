@@ -5,7 +5,9 @@
  */
 package Controller;
 
-import Model.User;
+import Model.DataTransfertObject.UserDAO;
+import Model.DataTransfertObject.UserDAOSQL;
+import Model.DataTransfertObject.User;
 
 /**
  *
@@ -13,7 +15,7 @@ import Model.User;
  */
 public abstract class LoginController {
     
-    //private UserDAO dao = new UserDAOSQL();
+    private UserDAO dao = new UserDAOSQL();
         
     /**
      * Méthode pour gérer la vérification de l'identifiant et du mot de passe
@@ -22,13 +24,13 @@ public abstract class LoginController {
      * @return 
      */
     public User identifieUser(String username, String password) {
-        /*
+        
         User user = dao.getUserByUserNameAndPassword(username, password);
         
         if (user != null) {
             return user;
         }
-        */
+        
         return null;
     }
     

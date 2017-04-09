@@ -5,8 +5,6 @@
  */
 package Model.DataTransfertObject;
 
-import Model.User;
-
 
 /**
  *
@@ -16,5 +14,7 @@ public interface UserDAO {
     public boolean update(User u, String newPwd, String oldPwd);
     public boolean insert(User u, String pwd);
     public boolean delete(User u);
+
+    public User getUserByUserNameAndPassword(String username, String password);
     
 }

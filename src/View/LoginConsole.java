@@ -6,7 +6,7 @@
 package View;
 
 import Controller.LoginConsoleController;
-import Model.User;
+import Model.DataTransfertObject.User;
 import java.util.Scanner;
 
 /**

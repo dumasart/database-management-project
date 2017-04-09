@@ -173,7 +173,7 @@ create table CompteUtilisateur
 	identifiant integer not null,
 	motDePasse varchar(25) not null,
 	typeCompte varchar(20) not null,		
-	foreign key (codeArtiste) references Artiste(codeArtiste),
+	foreign key (identifiant) references Artiste(codeArtiste),
 	foreign key (typeCompte) reference TypeCompte(typeCompte),
 	primary key (codeArtiste, motDePasse)
 );

@@ -1,7 +1,7 @@
 package Controller;
 
 import Controller.LoginViewController.LoggedInEvent;
-import Model.User;
+import Model.DataTransfertObject.User;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;

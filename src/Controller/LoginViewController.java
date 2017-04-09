@@ -5,8 +5,8 @@
  */
 package Controller;
 
-import Model.User;
-import Model.User.UserType;
+import Model.DataTransfertObject.User;
+import Model.DataTransfertObject.User.UserType;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -47,8 +47,8 @@ public class LoginViewController extends LoginController implements Initializabl
         /* vérifcation du login et du mot de passe
          * retourne un User contenant le type de compte (organisateur, expert,..)
          * le nom de l'utilisateur,... */
-        //User user = this.identifieUser(loginField.getText(),passwordField.getText());
-        User user = new User("toto","nbfd",UserType.EXPERT);
+        User user = this.identifieUser(loginField.getText(),passwordField.getText());
+
         /* si user vaut NULL (login et/ou mot de passe invalide) :
          *   afficher message d'erreur et rester sur la fenetre d'accueil */
         if(user == null)

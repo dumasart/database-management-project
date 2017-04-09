@@ -6,7 +6,6 @@
 package Model.DataTransfertObject;
 
 import DataAccessLayer.Getter;
-import Model.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -14,7 +13,7 @@ import java.sql.SQLException;
  * 
  * @author bonhomme
  */
-public class UserDAOSQL {
+public class UserDAOSQL implements UserDAO {
    
     /**
      * update the password of a user
@@ -23,17 +22,18 @@ public class UserDAOSQL {
      * @param oldPwd
      * @return 
      */
-    public static boolean update(User u, String newPwd, String oldPwd){
-        String test = "SELECT * FROM Login WHERE codeArtiste = " + u.getUserId();
+    @Override
+    public boolean update(User u, String newPwd, String oldPwd) {
+        String test = "SELECT * FROM CompteUtilisateur WHERE codeArtiste = " + u.getIdentifiant();
         //
         try {
             ResultSet b = Getter.request(test);
             if (b.next()) {
                 String pwd = b.getString("motDePasse");
                 if (pwd.equals(oldPwd)){
-                    Getter.request("UPDATE Login Set MotDePasse="+newPwd+" WHERE codeArtiste = " + u.getUserId());
+                    Getter.request("UPDATE CompteUtilisateur Set MotDePasse="+newPwd+" WHERE codeArtiste = " + u.getIdentifiant());
                     // TODO: Factory.setUser est mal utilisé
-                    // Factory.setUser(Factory.getUser().getUserId(), newPwd);
+                    // Factory.setUser(Factory.getUser().getIdentifiant(), newPwd);
                     return true;
                 }
             }
@@ -48,18 +48,19 @@ public class UserDAOSQL {
     }
     
     /** 
-     * créer un nouveau compte en lui donnant un login
-     * @param Pwd
+     * créer un nouveau compte Expert
+     * @param user
+     * @param pwd
      * @return true si l'account a bien été crée, false sinon
      */
-    public static boolean insert(User u, String pwd){
-        String test = "SELECT * FROM Artiste WHERE codeArtiste = " + u.getUserId();
+    @Override
+    public boolean insert(User user, String pwd) {
+        String test = "SELECT * FROM Artiste WHERE codeArtiste = " + user.getIdentifiant();
         try {
             ResultSet b = Getter.request(test);
             if (b.next()) {
-                Getter.request("INSERT INTO Login VALUES ( " + u.getUserId() + " , " + pwd+ " )");
-                // TODO: Factory.setUser est mal utilisé
-                // Factory.setUser(codeArt, Pwd);
+                Getter.request(
+                        "INSERT INTO CompteUtilisateur VALUES ( " + user.getIdentifiant() + " , " + pwd + " , Expert)");
                 return true;
             }
         }
@@ -69,10 +70,47 @@ public class UserDAOSQL {
         return false;
     }
     
+    @Override
     public boolean delete(User u){
-        String del = "DELETE * FROM Login WHERE codeArtiste = " + u.getUserId();
+        String del = "DELETE * FROM CompteUtilisateur WHERE codeArtiste = " + u.getIdentifiant();
         Getter.request(del);
         return true;
+    }
+
+    /**
+     * Fonction d'authentification 
+     * Si le mot de passe et l'identifiant sont correct on récupère un User
+     * qui contient les information
+     * @param username
+     * @param password
+     * @return 
+     */
+    @Override
+    public User getUserByUserNameAndPassword(String username, String password) {
+        String req = "SELECT * FROM CompteUtilisateur WHERE identifiant= " + username + "AND motDePasse = " + password; 
+        
+        try {
+            ResultSet rs = Getter.request(req);
+            if (rs.next()) {
+                User.UserType type;
+                if ( rs.getString("typeCompte").compareTo("Admin") == 0) {
+                            type = User.UserType.ORGANISATEUR;
+                } else {
+                    type = User.UserType.EXPERT;
+                }
+                
+                return new User (
+                        rs.getString("identifiant"),
+                        rs.getNString("motDePasse"),
+                        type
+                        );
+            }
+        }
+        catch(SQLException e) {
+            System.out.println("Echec d'authentification");
+        }
+        
+        return null;
     }
 
     

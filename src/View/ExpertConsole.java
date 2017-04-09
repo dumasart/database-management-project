@@ -7,7 +7,7 @@ package View;
 
 import Controller.ExpertConsoleController;
 import Model.Numero;
-import Model.User;
+import Model.DataTransfertObject.User;
 import java.util.Iterator;
 import java.util.Scanner;
 

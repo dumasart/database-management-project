@@ -10,7 +10,6 @@ import Model.Expert;
 import Model.Numero;
 import Model.Spectacle;
 import Model.Theme;
-import Model.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -60,7 +59,7 @@ public class NumeroDAOSQL implements NumeroDAO {
     }
 
     public List<Numero> getAllNumero(User u) {
-        String s = "SELECT * FROM Evaluation JOIN Numero ON Evaluation.codeNumero=Numero.codeNumero WHERE codeArtiste="+u.getUserId();
+        String s = "SELECT * FROM Evaluation JOIN Numero ON Evaluation.codeNumero=Numero.codeNumero WHERE codeArtiste="+u.getIdentifiant();
         ArrayList<Numero> nums = new ArrayList<Numero>();
         try {
             ResultSet b = Getter.request(s);

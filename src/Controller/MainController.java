@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Model.User;
+import Model.DataTransfertObject.User;
 
 /**
  *
