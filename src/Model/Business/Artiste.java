@@ -9,7 +9,7 @@ import java.util.*;
 
 /**
  *
- * @author nabem
+ * @author kouvtang
  */
 public class Artiste {
 	private int codeArtiste;
@@ -18,17 +18,19 @@ public class Artiste {
 	private String prenom;
 	private String dateNaissance;
 	private String adresse;
+	private ArrayList<String> pseudos;
     
 	/**
-	 * Constructeur
+	 * Constructeur prenant en compte une liste de pseudos
 	 */
-	public Artiste(int codeArtiste, int codeCirque, String nom, String prenom, String dateNaissance, String adresse) {
+	public Artiste(int codeArtiste, int codeCirque, String nom, String prenom, String dateNaissance, String adresse, ArrayList<String> pseudos) {
 		this.codeArtiste = codeArtiste;
 		this.codeCirque = codeCirque;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.dateNaissance = dateNaissance;
 		this.adresse = adresse;
+		this.pseudos = pseudos;
 	}
     
 	public int getID() {
@@ -53,6 +55,14 @@ public class Artiste {
 
 	public String getAdresse() {
 		return this.adresse;
+	}
+
+	public ArrayList<String> getPseudos() {
+		return this.pseudos;
+	}
+
+	public void addPseudo(String pseudo) {
+		this.pseudos.add(pseudo);
 	}
 
 	@Override

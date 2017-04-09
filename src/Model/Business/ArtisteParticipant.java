@@ -13,10 +13,13 @@ import java.util.*;
  */
 public class ArtisteParticipant extends Artiste {
 	private ArrayList<Integer> listeNumero;
-	
-	public ArtisteParticipant(int code, int codeCirque, String nom, String prenom, String dateNaissance, String  adresse) {
-		super(code, codeCirque, nom, prenom, dateNaissance, adresse);
-		ArrayList<Integer> listeNumero = new ArrayList<Integer>();
+
+	/**
+	 * Constructeur avec liste de pseudos
+	 */
+	public ArtisteParticipant(int code, int codeCirque, String nom, String prenom, String dateNaissance, String  adresse, ArrayList<String> pseudos) {
+		super(code, codeCirque, nom, prenom, dateNaissance, adresse, pseudos);
+	        this.listeNumero = new ArrayList<Integer>();
 	}
 
 	public ArrayList<Integer> getListeNumero() {
