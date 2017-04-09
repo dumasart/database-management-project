@@ -6,6 +6,10 @@
 package BackEnd;
 
 import Model.Business.Factory;
+import Model.Business.User;
+import Model.Business.User.UserType;
+import static Model.Business.User.UserType.EXPERT;
+import static Model.Business.User.UserType.ORGANISATEUR;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -76,14 +80,25 @@ public class RequeteAuthentification extends Requete{
      */
     public static boolean connexion(String login, String Pwd){
         String test = "SELECT * FROM Login WHERE codeArtiste = " + login;
-        //
+        String cmd1 = "SELECT * FROM ArtisteOraganisateur WHERE codeArtiste = " + login;
+        String cmd2 = "SELECT * FROM ArtisteExpert WHERE codeArtiste = " + login;
+        User toi;
         try {
             ResultSet b = Getter.request(test);
             if (b.next()) {
                 String pwd = b.getString("motDePasse");
                 if (pwd.equals(Pwd)){
                     // TODO: Factory.setUser est mal ultilisé
-                    //Factory.setUser(login, Pwd);
+                    b = Getter.request(cmd1);
+                    if (b.next()){
+                        toi = new User(login, Pwd, ORGANISATEUR);
+                        Factory.setUser(toi);
+                    }
+                    b = Getter.request(cmd2);
+                    if (b.next()){
+                        toi = new User(login, Pwd, EXPERT);
+                        Factory.setUser(toi);
+                    }
                     return true;
                 }
             }
