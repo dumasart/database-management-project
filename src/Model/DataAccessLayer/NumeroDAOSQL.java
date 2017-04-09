@@ -8,7 +8,6 @@ package Model.DataAccessLayer;
 import BackEnd.Getter;
 import BackEnd.ResultatsNumeros;
 import Model.Business.Expert;
-import Model.Business.Factory;
 import Model.Business.Numero;
 import Model.Business.Spectacle;
 import Model.Business.Theme;
