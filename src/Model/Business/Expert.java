@@ -17,10 +17,12 @@ public class Expert extends Artiste{
     private String numeroTel;
     private int nbrNumeroEvaluer; //pour dire s'il peut tjrs évaluer un numéro (nbr < 15)
     
-    public Expert(int code, int codeCirque, String nom, String prenom, String dateNaissance, String  adresse, ArrayList<Numero> listeNumero, Theme theme, String numTel, ArrayList<String> pseudos) {
+    public Expert(int code, int codeCirque, String nom, String prenom, String dateNaissance, 
+            String  adresse, ArrayList<Numero> listeNumero, ArrayList<Theme> themes, String numTel, 
+            ArrayList<String> pseudos) {
         super(code,codeCirque,nom,prenom,dateNaissance,adresse, pseudos);
+        this.themes = themes;
         this.numeroTel = numTel;
-        this.themes.add(theme);
         this.nbrNumeroEvaluer = 0;
         this.listeNumeros = listeNumero;
     }

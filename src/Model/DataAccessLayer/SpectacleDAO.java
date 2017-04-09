@@ -5,6 +5,7 @@
  */
 package Model.DataAccessLayer;
 
+import Model.Business.Numero;
 import Model.Business.Spectacle;
 import java.util.List;
 
@@ -16,5 +17,6 @@ public interface SpectacleDAO {
     public boolean update(Spectacle spectacle);
     public boolean insert(Spectacle spectacle);
     public boolean delete(Spectacle spectacle);
-    public List<Spectacle> getAllSpectacle();    
+    public boolean addNumero(Spectacle spectacle, Numero numero,int heure);
+    public List<Spectacle> getAllSpectacle();  
 }
