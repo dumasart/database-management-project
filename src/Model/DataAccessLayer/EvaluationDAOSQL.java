@@ -6,9 +6,13 @@
 package Model.DataAccessLayer;
 
 import BackEnd.Getter;
+import BackEnd.ResultatsEvaluations;
 import Model.Business.Evaluation;
 import Model.Business.Expert;
 import Model.Business.Numero;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,7 +29,7 @@ public class EvaluationDAOSQL implements EvaluationDAO {
                 " WHERE codeArtiste = " +
                 evaluation.getID() +
                 " AND codeNumero = " + 
-                evaluation.getCodeNumero() +";";
+                evaluation.getCodeNumero();
         int res=Getter.update(cmd);
         if(res==0)
             return false;
@@ -38,8 +42,7 @@ public class EvaluationDAOSQL implements EvaluationDAO {
         String cmd = "DELETE from Evaluation WHERE codeArtiste = "+
                 evaluation.getID()+
                 " AND codeArtiste = "+
-                evaluation.getCodeNumero()+
-                ";";
+                evaluation.getCodeNumero();
         int res=Getter.update(cmd);
         if(res==0)
             return false;
@@ -49,11 +52,33 @@ public class EvaluationDAOSQL implements EvaluationDAO {
 
     @Override
     public boolean insert(Evaluation evaluation, Numero numero, Expert expert) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String cmd = "INSERT INTO Evaluation (codeArtiste, codeNumero, evaluation, note) VALUES (" +Factory.getUser().getUserId() + " , "
+                    + numero.getID() + " , " + evaluation.getEvaluation() + " , " + evaluation.getNote() + " ) ";
+        int res=Getter.update(cmd);
+        if(res==0)
+            return false;
+        else 
+            return true;
     }
 
     @Override
     public List<Evaluation> getEvaluationFromNumero(Numero numero) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String cmd = "SELECT * FROM Evaluation WHERE codeNumero = " + numero.getID();
+        List<Evaluation> res = new ArrayList<>(); 
+        try {
+            ResultSet b = Getter.request(cmd);
+            while (b.next()) {
+                Evaluation eval = new Evaluation(
+                    b.getInt("codeArtiste"),
+                    b.getInt("codeNumero"),
+                    b.getString("evaluation"),
+                    b.getInt("note")
+                );
+                res.add(eval);
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur SQL : Numéro inconnu");
+        }
+        return res;
     }    
 }
