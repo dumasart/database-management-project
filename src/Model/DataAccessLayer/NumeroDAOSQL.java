@@ -5,9 +5,13 @@
  */
 package Model.DataAccessLayer;
 
+import BackEnd.ResultatsNumeros;
 import Model.Business.Expert;
+import Model.Business.Factory;
 import Model.Business.Numero;
 import Model.Business.Spectacle;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -33,7 +37,32 @@ public class NumeroDAOSQL implements NumeroDAO {
 
     @Override
     public List<Numero> getAllNumero() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        /*
+        String s = "SELECT * FROM Evaluation JOIN Numero ON Evaluation.codeNumero=Numero.codeNumero WHERE codeArtiste="+Factory.getUser().getUserId();
+        ResultatsNumeros nums = new ResultatsNumeros();
+        try {
+            ResultSet b = Getter.request(s);
+            while(b.next()) {
+                Numero num = new Numero(
+                        b.getInt("codeNumero"),
+                        b.getString("TitreNumero"),
+                        b.getString("ResumeNumero"),
+                        b.getInt("DureeNumero"),
+                        b.getInt("NbArtiste"),
+                        b.getBoolean("estCreation"),
+                        b.getInt("codeArtiste"),
+                        b.getString("theme")
+                );
+                nums.add(num);
+            }
+        }
+        catch(SQLException e) {
+            System.out.println("SQL erreur : Aucun numéro");
+        }
+        //il faut analyser le ResultSet et renvoyer je ne sais quoi?
+        return nums;
+        */
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override

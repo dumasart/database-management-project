@@ -9,7 +9,6 @@ import Model.Business.Factory;
 import Model.Business.Theme;
 import Model.Business.Numero;
 import Model.Business.Spectacle;
-import Model.DataAccessLayer.DAO;
 import java.util.Collection;
 import java.util.Map;
 
@@ -26,12 +25,14 @@ public class JuryViewController {
     }
     
     public void updateData(Theme theme) {
+        /*
         DAO dao = Factory.getDAO();
         this.listeMeilleursNumeros = dao.getMeilleursNumerosParTheme(theme);
         this.listeSpectacles = dao.getSpectacles();
+        */
     }
     
     public void ajouteNumeroASpectacle(Numero num, Spectacle spec) {
-        Factory.getDAO().ajouteNumeroASpectacle(num, spec);
+        //Factory.getDAO().ajouteNumeroASpectacle(num, spec);
     }
 }

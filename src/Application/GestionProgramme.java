@@ -18,11 +18,12 @@ import java.util.Collection;
 public class GestionProgramme {  
     
     public  static void main(String args[]) {
-
+        /*
         Collection<Spectacle> listeSpectacle = Factory.getDAO().getSpectacles();
         
         for(Spectacle s : listeSpectacle) {
             System.out.println(s.toString());
         }
+        */
     }
 }
