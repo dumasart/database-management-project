@@ -14,6 +14,7 @@ import java.sql.*;
  */
 public class Getter {
     private static Statement stmt=null;
+    
     public static ResultSet request(String requete) {
         Connection connection;
         ResultSet rs;
@@ -51,6 +52,7 @@ public class Getter {
             return 0;
         }
     }
+    
     public static void close() {
         try {
             if (stmt != null) {

@@ -298,4 +298,20 @@ public class NumeroDAOSQL implements NumeroDAO {
         return nums;
     }
 
+    @Override
+    public int getMoyenneNumero(String numeroID) {
+        String cmd = "SELECT AVG(Note) FROM (evaluation INNER JOIN Numero "
+                + "WHERE evaluation.codeNumero = Numero.codeNumero) WHERE evaluation.codeNumero = " + numeroID;
+        try {
+            ResultSet b = Getter.request(cmd);
+            if (b.next()) {
+                return b.getInt("AVG(Note)");
+            }
+        }
+        catch(SQLException e) {
+            System.out.println("Erreur SQL : Aucune note");
+        } 
+        return -1;
+    }
+
 }

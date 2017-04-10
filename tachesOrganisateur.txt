@@ -1,0 +1,19 @@
+Création :
+  Artiste
+  ArtisteParticipant
+  ArtisteExpert
+  ArtisteOrganisateur
+  Spectacle
+  Numero
+
+Edition :
+  Artiste
+  ArtisteParticipant
+  ArtistePrincipal
+  ArtisteExpert
+  ArtisteOrganisateur
+  Spectacle
+  Numero
+
+Divers :
+  Associer un expert à un numéro
