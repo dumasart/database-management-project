@@ -8,7 +8,6 @@ package Application;
 import DataAccessLayer.ConnectionSQL;
 import DataAccessLayer.Getter;
 import View.ExpertConsole;
-import java.sql.Connection;
 import java.sql.SQLException;
 
 /**

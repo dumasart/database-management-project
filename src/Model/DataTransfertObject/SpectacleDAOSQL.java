@@ -87,7 +87,7 @@ public class SpectacleDAOSQL implements SpectacleDAO{
      * (verify connection)
      */
     @Override
-    public List<Spectacle> getAllSpectacle() throws SQLException {
+    public List<Spectacle> getAllSpectacle() {
         try {
             ResultSet rs = Getter.request("SELECT * FROM Spectacle");
             List<Spectacle> spectacles = new ArrayList<>();
@@ -107,9 +107,8 @@ public class SpectacleDAOSQL implements SpectacleDAO{
             return spectacles;
         } catch (SQLException ex) {
             ex.printStackTrace();
-            // propage l'exception
-            throw ex;
         }
+        return null;
     }
     /**
      * 

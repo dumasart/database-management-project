@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import DataAccessLayer.ConnectionSQL;
 import Model.DataTransfertObject.NumeroDAO;
 import Model.DataTransfertObject.NumeroDAOSQL;
 import Model.DataTransfertObject.SpectacleDAO;
@@ -23,7 +24,7 @@ public class GesProgrammeController extends MainController {
     private NumeroDAO numeroDAO = new NumeroDAOSQL();
     
     
-    public List<Spectacle> getAllSpectacles() throws Exception {
+    public List<Spectacle> getAllSpectacles() {
         return spectacleDAO.getAllSpectacle();
     }
     
