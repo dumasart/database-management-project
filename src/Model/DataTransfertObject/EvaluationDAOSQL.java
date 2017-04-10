@@ -22,6 +22,11 @@ public class EvaluationDAOSQL implements EvaluationDAO {
 
     //TODO à voir si on en à besoin car on est parti du principe qu'une
     // évaluation ne peut pas etre modifiée après validation (saisie)
+    /**
+     * 
+     * @param evaluation : evaluation to synchronize with the data-base
+     * @return true on success
+     */
     @Override
     public boolean update(Evaluation evaluation) {
         String cmd = "UPDATE Evaluation SET note = "
@@ -39,7 +44,11 @@ public class EvaluationDAOSQL implements EvaluationDAO {
             return true;
         }
     }
-
+    /**
+     * 
+     * @param evaluation to delete form the data-base
+     * @return true on success 
+     */
     @Override
     public boolean delete(Evaluation evaluation) {
         String cmd = "DELETE from Evaluation WHERE codeArtiste = "
@@ -53,7 +62,11 @@ public class EvaluationDAOSQL implements EvaluationDAO {
             return true;
         }
     }
-
+    /**
+     * 
+     * @param evaluation to insert in the data-base
+     * @return true on success 
+     */
     @Override
     public boolean insert(Evaluation evaluation, Numero numero, String expertID) {
         String cmd;
