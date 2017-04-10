@@ -8,8 +8,12 @@ package Controller;
 import Model.DataTransfertObject.NumeroDAO;
 import Model.DataTransfertObject.NumeroDAOSQL;
 import Model.DataTransfertObject.SpectacleDAO;
+<<<<<<< HEAD
 import Model.DataTransfertObject.SpectacleDOASQL;
 import Model.Numero;
+=======
+import Model.DataTransfertObject.SpectacleDAOSQL;
+>>>>>>> 4df04405f9a82d5a0c772914e02eec5d39f98f2a
 import Model.Spectacle;
 import java.util.List;
 

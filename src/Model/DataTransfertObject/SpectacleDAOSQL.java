@@ -21,7 +21,7 @@ import java.util.List;
  *
  * @author milang
  */
-public class SpectacleDOASQL implements SpectacleDAO{
+public class SpectacleDAOSQL implements SpectacleDAO{
 
     @Override
     public boolean update(Spectacle spectacle) {
@@ -72,10 +72,7 @@ public class SpectacleDOASQL implements SpectacleDAO{
     @Override
     public List<Spectacle> getAllSpectacle() throws SQLException {
         try {
-            Connection connection =ConnectionSQL.getDBConnection();
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Spectacle");
-            
+            ResultSet rs = Getter.request("SELECT * FROM Spectacle");
             List<Spectacle> spectacles = new ArrayList<>();
             while(rs.next()) {
                 Spectacle spec=new Spectacle(
@@ -90,7 +87,6 @@ public class SpectacleDOASQL implements SpectacleDAO{
                 );
                 spectacles.add(spec);
             }
-            stmt.close();
             return spectacles;
         } catch (SQLException ex) {
             ex.printStackTrace();

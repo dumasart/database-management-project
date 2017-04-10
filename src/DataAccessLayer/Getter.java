@@ -13,13 +13,15 @@ import java.sql.*;
  * class local qui ne sert qu'à effectuer les requètes 
  */
 public class Getter {
-
+    private static Statement stmt=null;
     public static ResultSet request(String requete) {
         Connection connection;
-        Statement stmt;
         ResultSet rs;
         try {
             connection = ConnectionSQL.getDBConnection();
+            if(stmt!=null) {
+                stmt.close();
+            }
             stmt = connection.createStatement();
             rs = stmt.executeQuery(requete);
             
@@ -33,9 +35,11 @@ public class Getter {
     
     public static int update(String request) {
         Connection connection;
-        Statement stmt;
         int res;
         try {
+            if(stmt!=null) {
+                stmt.close();
+            }
             connection = ConnectionSQL.getDBConnection();
             stmt = connection.createStatement();
             res = stmt.executeUpdate(request);
@@ -44,5 +48,14 @@ public class Getter {
             System.out.println("Update non traitée");
         }
         return 0;
+    }
+    public static void close() {
+        try {
+            stmt.close();
+            stmt=null;
+        }
+        catch(SQLException e) {
+            System.out.println("Statement non crée");
+        }
     }
 }
