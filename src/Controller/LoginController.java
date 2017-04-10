@@ -25,7 +25,7 @@ public abstract class LoginController extends MainController {
      * @return 
      */
     public boolean identifyUser(String username, String password) {
-        ConnectionSQL.savePoint();
+        
         User user = userDAO.getUserByUserNameAndPassword(username, password);
         
         if (user != null) {
@@ -33,7 +33,6 @@ public abstract class LoginController extends MainController {
             this.setConnectedUser(user);
             return true;
         }
-        ConnectionSQL.commit();
         return false;
     }
     

@@ -91,10 +91,7 @@ public class UserDAOSQL implements UserDAO {
     @Override
     public User getUserByUserNameAndPassword(String username, String password) {
         try {
-            Connection connection =ConnectionSQL.getDBConnection();
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM CompteUtilisateur WHERE identifiant= '" 
-                    + username + "' AND motDePasse = '" + password + "'"); 
+            ResultSet rs = Getter.request("SELECT * FROM CompteUtilisateur WHERE identifiant= " + username + " AND motDePasse = '" + password + "'");
 
             if (rs.next()) {
                 User.UserType type;
@@ -104,15 +101,11 @@ public class UserDAOSQL implements UserDAO {
                     type = User.UserType.EXPERT;
                 }
                 
-                User newUser = new User (
-                        rs.getString("identifiant"),
-                        rs.getNString("motDePasse"),
+                return new User (
+                        Integer.toString(rs.getInt("identifiant")),
+                        rs.getString("motDePasse"),
                         type
                         );
-                
-                stmt.close();
-                
-                return newUser;
             }
         }
         catch(SQLException e) {
