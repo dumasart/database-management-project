@@ -26,7 +26,7 @@ public class ArtisteParticipant extends Artiste {
          * @return list in which the artist will play
          */
 	public ArrayList<Integer> getListeNumero() {
-		return this.listeNumero;
+		return this.listeNumero;    
 	}
         /**
          * 

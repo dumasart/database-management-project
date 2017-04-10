@@ -20,7 +20,7 @@ public interface NumeroDAO {
     public boolean insert(Numero numero);
     public boolean delete(Numero numero);
     public List<Numero> getAllNumero();
-    public List<Numero> getNumeroByExpert(Expert expert);
+    public List<Numero> getNumeroByExpertID(String expertID);
     public List<Numero> getNumerosBySpectacle(Spectacle spectacle);
     public List<Numero> getNumerosRankedByTheme(Theme theme);
     public List<Numero> getNumerosByTheme(Theme theme);

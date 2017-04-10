@@ -21,7 +21,7 @@ import java.util.List;
  *
  * @author milang
  */
-public class SpectacleDOASQL implements SpectacleDAO{
+public class SpectacleDAOSQL implements SpectacleDAO{
 
     @Override
     public boolean update(Spectacle spectacle) {
