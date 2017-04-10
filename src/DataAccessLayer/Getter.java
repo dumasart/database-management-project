@@ -35,9 +35,11 @@ public class Getter {
     
     public static int update(String request) {
         Connection connection;
-        Statement stmt;
         int res;
         try {
+            if(stmt!=null) {
+                stmt.close();
+            }
             connection = ConnectionSQL.getDBConnection();
             stmt = connection.createStatement();
             res = stmt.executeUpdate(request);
