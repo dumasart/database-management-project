@@ -28,7 +28,7 @@ public class ExpertApplication {
             e.printStackTrace();
         } finally {
             // ferme la connection si elle n'a pas été fermée
-            Getter.close();
+            Getter.close(); 
             ConnectionSQL.closeConnection();
         }
     }   
