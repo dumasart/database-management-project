@@ -57,6 +57,7 @@ Insert into Artiste Values (47, 4, 'Poutou', 'Philippe', '04/02/1975', 'À l usi
 insert into CompteUtilisateur Values (42,'balek', 'Expert');
 
 Insert into ArtisteExpert Values (47, '02 20 30 21 02');
+Insert into ArtisteExpert Values (42, '02 20 30 21 99');
 insert into ArtisteExpert values (1, '06 21 23 29 01');
 insert into ArtisteExpert values (2, '07 32 21 23 42');
 insert into ArtisteExpert values (3, '08 23 28 12 34');
