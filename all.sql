@@ -164,8 +164,8 @@ create table Evaluation
 -- de la base de données (expert ou admin)
 create table TypeCompte
 (
-	typeCompte varchar(20) not null check(userType in ('Expert', 'Admin')),
-	primary key (userType)
+	typeCompte varchar(20) check(typeCompte in ('Expert', 'Admin')),
+	primary key (typeCompte)
 );
 
 create table CompteUtilisateur
@@ -174,7 +174,7 @@ create table CompteUtilisateur
 	motDePasse varchar(25) not null,
 	typeCompte varchar(20) not null,		
 	foreign key (identifiant) references Artiste(codeArtiste),
-	foreign key (typeCompte) reference TypeCompte(typeCompte),
-	primary key (codeArtiste, motDePasse)
+	foreign key (typeCompte) references TypeCompte(typeCompte),
+	primary key (identifiant, motDePasse)
 );
 
