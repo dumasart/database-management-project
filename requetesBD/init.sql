@@ -33,6 +33,10 @@ insert into ArtisteExpert values (3, '08');
 insert into ArtisteExpert values (4, '09');
 
 Insert into ArtisteParticipant Values (46);
+Insert into ArtisteParticipant Values (38);
+Insert into ArtisteParticipant Values (37);
+Insert into ArtisteParticipant Values (36);
+Insert into ArtisteParticipant Values (35);
 
 Insert into ArtistePrincipal Values (46, '+33657846910');
 Insert into ArtistePrincipal Values (38, '+33657846910');
