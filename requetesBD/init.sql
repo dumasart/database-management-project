@@ -99,6 +99,7 @@ Insert into ArtisteExpert Values (42, '02 20 30 21 99');
 insert into ArtisteExpert values (1, '06 21 23 29 01');
 insert into ArtisteExpert values (2, '07 32 21 23 42');
 insert into ArtisteExpert values (3, '08 23 28 12 34');
+insert into ArtisteExpert values (4, '08 23 12 12 34');
 insert into ArtisteExpert values (5, '09 45 23 19 23');
 insert into ArtisteExpert values (6, '08 21 32 02 93');
 insert into ArtisteExpert values (7, '06 23 82 91 29');
