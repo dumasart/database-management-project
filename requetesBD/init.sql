@@ -92,7 +92,6 @@ insert into CompteUtilisateur Values (35,'valak', 'Expert');
 insert into CompteUtilisateur Values (36,'valak', 'Expert');
 insert into CompteUtilisateur Values (37,'valak', 'Expert');
 insert into CompteUtilisateur Values (38,'valak', 'Expert');
-insert into CompteUtilisateur Values (39,'valak', 'Expert');
 
 
 Insert into ArtisteExpert Values (47, '02 20 30 21 02');
@@ -138,11 +137,11 @@ insert into Numero values (1,'Trapèzes','Bah on fait du trapèze pélo',30,3,'f
 insert into Numero values (2, 'Lions', 'cerceaux de feu', 25, 1, 'false', 37, 'Dressage');
 insert into Numero values (3, 'ours', 'blah blah', 27, 1, 'false', 36, 'Dressage');
 insert into Numero values (4, 'funambule', 'du lourd', 22, 1, 'false',35, 'Acrobatie');
-insert into Numero values (5, 'Licorne', 'blah blah blah', 32, , 'true',32, 'Contorsionniste');
+insert into Numero values (5, 'Licorne', 'blah blah blah', 32, 3, 'true',32, 'Contorsionniste');
 
-insert into Numero values (6, 'Carte', 'blah blah blah', 28, , 'true',33, 'Magie');
-insert into Numero values (7, 'Muahaha', 'blah blah blah', 31, , 'true',31, 'Acrobatie');
-insert into Numero values (8, 'Muahihi', 'blah blah blah', 33, , 'false',36, 'Dressage');
+insert into Numero values (6, 'Carte', 'blah blah blah', 28, 4, 'true',33, 'Magie');
+insert into Numero values (7, 'Muahaha', 'blah blah blah', 31, 1, 'true',31, 'Acrobatie');
+insert into Numero values (8, 'Muahihi', 'blah blah blah', 33, 12, 'false',36, 'Dressage');
 
 
 Insert into EstExpertEn values (47, 'Clown');
