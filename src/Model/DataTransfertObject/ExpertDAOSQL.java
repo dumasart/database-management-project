@@ -148,4 +148,37 @@ public class ExpertDAOSQL implements ExpertDAO {
         }
         return res;
     }
+
+    @Override
+    public List<Expert> getExpertsWithoutEvaluationOnNumero(int numeroID) {
+        String cmd = "SELECT codeArtiste, codeCirque, nomArtiste, prenomArtiste, datenaissanceArtiste, adresseArtiste, numTelExpert"
+                + " FROM Artiste WHERE codeArtiste IN ( "
+                + "SELECT codeArtiste FROM ArtisteExpert "
+                + "MINUS "
+                + "SELECT Evaluation.codeArtiste FROM Evaluation INNER JOIN ArtisteExpert "
+                + "ON Evaluation.codeArtiste=ArtisteExpert.codeArtiste "
+                + "WHERE codeNumero=" + numeroID;
+        ArrayList<Expert> res = new ArrayList<Expert>();
+        try {
+            ResultSet b = Getter.request(cmd);
+            while (b.next()) {
+                Expert exp = new Expert(
+                        b.getInt("codeArtiste"),
+                        b.getInt("codeCirque"),
+                        b.getString("nomArtiste"),
+                        b.getString("prenomArtiste"),
+                        b.getString("dateNaissanceArtiste"),
+                        b.getString("adresseArtiste"),
+                        new ArrayList<>(),
+                        new ArrayList<>(),
+                        b.getString("numTelExpert"),
+                        new ArrayList<>()
+                );
+                res.add(exp);
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur SQL : Aucun expert n'a pas évalué le numero " + numeroID);
+        }
+        return res;
+    }
 }
