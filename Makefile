@@ -13,6 +13,9 @@ Graph:
 exe:
 	java -classpath bin Application/GraphicApplication
 
+exegest:
+	java -classpath bin Application/GestionProgramme
+
 exeterm :
 	java -classpath bin Application/ExpertApplication
 
