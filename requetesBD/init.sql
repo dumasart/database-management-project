@@ -154,7 +154,7 @@ Insert into EstExpertEn values (2, 'Acrobatie');
 Insert into EstExpertEn values (3, 'Clown');
 Insert into EstExpertEn values (4, 'Dressage');
 
-Insert into Evaluation values (47, 15, 'commentaire constructif', 7);
+Insert into Evaluation values (47, 15, null,null);
 
 insert into Evaluation values (1, 1, 'fou', 5);
 insert into Evaluation values (2, 1, 'ouf', 8);
@@ -166,7 +166,7 @@ insert into Evaluation values (1, 2, 'fou', 0);
 insert into Evaluation values (2, 2, 'ouf', 5);
 insert into Evaluation values (3, 2, 'excellent', 10);
 insert into Evaluation values (4, 2, 'oui', 5);
-insert into Evaluation values (42, 2, 'oui', 7);
+insert into Evaluation values (42, 2, null, null);
 
 insert into Evaluation values (1, 3, 'fou', 5);
 insert into Evaluation values (2, 3, 'ouf', 8);
