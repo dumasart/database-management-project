@@ -35,6 +35,11 @@ insert into ArtisteExpert values (4, '09');
 Insert into ArtisteParticipant Values (46);
 
 Insert into ArtistePrincipal Values (46, '+33657846910');
+Insert into ArtistePrincipal Values (38, '+33657846910');
+Insert into ArtistePrincipal Values (37, '+33657846910');
+Insert into ArtistePrincipal Values (36, '+33657846910');
+Insert into ArtistePrincipal Values (35, '+33657846910');
+
 -- Et là c'est le drame
 --Insert into ArtistePrincipal Values (45, 'BUG');
 Insert into jury values (1, 25);
