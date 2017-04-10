@@ -17,6 +17,7 @@ import java.util.List;
 public interface EvaluationDAO {
     public boolean update(Evaluation evaluation);
     public boolean delete(Evaluation evaluation);
-    public boolean insert(Evaluation evaluation,Numero numero,String ExpertID);
+    public boolean insert(Evaluation evaluation,Numero numero,Expert expert);
+    public boolean insert(Expert exp, Numero numero);
     public List<Evaluation> getEvaluationFromNumero(Numero numero);
 }
