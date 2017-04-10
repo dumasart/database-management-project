@@ -6,6 +6,7 @@
 package View;
 
 import Controller.GesProgrammeController;
+import Model.Numero;
 import Model.Spectacle;
 import java.sql.SQLException;
 import java.util.List;
@@ -29,6 +30,7 @@ public class GesProgrammeConsole {
         // pas d'authentification nécéssaire
         // affiche le programme du festival
         afficherListeSpectacle();
+        afficherListeNumeroDesSpectacles();
     }
     
     /**
@@ -88,6 +90,28 @@ public class GesProgrammeConsole {
         } catch (Exception ex) {
             ex.printStackTrace();
             System.out.println("Aucun spectacle n'est programmé");
+        }
+    }
+    
+    private void afficherListeNumeroDesSpectacles() {
+        List<Spectacle> spectacles;
+        
+        System.out.println("Affichage du programme des Spectacles");
+        try {
+            spectacles = controller.getAllSpectacles(); //recuperer la liste des spectacles
+            int i = 1;
+            
+            for(Spectacle spec : spectacles) {
+                List<Numero> numerosDuSpectacle = controller.getNumerosBySpectacle(spec); //recuperer liste des numeros par spectacle
+                for(Numero num : numerosDuSpectacle) {
+                    System.out.println(i);
+                    System.out.println(num.toString());
+                    i++;
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("Pas de spectacle");
         }
     }
 }

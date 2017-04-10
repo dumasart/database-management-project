@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import java.util.*?>
@@ -8,36 +9,47 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.collections.*?>
 
-<VBox   id="centerRoot"
-        xmlns="http://javafx.com/javafx/8" 
-        xmlns:fx="http://javafx.com/fxml/1"
-        fx:controller="Controller.ExpertViewController">
+<VBox id="centerRoot" alignment="CENTER" spacing="20.0" stylesheets="@../Resources/application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ExpertViewController">
+    
     <children>
-        <ListView fx:id="listeNumero" prefHeight="200.0" prefWidth="200.0" >
-                <!-- sample items il faut binder la liste de numero sur la liste view-->
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Les blagues de toto" />
-                    <String fx:value="Benny Hill show" />
-                    <String fx:value="Monthy Pythons" />
-                    <String fx:value="Groland Zapoï" />
-                    <String fx:value="La septième companie" />
-                </FXCollections>
-            </items>
+        <ListView fx:id="listView" items="${controller.listeNumero}" onMouseClicked="#itemSelectedAction" prefHeight="100.0" prefWidth="300.0">
         </ListView>
-        <GridPane visible="false">
+        <GridPane fx:id="grilleEvaluation" hgap="10.0" vgap="10.0">
             <children>
-                <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
-                <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <TextArea prefHeight="100.0" prefWidth="300.0" GridPane.columnIndex="1" />
+                <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="2">
                     <children>
-                        <Button mnemonicParsing="false" text="Annuler" />
+                        <Button cancelButton="true" mnemonicParsing="false" text="Annuler">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </HBox.margin>
+                        </Button>
                         <Button mnemonicParsing="false" text="Valider" />
                     </children>
                 </HBox>
                 <Label text="Commentaire : " />
                 <Label text="Note : " GridPane.rowIndex="1" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <ChoiceBox prefWidth="75.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <Integer fx:value="0" />
+                            <Integer fx:value="1" />
+                            <Integer fx:value="2" />
+                            <Integer fx:value="3" />
+                            <Integer fx:value="4" />
+                            <Integer fx:value="5" />
+                            <Integer fx:value="6" />
+                            <Integer fx:value="7" />
+                            <Integer fx:value="8" />
+                            <Integer fx:value="9" />
+                            <Integer fx:value="10" />
+                        </FXCollections>
+                    </items>
+                </ChoiceBox>
             </children>
         </GridPane>
     </children>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
 </VBox>

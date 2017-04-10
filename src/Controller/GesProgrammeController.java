@@ -5,8 +5,11 @@
  */
 package Controller;
 
+import Model.DataTransfertObject.NumeroDAO;
+import Model.DataTransfertObject.NumeroDAOSQL;
 import Model.DataTransfertObject.SpectacleDAO;
-import Model.DataTransfertObject.SpectacleDOASQL;
+import Model.Numero;
+import Model.DataTransfertObject.SpectacleDAOSQL;
 import Model.Spectacle;
 import java.util.List;
 
@@ -16,11 +19,15 @@ import java.util.List;
  */
 public class GesProgrammeController extends MainController {
 
-    private SpectacleDAO spectacleDAO = new SpectacleDOASQL();
+    private SpectacleDAO spectacleDAO = new SpectacleDAOSQL();
+    private NumeroDAO numeroDAO = new NumeroDAOSQL();
     
     
     public List<Spectacle> getAllSpectacles() throws Exception {
         return spectacleDAO.getAllSpectacle();
     }
     
+    public List<Numero> getNumerosBySpectacle(Spectacle spectacle) {
+        return numeroDAO.getNumerosBySpectacle(spectacle);
+    }
 }

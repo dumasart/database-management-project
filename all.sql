@@ -134,7 +134,7 @@ create table AppartientA
 (
 	codeArtiste integer not null,
 	codeJury integer not null,
-	foreign key (codeArtiste) references Artiste(codeArtiste),
+	foreign key (codeArtiste) references ArtisteExpert(codeArtiste),
 	foreign key (codeJury) references Jury(codeJury),
 	primary key (codeArtiste, codeJury)
 );
@@ -152,8 +152,8 @@ create table Evaluation
 (
 	codeArtiste integer not null,
 	codeNumero integer not null,
-	evaluation varchar(1000) not null,
-	note integer not null check(note >= 0 and note <= 10),
+	commentaire varchar(1000),
+	note integer check(note >= 0 and note <= 10),
 	foreign key (codeArtiste) references ArtisteExpert(codeArtiste),
 	foreign key (codeNumero) references Numero(codeNumero),
 	primary key (codeArtiste, codeNumero)

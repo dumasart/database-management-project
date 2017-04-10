@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import DataAccessLayer.RequeteOrganisateur;
+import Model.DataTransfertObject.*;
 import Model.Artiste;
 import Model.Theme;
 import Model.Expert;
@@ -14,6 +14,7 @@ import Model.Spectacle;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
@@ -22,8 +23,16 @@ import javafx.fxml.Initializable;
  *
  * @author nomezing
  */
-public class OrganisateurViewController implements Initializable {
+public class OrganisateurViewController extends MainController implements Initializable {
 
+    private ExpertDAO expertDAO = new ExpertDAOSQL();
+    
+    private ArtisteDAO artisteDAO = new ArtisteDAOSQL();
+    
+    private EvaluationDAO evaluationDAO = new EvaluationDAOSQL();
+    
+    private SpectacleDAO spectacleDAO = new SpectacleDAOSQL();
+    
     /**
      * Initializes the controller class.
      */
@@ -32,78 +41,84 @@ public class OrganisateurViewController implements Initializable {
         // TODO
     }    
     
-    private Collection<Expert> listeExperts;
+    private Collection<Expert> listeExperts = expertDAO.getAllExpert();
     
-    public OrganisateurViewController() {
-        //this.listeExperts = dao.getAllExperts();
+    
+    public boolean ajouteExpert(Expert expert) {
+        return expertDAO.insert(expert);
     }
     
-    public void ajouteExpert(Expert expert) {
-        //dao.ajouteExpert(expert);
+    public boolean ajouteArtiste(Artiste artiste) {
+        return artisteDAO.insert(artiste);
     }
     
-    public void ajouteArtiste(Artiste artiste) {
-        //dao.ajouteArtiste(artiste);
-    }
-    
-    public void ajouteSpectacle(Spectacle spectacle) {
-        //dao.ajouteSpectacle(spectacle);
+    public boolean ajouteSpectacle(Spectacle spectacle) {
+        return spectacleDAO.insert(spectacle);
     }  
     
-    public void ajouteNumero(Numero numero) {
-        //dao.ajouteNumero(numero);
+    public boolean ajouteNumeroASpectacle(Numero num, Spectacle spectacle, int heure) {
+        int duree = spectacle.getFin() - spectacle.getDebut();
         
-        ArrayList<Expert> liste1 = new ArrayList<>(); // expert du même thème
-        ArrayList<Expert> liste2 = new ArrayList<>(); // expert d'un theme différent
-        RequeteOrganisateur req = new RequeteOrganisateur();
-        Theme theme = numero.getTheme();
-        
-        for(Expert exp : listeExperts) {
-            if(exp.getThemes().contains(theme) && liste1.size() < 3) {
-                if(exp.getNbrNumeros() < 15)
-                    liste1.add(exp);
-            } else {
-                if(liste2.size() < 2) {
-                    if(exp.getNbrNumeros() < 15)
-                        liste2.add(exp);
-                }
-            }
+        // Garantit la durée des spectalces
+        if ((duree + num.getDuree()) > 540) {
+            return false;
         }
         
-        if (liste1.size() < 3 || liste2.size() < 2) {
-            //TODO: Gérer l'ajout d'expert à la main
-            System.out.println("Saisissez un expert à la main :");
-            if (liste1.size() < 3) {
-                System.out.println("Voici la liste des experts :");
-                req.getExpertsAvailable(liste1);
-            }
-        } else {
-
-            for (int i = 0; i < liste1.size(); i++) {
-                req.associeNumeroExpert(liste1.get(i), numero);
-                //Incrémenter le nombre de numéros
-                liste1.get(i).ajouteNumero(numero); // DONE ?
-            }
-            for (int j = 0; j < liste2.size(); j++) {
-                req.associeNumeroExpert(liste2.get(j), numero);
-                liste2.get(j).ajouteNumero(numero);
-            }
-        }
+        return spectacleDAO.addNumero(spectacle, num, heure);
     }
-     
     
     /**
      * Quand l'organisateur ajoute un numero, l'application va proposer des experts
      * pour ce numéro par les étapes:
      * 1. Récuppérer le thème du numéro
      * 2. Récuppérer les experts libres (qui n'ont pas validé suffit de 15 numéros)
-     *    de ce thème: liste1
-     * 3. Récuppérer les experts libres hors de ce thème: liste2
-     * 4. Si un de ces deux listes est invalide (liste1.size() < 3 || liste2.size() < 2)
+     *    de ce thème: listeSpecialites
+     * 3. Récuppérer les experts libres hors de ce thème: listeNonSpecialites
+     * 4. Si un de ces deux listes est invalide (listeSpecialites.size() < 3 || listeNonSpecialites.size() < 2)
      *      l'organisateur va saisir un jury pour ce numéro à la main
      * 5. Si non
-     *      Associer ce numéro avec 3 experts de la liste1
-     *      Associer ce numéro avec 2 experts de la liste2
+     *      Associer ce numéro avec 3 experts de la listeSpecialites
+     *      Associer ce numéro avec 2 experts de la listeNonSpecialites
      *  
      */
+    
+    public void ajouteNumero(Numero numero) {
+        List<Expert> listeSpecialites = new ArrayList<Expert>(); // expert du même thème
+        List<Expert> listeNonSpecialites = new ArrayList<Expert>(); // expert d'un theme différent
+        
+        Theme theme = numero.getTheme();
+        
+        for(Expert exp : listeExperts) {
+            if(exp.getThemes().contains(theme) && listeSpecialites.size() < 3) {
+                if(exp.getNbrNumeros() < 15)
+                    listeSpecialites.add(exp);
+            } else {
+                if(listeNonSpecialites.size() < 2) {
+                    if(exp.getNbrNumeros() < 15)
+                        listeNonSpecialites.add(exp);
+                }
+            }
+        }
+        
+        if (listeSpecialites.size() < 3 || listeNonSpecialites.size() < 2) {
+            ajouteExpertALaMain(numero);
+        } else {
+            for (int i = 0; i < listeSpecialites.size(); i++) {
+                evaluationDAO.insert(null, numero, "" + listeSpecialites.get(i).getId());
+                //Incrémenter le nombre de numéros
+                listeSpecialites.get(i).ajouteNumero(numero);
+                expertDAO.update(listeSpecialites.get(i));
+            }
+            for (int i = 0; i < listeNonSpecialites.size(); i++) {
+                //Incrémenter le nombre de numéros
+                listeNonSpecialites.get(i).ajouteNumero(numero);
+                expertDAO.update(listeNonSpecialites.get(i));
+            }
+        }
+    }
+     
+    private void ajouteExpertALaMain(Numero numero) {
+        //TODO: Gérer l'ajout d'expert à la main
+    }
+
 }

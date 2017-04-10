@@ -21,15 +21,24 @@ public class ArtisteParticipant extends Artiste {
 		super(code, codeCirque, nom, prenom, dateNaissance, adresse, pseudos);
 	        this.listeNumero = new ArrayList<Integer>();
 	}
-
+        /**
+         * 
+         * @return list in which the artist will play
+         */
 	public ArrayList<Integer> getListeNumero() {
-		return this.listeNumero;
+		return this.listeNumero;    
 	}
-
+        /**
+         * 
+         * @param codeNumero is the code of the play in which the artist will play
+         */
 	public void addNumero(int codeNumero) {
 		this.listeNumero.add(codeNumero);
 	}
-
+        /**
+         * 
+         * @return introduction of all the play in which the artist will play
+         */
 	@Override
 	public String toString() {
 		String content = "Voici l'ensemble des numéros que je vais présenter : \n";

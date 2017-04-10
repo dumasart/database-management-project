@@ -13,7 +13,6 @@ import Model.DataTransfertObject.ExpertDAOSQL;
 import Model.DataTransfertObject.NumeroDAO;
 import Model.DataTransfertObject.NumeroDAOSQL;
 import Model.Evaluation;
-import Model.Expert;
 import java.util.List;
 
 /**
@@ -40,32 +39,24 @@ public class ExpertController extends MainController {
     private ExpertDAO expertDAO = new ExpertDAOSQL();
     
     
-    private Expert expertConnecte;
     
-    List<Numero> listeNumero;// = numeroDAO.getNumeroByExpert(getExpertConnecte());
-    
-    
-    
-    public Expert getExpertConnecte() {
-        if(expertConnecte == null) {
-            // TODO 
-            // régler problème est ce que getIdentifiant() doit renvoyer un string ou un int
-            //expertConnecte = expertDAO.getExpertByID(0);//this.getConnectedUser().getIdentifiant());
-        }
-        return expertConnecte;
-    }
+    //List<Numero> listeNumero = numeroDAO.getNumeroByExpertID(getExpertConnecte());
     
     /**
      * 
      * @return 
      */
     public List<Numero> getListeNumeros() {
-        return numeroDAO.getNumeroByExpert(getExpertConnecte());
+        if (getConnectedUser() != null) {
+            return numeroDAO.getNumeroByExpertID(getConnectedUser().getIdentifiant());
+        }
+        return null;
     }
         
     public void evaluerNumero(Numero numero, String commentaire, int note) {
-        Evaluation eval = new Evaluation(getExpertConnecte().getId(), numero.getID(), commentaire, note);
-        evaluationDAO.insert(eval, numero, getExpertConnecte());
+        Evaluation eval = new Evaluation(Integer.parseInt(getConnectedUser().getIdentifiant())
+                , numero.getID(), commentaire, note);
+        evaluationDAO.insert(eval, numero, getConnectedUser().getIdentifiant());
     }
    
 }

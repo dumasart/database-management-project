@@ -14,7 +14,7 @@ import java.sql.Statement;
 
 /**
  * 
- * @author bonhomme
+ * @author dumasart
  */
 public class UserDAOSQL implements UserDAO {
    
