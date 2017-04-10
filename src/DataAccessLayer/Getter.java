@@ -51,8 +51,10 @@ public class Getter {
     }
     public static void close() {
         try {
-            stmt.close();
-            stmt=null;
+            if (stmt != null) {
+              stmt.close();
+              stmt=null;
+            }
         }
         catch(SQLException e) {
             System.out.println("Statement non crée");
