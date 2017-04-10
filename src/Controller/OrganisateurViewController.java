@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import DataAccessLayer.ConnectionSQL;
 import Model.DataTransfertObject.*;
 import Model.Artiste;
 import Model.Theme;
@@ -32,7 +33,6 @@ public class OrganisateurViewController extends MainController implements Initia
     private EvaluationDAO evaluationDAO = new EvaluationDAOSQL();
     
     private SpectacleDAO spectacleDAO = new SpectacleDAOSQL();
-    
     /**
      * Initializes the controller class.
      */
@@ -42,19 +42,33 @@ public class OrganisateurViewController extends MainController implements Initia
     }    
     
     private Collection<Expert> listeExperts = expertDAO.getAllExpert();
-    
-    
-    public boolean ajouteExpert(Expert expert) {
-        return expertDAO.insert(expert);
+    /**
+     * 
+     * @param expert : expert to add in the festival 
+     */
+    public void ajouteExpert(Expert expert) {
+        ConnectionSQL.savePoint();
+        expertDAO.insert(expert);
+        ConnectionSQL.commit();
     }
-    
-    public boolean ajouteArtiste(Artiste artiste) {
-        return artisteDAO.insert(artiste);
+    /**
+     * 
+     * @param artiste : to add to the festival 
+     */
+    public void ajouteArtiste(Artiste artiste) {
+        ConnectionSQL.savePoint();
+        artisteDAO.insert(artiste);
+        ConnectionSQL.commit();
     }
-    
-    public boolean ajouteSpectacle(Spectacle spectacle) {
-        return spectacleDAO.insert(spectacle);
-    }  
+    /**
+     * 
+     * @param spectacle : show to add to the festival 
+     */
+    public void ajouteSpectacle(Spectacle spectacle) {
+        ConnectionSQL.savePoint();
+        spectacleDAO.insert(spectacle);
+        ConnectionSQL.commit();
+    }
     
     public boolean ajouteNumeroASpectacle(Numero num, Spectacle spectacle, int heure) {
         int duree = spectacle.getFin() - spectacle.getDebut();
@@ -83,6 +97,7 @@ public class OrganisateurViewController extends MainController implements Initia
      */
     
     public void ajouteNumero(Numero numero) {
+        ConnectionSQL.savePoint();
         List<Expert> listeSpecialites = new ArrayList<Expert>(); // expert du même thème
         List<Expert> listeNonSpecialites = new ArrayList<Expert>(); // expert d'un theme différent
         
@@ -115,6 +130,7 @@ public class OrganisateurViewController extends MainController implements Initia
                 expertDAO.update(listeNonSpecialites.get(i));
             }
         }
+        ConnectionSQL.commit();
     }
      
     private void ajouteExpertALaMain(Numero numero) {
