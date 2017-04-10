@@ -6,6 +6,7 @@
 package Application;
 
 import DataAccessLayer.ConnectionSQL;
+import DataAccessLayer.Getter;
 import Model.Spectacle;
 import View.GesProgrammeConsole;
 import java.sql.Connection;
@@ -28,6 +29,7 @@ public class GestionProgramme {
             e.printStackTrace();
         } finally {
             // ferme la connection si elle n'a pas été fermée
+            Getter.close();
             ConnectionSQL.closeConnection();
         }
     }
