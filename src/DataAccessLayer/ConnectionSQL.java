@@ -47,7 +47,7 @@ public class ConnectionSQL {
             do {
             connection.close();
             } while (!connection.isClosed());
-            System.out.println("Connection closed ...");
         }
+        System.out.println("Connection closed ...");
     }
 }

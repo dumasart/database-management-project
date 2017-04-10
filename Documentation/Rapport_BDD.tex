@@ -1,0 +1,88 @@
+\documentclass[a4paper, 11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[frenchb]{babel}
+\usepackage[final]{pdfpages} % Inclure des pdf
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx} % Inclure des images
+\usepackage{subfigure}
+\usepackage{fancyhdr} % Têtes et pieds de page
+\usepackage{listings}
+\usepackage{listingsutf8} %accents dans le code
+\usepackage[top=2cm, bottom=2cm, left=2cm , right=2cm]{geometry}
+\usepackage{color}
+\usepackage{enumitem}
+\usepackage{array}
+
+\lstset{frameround=fttt, inputencoding=utf8/latin1}
+\lstset{
+  literate={é}{{\'e}}1
+           {è}{{\`e}}1
+           {ê}{{\^e}}1
+           {à}{{\`a}}1
+           {ç}{{\c{c}}}1
+}
+
+\pagestyle{fancy}
+
+% \title{\Huge{TP Intégration des Systèmes \\ Conception d'un filtre\\
+% 	Ensimag 2A SLE}}
+    
+
+
+
+% Tête de page
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{}
+
+% Pied de page
+\fancyfoot[C]{\thepage} 
+
+% Marge
+%\setlength{\textwidth}{481pt}
+
+\setcounter{secnumdepth}{3}
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\textoverline}[1]{$\overline{\mbox{#1}}$}
+
+\begin{document}
+\title{ \vspace{3cm}
+		\normalsize \textsc{Ensimag 2A SLE}
+		\\ [3.0cm]
+		\HRule{0.5pt} \\
+		\LARGE \textbf{\uppercase{Projet de Base de Données et\\ Conception Objet}}
+		\HRule{2pt} \\ [0.5cm]
+        \large{Documentation finale} \\ [1cm]
+		\normalsize \today \vspace*{6\baselineskip}}	
+        
+\author{Dumas Arthur \\ Kouvtanovitch Geoffrey \\ Luu Duc Ahn \\ Milan Guillaume \\ Nabe Mamady \\ Nomezine Gael \\ Pierson Romain}
+\date{}   
+
+\maketitle
+        
+	\newpage	
+	\renewcommand{\contentsname}{Sommaire}
+	\tableofcontents
+	\newpage
+	
+\section{Analyse}
+
+	Diagramme d'analyse (bdd mais plus orienté humain)
+
+\section{Conception}
+
+	Diagramme de classe de l'application
+
+\section{Implantation de la base de donnée}
+
+	Diagramme entités associations et relationnel
+
+\section{Conception de l'application}
+
+	?
+	
+\section{Bilan}
+
+
+\end{document}
