@@ -12,7 +12,9 @@ import java.util.ResourceBundle;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 
 /**
@@ -27,12 +29,27 @@ public class ExpertViewController extends ExpertController implements Initializa
     @FXML
     private ListView listView;
     
+    @FXML
+    private TextArea textArea;
+    
+    @FXML
+    private ChoiceBox choiceBox;
+    
+    
+    /* la liste de numero est bindé avec la listeView dans la vue expert */
+    private List<Numero> listeNumero = numeroDAO.getNumeroByExpertID(getConnectedUser().getIdentifiant());
+    
     /**
-     * Méthode pour gérer l'évenement 
+     * Méthode pour gérer l'évenement de selection
      * @param event 
      */
     public void itemSelectedAction(Event event) {
-        //TODO
+        // on autorise la saisie des commentaires
+        grilleEvaluation.setVisible(true);
+        /*
+        textArea.setDisable(false);
+        choiceBox.setDisable(false);
+        */
     }
     
     
