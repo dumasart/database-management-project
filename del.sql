@@ -1,5 +1,5 @@
-drop table TypeCompte;
 drop table CompteUtilisateur;
+drop table TypeCompte;
 drop table EstSurnomme;
 drop table ParticipeA;
 drop table AppartientA;
@@ -17,3 +17,4 @@ drop table Theme;
 drop table Artiste;
 drop table Cirque;
 drop table Jury;
+
