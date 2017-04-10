@@ -39,51 +39,18 @@ public class RequeteOrganisateur {
     }
    
     
-    
-    /**
-     * Ajoute un participant dans la BD.
-     * Ajoute son/ses thème/s d'expertise dans EstExpertEn
-     * @param ap
-     * @return boolean
-     */
-    public static boolean addParticipant(ArtisteParticipant ap) {
-        //addArtiste(ap);
-        String req= "INSERT INTO ArtisteParticipant VALUES (" +ap.getID() + ")";
-        Iterator<Integer> it = ap.getListeNumero().iterator();
-        while (it.hasNext()) {
-            Integer i = it.next();
-            String s2 = "INSERT INTO ParticipeA VALUES (" + ap.getID() + ", " + i + ")";
-            Getter.update(s2);
-        }
-        Getter.update(req);
-        return true;
-    }     
-    
     /**
      * crée un article principal
      * @param ap
      * @return 
      */
     public static boolean addPrincipal (ArtistePrincipal ap) {
-        addParticipant(ap);
+       // addParticipant(ap);
         String req= "INSERT INTO ArtistePrincipal VALUES (" +ap.getNumTel() + ")";
         return true;
     }     
-    
-    /**
-     * Affecte un numéro à un expert
-     * @param exp
-     * @param numero 
-     */
-    public static boolean associeNumeroExpert(Expert exp, Numero numero) {
-        String cmd = "INSERT INTO Evaluation VALUES (" + exp.getId() + ", " + numero.getID() + ")";
-        Getter.update(cmd);
-        exp.ajouteNumero(numero);
-        return true;
-    }
 
-    public void getExpertsAvailable(ArrayList<Expert> liste1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
+
  
 }

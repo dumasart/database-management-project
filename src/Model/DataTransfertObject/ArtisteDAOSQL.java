@@ -56,37 +56,35 @@ public class ArtisteDAOSQL implements ArtisteDAO {
     public boolean delete(Artiste artiste) {
         ExpertDAOSQL expertDAOSQL = new ExpertDAOSQL();
         ParticipantDAOSQL participantDAOSQL = new ParticipantDAOSQL();
-        String test = "SELECT codeArtiste FROM Spectacle WHERE codeArtiste=" + artiste.getID();
-        String test2 = "SELECT codeArtiste FROM Numero WHERE codeArtiste=" + artiste.getID();
+        String test = "SELECT codeArtiste FROM Spectacle"
+                + " UNION SELECT codeArtiste FROM Numero"
+                + " UNION SELECT codeArtiste FROM ParticipeA"
+                + " WHERE codeArtiste=" + artiste.getID();
         ResultSet rs;
         try {
             rs = Getter.request(test);
             rs.next();
-            System.out.println("Erreur SQL : Impossible de supprimer l'artiste "+ artiste.getID() +", il est présentateur de numéro(s)");
+            System.out.println("Erreur SQL : Impossible de supprimer l'artiste "+ artiste.getID() +", il est présentateur,"
+                    + " participant ou principal de numero(s)");
             return false;
-            
         } catch (SQLException e) {
-            try {
-                rs = Getter.request(test2);
-                rs.next();
-                System.out.println("Erreur SQL : Impossible de supprimer l'artiste "+ artiste.getID() +", il est principal de numéro(s)");
+            String cmd = "DELETE FROM Artiste WHERE CodeArtiste=" + artiste.getID();
+            if (Getter.update(cmd) == 0) {
                 return false;
-                
-            } catch (SQLException f) {
-                String cmd = "DELETE FROM Artiste WHERE CodeArtiste=" + artiste.getID();
-                if (Getter.update(cmd) == 0) {
-                    return false;
-                }
-                cmd = "DELETE FROM ArtisteExpert WHERE CodeArtiste=" + artiste.getID();
-                if (Getter.update(cmd) == 0) {
-                    return false;
-                }
-                cmd = "DELETE FROM ArtisteParticipant WHERE CodeArtiste=" + artiste.getID();
-                if (Getter.update(cmd) == 0) {
-                    return false;
-                }
-                return true;
             }
+            cmd = "DELETE FROM ArtisteExpert WHERE CodeArtiste=" + artiste.getID();
+            if (Getter.update(cmd) == 0) {
+                return false;
+            }
+            cmd = "DELETE FROM ArtisteParticipant WHERE CodeArtiste=" + artiste.getID();
+            if (Getter.update(cmd) == 0) {
+                return false;
+            }            
+            cmd = "DELETE FROM ArtistePrincipal WHERE CodeArtiste=" + artiste.getID();
+            if (Getter.update(cmd) == 0) {
+                return false;
+            }
+            return true;
         }
     }
     
