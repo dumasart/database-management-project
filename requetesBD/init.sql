@@ -1,10 +1,30 @@
+truncate table TypeCompte;
+truncate table CompteUtilisateur;
+truncate table EstSurnomme;
+truncate table ParticipeA;
+truncate table AppartientA;
+truncate table EstExpertEn;
+truncate table Evaluation;
+truncate table NumeroAccepte;
+truncate table Spectacle;
+truncate table Numero;
+truncate table ArtisteOrganisateur;
+truncate table ArtisteExpert;
+truncate table ArtistePrincipal;
+truncate table ArtisteParticipant;
+truncate table Festival;
+truncate table Theme;
+truncate table Artiste;
+truncate table Cirque;
+truncate table Jury;
+
 --set autocommit off
 alter session set nls_date_format='dd/MM/yyyy';
 
 insert into typeCompte Values ('Expert');
 insert into typeCompte Values ('Admin');
 
-insert into CompteUtilisateur Values (42,'balek', 'Expert'); 
+insert into CompteUtilisateur Values (42,'balek', 'Expert');
 
 insert into Cirque Values ( 75, 'Cirque Zabatta');
 insert into Cirque Values ( 4, 'Cirque politique');
@@ -60,4 +80,3 @@ insert into Evaluation values (1, 4, 'fou', 2);
 insert into Evaluation values (2, 4, 'ouf', 4);
 insert into Evaluation values (3, 4, 'excellent', 5);
 insert into Evaluation values (4, 4, 'oui', 3);
-
