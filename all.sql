@@ -134,7 +134,7 @@ create table AppartientA
 (
 	codeArtiste integer not null,
 	codeJury integer not null,
-	foreign key (codeArtiste) references Artiste(codeArtiste),
+	foreign key (codeArtiste) references ArtisteExpert(codeArtiste),
 	foreign key (codeJury) references Jury(codeJury),
 	primary key (codeArtiste, codeJury)
 );
