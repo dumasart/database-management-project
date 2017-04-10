@@ -42,15 +42,14 @@ public class ExpertController extends MainController {
     
     private Expert expertConnecte;
     
-    List<Numero> listeNumero;// = numeroDAO.getNumeroByExpert(getExpertConnecte());
+    //List<Numero> listeNumero = numeroDAO.getNumeroByExpert(getExpertConnecte());
     
     
     
     public Expert getExpertConnecte() {
         if(expertConnecte == null) {
-            // TODO 
-            // régler problème est ce que getIdentifiant() doit renvoyer un string ou un int
-            //expertConnecte = expertDAO.getExpertByID(0);//this.getConnectedUser().getIdentifiant());
+            int id = Integer.parseInt(this.getConnectedUser().getIdentifiant());
+            expertConnecte = expertDAO.getExpertByID(id);
         }
         return expertConnecte;
     }

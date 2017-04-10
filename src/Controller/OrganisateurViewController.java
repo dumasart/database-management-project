@@ -6,6 +6,7 @@
 package Controller;
 
 import DataAccessLayer.RequeteOrganisateur;
+import Model.DataTransfertObject.*;
 import Model.Artiste;
 import Model.Theme;
 import Model.Expert;
@@ -22,8 +23,11 @@ import javafx.fxml.Initializable;
  *
  * @author nomezing
  */
-public class OrganisateurViewController implements Initializable {
+public class OrganisateurViewController extends MainController implements Initializable {
 
+    private ExpertDAO expertDAO = new ExpertDAOSQL();
+    
+    private ArtisteDAO artisteDAO = new ArtisteDAOSQL();
     /**
      * Initializes the controller class.
      */
@@ -34,16 +38,13 @@ public class OrganisateurViewController implements Initializable {
     
     private Collection<Expert> listeExperts;
     
-    public OrganisateurViewController() {
-        //this.listeExperts = dao.getAllExperts();
-    }
     
     public void ajouteExpert(Expert expert) {
-        //dao.ajouteExpert(expert);
+        expertDAO.insert(expert);
     }
     
     public void ajouteArtiste(Artiste artiste) {
-        //dao.ajouteArtiste(artiste);
+        artisteDAO.insert(artiste);
     }
     
     public void ajouteSpectacle(Spectacle spectacle) {
@@ -51,8 +52,6 @@ public class OrganisateurViewController implements Initializable {
     }  
     
     public void ajouteNumero(Numero numero) {
-        //dao.ajouteNumero(numero);
-        
         ArrayList<Expert> liste1 = new ArrayList<>(); // expert du même thème
         ArrayList<Expert> liste2 = new ArrayList<>(); // expert d'un theme différent
         RequeteOrganisateur req = new RequeteOrganisateur();

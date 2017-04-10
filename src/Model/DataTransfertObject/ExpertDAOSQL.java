@@ -68,10 +68,10 @@ public class ExpertDAOSQL implements ExpertDAO {
     public List<Expert> getExpertsAvailable(List<Expert> listeExp) {
         String cmd = "SELECT * FROM ArtisteExpert FULL JOIN Artiste ON ArtisteExpert.CodeArtiste=Artiste.CodeArtiste";
         if (listeExp.size() > 0) {
-            cmd += " WHERE codeArtiste!=" + listeExp.get(0);
+            cmd += " WHERE codeArtiste!=" + listeExp.get(0).getId();
         }
         if (listeExp.size() > 1) {
-            cmd += " and codeArtiste!=" + listeExp.get(1);
+            cmd += " and codeArtiste!=" + listeExp.get(1).getId();
         }
         ArrayList<Expert> res = new ArrayList<Expert>();
         try {
@@ -96,7 +96,33 @@ public class ExpertDAOSQL implements ExpertDAO {
         }
         return res;
     }
-
+    
+    public List<Expert> getAllExpert() throws SQLException {
+        String cmd = "SELECT * FROM ArtisteExpert";
+        ArrayList<Expert> res = new ArrayList<Expert>();
+        try {
+            ResultSet b = Getter.request(cmd);
+            while (b.next()) {
+                Expert exp = new Expert(
+                        b.getInt("codeArtiste"),
+                        b.getInt("codeCirque"),
+                        b.getString("nomArtiste"),
+                        b.getString("prenomArtiste"),
+                        b.getString("dateNaissanceArtiste"),
+                        b.getString("adresseArtiste"),
+                        new ArrayList<>(),
+                        new ArrayList<>(),
+                        b.getString("numTelExpert"),
+                        new ArrayList<>()
+                );
+                res.add(exp);
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur SQL : Aucun expert");
+        }
+        return res;
+    }
+    
     @Override
     public Expert getExpertByID(int codeArtiste) {
         
