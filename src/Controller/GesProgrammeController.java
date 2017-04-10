@@ -19,7 +19,7 @@ public class GesProgrammeController extends MainController {
     private SpectacleDAO spectacleDAO = new SpectacleDAOSQL();
     
     
-    public List<Spectacle> getAllSpectacles() throws Exception {
+    public List<Spectacle> getAllSpectacles() {
         return spectacleDAO.getAllSpectacle();
     }
     

@@ -111,15 +111,14 @@ public class NumeroDAOSQL implements NumeroDAO {
     }
 
     
-    @Override
-    public List<Numero> getNumeroByExpertID(String expertID) {
-
-        String s = "SELECT codeNumero, TitreNumero, ResumeNumero, DureeNumero, "
-                + "NbArtisteNumero, EstCreation, CodeArtiste, ThemeNumero "
-                + "FROM Evaluation WHERE codeArtiste=" + expertID;
-        ArrayList<Numero> nums = new ArrayList<>();
+    public List<Numero> getNumeroNonEvalueByExpertID(String expertID) {
+        
+        List<Numero> nums = new ArrayList<>();
         try {
-            ResultSet b = Getter.request(s);
+            ResultSet b = Getter.request(
+                    "SELECT * FROM Evaluation INNER JOIN Numero ON " +
+                    "Evaluation.codeNumero = Numero.codeNumero "+
+                     "AND Evaluation.Note IS NULL AND Evaluation.codeArtiste=" + expertID);
             while(b.next()) {
                 Numero num = new Numero(
                         b.getInt("codeNumero"),
@@ -132,6 +131,7 @@ public class NumeroDAOSQL implements NumeroDAO {
                         b.getString("theme")                        
                 );
                 nums.add(num);
+                System.out.println("on y passe!");
             }
             return nums;
         }
@@ -140,6 +140,38 @@ public class NumeroDAOSQL implements NumeroDAO {
         }
         return null;
     }
+    
+    @Override
+    public List<Numero> getNumeroByExpertID(String expertID) {
+        
+        List<Numero> nums = new ArrayList<>();
+        try {
+            ResultSet b = Getter.request(
+                    "SELECT * FROM Evaluation INNER JOIN Numero ON " +
+                    "Evaluation.codeNumero = Numero.codeNumero "+
+                     "AND Evaluation.Note AND Evaluation.codeArtiste=" + expertID);
+            while(b.next()) {
+                Numero num = new Numero(
+                        b.getInt("codeNumero"),
+                        b.getString("titreNumero"),
+                        b.getString("resumeNumero"),
+                        b.getInt("dureeNumero"),
+                        b.getInt("nbArtisteNumero"),
+                        b.getBoolean("estCreation"),
+                        b.getInt("codeArtiste"),
+                        b.getString("theme")                        
+                );
+                nums.add(num);
+                System.out.println("on y passe!");
+            }
+            return nums;
+        }
+        catch(SQLException e) {
+            System.out.println("Erreur SQL : Aucun numero pour l'expert" + expertID);
+        }
+        return null;
+    }
+    
 
     @Override
     public List<Numero> getNumerosBySpectacle(Spectacle spectacle) {

@@ -48,7 +48,10 @@ public class ExpertController extends MainController {
      */
     public List<Numero> getListeNumeros() {
         if (getConnectedUser() != null) {
-            return numeroDAO.getNumeroByExpertID(getConnectedUser().getIdentifiant());
+            System.out.println("je récupère la liste de numeros");
+            return numeroDAO.getNumeroNonEvalueByExpertID(this.getConnectedUser().getIdentifiant());
+        } else {
+            System.out.println("user est null");
         }
         return null;
     }
