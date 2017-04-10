@@ -17,9 +17,7 @@ public interface ExpertDAO {
     public boolean update(Expert expert);
     public boolean insert(Expert expert);
     public boolean delete(Expert expert);
-    
-    public boolean associateNumero(Expert expert, Numero numero);
-    
+        
     //TODO voir commentaire dans ExpertDAOSQL
     public List<Expert> getExpertsAvailable(List<Expert> listeExperts);
     public List<Expert> getAllExpert();
