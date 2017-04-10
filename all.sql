@@ -51,7 +51,7 @@ create table ArtistePrincipal
 (
 	codeArtiste integer  not null, 
 	NumTelPrincipal varchar(20) not null,
-	foreign key (codeArtiste) references Artiste(codeArtiste),
+	foreign key (codeArtiste) references ArtisteParticipant(codeArtiste),
 	primary key (codeArtiste)
 );
 
@@ -82,9 +82,8 @@ create table Numero
 	EstCreation varchar(5) not null check(EstCreation in ('true', 'false')),
 	primary key(codeNumero),
 	codeArtiste integer not null,
-	foreign key (codeArtiste) references Artiste(codeArtiste),
 	theme varchar(20) not null,
-	foreign key (codeArtiste) references Artiste(codeArtiste)
+	foreign key (codeArtiste) references ArtistePrincipal(codeArtiste)
 );
 	
 create table Spectacle
@@ -126,7 +125,7 @@ create table EstExpertEn
 (
 	codeArtiste integer not null,
 	theme varchar(20) not null,
-	foreign key (codeArtiste) references Artiste(codeArtiste),
+	foreign key (codeArtiste) references ArtisteExpert(codeArtiste),
 	foreign key (theme) references Theme(theme),
 	primary key (codeArtiste, theme)
 );
@@ -144,7 +143,7 @@ create table ParticipeA
 (
 	codeArtiste integer not null,
 	codeNumero integer not null,
-	foreign key (codeArtiste) references Artiste(codeArtiste),
+	foreign key (codeArtiste) references ArtisteParticipant(codeArtiste),
 	foreign key (codeNumero) references Numero(codeNumero),
 	primary key (codeArtiste, codeNumero)
 );
@@ -155,7 +154,7 @@ create table Evaluation
 	codeNumero integer not null,
 	evaluation varchar(1000) not null,
 	note integer not null check(note >= 0 and note <= 10),
-	foreign key (codeArtiste) references Artiste(codeArtiste),
+	foreign key (codeArtiste) references ArtisteExpert(codeArtiste),
 	foreign key (codeNumero) references Numero(codeNumero),
 	primary key (codeArtiste, codeNumero)
 );
