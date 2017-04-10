@@ -61,6 +61,9 @@ public class ExpertDAOSQL implements ExpertDAO {
         }
     }
 
+    //TODO reprendre cette fonction, le comportement est bizarre
+    // voir si y'a pas moyen d'avoir les expert disponible dans la BD
+    // au lieu de passer une liste d'expert
     @Override
     public List<Expert> getExpertsAvailable(List<Expert> listeExp) {
         String cmd = "SELECT * FROM ArtisteExpert FULL JOIN Artiste ON ArtisteExpert.CodeArtiste=Artiste.CodeArtiste";
@@ -81,10 +84,10 @@ public class ExpertDAOSQL implements ExpertDAO {
                         b.getString("prenomArtiste"),
                         b.getString("dateNaissanceArtiste"),
                         b.getString("adresseArtiste"),
-                        new ArrayList<Numero>(),
-                        new ArrayList<Theme>(),
+                        new ArrayList<>(),
+                        new ArrayList<>(),
                         b.getString("numTelExpert"),
-                        new ArrayList<String>()
+                        new ArrayList<>()
                 );
                 res.add(exp);
             }
@@ -95,7 +98,8 @@ public class ExpertDAOSQL implements ExpertDAO {
     }
 
     @Override
-    public List<Expert> getExpertsNumero(Numero numero) {
+    public Expert getExpertByID(int codeArtiste) {
+        
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

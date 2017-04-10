@@ -5,9 +5,12 @@
  */
 package Model.DataTransfertObject;
 
+import DataAccessLayer.ConnectionSQL;
 import DataAccessLayer.Getter;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * 
@@ -87,10 +90,12 @@ public class UserDAOSQL implements UserDAO {
      */
     @Override
     public User getUserByUserNameAndPassword(String username, String password) {
-        String req = "SELECT * FROM CompteUtilisateur WHERE identifiant= " + username + "AND motDePasse = " + password; 
-        
         try {
-            ResultSet rs = Getter.request(req);
+            Connection connection =ConnectionSQL.getDBConnection();
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM CompteUtilisateur WHERE identifiant= '" 
+                    + username + "' AND motDePasse = '" + password + "'"); 
+
             if (rs.next()) {
                 User.UserType type;
                 if ( rs.getString("typeCompte").compareTo("Admin") == 0) {
@@ -99,14 +104,19 @@ public class UserDAOSQL implements UserDAO {
                     type = User.UserType.EXPERT;
                 }
                 
-                return new User (
+                User newUser = new User (
                         rs.getString("identifiant"),
                         rs.getNString("motDePasse"),
                         type
                         );
+                
+                stmt.close();
+                
+                return newUser;
             }
         }
         catch(SQLException e) {
+            e.printStackTrace();
             System.out.println("Echec d'authentification");
         }
         

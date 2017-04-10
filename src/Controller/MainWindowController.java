@@ -1,7 +1,6 @@
 package Controller;
 
 import Controller.LoginViewController.LoggedInEvent;
-import Model.DataTransfertObject.User;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -27,9 +26,11 @@ public class MainWindowController extends MainController implements Initializabl
     @FXML
     private Button logoutButton;
     
+    
     /**
-     * 
-     * @param event 
+     * Méthode pour gérer l'evenement de click sur le bouton
+     * déconnxeion dans la fentre principale
+     * @param event l'evenement déclenché
      */
     @FXML
     private void logoutButtonAction(Event event) {
@@ -43,8 +44,9 @@ public class MainWindowController extends MainController implements Initializabl
         }
     }
     
+    
     /**
-     * Fonction pour ouvrir une fenetre pop-up de confirmation
+     * Méthode pour ouvrir une fenetre pop-up de confirmation
      * @param owner fenetre mère 
      */
     private Optional<ButtonType> showLogoutDialog() {
@@ -61,7 +63,8 @@ public class MainWindowController extends MainController implements Initializabl
     
 
     /**
-     * 
+     * Méthode qui gère l'évènement de fermeture de la fenetre principale
+     * Gère la terminaison du programme notamment la déconnexion de la base
      * @param e 
      */
     private void closeWindow(Event e)
@@ -74,7 +77,7 @@ public class MainWindowController extends MainController implements Initializabl
    
       
     /**
-     * Fonction interne pour modifier l'affichage dans le center
+     * Méthode interne pour modifier l'affichage dans le 'center'
      * Permet de naviguer entre les vues sans ouvrir un tas de nouvelles fenêtres 
      * @param source Le nom du fichier fxml à charger (chemin absolu) 
      */
@@ -88,17 +91,15 @@ public class MainWindowController extends MainController implements Initializabl
         }
     }
     
+    
     /**
-     * Gestionnaire d'évenement pour la connction d'un utilisateur
-     * @param event 
+     * Gestionnaire d'évenement pour la connexion d'un utilisateur
+     * @param event l'évenement de connection envoyé par la vue login
      */
     private void LoggedInEventHandler(LoggedInEvent event) {
         String ressource;
-        /* récupère l'utilisateur qui s'est connecté pour avoir 
-           le nom, le type de compte,... */
-        setConnectedUser(event.getUser());
         
-        /* Récupère le type de compte pour afficher l'écran correspondant
+        /* Récupère le type d'utilisateur pour afficher l'écran correspondant
            au type d'utilisateur connecté */
         switch(this.getConnectedUser().getUserType()) {
             case EXPERT : 
@@ -110,7 +111,6 @@ public class MainWindowController extends MainController implements Initializabl
             default:
                 throw new RuntimeException("Connexion impossible, utilisateur corrompu");
         }
-        
         // affiche la bonne interface utilisateur
         setBorderPaneCenter(ressource);
         // rend visible le bouton de déconnexion
@@ -119,14 +119,14 @@ public class MainWindowController extends MainController implements Initializabl
     
     
     /**
-     * 
+     * Méthode d'initialisation de la fenetre principale
      * @param location
      * @param resources 
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setBorderPaneCenter("/View/LoginView.fxml");
-        // défini le gestionnaire d'évenement pour la connection
+        // défini le gestionnaire d'évenement pour la connection réussie
         rootNode.addEventHandler(LoggedInEvent.LOGIN_SUCCESS,
                 event -> LoggedInEventHandler(event));
     }

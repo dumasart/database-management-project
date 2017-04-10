@@ -47,18 +47,17 @@ public class LoginViewController extends LoginController implements Initializabl
         /* vérifcation du login et du mot de passe
          * retourne un User contenant le type de compte (organisateur, expert,..)
          * le nom de l'utilisateur,... */
-        User user = this.identifieUser(loginField.getText(),passwordField.getText());
+        boolean connected = this.identifyUser(loginField.getText(),passwordField.getText());
 
         /* si user vaut NULL (login et/ou mot de passe invalide) :
          *   afficher message d'erreur et rester sur la fenetre d'accueil */
-        if(user == null)
+        if(!connected)
         {
             errorMessage.setVisible(true);
-            return;
         /* Sinon on lance un evenement LOGIN_SUCCESS pour
            la vue principale */
         } else {
-            Event ev = new LoggedInEvent(user);
+            Event ev = new LoggedInEvent();
             ((Node)event.getSource()).fireEvent(ev);     
         }
     }
@@ -96,25 +95,13 @@ public class LoginViewController extends LoginController implements Initializabl
         public static final EventType<LoggedInEvent> LOGIN_SUCCESS 
                 = new EventType<>(Event.ANY, "LOGIN_SUCCESS");
         
-        private User loggedUser;
-        
         /**
          * On ne peut pas déclencher l'évenement en dehors de ce controleur
          * pour éviter les connexions pirate 
          * @param user l'utilisateur qui s'est connecté
          */
-        private LoggedInEvent(User user) {
+        private LoggedInEvent() {
             super(LOGIN_SUCCESS);
-            this.loggedUser = user;
-        }
-        
-        /**
-         * Fonction pour récupérer l'utilisateur connecté
-         * @return l'utilisateur connecté
-         */
-        public User getUser() {
-            return this.loggedUser;
         }
     }
-    
 }

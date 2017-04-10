@@ -5,12 +5,15 @@
  */
 package Model.DataTransfertObject;
 
+import DataAccessLayer.ConnectionSQL;
 import DataAccessLayer.Getter;
 import Model.Numero;
 import Model.Spectacle;
 import Model.Theme;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,10 +70,13 @@ public class SpectacleDOASQL implements SpectacleDAO{
     }
 
     @Override
-    public List<Spectacle> getAllSpectacle() {
-        ResultSet rs = Getter.request("SELECT * FROM Spectacle");
-        List<Spectacle> spectacles = new ArrayList<>();
+    public List<Spectacle> getAllSpectacle() throws SQLException {
         try {
+            Connection connection =ConnectionSQL.getDBConnection();
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Spectacle");
+            
+            List<Spectacle> spectacles = new ArrayList<>();
             while(rs.next()) {
                 Spectacle spec=new Spectacle(
                         rs.getInt("codeSpectacle"),
@@ -84,12 +90,13 @@ public class SpectacleDOASQL implements SpectacleDAO{
                 );
                 spectacles.add(spec);
             }
+            stmt.close();
             return spectacles;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            // propage l'exception
+            throw ex;
         }
-        catch (SQLException e) {
-            System.out.println("Erreur SQL : Aucun spectacle");
-        }
-        return null;
     }
 
     @Override

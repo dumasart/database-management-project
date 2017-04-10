@@ -113,6 +113,7 @@ public class NumeroDAOSQL implements NumeroDAO {
     
     @Override
     public List<Numero> getNumeroByExpert(Expert expert) {
+        /*
         String s = "SELECT codeNumero, TitreNumero, ResumeNumero, DureeNumero, "
                 + "NbArtisteNumero, EstCreation, CodeArtiste, ThemeNumero "
                 + "FROM Evaluation WHERE codeArtiste=" + expert.getId();
@@ -136,7 +137,8 @@ public class NumeroDAOSQL implements NumeroDAO {
         catch(SQLException e) {
             System.out.println("Erreur SQL : Aucun numero pour l'expert" + expert.getId());
         }
-        return nums;
+        */
+        return null;
     }
 
     @Override

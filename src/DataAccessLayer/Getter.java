@@ -22,9 +22,7 @@ public class Getter {
             connection = ConnectionSQL.getDBConnection();
             stmt = connection.createStatement();
             rs = stmt.executeQuery(requete);
-            // libère les ressources de la base de données
-            connection.close();
-            stmt.close();
+            
             return rs;
         }
         catch(SQLException e) {
@@ -41,8 +39,6 @@ public class Getter {
             connection = ConnectionSQL.getDBConnection();
             stmt = connection.createStatement();
             res = stmt.executeUpdate(request);
-            connection.close();
-            stmt.close();
             return res;
         } catch (SQLException e) {
             System.out.println("Update non traitée");

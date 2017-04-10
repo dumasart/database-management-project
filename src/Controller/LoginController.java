@@ -13,9 +13,9 @@ import Model.DataTransfertObject.User;
  *
  * @author nomezing
  */
-public abstract class LoginController {
+public abstract class LoginController extends MainController {
     
-    private UserDAO dao = new UserDAOSQL();
+    private final UserDAO userDAO = new UserDAOSQL();
         
     /**
      * Méthode pour gérer la vérification de l'identifiant et du mot de passe
@@ -23,15 +23,17 @@ public abstract class LoginController {
      * @param password
      * @return 
      */
-    public User identifieUser(String username, String password) {
+    public boolean identifyUser(String username, String password) {
         
-        User user = dao.getUserByUserNameAndPassword(username, password);
+        User user = userDAO.getUserByUserNameAndPassword(username, password);
         
         if (user != null) {
-            return user;
+            System.out.println("je suis connecté");
+            this.setConnectedUser(user);
+            return true;
         }
         
-        return null;
+        return false;
     }
     
 }

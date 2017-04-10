@@ -11,10 +11,5 @@ package Controller;
  */
 public class ExpertConsoleController extends ExpertController {
 
-    public ExpertConsoleController() {
-        //updateData();
-    }
 
-
-    
 }

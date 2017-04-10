@@ -8,64 +8,64 @@ package Controller;
 import Model.Numero;
 import Model.DataTransfertObject.EvaluationDAO;
 import Model.DataTransfertObject.EvaluationDAOSQL;
+import Model.DataTransfertObject.ExpertDAO;
+import Model.DataTransfertObject.ExpertDAOSQL;
 import Model.DataTransfertObject.NumeroDAO;
 import Model.DataTransfertObject.NumeroDAOSQL;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import Model.Evaluation;
+import Model.Expert;
+import java.util.List;
 
 /**
  * Classe mère pour les controleurs Experts
  * @author nomezing
  */
-public class ExpertController {
+public class ExpertController extends MainController {
     
     /**
-     * 
-     */
-    private Collection<Numero> listeNumeros;
-    
-    /**
-     * 
+     * NumeroDAO utilisé pour récupérer la liste de numéros
+     * à évaluer par l'expert
      */
     private NumeroDAO numeroDAO = new NumeroDAOSQL();
     
     /**
-     * 
+     * EvaluationDAO utilisé par le controleur expert pour 
+     * ajouter des commentaires dans la base de données
      */
     private EvaluationDAO evaluationDAO = new EvaluationDAOSQL();  
+     
+    /**
+     * L'expert qui s'est connecté à l'application 
+     */
+    private ExpertDAO expertDAO = new ExpertDAOSQL();
+    
+    
+    private Expert expertConnecte;
+    
+    List<Numero> listeNumero;// = numeroDAO.getNumeroByExpert(getExpertConnecte());
+    
+    
+    
+    public Expert getExpertConnecte() {
+        if(expertConnecte == null) {
+            // TODO 
+            // régler problème est ce que getIdentifiant() doit renvoyer un string ou un int
+            //expertConnecte = expertDAO.getExpertByID(0);//this.getConnectedUser().getIdentifiant());
+        }
+        return expertConnecte;
+    }
     
     /**
      * 
      * @return 
      */
-    public Iterator<Numero> getNumerosIterator() {
-        if (this.listeNumeros != null) {
-            return this.listeNumeros.iterator();
-        }
-        return null;
+    public List<Numero> getListeNumeros() {
+        return numeroDAO.getNumeroByExpert(getExpertConnecte());
     }
-    
-    public int getIDNumero(int index) {
-        return ((ArrayList<Numero>)listeNumeros).get(index).getID();
+        
+    public void evaluerNumero(Numero numero, String commentaire, int note) {
+        Evaluation eval = new Evaluation(getExpertConnecte().getId(), numero.getID(), commentaire, note);
+        evaluationDAO.insert(eval, numero, getExpertConnecte());
     }
-    
-    public void commentaire(int codeNum, String com) {
-        //dao.ajouteCommentairePourNumero(codeNum, com);
-        //updateData();
-    }
-    
-    public void ajouteNote(int codeNum, int note) {
-        //dao.ajouteNotePourNumero(codeNum, note);
-        //updateData();
-    }
-    
-    public void valideNumero(int codeNum) {
-        // TODO
-    }
-    
-    public void updateData() {
-        //this.listeNumeros = dao.getNumerosPourEvaluer();
-    }
-    
+   
 }

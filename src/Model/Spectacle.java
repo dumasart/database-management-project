@@ -74,9 +74,6 @@ public class Spectacle {
         int duree = heureFin - heureDebut;
         System.out.println("Code du spectacle : " + codeSpectacle + " " + "Jour : " + jourSpectacle + " " + "Dure : " + " " + duree + " " + "Coute : " + prixSpectacle) ;
         
-        for(Numero numero : this.programme) {
-            affiche += numero.toString();
-        }
         return affiche;
     }
 }

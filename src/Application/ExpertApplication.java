@@ -5,7 +5,10 @@
  */
 package Application;
 
+import DataAccessLayer.ConnectionSQL;
 import View.ExpertConsole;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 /**
  * Exécutable de saisie des évaluations: un expert se connecte, chosit un 
@@ -15,9 +18,16 @@ import View.ExpertConsole;
 
 public class ExpertApplication {
     
-    public static void main(String[] args) {
-        // crée un nouvelle console expert et lance le programme
-        ExpertConsole ec = new ExpertConsole();
-        ec.start();
-    }
+    public static void main(String[] args) throws SQLException {
+        try {
+            // crée un nouvelle console expert et lance le programme
+            ExpertConsole ec = new ExpertConsole();
+            ec.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // ferme la connection si elle n'a pas été fermée
+            ConnectionSQL.closeConnection();
+        }
+    }   
 }

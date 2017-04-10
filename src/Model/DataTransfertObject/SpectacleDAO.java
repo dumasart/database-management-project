@@ -18,5 +18,5 @@ public interface SpectacleDAO {
     public boolean insert(Spectacle spectacle);
     public boolean delete(Spectacle spectacle);
     public boolean addNumero(Spectacle spectacle, Numero numero,int heure);
-    public List<Spectacle> getAllSpectacle();  
+    public List<Spectacle> getAllSpectacle() throws Exception ;  
 }

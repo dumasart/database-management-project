@@ -1,5 +1,7 @@
 package Application;
 
+import DataAccessLayer.ConnectionSQL;
+import java.sql.SQLException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,8 +24,15 @@ public class GraphicApplication extends Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        launch(args);
+    public static void main(String[] args) throws SQLException {
+        try {
+            launch(args);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // ferme la connection si elle n'a pas été fermée
+            ConnectionSQL.closeConnection();
+        }
     }
     
 }
