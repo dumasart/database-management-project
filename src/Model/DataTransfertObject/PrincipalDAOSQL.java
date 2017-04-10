@@ -15,7 +15,7 @@ import java.sql.SQLException;
  * @author piersonr
  */
 public class PrincipalDAOSQL implements PrincipalDAO {
-        private ParticipantDAO participantDAO = new ParticipantDAOSQL();
+        private ParticipantDAOSQL participantDAO = new ParticipantDAOSQL();
 
 
     @Override

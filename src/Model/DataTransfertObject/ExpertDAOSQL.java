@@ -20,7 +20,7 @@ import java.util.List;
  * @author romain
  */
 public class ExpertDAOSQL implements ExpertDAO {
-    private ArtisteDAO artisteDAO = new ArtisteDAOSQL();
+    private ArtisteDAOSQL artisteDAO = new ArtisteDAOSQL();
 
     /**
      * Met à jour un artiste expert dans la base

@@ -17,7 +17,7 @@ import java.util.Iterator;
  * @author piersonr
  */
 public class ParticipantDAOSQL implements ParticipantDAO {
-    private ArtisteDAO artisteDAO = new ArtisteDAOSQL();
+    private ArtisteDAOSQL artisteDAO = new ArtisteDAOSQL();
     /**
      * 
      * @param participant : artist to update in the data base 
