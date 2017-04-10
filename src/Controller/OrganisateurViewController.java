@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import DataAccessLayer.ConnectionSQL;
 import Model.DataTransfertObject.*;
 import Model.Artiste;
 import Model.Theme;
@@ -31,6 +32,7 @@ public class OrganisateurViewController extends MainController implements Initia
     
     private EvaluationDAO evaluationDAO = new EvaluationDAOSQL();
     
+    private SpectacleDAO spectacleDAO = new SpectacleDAOSQL();
     /**
      * Initializes the controller class.
      */
@@ -41,17 +43,32 @@ public class OrganisateurViewController extends MainController implements Initia
     
     private Collection<Expert> listeExperts = expertDAO.getAllExpert();
     
-    
+    /**
+     * 
+     * @param expert : expert to add in the festival 
+     */
     public void ajouteExpert(Expert expert) {
+        ConnectionSQL.savePoint();
         expertDAO.insert(expert);
+        ConnectionSQL.commit();
     }
-    
+    /**
+     * 
+     * @param artiste : to add to the festival 
+     */
     public void ajouteArtiste(Artiste artiste) {
+        ConnectionSQL.savePoint();
         artisteDAO.insert(artiste);
+        ConnectionSQL.commit();
     }
-    
+    /**
+     * 
+     * @param spectacle : show to add to the festival 
+     */
     public void ajouteSpectacle(Spectacle spectacle) {
-        //dao.ajouteSpectacle(spectacle);
+        ConnectionSQL.savePoint();
+        spectacleDAO.insert(spectacle);
+        ConnectionSQL.commit();
     }  
     
         /**
@@ -70,6 +87,7 @@ public class OrganisateurViewController extends MainController implements Initia
      */
     
     public void ajouteNumero(Numero numero) {
+        ConnectionSQL.savePoint();
         List<Expert> listeSpecialites = new ArrayList<Expert>(); // expert du même thème
         List<Expert> listeNonSpecialites = new ArrayList<Expert>(); // expert d'un theme différent
         
@@ -104,6 +122,7 @@ public class OrganisateurViewController extends MainController implements Initia
                 expertDAO.update(listeNonSpecialites.get(i));
             }
         }
+        ConnectionSQL.commit();
     }
      
     private void ajouteExpertALaMain(Numero numero) {

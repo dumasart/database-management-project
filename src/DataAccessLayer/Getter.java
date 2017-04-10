@@ -45,9 +45,11 @@ public class Getter {
             res = stmt.executeUpdate(request);
             return res;
         } catch (SQLException e) {
+            int i=0;
+            while(!ConnectionSQL.rollback()) {i++;}
             System.out.println("Update non traitée");
+            return 0;
         }
-        return 0;
     }
     public static void close() {
         try {

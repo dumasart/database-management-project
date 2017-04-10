@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import DataAccessLayer.ConnectionSQL;
 import Model.Numero;
 import Model.DataTransfertObject.EvaluationDAO;
 import Model.DataTransfertObject.EvaluationDAOSQL;
@@ -56,7 +57,9 @@ public class ExpertController extends MainController {
     public void evaluerNumero(Numero numero, String commentaire, int note) {
         Evaluation eval = new Evaluation(Integer.parseInt(getConnectedUser().getIdentifiant())
                 , numero.getID(), commentaire, note);
+        ConnectionSQL.savePoint();
         evaluationDAO.insert(eval, numero, getConnectedUser().getIdentifiant());
+        ConnectionSQL.commit();
     }
    
 }

@@ -8,6 +8,7 @@ package DataAccessLayer;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Savepoint;
 
 /**
  *
@@ -20,6 +21,7 @@ public class ConnectionSQL {
     private static final String BD_USER   = "dumasart";
     private static final String BD_PWD    = "dumasart";
     private static Connection connection=null;
+    private static Savepoint svpt =null;
     /**
      * Méthode pour récupérer une connection à la base de données
      * @return 
@@ -29,6 +31,8 @@ public class ConnectionSQL {
             if (connection == null) {
                 Class.forName("oracle.jdbc.OracleDriver");
                 connection = DriverManager.getConnection(BD_URL, BD_USER, BD_PWD);
+                connection.setAutoCommit(false);
+                
             }
             return connection;
         }
@@ -49,5 +53,36 @@ public class ConnectionSQL {
             } while (!connection.isClosed());
         }
         System.out.println("Connection closed ...");
+    }
+    public static boolean commit() {
+        try {
+            connection.commit();
+            return true;
+        }
+        catch(SQLException e) {
+            return false;
+        }
+        
+    }
+    public static boolean rollback() {
+        try {
+            connection.rollback();
+            return true;
+        }
+        catch(SQLException e) {
+            return false;
+        }
+        
+    }
+    public static boolean savePoint() {
+        
+        try {
+            connection.setSavepoint();
+            return true;
+        }
+        catch(SQLException e) {
+            return false;
+        }
+        
     }
 }
