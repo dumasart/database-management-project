@@ -177,3 +177,4 @@ create table CompteUtilisateur
 	primary key (identifiant, motDePasse)
 );
 
+@initialisationThemes
