@@ -22,6 +22,11 @@ public class EvaluationDAOSQL implements EvaluationDAO {
 
     //TODO à voir si on en à besoin car on est parti du principe qu'une
     // évaluation ne peut pas etre modifiée après validation (saisie)
+    /**
+     * 
+     * @param evaluation : evaluation to synchronize with the data-base
+     * @return true on success
+     */
     @Override
     public boolean update(Evaluation evaluation) {
         String cmd = "UPDATE Evaluation SET note = "
@@ -39,7 +44,11 @@ public class EvaluationDAOSQL implements EvaluationDAO {
             return true;
         }
     }
-
+    /**
+     * 
+     * @param evaluation to delete form the data-base
+     * @return true on success 
+     */
     @Override
     public boolean delete(Evaluation evaluation) {
         String cmd = "DELETE from Evaluation WHERE codeArtiste = "
@@ -53,11 +62,15 @@ public class EvaluationDAOSQL implements EvaluationDAO {
             return true;
         }
     }
-
+    /**
+     * 
+     * @param evaluation to insert in the data-base
+     * @return true on success 
+     */
     @Override
-    public boolean insert(Evaluation evaluation, Numero numero, Expert expert) {
-        String cmd = "INSERT INTO Evaluation (codeArtiste, codeNumero, evaluation, note) VALUES (" + expert.getId() + " , "
-                + numero.getID() + " , " + evaluation.getEvaluation() + " , " + evaluation.getNote() + " ) ";
+    public boolean insert(Evaluation evaluation) {
+        String cmd = "INSERT INTO Evaluation (codeArtiste, codeNumero, evaluation, note) VALUES (" + evaluation.getID() + " , "
+                + evaluation.getCodeNumero() + " , " + evaluation.getEvaluation() + " , " + evaluation.getNote() + " ) ";
         int res = Getter.update(cmd);
         if (res == 0) {
             return false;
@@ -67,7 +80,7 @@ public class EvaluationDAOSQL implements EvaluationDAO {
     }
 
     /**
-     * Affecte un numéro à un expert
+     * Give an act to evaluate to an expert
      *
      * @param exp
      * @param numero
@@ -78,7 +91,11 @@ public class EvaluationDAOSQL implements EvaluationDAO {
         exp.ajouteNumero(numero);
         return true;
     }
-
+    /**
+     * 
+     * @param numero : act to find all the evaluation about 
+     * @return all the evaluation about the act numero 
+     */
     @Override
     public List<Evaluation> getEvaluationFromNumero(Numero numero) {
         String cmd = "SELECT * FROM Evaluation WHERE codeNumero = " + numero.getID();
