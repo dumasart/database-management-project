@@ -42,14 +42,14 @@ create table Festival
 
 create table ArtisteParticipant
 (
-	codeArtiste int  not null, 
+	codeArtiste int  not null,
 	foreign key (codeArtiste) references Artiste(codeArtiste),
 	primary key (codeArtiste)
 );
 
 create table ArtistePrincipal
 (
-	codeArtiste integer  not null, 
+	codeArtiste integer  not null,
 	NumTelPrincipal varchar(20) not null,
 	foreign key (codeArtiste) references ArtisteParticipant(codeArtiste),
 	primary key (codeArtiste)
@@ -57,14 +57,14 @@ create table ArtistePrincipal
 
 create table ArtisteExpert
 (
-	codeArtiste integer  not null, 
+	codeArtiste integer  not null,
 	NumTelExpert varchar(20) not null,
 	foreign key (codeArtiste) references Artiste(codeArtiste),
 	primary key (codeArtiste)
 );
 
 create table ArtisteOrganisateur
-(     
+(
       codeArtiste integer not null,
       codeFestival integer not null,
       foreign key (codeArtiste) references Artiste(codeArtiste),
@@ -85,7 +85,7 @@ create table Numero
 	theme varchar(20) not null,
 	foreign key (codeArtiste) references ArtistePrincipal(codeArtiste)
 );
-	
+
 create table Spectacle
 (
 	codeSpectacle integer  not null check(codeSpectacle >= 0),
@@ -171,7 +171,7 @@ create table CompteUtilisateur
 (
 	identifiant integer not null,
 	motDePasse varchar(25) not null,
-	typeCompte varchar(20) not null,		
+	typeCompte varchar(20) not null,
 	foreign key (identifiant) references Artiste(codeArtiste),
 	foreign key (typeCompte) references TypeCompte(typeCompte),
 	primary key (identifiant, motDePasse)
@@ -180,3 +180,5 @@ create table CompteUtilisateur
 commit;
 
 @initialisationThemes
+
+commit;
