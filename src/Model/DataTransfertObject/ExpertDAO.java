@@ -22,5 +22,5 @@ public interface ExpertDAO {
     public List<Expert> getExpertsAvailable(List<Expert> listeExperts);
     public List<Expert> getAllExpert();
     /* Méthode pour récupérer un Expert à partir de sont numéro artiste */
-    public Expert getExpertByID(int codeArtiste);
+    //public Expert getExpertByID(int codeArtiste);
 }

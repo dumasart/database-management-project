@@ -26,22 +26,19 @@ public class ExpertController extends MainController {
      * NumeroDAO utilisé pour récupérer la liste de numéros
      * à évaluer par l'expert
      */
-    private NumeroDAO numeroDAO = new NumeroDAOSQL();
+    NumeroDAO numeroDAO = new NumeroDAOSQL();
     
     /**
      * EvaluationDAO utilisé par le controleur expert pour 
      * ajouter des commentaires dans la base de données
      */
-    private EvaluationDAO evaluationDAO = new EvaluationDAOSQL();  
+    EvaluationDAO evaluationDAO = new EvaluationDAOSQL();  
      
     /**
      * L'expert qui s'est connecté à l'application 
      */
-    private ExpertDAO expertDAO = new ExpertDAOSQL();
+    ExpertDAO expertDAO = new ExpertDAOSQL();
     
-    
-    
-    //List<Numero> listeNumero = numeroDAO.getNumeroByExpertID(getExpertConnecte());
     
     /**
      * 

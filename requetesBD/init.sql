@@ -56,12 +56,24 @@ Insert into Artiste Values (47, 4, 'Poutou', 'Philippe', '04/02/1975', 'À l usi
 
 insert into CompteUtilisateur Values (42,'balek', 'Expert');
 
-Insert into ArtisteExpert Values (47, '1');
-Insert into ArtisteExpert Values (42, '2');
-insert into ArtisteExpert values (1, '06');
-insert into ArtisteExpert values (2, '07');
-insert into ArtisteExpert values (3, '08');
-insert into ArtisteExpert values (4, '09');
+Insert into ArtisteExpert Values (47, '02 20 30 21 02');
+insert into ArtisteExpert values (1, '06 21 23 29 01');
+insert into ArtisteExpert values (2, '07 32 21 23 42');
+insert into ArtisteExpert values (3, '08 23 28 12 34');
+insert into ArtisteExpert values (5, '09 45 23 19 23');
+insert into ArtisteExpert values (6, '08 21 32 02 93');
+insert into ArtisteExpert values (7, '06 23 82 91 29');
+insert into ArtisteExpert values (8, '07 28 30 29 42');
+insert into ArtisteExpert values (9, '08 33 92 00 32');
+insert into ArtisteExpert values (10, '06 83 02 93 10');
+insert into ArtisteExpert values (11, '03 29 43 90 02');
+insert into ArtisteExpert values (12, '05 93 02 93 42');
+insert into ArtisteExpert values (13, '06 34 39 23 04');
+insert into ArtisteExpert values (14, '05 39 20 38 68');
+insert into ArtisteExpert values (15, '06 79 48 03 95');
+insert into ArtisteExpert values (16, '04 39 40 58 03');
+insert into ArtisteExpert values (17, '04 83 03 94 05');
+insert into ArtisteExpert values (18, '09 44 83 04 37');
 
 Insert into ArtisteParticipant Values (46);
 Insert into ArtisteParticipant Values (38);

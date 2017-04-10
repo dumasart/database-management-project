@@ -54,9 +54,11 @@ public class ConnectionSQL {
         }
         System.out.println("Connection closed ...");
     }
+    
+    
     public static boolean commit() {
         try {
-            connection.commit();
+            getDBConnection().commit();
             return true;
         }
         catch(SQLException e) {
@@ -64,9 +66,11 @@ public class ConnectionSQL {
         }
         
     }
+    
+    
     public static boolean rollback() {
         try {
-            connection.rollback();
+            getDBConnection().rollback();
             return true;
         }
         catch(SQLException e) {
@@ -74,10 +78,12 @@ public class ConnectionSQL {
         }
         
     }
+    
+    
     public static boolean savePoint() {
         
         try {
-            connection.setSavepoint();
+            getDBConnection().setSavepoint();
             return true;
         }
         catch(SQLException e) {
