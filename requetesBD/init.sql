@@ -57,6 +57,7 @@ Insert into Artiste Values (47, 4, 'Poutou', 'Philippe', '04/02/1975', 'À l usi
 insert into CompteUtilisateur Values (42,'balek', 'Expert');
 
 Insert into ArtisteExpert Values (47, '02 20 30 21 02');
+Insert into ArtisteExpert Values (42, '02 20 30 21 99');
 insert into ArtisteExpert values (1, '06 21 23 29 01');
 insert into ArtisteExpert values (2, '07 32 21 23 42');
 insert into ArtisteExpert values (3, '08 23 28 12 34');
@@ -106,6 +107,7 @@ insert into Numero values (8, 'Muahihi', 'blah blah blah', 33, , 'false',36, 'Dr
 
 
 Insert into EstExpertEn values (47, 'Clown');
+Insert into EstExpertEn values (42, 'Acrobatie');
 Insert into EstExpertEn values (1, 'Dressage');
 Insert into EstExpertEn values (2, 'Acrobatie');
 Insert into EstExpertEn values (3, 'Clown');
@@ -117,18 +119,23 @@ insert into Evaluation values (1, 1, 'fou', 5);
 insert into Evaluation values (2, 1, 'ouf', 8);
 insert into Evaluation values (3, 1, 'excellent', 10);
 insert into Evaluation values (4, 1, 'oui', 8);
+insert into Evaluation values (42, 1, 'oui', 6);
 
 insert into Evaluation values (1, 2, 'fou', 0);
 insert into Evaluation values (2, 2, 'ouf', 5);
 insert into Evaluation values (3, 2, 'excellent', 10);
 insert into Evaluation values (4, 2, 'oui', 5);
+insert into Evaluation values (42, 2, 'oui', 7);
 
 insert into Evaluation values (1, 3, 'fou', 5);
 insert into Evaluation values (2, 3, 'ouf', 8);
 insert into Evaluation values (3, 3, 'excellent', 10);
 insert into Evaluation values (4, 3, 'oui', 8);
+insert into Evaluation values (42, 3, 'oui', 10);
+
 
 insert into Evaluation values (1, 4, 'fou', 2);
 insert into Evaluation values (2, 4, 'ouf', 4);
 insert into Evaluation values (3, 4, 'excellent', 5);
 insert into Evaluation values (4, 4, 'oui', 3);
+insert into Evaluation values (42, 4, 'oui', 4);

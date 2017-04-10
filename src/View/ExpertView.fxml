@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
@@ -14,9 +15,8 @@
     <children>
         <ListView fx:id="listView" items="${controller.listeNumero}" onMouseClicked="#itemSelectedAction" prefHeight="100.0" prefWidth="300.0">
         </ListView>
-        <GridPane fx:id="grilleEvaluation" hgap="10.0" vgap="10.0">
+        <GridPane fx:id="grilleEvaluation" hgap="10.0" vgap="10.0" visible="false">
             <children>
-                <TextArea prefHeight="100.0" prefWidth="300.0" GridPane.columnIndex="1" />
                 <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="2">
                     <children>
                         <Button cancelButton="true" mnemonicParsing="false" text="Annuler">
@@ -28,8 +28,9 @@
                     </children>
                 </HBox>
                 <Label text="Commentaire : " />
+                <TextArea fx:id="textArea" disable="true" prefHeight="100.0" prefWidth="300.0" GridPane.columnIndex="1" />
                 <Label text="Note : " GridPane.rowIndex="1" />
-                <ChoiceBox prefWidth="75.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <ChoiceBox fx:id="choiceBox" disable="true" prefWidth="75.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <Integer fx:value="0" />
@@ -47,6 +48,15 @@
                     </items>
                 </ChoiceBox>
             </children>
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
         </GridPane>
     </children>
     <padding>
