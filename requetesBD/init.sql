@@ -1,30 +1,9 @@
-truncate table TypeCompte;
-truncate table CompteUtilisateur;
-truncate table EstSurnomme;
-truncate table ParticipeA;
-truncate table AppartientA;
-truncate table EstExpertEn;
-truncate table Evaluation;
-truncate table NumeroAccepte;
-truncate table Spectacle;
-truncate table Numero;
-truncate table ArtisteOrganisateur;
-truncate table ArtisteExpert;
-truncate table ArtistePrincipal;
-truncate table ArtisteParticipant;
-truncate table Festival;
-truncate table Theme;
-truncate table Artiste;
-truncate table Cirque;
-truncate table Jury;
 
 --set autocommit off
 alter session set nls_date_format='dd/MM/yyyy';
 
 insert into typeCompte Values ('Expert');
 insert into typeCompte Values ('Admin');
-
-insert into CompteUtilisateur Values (42,'balek', 'Expert');
 
 insert into Cirque Values ( 75, 'Cirque Zabatta');
 insert into Cirque Values ( 4, 'Cirque politique');
@@ -36,10 +15,16 @@ insert into Artiste values (1, 1, 'valjean', 'jean', '12/01/1987', 'bretagne sud
 insert into Artiste values (2, 2, 'hugo', 'victor', '12/02/1987', 'bretagne sud libre');
 insert into Artiste values (3, 3, 'poutine', 'vladimir', '12/05/1977', 'russie pour tous');
 insert into Artiste values (4, 1, 'grey', 'jean', '06/08/1987', 'dans la foret');
+insert into Artiste values (35, 2, 'cockburn', 'heath', '10/05/1925', 'new mexico');
+insert into Artiste values (36, 3, 'litoris', 'mike', '06/11/1994', 'in your mom');
+insert into Artiste values (37, 1, 'the', 'witcher', '12/07/1931', 'steam');
+insert into Artiste values (38, 2, 'coty', 'rene', '10/09/1929', 'elysee');
 Insert into Artiste Values (42, 75, 'Le clown', 'Bozo', '09/04/1995', '677 rue du président Coty');
 Insert into Artiste Values (45, 4, 'Fillon', 'François', '19/04/1242', 'Chez Yvonne');
 Insert into Artiste Values (46, 4, 'Sarkozy', 'Nicolas', '01/01/0001', 'Chez mami Bettencourt');
 Insert into Artiste Values (47, 4, 'Poutou', 'Philippe', '04/02/1975', 'À l usine');
+
+insert into CompteUtilisateur Values (42,'balek', 'Expert');
 
 Insert into ArtisteExpert Values (47, '1');
 insert into ArtisteExpert values (1, '06');
