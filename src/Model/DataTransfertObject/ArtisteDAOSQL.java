@@ -7,6 +7,8 @@ package Model.DataTransfertObject;
 
 import DataAccessLayer.Getter;
 import Model.Artiste;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -54,19 +56,38 @@ public class ArtisteDAOSQL implements ArtisteDAO {
     public boolean delete(Artiste artiste) {
         ExpertDAOSQL expertDAOSQL = new ExpertDAOSQL();
         ParticipantDAOSQL participantDAOSQL = new ParticipantDAOSQL();
-        String cmd = "DELETE FROM Artiste WHERE CodeArtiste=" + artiste.getID();
-        if (Getter.update(cmd) == 0) {
+        String test = "SELECT codeArtiste FROM Spectacle WHERE codeArtiste=" + artiste.getID();
+        String test2 = "SELECT codeArtiste FROM Numero WHERE codeArtiste=" + artiste.getID();
+        ResultSet rs;
+        try {
+            rs = Getter.request(test);
+            rs.next();
+            System.out.println("Erreur SQL : Impossible de supprimer l'artiste "+ artiste.getID() +", il est présentateur de numéro(s)");
             return false;
+            
+        } catch (SQLException e) {
+            try {
+                rs = Getter.request(test2);
+                rs.next();
+                System.out.println("Erreur SQL : Impossible de supprimer l'artiste "+ artiste.getID() +", il est principal de numéro(s)");
+                return false;
+                
+            } catch (SQLException f) {
+                String cmd = "DELETE FROM Artiste WHERE CodeArtiste=" + artiste.getID();
+                if (Getter.update(cmd) == 0) {
+                    return false;
+                }
+                cmd = "DELETE FROM ArtisteExpert WHERE CodeArtiste=" + artiste.getID();
+                if (Getter.update(cmd) == 0) {
+                    return false;
+                }
+                cmd = "DELETE FROM ArtisteParticipant WHERE CodeArtiste=" + artiste.getID();
+                if (Getter.update(cmd) == 0) {
+                    return false;
+                }
+                return true;
+            }
         }
-        cmd = "DELETE FROM ArtisteExpert WHERE CodeArtiste=" + artiste.getID();
-        if (Getter.update(cmd) == 0) {
-            return false;
-        }
-        cmd = "DELETE FROM ArtisteParticipant WHERE CodeArtiste=" + artiste.getID();
-        if (Getter.update(cmd) == 0) {
-            return false;
-        }
-        return true;
     }
     
 }
