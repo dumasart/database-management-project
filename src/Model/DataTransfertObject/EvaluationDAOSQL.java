@@ -68,9 +68,14 @@ public class EvaluationDAOSQL implements EvaluationDAO {
      * @return true on success 
      */
     @Override
-    public boolean insert(Evaluation evaluation) {
-        String cmd = "INSERT INTO Evaluation (codeArtiste, codeNumero, evaluation, note) VALUES (" + evaluation.getID() + " , "
-                + evaluation.getCodeNumero() + " , " + evaluation.getEvaluation() + " , " + evaluation.getNote() + " ) ";
+    public boolean insert(Evaluation evaluation, Numero numero, String expertID) {
+        String cmd;
+        if (evaluation != null) {
+            cmd = "INSERT INTO Evaluation (codeArtiste, codeNumero, evaluation, note) VALUES (" + expertID + " , "
+                    + numero.getID() + " , " + evaluation.getEvaluation() + " , " + evaluation.getNote() + " ) ";
+        } else {
+            cmd = "INSERT INTO Evaluation VALUES (" + expertID + ", " + numero.getID() + ")";
+        }
         int res = Getter.update(cmd);
         if (res == 0) {
             return false;
@@ -79,23 +84,6 @@ public class EvaluationDAOSQL implements EvaluationDAO {
         }
     }
 
-    /**
-     * Give an act to evaluate to an expert
-     *
-     * @param exp
-     * @param numero
-     */
-    public boolean insert(Expert exp, Numero numero) {
-        String cmd = "INSERT INTO Evaluation VALUES (" + exp.getId() + ", " + numero.getID() + ")";
-        Getter.update(cmd);
-        exp.ajouteNumero(numero);
-        return true;
-    }
-    /**
-     * 
-     * @param numero : act to find all the evaluation about 
-     * @return all the evaluation about the act numero 
-     */
     @Override
     public List<Evaluation> getEvaluationFromNumero(Numero numero) {
         String cmd = "SELECT * FROM Evaluation WHERE codeNumero = " + numero.getID();

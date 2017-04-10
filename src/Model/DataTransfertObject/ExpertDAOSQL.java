@@ -75,6 +75,12 @@ public class ExpertDAOSQL implements ExpertDAO {
         String cmd = "DELETE FROM ArtisteExpert WHERE CodeArtiste=" + expert.getId();
         return Getter.update(cmd) == 1;
     }
+    
+    @Override
+    public boolean associateNumero(Expert expert, Numero numero) {
+        String cmd = "INSERT INTO Evaluation VALUES (" + expert.getId() + ", " + numero.getID() + ")";
+        return Getter.update(cmd) == 1;
+    }
 
     //TODO reprendre cette fonction, le comportement est bizarre
     // voir si y'a pas moyen d'avoir les expert disponible dans la BD
