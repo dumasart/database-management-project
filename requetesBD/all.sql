@@ -177,4 +177,6 @@ create table CompteUtilisateur
 	primary key (identifiant, motDePasse)
 );
 
+commit;
+
 @initialisationThemes

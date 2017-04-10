@@ -180,3 +180,5 @@ insert into Evaluation values (2, 4, 'ouf', 4);
 insert into Evaluation values (3, 4, 'excellent', 5);
 insert into Evaluation values (4, 4, 'oui', 3);
 insert into Evaluation values (42, 4, 'oui', 4);
+
+commit;
