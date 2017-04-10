@@ -5,7 +5,6 @@
  */
 package Controller;
 
-import DataAccessLayer.RequeteOrganisateur;
 import Model.DataTransfertObject.*;
 import Model.Artiste;
 import Model.Theme;
@@ -89,22 +88,17 @@ public class OrganisateurViewController extends MainController implements Initia
         }
         
         if (listeSpecialites.size() < 3 || listeNonSpecialites.size() < 2) {
-            //TODO: Gérer l'ajout d'expert à la main
-            System.out.println("Saisissez un expert à la main :");
-            if (listeSpecialites.size() < 3) {
-                System.out.println("Voici la liste des experts :");
-                //req.getExpertsAvailable(liste1);
-            }
+            ajouteExpertALaMain(numero);
         } else {
 
             for (int i = 0; i < listeSpecialites.size(); i++) {
-                evaluationDAO.insert(listeSpecialites.get(i), numero);
+                evaluationDAO.insert(null, numero, "" + listeSpecialites.get(i).getId());
                 //Incrémenter le nombre de numéros
                 listeSpecialites.get(i).ajouteNumero(numero);
                 expertDAO.update(listeSpecialites.get(i));
             }
             for (int i = 0; i < listeNonSpecialites.size(); i++) {
-                evaluationDAO.insert(listeNonSpecialites.get(i), numero);
+                evaluationDAO.insert(null, numero, "" + listeNonSpecialites.get(i).getId());
                 //Incrémenter le nombre de numéros
                 listeNonSpecialites.get(i).ajouteNumero(numero);
                 expertDAO.update(listeNonSpecialites.get(i));
@@ -112,6 +106,8 @@ public class OrganisateurViewController extends MainController implements Initia
         }
     }
      
-    
+    private void ajouteExpertALaMain(Numero numero) {
+        //TODO: Gérer l'ajout d'expert à la main
+    }
 
 }
