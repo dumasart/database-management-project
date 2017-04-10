@@ -13,10 +13,22 @@ import Model.Artiste;
  * @author nomezing
  */
 public class ArtisteDAOSQL implements ArtisteDAO {
+    
 
+    /**
+     * Met à jour un artiste
+     * @param artiste
+     * @return true si ça a marché
+     */
     @Override
     public boolean update(Artiste artiste) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String up = "UPDATE Artiste SET codeCirque=" + artiste.getCodeCirque()
+                + " and nomArtiste=" + artiste.getNom()
+                + " and prenomArtiste=" + artiste.getPrenom()
+                + " and dateNaissanceArtiste" + artiste.getDate()
+                + " and adresseArtiste=" + artiste.getAdresse()
+                + " WHERE codeArtiste=" + artiste.getID();
+        return Getter.update(up) == 1;
     }
 
     /**
@@ -30,16 +42,31 @@ public class ArtisteDAOSQL implements ArtisteDAO {
                 artiste.getCodeCirque() + " , " + artiste.getNom() + " , " +
                 artiste.getPrenom() + " , " + artiste.getDate() + " , " +
                 artiste.getAdresse() + ")";
-        int res = Getter.update(req);
-        if(res==0)
-            return false;
-        else 
-            return true;
+        return Getter.update(req) == 1;
     }
 
+    /**
+     * Supprime un artiste de la BD et toutes ses dépendances
+     * @param artiste
+     * @return true si OK
+     */
     @Override
     public boolean delete(Artiste artiste) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ExpertDAOSQL expertDAOSQL = new ExpertDAOSQL();
+        ParticipantDAOSQL participantDAOSQL = new ParticipantDAOSQL();
+        String cmd = "DELETE FROM Artiste WHERE CodeArtiste=" + artiste.getID();
+        if (Getter.update(cmd) == 0) {
+            return false;
+        }
+        cmd = "DELETE FROM ArtisteExpert WHERE CodeArtiste=" + artiste.getID();
+        if (Getter.update(cmd) == 0) {
+            return false;
+        }
+        cmd = "DELETE FROM ArtisteParticipant WHERE CodeArtiste=" + artiste.getID();
+        if (Getter.update(cmd) == 0) {
+            return false;
+        }
+        return true;
     }
     
 }
