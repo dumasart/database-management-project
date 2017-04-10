@@ -6,7 +6,7 @@
 package Controller;
 
 import Model.DataTransfertObject.SpectacleDAO;
-import Model.DataTransfertObject.SpectacleDOASQL;
+import Model.DataTransfertObject.SpectacleDAOSQL;
 import Model.Spectacle;
 import java.util.List;
 
@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class GesProgrammeController extends MainController {
 
-    private SpectacleDAO spectacleDAO = new SpectacleDOASQL();
+    private SpectacleDAO spectacleDAO = new SpectacleDAOSQL();
     
     
     public List<Spectacle> getAllSpectacles() throws Exception {

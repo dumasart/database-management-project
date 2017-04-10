@@ -23,7 +23,7 @@ public class ArtisteParticipant extends Artiste {
 	}
 
 	public ArrayList<Integer> getListeNumero() {
-		return this.listeNumero;
+		return this.listeNumero;    
 	}
 
 	public void addNumero(int codeNumero) {
