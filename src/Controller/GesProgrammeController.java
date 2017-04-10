@@ -24,7 +24,7 @@ public class GesProgrammeController extends MainController {
     private NumeroDAO numeroDAO = new NumeroDAOSQL();
     
     
-    public List<Spectacle> getAllSpectacles() throws Exception {
+    public List<Spectacle> getAllSpectacles() {
         return spectacleDAO.getAllSpectacle();
     }
     

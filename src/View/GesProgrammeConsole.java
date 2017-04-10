@@ -69,26 +69,21 @@ public class GesProgrammeConsole {
 
     private void afficherListeSpectacle() {
         List<Spectacle> spectacles;
-        try {
-            //TODO on a un problème une exception levée par la requête
-            spectacles = controller.getAllSpectacles();
+        
+        spectacles = controller.getAllSpectacles();
+        
+        if (spectacles != null) {
             int count=0;
             for (Spectacle sp : spectacles) {
                 count++;
-                /*
                 StringBuilder sb =new StringBuilder();
-                sb.append(((Integer)count).toString());
-                sb.append(". ");
-                sb.append(sp);*/
-                System.out.print(count + ". ");
-                System.out.print(sp);
+                sb.append(count).append(". ").append(sp);
+                System.out.print(sb);
             }
-            
+
             System.out.println("0. Quitter");
             System.out.println("----------------------------------------");
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } else {
             System.out.println("Aucun spectacle n'est programmé");
         }
     }

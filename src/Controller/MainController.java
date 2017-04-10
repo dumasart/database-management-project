@@ -13,7 +13,7 @@ import Model.DataTransfertObject.User;
  */
 class MainController {
     
-    private User connectedUser;
+    private static User connectedUser = null;
 
     User getConnectedUser() {
         return connectedUser;

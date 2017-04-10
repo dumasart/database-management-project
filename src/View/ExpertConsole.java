@@ -31,7 +31,6 @@ public class ExpertConsole {
         // procédure de connection
         LoginConsole loginConsole = new LoginConsole();
         boolean identifyed;
-        
         do {
             identifyed = loginConsole.readLoginAndPassword();
         } while (!identifyed);

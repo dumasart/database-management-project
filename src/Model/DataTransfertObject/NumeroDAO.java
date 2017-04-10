@@ -24,6 +24,8 @@ public interface NumeroDAO {
     public List<Numero> getNumerosBySpectacle(Spectacle spectacle);
     public List<Numero> getNumerosRankedByTheme(Theme theme);
     public List<Numero> getNumerosByTheme(Theme theme);
+    public List<Numero> getNumeroNonEvalueByExpertID(String expertID);
+
     
     //TODO à compléter
 }
