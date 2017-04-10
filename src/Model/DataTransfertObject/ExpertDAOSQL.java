@@ -29,7 +29,9 @@ public class ExpertDAOSQL implements ExpertDAO {
      */
     @Override
     public boolean update(Expert expert) {
-        artisteDAO.update(expert);
+        if (!artisteDAO.update(expert)) {
+            return false;
+        }
         String up = "UPDATE ArtisteExpert SET NumTelExpert=" + expert.getNumeroTel()
                 + " WHERE codeArtiste=" + expert.getId();
         return Getter.update(up) == 1;
@@ -116,6 +118,10 @@ public class ExpertDAOSQL implements ExpertDAO {
         }
         return res;
     }
+    /**
+     * 
+     * @return all the expert in the data-base
+     */
     @Override
     public List<Expert> getAllExpert() {
         String cmd = "SELECT * FROM ArtisteExpert";

@@ -31,6 +31,8 @@ public class OrganisateurViewController extends MainController implements Initia
     
     private EvaluationDAO evaluationDAO = new EvaluationDAOSQL();
     
+    private SpectacleDAO spectacleDAO = new SpectacleDAOSQL();
+    
     /**
      * Initializes the controller class.
      */
@@ -42,26 +44,37 @@ public class OrganisateurViewController extends MainController implements Initia
     private Collection<Expert> listeExperts = expertDAO.getAllExpert();
     
     
-    public void ajouteExpert(Expert expert) {
-        expertDAO.insert(expert);
+    public boolean ajouteExpert(Expert expert) {
+        return expertDAO.insert(expert);
     }
     
-    public void ajouteArtiste(Artiste artiste) {
-        artisteDAO.insert(artiste);
+    public boolean ajouteArtiste(Artiste artiste) {
+        return artisteDAO.insert(artiste);
     }
     
-    public void ajouteSpectacle(Spectacle spectacle) {
-        //dao.ajouteSpectacle(spectacle);
+    public boolean ajouteSpectacle(Spectacle spectacle) {
+        return spectacleDAO.insert(spectacle);
     }  
     
-        /**
+    public boolean ajouteNumeroASpectacle(Numero num, Spectacle spectacle, int heure) {
+        int duree = spectacle.getFin() - spectacle.getDebut();
+        
+        // Garantit la durée des spectalces
+        if ((duree + num.getDuree()) > 540) {
+            return false;
+        }
+        
+        return spectacleDAO.addNumero(spectacle, num, heure);
+    }
+    
+    /**
      * Quand l'organisateur ajoute un numero, l'application va proposer des experts
      * pour ce numéro par les étapes:
      * 1. Récuppérer le thème du numéro
      * 2. Récuppérer les experts libres (qui n'ont pas validé suffit de 15 numéros)
      *    de ce thème: listeSpecialites
      * 3. Récuppérer les experts libres hors de ce thème: listeNonSpecialites
-     * 4. Si un de ces deux listes est invalide (liste1.size() < 3 || liste2.size() < 2)
+     * 4. Si un de ces deux listes est invalide (listeSpecialites.size() < 3 || listeNonSpecialites.size() < 2)
      *      l'organisateur va saisir un jury pour ce numéro à la main
      * 5. Si non
      *      Associer ce numéro avec 3 experts de la listeSpecialites
@@ -90,7 +103,6 @@ public class OrganisateurViewController extends MainController implements Initia
         if (listeSpecialites.size() < 3 || listeNonSpecialites.size() < 2) {
             ajouteExpertALaMain(numero);
         } else {
-
             for (int i = 0; i < listeSpecialites.size(); i++) {
                 evaluationDAO.insert(null, numero, "" + listeSpecialites.get(i).getId());
                 //Incrémenter le nombre de numéros
@@ -98,7 +110,6 @@ public class OrganisateurViewController extends MainController implements Initia
                 expertDAO.update(listeSpecialites.get(i));
             }
             for (int i = 0; i < listeNonSpecialites.size(); i++) {
-                evaluationDAO.insert(null, numero, "" + listeNonSpecialites.get(i).getId());
                 //Incrémenter le nombre de numéros
                 listeNonSpecialites.get(i).ajouteNumero(numero);
                 expertDAO.update(listeNonSpecialites.get(i));

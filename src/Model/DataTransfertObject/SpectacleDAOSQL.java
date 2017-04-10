@@ -22,7 +22,11 @@ import java.util.List;
  * @author milang
  */
 public class SpectacleDAOSQL implements SpectacleDAO{
-
+    /**
+     * 
+     * @param spectacle : show to synchronize with the data-base
+     * @return true on success 
+     */
     @Override
     public boolean update(Spectacle spectacle) {
         String cmd = "UPDATE Spectacle SET codeFestival = " +
@@ -47,7 +51,11 @@ public class SpectacleDAOSQL implements SpectacleDAO{
         else 
             return true;   
     }
-
+    /**
+     * 
+     * @param spectacle : show to insert in the data-base 
+     * @return true on success 
+     */
     @Override
     public boolean insert(Spectacle spectacle) {
         String req = "INSERT INTO Spectacle (CodeSpectacle, JourSpectacle, HeureDebut, HeureFin, PrixSpectacle, CodeArtiste, Theme, codeFestival) VALUES (" + spectacle.getID() + " , " + spectacle.getJour() + " , " + spectacle.getDebut() + " , " + spectacle.getFin() + " , " + spectacle.getPrix()
@@ -58,7 +66,11 @@ public class SpectacleDAOSQL implements SpectacleDAO{
         else 
             return true;
     }
-
+    /**
+     * 
+     * @param spectacle : show to delete from the data-base 
+     * @return true on success 
+     */
     @Override
     public boolean delete(Spectacle spectacle) {
         String cmd = "DELETE from SPECTACLE WHERE CODESPECTACLE = "+spectacle.getID()+";";
@@ -68,7 +80,12 @@ public class SpectacleDAOSQL implements SpectacleDAO{
         else 
             return true;
     }
-
+    /**
+     * 
+     * @return all the show in the data-base 
+     * @throws SQLException if there is a problem with the request 
+     * (verify connection)
+     */
     @Override
     public List<Spectacle> getAllSpectacle() {
         try {
@@ -93,7 +110,16 @@ public class SpectacleDAOSQL implements SpectacleDAO{
         }
         return null;
     }
-
+    /**
+     * 
+     * @param spectacle : show in which to add the act 
+     * @param numero : act to add 
+     * @param heure : hour at which the act will be played 
+     * (hour from the beginning of the show 
+     * example :
+     * if heure=1 min and spectacle.heure=15h, the act will be played at 15h01
+     * @return true on success 
+     */
     @Override
     public boolean addNumero(Spectacle spectacle, Numero numero,int heure) {
         String cmd = "INSERT INTO NumeroAccepte(codeNumero, codeSpectacle, HeureNumero ) VALUES ( " + numero.getID() + " , " + spectacle.getID() + " , " + heure + ")";
