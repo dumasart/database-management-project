@@ -122,6 +122,10 @@ public class ExpertDAOSQL implements ExpertDAO {
         }
         return res;
     }
+    /**
+     * 
+     * @return all the expert in the data-base
+     */
     @Override
     public List<Expert> getAllExpert() {
         String cmd = "SELECT * FROM ArtisteExpert";
