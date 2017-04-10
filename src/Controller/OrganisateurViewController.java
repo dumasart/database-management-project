@@ -54,7 +54,7 @@ public class OrganisateurViewController extends MainController implements Initia
         //dao.ajouteSpectacle(spectacle);
     }  
     
-        /**
+    /**
      * Quand l'organisateur ajoute un numero, l'application va proposer des experts
      * pour ce numéro par les étapes:
      * 1. Récuppérer le thème du numéro
@@ -90,7 +90,6 @@ public class OrganisateurViewController extends MainController implements Initia
         if (listeSpecialites.size() < 3 || listeNonSpecialites.size() < 2) {
             ajouteExpertALaMain(numero);
         } else {
-
             for (int i = 0; i < listeSpecialites.size(); i++) {
                 evaluationDAO.insert(null, numero, "" + listeSpecialites.get(i).getId());
                 //Incrémenter le nombre de numéros
