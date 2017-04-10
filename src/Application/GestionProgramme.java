@@ -5,7 +5,11 @@
  */
 package Application;
 
+import DataAccessLayer.ConnectionSQL;
 import Model.Spectacle;
+import View.GesProgrammeConsole;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Collection;
 
 /**
@@ -16,13 +20,15 @@ import java.util.Collection;
  */
 public class GestionProgramme {  
     
-    public  static void main(String args[]) {
-        /*
-        Collection<Spectacle> listeSpectacle = Factory.getDAO().getSpectacles();
-        
-        for(Spectacle s : listeSpectacle) {
-            System.out.println(s.toString());
+    public  static void main(String args[]) throws SQLException {
+        try {
+            GesProgrammeConsole console = new GesProgrammeConsole();
+            console.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // ferme la connection si elle n'a pas été fermée
+            ConnectionSQL.closeConnection();
         }
-        */
     }
 }
