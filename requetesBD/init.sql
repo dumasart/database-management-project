@@ -119,12 +119,14 @@ Insert into ArtisteParticipant Values (38);
 Insert into ArtisteParticipant Values (37);
 Insert into ArtisteParticipant Values (36);
 Insert into ArtisteParticipant Values (35);
+Insert into ArtisteParticipant Values (32);
 
 Insert into ArtistePrincipal Values (46, '+33657846910');
 Insert into ArtistePrincipal Values (38, '+33657846910');
 Insert into ArtistePrincipal Values (37, '+33657846910');
 Insert into ArtistePrincipal Values (36, '+33657846910');
 Insert into ArtistePrincipal Values (35, '+33657846910');
+Insert into ArtistePrincipal Values (32, '+33657845610');
 
 -- Et là c'est le drame
 --Insert into ArtistePrincipal Values (45, 'BUG');
@@ -139,8 +141,8 @@ insert into Numero values (3, 'ours', 'blah blah', 27, 1, 'false', 36, 'Dressage
 insert into Numero values (4, 'funambule', 'du lourd', 22, 1, 'false',35, 'Acrobatie');
 insert into Numero values (5, 'Licorne', 'blah blah blah', 32, 3, 'true',32, 'Contorsionniste');
 
-insert into Numero values (6, 'Carte', 'blah blah blah', 28, 4, 'true',33, 'Magie');
-insert into Numero values (7, 'Muahaha', 'blah blah blah', 31, 1, 'true',31, 'Acrobatie');
+insert into Numero values (6, 'Carte', 'blah blah blah', 28, 4, 'true',35, 'Magie');
+insert into Numero values (7, 'Muahaha', 'blah blah blah', 31, 1, 'true',36, 'Acrobatie');
 insert into Numero values (8, 'Muahihi', 'blah blah blah', 33, 12, 'false',36, 'Dressage');
 
 
