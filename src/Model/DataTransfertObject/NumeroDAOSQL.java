@@ -21,6 +21,11 @@ import java.util.List;
  */
 public class NumeroDAOSQL implements NumeroDAO {
 
+    /**
+     * 
+     * @param numero to synchronize with the data-base
+     * @return true eon success 
+     */
     @Override
     public boolean update(Numero numero) {
         String up = "UPDATE Numero SET TitreNumero=" + numero.getTitre() + " and ResumeNumero="
@@ -36,6 +41,11 @@ public class NumeroDAOSQL implements NumeroDAO {
         }    
     }
 
+    /**
+     * 
+     * @param numero to insert in the data-base
+     * @return true on success 
+     */
     @Override
     public boolean insert(Numero numero) {
         String cmd = "INSERT INTO Numero VALUES (" + numero.getID() +", " + numero.getTitre() + ", " + numero.getResume() + ", " + numero.getDuree()
@@ -46,7 +56,12 @@ public class NumeroDAOSQL implements NumeroDAO {
         } else {
             return true;
         }    }
-
+    
+    /**
+     * 
+     * @param numero to delete from the data-base
+     * @return true on success
+     */
     @Override
     public boolean delete(Numero numero) {
         String cmd = "DELETE FROM Numero WHERE CodeNumero=" + numero.getID();
@@ -57,7 +72,11 @@ public class NumeroDAOSQL implements NumeroDAO {
             return true;
         }
     }
-
+    /**
+     * 
+     * @param u user as expert 
+     * @return return all the act that the user has to evaluate 
+     */
     public List<Numero> getAllNumero(User u) {
         String s = "SELECT * FROM Evaluation JOIN Numero ON Evaluation.codeNumero=Numero.codeNumero WHERE codeArtiste="+u.getIdentifiant();
         ArrayList<Numero> nums = new ArrayList<Numero>();
@@ -83,7 +102,10 @@ public class NumeroDAOSQL implements NumeroDAO {
         return nums;
     }
 
-    
+    /**
+     * 
+     * @return return all the act in the data-base
+     */
     @Override
     public List<Numero> getAllNumero() {
         String s = "SELECT * FROM Evaluation JOIN Numero ON Evaluation.codeNumero=Numero.codeNumero ";
@@ -110,7 +132,11 @@ public class NumeroDAOSQL implements NumeroDAO {
         return nums;
     }
 
-    
+    /**
+     * 
+     * @param expertID : code of the expert 
+     * @return all the act that the expert has to evaluate 
+     */
     @Override
     public List<Numero> getNumeroByExpertID(String expertID) {
 
@@ -140,7 +166,11 @@ public class NumeroDAOSQL implements NumeroDAO {
         }
         return null;
     }
-
+    /**
+     * 
+     * @param spectacle : show that contain the acts
+     * @return the acts in the show 
+     */
     @Override
     public List<Numero> getNumerosBySpectacle(Spectacle spectacle) {
         String s = "SELECT codeNumero, TitreNumero, ResumeNumero, DureeNumero, "
@@ -169,7 +199,11 @@ public class NumeroDAOSQL implements NumeroDAO {
         }
         return nums;
     }
-
+    /**
+     * 
+     * @param theme : theme in which all the acts belong to 
+     * @return all the acts in the theme ranked by their note Average
+     */
     @Override
     public List<Numero> getNumerosRankedByTheme(Theme theme) {
         String cmd = "SELECT Numero.codeNumero, TitreNumero, ResumeNumero, DureeNumero, NbArtisteNumero, EstCreation, CodeArtiste, Theme "
@@ -198,7 +232,11 @@ public class NumeroDAOSQL implements NumeroDAO {
         }
         return nums;
     }
-
+    /**
+     * 
+     * @param theme of the acts to select 
+     * @return the acts which the theme is theme 
+     */
     @Override
     public List<Numero> getNumerosByTheme(Theme theme) {
         String s = "SELECT * FROM Numero WHERE theme = " + theme;

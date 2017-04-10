@@ -17,11 +17,10 @@ public interface ExpertDAO {
     public boolean update(Expert expert);
     public boolean insert(Expert expert);
     public boolean delete(Expert expert);
-    
+        
     //TODO voir commentaire dans ExpertDAOSQL
     public List<Expert> getExpertsAvailable(List<Expert> listeExperts);
     public List<Expert> getAllExpert();
     /* Méthode pour récupérer un Expert à partir de sont numéro artiste */
     public Expert getExpertByID(int codeArtiste);
-    
 }
