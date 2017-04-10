@@ -112,12 +112,12 @@ public class NumeroDAOSQL implements NumeroDAO {
 
     
     @Override
-    public List<Numero> getNumeroByExpert(Expert expert) {
-        /*
+    public List<Numero> getNumeroByExpertID(String expertID) {
+
         String s = "SELECT codeNumero, TitreNumero, ResumeNumero, DureeNumero, "
                 + "NbArtisteNumero, EstCreation, CodeArtiste, ThemeNumero "
-                + "FROM Evaluation WHERE codeArtiste=" + expert.getId();
-        ArrayList<Numero> nums = new ArrayList<Numero>();
+                + "FROM Evaluation WHERE codeArtiste=" + expertID;
+        ArrayList<Numero> nums = new ArrayList<>();
         try {
             ResultSet b = Getter.request(s);
             while(b.next()) {
@@ -129,15 +129,15 @@ public class NumeroDAOSQL implements NumeroDAO {
                         b.getInt("nbArtisteNumero"),
                         b.getBoolean("estCreation"),
                         b.getInt("codeArtiste"),
-                        b.getString("themeNumero")                        
+                        b.getString("theme")                        
                 );
                 nums.add(num);
             }
+            return nums;
         }
         catch(SQLException e) {
-            System.out.println("Erreur SQL : Aucun numero pour l'expert" + expert.getId());
+            System.out.println("Erreur SQL : Aucun numero pour l'expert" + expertID);
         }
-        */
         return null;
     }
 
