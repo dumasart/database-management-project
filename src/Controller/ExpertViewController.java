@@ -37,7 +37,7 @@ public class ExpertViewController extends ExpertController implements Initializa
     
     
     /* la liste de numero est bindé avec la listeView dans la vue expert */
-    private List<Numero> listeNumero = numeroDAO.getNumeroByExpertID(getConnectedUser().getIdentifiant());
+    private List<Numero> listeNumero = numeroDAO.getNumeroNonEvalueByExpertID(getConnectedUser().getIdentifiant());
     
     /**
      * Méthode pour gérer l'évenement de selection
