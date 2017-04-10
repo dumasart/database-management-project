@@ -96,8 +96,9 @@ public class ExpertDAOSQL implements ExpertDAO {
         }
         return res;
     }
-    
-    public List<Expert> getAllExpert() throws SQLException {
+
+    @Override
+    public List<Expert> getAllExpert() {
         String cmd = "SELECT * FROM ArtisteExpert";
         ArrayList<Expert> res = new ArrayList<Expert>();
         try {

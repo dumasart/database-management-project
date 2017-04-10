@@ -54,7 +54,7 @@ public class OrganisateurViewController extends MainController implements Initia
     public void ajouteNumero(Numero numero) {
         ArrayList<Expert> liste1 = new ArrayList<>(); // expert du même thème
         ArrayList<Expert> liste2 = new ArrayList<>(); // expert d'un theme différent
-        RequeteOrganisateur req = new RequeteOrganisateur();
+        
         Theme theme = numero.getTheme();
         
         for(Expert exp : listeExperts) {
@@ -74,17 +74,17 @@ public class OrganisateurViewController extends MainController implements Initia
             System.out.println("Saisissez un expert à la main :");
             if (liste1.size() < 3) {
                 System.out.println("Voici la liste des experts :");
-                req.getExpertsAvailable(liste1);
+                //req.getExpertsAvailable(liste1);
             }
         } else {
 
             for (int i = 0; i < liste1.size(); i++) {
-                req.associeNumeroExpert(liste1.get(i), numero);
+                //req.associeNumeroExpert(liste1.get(i), numero);
                 //Incrémenter le nombre de numéros
                 liste1.get(i).ajouteNumero(numero); // DONE ?
             }
             for (int j = 0; j < liste2.size(); j++) {
-                req.associeNumeroExpert(liste2.get(j), numero);
+                //req.associeNumeroExpert(liste2.get(j), numero);
                 liste2.get(j).ajouteNumero(numero);
             }
         }
