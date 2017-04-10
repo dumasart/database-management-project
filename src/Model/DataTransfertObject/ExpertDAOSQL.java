@@ -148,11 +148,4 @@ public class ExpertDAOSQL implements ExpertDAO {
         }
         return res;
     }
-    
-    @Override
-    public Expert getExpertByID(int codeArtiste) {
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }

@@ -7,11 +7,8 @@ package Application;
 
 import DataAccessLayer.ConnectionSQL;
 import DataAccessLayer.Getter;
-import Model.Spectacle;
 import View.GesProgrammeConsole;
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Collection;
 
 /**
  *La classe pour gérer les programmes de façon globale :
