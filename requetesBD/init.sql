@@ -55,6 +55,45 @@ Insert into Artiste Values (46, 4, 'Sarkozy', 'Nicolas', '01/01/0001', 'Chez mam
 Insert into Artiste Values (47, 4, 'Poutou', 'Philippe', '04/02/1975', 'À l usine');
 
 insert into CompteUtilisateur Values (42,'balek', 'Expert');
+insert into CompteUtilisateur Values (1,'valak', 'Expert');
+insert into CompteUtilisateur Values (2,'valak', 'Expert');
+insert into CompteUtilisateur Values (4,'valak', 'Expert');
+insert into CompteUtilisateur Values (5,'valak', 'Expert');
+insert into CompteUtilisateur Values (6,'valak', 'Expert');
+insert into CompteUtilisateur Values (7,'valak', 'Expert');
+insert into CompteUtilisateur Values (8,'valak', 'Expert');
+insert into CompteUtilisateur Values (9,'valak', 'Expert');
+insert into CompteUtilisateur Values (10,'valak', 'Expert');
+insert into CompteUtilisateur Values (11,'valak', 'Expert');
+insert into CompteUtilisateur Values (12,'valak', 'Expert');
+insert into CompteUtilisateur Values (13,'valak', 'Expert');
+insert into CompteUtilisateur Values (14,'valak', 'Expert');
+insert into CompteUtilisateur Values (15,'valak', 'Expert');
+insert into CompteUtilisateur Values (16,'valak', 'Expert');
+insert into CompteUtilisateur Values (17,'valak', 'Expert');
+insert into CompteUtilisateur Values (18,'valak', 'Expert');
+insert into CompteUtilisateur Values (19,'valak', 'Expert');
+insert into CompteUtilisateur Values (20,'valak', 'Expert');
+insert into CompteUtilisateur Values (21,'valak', 'Expert');
+insert into CompteUtilisateur Values (22,'valak', 'Expert');
+insert into CompteUtilisateur Values (23,'valak', 'Expert');
+insert into CompteUtilisateur Values (24,'valak', 'Expert');
+insert into CompteUtilisateur Values (25,'valak', 'Expert');
+insert into CompteUtilisateur Values (26,'valak', 'Expert');
+insert into CompteUtilisateur Values (27,'valak', 'Expert');
+insert into CompteUtilisateur Values (28,'valak', 'Expert');
+insert into CompteUtilisateur Values (29,'valak', 'Expert');
+insert into CompteUtilisateur Values (30,'valak', 'Expert');
+insert into CompteUtilisateur Values (31,'valak', 'Expert');
+insert into CompteUtilisateur Values (32,'valak', 'Expert');
+insert into CompteUtilisateur Values (33,'valak', 'Expert');
+insert into CompteUtilisateur Values (34,'valak', 'Expert');
+insert into CompteUtilisateur Values (35,'valak', 'Expert');
+insert into CompteUtilisateur Values (36,'valak', 'Expert');
+insert into CompteUtilisateur Values (37,'valak', 'Expert');
+insert into CompteUtilisateur Values (38,'valak', 'Expert');
+insert into CompteUtilisateur Values (39,'valak', 'Expert');
+
 
 Insert into ArtisteExpert Values (47, '02 20 30 21 02');
 Insert into ArtisteExpert Values (42, '02 20 30 21 99');
