@@ -7,7 +7,7 @@ package Application;
 
 import DataAccessLayer.ConnectionSQL;
 import DataAccessLayer.Getter;
-import View.GesProgrammeConsole;
+import View.Console.GesProgrammeConsole;
 import java.sql.SQLException;
 
 /**

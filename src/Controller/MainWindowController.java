@@ -12,13 +12,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Modality;
-import javafx.stage.Window;
+
 
 
 public class MainWindowController extends MainController implements Initializable {
@@ -94,10 +91,12 @@ public class MainWindowController extends MainController implements Initializabl
            au type d'utilisateur connecté */
         switch(this.getConnectedUser().getUserType()) {
             case EXPERT : 
-                ressource="/View/ExpertView.fxml";
+                // changé temporairement pour debug
+                ressource="/View/Organisateur/OrganisateurView.fxml";
+                //ressource="/View/ExpertView.fxml";
                 break;
             case ORGANISATEUR :
-                ressource="/View/OrganisateurView.fxml";
+                ressource="/View/Organisateur/OrganisateurView.fxml";
                 break;
             default:
                 throw new RuntimeException("Connexion impossible, utilisateur corrompu");

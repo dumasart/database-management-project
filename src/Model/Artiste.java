@@ -101,6 +101,6 @@ public class Artiste {
          */
 	@Override
 	public String toString() {
-		return "" + "Salut, je m'appelle " + this.getNom() + " " + this.getPrenom() + ", je suis né le " + this.getDate() + " et j'habite au " + this.getAdresse() + ". Je travaille au cirque numéro " + this.getCodeCirque() + " et mon code est " + this.getID();
+		return "Artiste " + this.getID() + " : " + this.getNom() + " " + this.getPrenom();
 	}
 }

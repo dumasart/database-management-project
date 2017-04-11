@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane id="centerRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.OrganisateurViewController">
+  <tabs>
+    <Tab closable="false" text="Création / Edition">
+         <content>
+            <BorderPane fx:id="borderPaneTab1" prefHeight="200.0" prefWidth="200.0">
+               <left>
+                  <VBox spacing="10.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button mnemonicParsing="false" onMouseClicked="#ArtisteClicked" prefWidth="150.0" text="Artiste" />
+                        <Button mnemonicParsing="false" onMouseClicked="#numeroClicked" prefWidth="150.0" text="Numéro" />
+                        <Button mnemonicParsing="false" onMouseClicked="#spectacleClicked" prefWidth="150.0" text="Spectacle" />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </left>
+               <bottom>
+                  <HBox alignment="CENTER_RIGHT" spacing="20.0" visible="false" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button mnemonicParsing="false" text="Annuler" />
+                        <Button mnemonicParsing="false" text="Valider" />
+                     </children>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+               </bottom>
+               <top>
+                  <HBox alignment="CENTER_RIGHT" spacing="2.0">
+                     <BorderPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </BorderPane.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+               </top>
+            </BorderPane>
+         </content>
+    </Tab>
+      <Tab closable="false" text="Gestion">
+         <content>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <bottom>
+                  <HBox alignment="CENTER_RIGHT" spacing="20.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button mnemonicParsing="false" text="Annuler" />
+                        <Button mnemonicParsing="false" text="Valider" />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                  </HBox>
+               </bottom>
+               <left>
+                  <VBox spacing="10.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button mnemonicParsing="false" prefWidth="150.0" text="Artiste" /> <!--onMouseClicked="#creerArtisteClicked"-->
+                        <Button mnemonicParsing="false" prefWidth="150.0" text="Numéro" /> <!--onMouseClicked="#creerArtisteClicked"-->
+                        <Button mnemonicParsing="false" prefWidth="150.0" text="Spectacle" /><!--onMouseClicked="#creerArtisteClicked"-->
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </left>
+               <top>
+                  <HBox alignment="CENTER_RIGHT" spacing="2.0">
+                     <children>
+                        <ChoiceBox prefHeight="30.0" prefWidth="300.0" BorderPane.alignment="CENTER" />
+                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="+" />
+                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="-" />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <BorderPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </BorderPane.margin>
+                  </HBox>
+               </top>
+            </BorderPane>
+         </content>
+      </Tab>
+  </tabs>
+</TabPane>

@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package View.Console;
 
 import Controller.ExpertConsoleController;
 import Model.Numero;
+import View.Utils;
 import java.util.List;
 import java.util.Scanner;
 
@@ -119,7 +120,7 @@ public class ExpertConsole {
             count++;
             StringBuilder sb =new StringBuilder();
             sb.append(count).append(". ").append(num);
-            System.out.print(count + ". " + num);
+            System.out.println(count + ". " + num);
         }
         System.out.println("0. Quitter");
         System.out.println("----------------------------------------");

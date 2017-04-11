@@ -9,6 +9,8 @@ import DataAccessLayer.Getter;
 import Model.Artiste;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -86,6 +88,34 @@ public class ArtisteDAOSQL implements ArtisteDAO {
             }
             return true;
         }
+    }
+
+    @Override
+    public List<Artiste> getAllArtistes() {
+        //TODO vérifier le bon fonctionnement
+        /*
+        ArrayList<Artiste> arts = new ArrayList<>();
+        try {
+            ResultSet b = Getter.request("SELECT * FROM Artist");
+            while(b.next()) {
+                Artiste art = new Artiste(
+                        b.getInt("codeArtiste"),
+                        b.getInt("codeCirque"),
+                        b.getString("nom"),
+                        b.getString("prenom"),
+                        b.getString("dateNaissance"),
+                        b.getString("adresse"),
+                        null
+                        );
+                arts.add(art);
+            }
+        }
+        catch(SQLException e) {
+            System.out.println("SQL erreur : Aucun artistes");
+        }
+        return arts;
+        */
+        return null;
     }
     
 }

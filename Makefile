@@ -20,4 +20,5 @@ exeterm :
 	java -classpath bin Application/ExpertApplication
 
 clean:
-	rm -rf bin/*
+	rm -rf bin/
+	mkdir bin/

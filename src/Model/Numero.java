@@ -157,6 +157,6 @@ public class Numero {
      */
     @Override
     public String toString() {
-        return "Code : " + codeNumero + " Titre : " + titreNumero + " resume : " + resumeNumero + " Duree : " + dureeNumero + " Nombre d'artistes : " + nbrArtisteNumero + "\n";
+        return "Numero " + codeNumero + " : " + titreNumero ;
     }
 }

@@ -6,6 +6,7 @@
 package Model.DataTransfertObject;
 
 import Model.Artiste;
+import java.util.List;
 
 /**
  *
@@ -15,4 +16,6 @@ public interface ArtisteDAO {
     public boolean update(Artiste artiste);
     public boolean insert(Artiste artiste);
     public boolean delete(Artiste artiste);
+    
+    public List<Artiste> getAllArtistes();
 }
