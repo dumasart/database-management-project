@@ -12,8 +12,6 @@ import Model.Spectacle;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -31,8 +29,10 @@ public class GesProgrammeConsole {
         // pas d'authentification nécéssaire
         // affiche le programme du festival
         afficherListeSpectacle();
-        afficherListeNumeroDesSpectacles();
-        afficherPlanDesNumerosAEvaluer();
+        //TODO ++
+        /*debug de cette partie car au moins 3 exceptions sont levés et non traitées*/
+        //afficherListeNumeroDesSpectacles();
+        //afficherPlanDesNumerosAEvaluer();
     }
     
     /**
@@ -69,6 +69,10 @@ public class GesProgrammeConsole {
         
     }
 
+    /**
+     * Méthode pour afficher la liste des spectacles du festival
+     * ( Prévue à la base pour choisir un spectacle pour lequel on veut afficher les numéros)
+     */
     private void afficherListeSpectacle() {
         List<Spectacle> spectacles;
         
