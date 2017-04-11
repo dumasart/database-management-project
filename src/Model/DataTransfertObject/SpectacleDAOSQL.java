@@ -31,17 +31,17 @@ public class SpectacleDAOSQL implements SpectacleDAO{
     public boolean update(Spectacle spectacle) {
         String cmd = "UPDATE Spectacle SET codeFestival = " +
                 spectacle.getCodeFestival() +
-                " AND jourSpectacle = " +
+                " , jourSpectacle = " +
                 spectacle.getJour() +
-                " AND heureDebut = " +
+                " , heureDebut = " +
                 spectacle.getDebut() +
-                " AND heureFin = " +
+                " , heureFin = " +
                 spectacle.getFin() +
-                " AND prixSpectacle = " +
+                " , prixSpectacle = " +
                 spectacle.getPrix() +
-                " AND codeArtiste = " +
+                " , codeArtiste = " +
                 spectacle.getPresentateur()+
-                " AND theme = "+ 
+                " , theme = "+ 
                 spectacle.getTheme() +
                 " WHERE codeSpectacle = "+
                 spectacle.getID()+";";
