@@ -127,7 +127,7 @@ public class GesProgrammeConsole {
             listJ_1 = numerosAEvaluer.subList(numerosParJour + 1, size - 1);
         }
         
-        if (listJ_2.size() != 0) {
+        if (!listJ_2.isEmpty()) {
             System.out.println("Affichage la planification des numéros à évaluer");
             System.out.println("\tDeux jours avant le Festival:");
             for (Numero n : listJ_2) {
@@ -139,7 +139,7 @@ public class GesProgrammeConsole {
             }
         }
         
-        if (listJ_1.size() != 0) {
+        if (!listJ_1.isEmpty()) {
             System.out.println("\tUn jour avant le Festival");
             for (Numero n : listJ_1) {
                 exps = controller.getExpertsNePasEvaluerNumero(n.getID());
