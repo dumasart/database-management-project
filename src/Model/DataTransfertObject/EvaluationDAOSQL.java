@@ -31,9 +31,9 @@ public class EvaluationDAOSQL implements EvaluationDAO {
     public boolean update(Evaluation evaluation) {
         String cmd = "UPDATE Evaluation SET note = "
                 + evaluation.getNote()
-                + " AND evaluation = "
+                + ", commentaire = '"
                 + evaluation.getCommentaire()
-                + " WHERE codeArtiste = "
+                + "' WHERE codeArtiste = "
                 + evaluation.getID()
                 + " AND codeNumero = "
                 + evaluation.getCodeNumero();
@@ -68,14 +68,8 @@ public class EvaluationDAOSQL implements EvaluationDAO {
      * @return true on success 
      */
     @Override
-    public boolean insert(Evaluation evaluation, Numero numero, String expertID) {
-        String cmd;
-        if (evaluation != null) {
-            cmd = "INSERT INTO Evaluation (codeArtiste, codeNumero, evaluation, note) VALUES (" + expertID + " , "
-                    + numero.getID() + " , " + evaluation.getCommentaire() + " , " + evaluation.getNote() + " ) ";
-        } else {
-            cmd = "INSERT INTO Evaluation VALUES (" + expertID + ", " + numero.getID() + ")";
-        }
+    public boolean insert(Numero numero, String expertID) {
+        String cmd = "INSERT INTO Evaluation VALUES (" + expertID + ", " + numero.getID() + ")";
         int res = Getter.update(cmd);
         if (res == 0) {
             return false;
@@ -94,7 +88,7 @@ public class EvaluationDAOSQL implements EvaluationDAO {
                 Evaluation eval = new Evaluation(
                         b.getInt("codeArtiste"),
                         b.getInt("codeNumero"),
-                        b.getString("evaluation"),
+                        b.getString("commentaire"),
                         b.getInt("note")
                 );
                 res.add(eval);

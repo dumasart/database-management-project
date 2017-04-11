@@ -92,8 +92,7 @@ public class MainWindowController extends MainController implements Initializabl
         switch(this.getConnectedUser().getUserType()) {
             case EXPERT : 
                 // changé temporairement pour debug
-                ressource="/View/Organisateur/OrganisateurView.fxml";
-                //ressource="/View/ExpertView.fxml";
+                ressource="/View/ExpertView.fxml";
                 break;
             case ORGANISATEUR :
                 ressource="/View/Organisateur/OrganisateurView.fxml";

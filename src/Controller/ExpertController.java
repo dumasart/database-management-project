@@ -59,8 +59,7 @@ public class ExpertController extends MainController {
         assert(eval!=null);
         
         ConnectionSQL.savePoint();
-        //TODO vérifier la requête derière cet appel car ne semble pas fonctionner
-        evaluationDAO.insert(eval, numero, getConnectedUser().getIdentifiant());
+        evaluationDAO.update(eval);
         ConnectionSQL.commit();
     }
    
