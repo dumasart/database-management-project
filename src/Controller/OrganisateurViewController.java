@@ -119,7 +119,7 @@ public class OrganisateurViewController extends MainController implements Initia
             ajouteExpertALaMain(numero);
         } else {
             for (int i = 0; i < listeSpecialites.size(); i++) {
-                evaluationDAO.insert(null, numero, "" + listeSpecialites.get(i).getId());
+                evaluationDAO.insert(numero, "" + listeSpecialites.get(i).getId());
                 //Incrémenter le nombre de numéros
                 listeSpecialites.get(i).ajouteNumero(numero);
                 expertDAO.update(listeSpecialites.get(i));

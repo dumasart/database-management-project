@@ -58,7 +58,7 @@ public class ExpertController extends MainController {
         Evaluation eval = new Evaluation(Integer.parseInt(getConnectedUser().getIdentifiant())
                 , numero.getID(), commentaire, note);
         ConnectionSQL.savePoint();
-        evaluationDAO.insert(eval, numero, getConnectedUser().getIdentifiant());
+        evaluationDAO.update(eval);
         ConnectionSQL.commit();
     }
    
