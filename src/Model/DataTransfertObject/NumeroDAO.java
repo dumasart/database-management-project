@@ -26,7 +26,6 @@ public interface NumeroDAO {
     public List<Numero> getNumerosByTheme(Theme theme);
     public List<Numero> getNumeroNonEvalueByExpertID(String expertID);
     public int getMoyenneNumero(String numeroID);
-
+    public List<Numero> getNumerosWithoutFiveEvaluations();
     
-    //TODO à compléter
 }

@@ -312,4 +312,35 @@ public class NumeroDAOSQL implements NumeroDAO {
         return -1;
     }
 
+    @Override
+    public List<Numero> getNumerosWithoutFiveEvaluations() {
+        String s = "SELECT * FROM Numero WHERE codeNumero NOT IN ( "
+                + "SELECT codeNumero FROM Evaluation "
+                + "WHERE Note IS NOT null "
+                + "GROUP BY codeNumero "
+                + "HAVING COUNT(codeNumero)>=5 )"
+                + "";
+        ArrayList<Numero> nums = new ArrayList<Numero>();
+        try {
+            ResultSet b = Getter.request(s);
+            while(b.next()) {
+                Numero num = new Numero(
+                        b.getInt("codeNumero"),
+                        b.getString("titreNumero"),
+                        b.getString("resumeNumero"),
+                        b.getInt("dureeNumero"),
+                        b.getInt("nbArtisteNumero"),
+                        b.getBoolean("estCreation"),
+                        b.getInt("codeArtiste"),
+                        b.getString("themeNumero")                        
+                );
+                nums.add(num);
+            }
+        }
+        catch(SQLException e) {
+            System.out.println("Erreur SQL : Aucun numéro avec moins de 5 évaluations");
+        }
+        return nums;
+    }
+
 }

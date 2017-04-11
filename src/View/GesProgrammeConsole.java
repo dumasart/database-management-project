@@ -6,6 +6,7 @@
 package View;
 
 import Controller.GesProgrammeController;
+import Model.Expert;
 import Model.Numero;
 import Model.Spectacle;
 import java.sql.SQLException;
@@ -31,6 +32,7 @@ public class GesProgrammeConsole {
         // affiche le programme du festival
         afficherListeSpectacle();
         afficherListeNumeroDesSpectacles();
+        afficherPlanDesNumerosAEvaluer();
     }
     
     /**
@@ -108,5 +110,45 @@ public class GesProgrammeConsole {
             ex.printStackTrace();
             System.out.println("Pas de spectacle");
         }
+    }
+    
+    private void afficherPlanDesNumerosAEvaluer() {
+        List<Numero> numerosAEvaluer = controller.getNumerosAEvaluer();
+        
+        List<Expert> exps;
+        
+        
+        int size = numerosAEvaluer.size();
+        int numerosParJour = size / 2;
+        List<Numero> listJ_1 = null;
+        List<Numero> listJ_2 = numerosAEvaluer.subList(0, numerosParJour);
+        
+        if (size > 1) {
+            listJ_1 = numerosAEvaluer.subList(numerosParJour + 1, size - 1);
+        }
+        
+        if (listJ_2.size() != 0) {
+            System.out.println("Affichage la planification des numéros à évaluer");
+            System.out.println("\tDeux jours avant le Festival:");
+            for (Numero n : listJ_2) {
+                exps = controller.getExpertsNePasEvaluerNumero(n.getID());
+                System.out.println("\t\tNuméro: " + n.getID() + " a besoin d'être évaluer par les experts: ");
+                for (Expert e : exps) {
+                    System.out.println("\t\t\tExpertID: " + e.getID() + " Nom: " + e.getNom() + " Prénom: " + e.getPrenom());
+                }
+            }
+        }
+        
+        if (listJ_1.size() != 0) {
+            System.out.println("\tUn jour avant le Festival");
+            for (Numero n : listJ_1) {
+                exps = controller.getExpertsNePasEvaluerNumero(n.getID());
+                System.out.println("\t\tNuméro: " + n.getID() + " a besoin d'être évaluer par les experts: ");
+                for (Expert e : exps) {
+                    System.out.println("\t\t\tExpertID: " + e.getID() + " Nom: " + e.getNom() + " Prénom: " + e.getPrenom());
+                }
+            }
+        }
+        
     }
 }
