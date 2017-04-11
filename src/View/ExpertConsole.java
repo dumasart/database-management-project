@@ -94,10 +94,11 @@ public class ExpertConsole {
         if (list != null && !list.isEmpty()) {
             afficherlisteNumeros(list);
             int choice = Utils.lireEntier(0, list.size());
-
-            return list.get(choice-1);
+            System.out.println("");
+            return choice==0? null:list.get(choice-1);
         } else {
             System.out.println("Vous n'avez aucun numéro à évaluer\n");
+            System.out.println("----------------------------------------");
             return null;
         }
     }
@@ -112,18 +113,19 @@ public class ExpertConsole {
      */
     private void afficherlisteNumeros(List<Numero> list) {
         int count=0;
+        System.out.println("Liste des numéros à évaluer");
+        System.out.println("----------------------------------------");
         for(Numero num : list) {
             count++;
-            System.out.println(count + ". " + num);
+            StringBuilder sb =new StringBuilder();
+            sb.append(count).append(". ").append(num);
+            System.out.print(count + ". " + num);
         }
         System.out.println("0. Quitter");
         System.out.println("----------------------------------------");
     }
 
-    
-
-
-    
+   
     /**
      * Méthode pour saisir une évaluation pour un numero donné
      * @param numero le numero à évaluer
@@ -132,18 +134,26 @@ public class ExpertConsole {
         //TODO vérifier que la plage d'entier pour la note est cohérente par 
         // rapport à la base de données
         
-        System.out.print("Saisir une note pour ce numero : ");
+        System.out.println("Saisir une note pour ce numero : ");
         int note = Utils.lireEntier(0, 10);
 
         //TODO vérifier la taille maximale d'un commentaire
-        System.out.printf("Saisir le commentaire pour ce numero");
-        String cmt = terminalInput.nextLine();
-
+        String cmt;
+        do {
+            System.out.printf("Saisir le commentaire pour ce numero : ");
+            cmt = terminalInput.nextLine();
+            cmt=Utils.netoyerString(cmt);
+            if (cmt.isEmpty()) {
+                System.out.println("Le commentaire ne doit pas être vide!");
+            }
+        } while (cmt.isEmpty());
+        System.out.println("----------------------------------------");
         /* demande confirmation à l'utilisateur avant d'enregistrer l'évaluation */
         System.out.println("Vous avez saisi l'évaluation suivante ");
         System.out.println("Note : "+note+"/10");
         System.out.println("Commentaire : " + cmt + "\n");
-        System.out.print("Tapez 1 pour enregistrer votre évaluation, ou 0 pour annuler : ");
+        System.out.println("----------------------------------------");
+        System.out.println("Tapez 1 pour enregistrer votre évaluation, ou 0 pour annuler : ");
         int confirme = Utils.lireEntier(0,1);
         
         if (confirme == 1) {

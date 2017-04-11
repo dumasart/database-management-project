@@ -5,6 +5,7 @@
  */
 package View;
 
+import java.text.Normalizer;
 import java.util.Scanner;
 
 /**
@@ -27,12 +28,28 @@ public class Utils {
 
         while (true) {
             System.out.print("Choisissez un numero entre "+min+ " et "+ max + " : ");
-            saisie = Integer.parseInt(SC.nextLine());
-            if (saisie >=min && saisie <= max) {
+            try {
+                saisie = Integer.parseInt(SC.nextLine());
+                            if (saisie >=min && saisie <= max) {
                 return saisie;
-            } else {
-                System.out.print("Choix incorrect. ");
+                } else {
+                    System.out.print("Choix incorrect. ");
+                }
+            } catch (NumberFormatException ex) {
+                System.out.println("Vous devez saisir un entier!");
             }
         }
+    }
+    
+    
+    /**
+     * Méthode pour normaliser le chaines de caractère pour pouvoir les insérer 
+     * en base. remplace les caractère accentué et enlève tous les caractères non ascci
+     */
+    public static String netoyerString(String sourceString) {
+        String normalized = Normalizer.normalize(sourceString, Normalizer.Form.NFD);
+        return normalized.replaceAll("[^\\p{ASCII}]", "");
+        
+        
     }
 }
