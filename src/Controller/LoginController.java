@@ -29,7 +29,7 @@ public abstract class LoginController extends MainController {
         User user = userDAO.getUserByUserNameAndPassword(username, password);
         
         if (user != null) {
-            System.out.println("je suis connecté");
+            System.out.println("Authentification réussie...");
             this.setConnectedUser(user);
             return true;
         }

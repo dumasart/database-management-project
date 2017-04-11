@@ -1,6 +1,8 @@
 package Controller;
 
 import Controller.LoginViewController.LoggedInEvent;
+import DataAccessLayer.ConnectionSQL;
+import DataAccessLayer.Getter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -16,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
+import javafx.stage.Window;
 
 
 public class MainWindowController extends MainController implements Initializable {
@@ -36,42 +39,30 @@ public class MainWindowController extends MainController implements Initializabl
     private void logoutButtonAction(Event event) {
         /* ouvre une fenetre pour demander la confirmation
          * avant de quitter */
-        Optional<ButtonType> result = showLogoutDialog();
+        Optional<ButtonType> result = JFXCommon.showConfirmationDialog("Etes-vous sur de vouloir vous déconnecter?", rootNode.getScene().getWindow());
            
         if (result.get() == ButtonType.OK) {
+            /* supprime la reference sur l'utilisateur authentifié 
+               pour éviter les problèmes d'usurpation */
+            setConnectedUser(null);
             logoutButton.setVisible(false);
             this.setBorderPaneCenter("/View/LoginView.fxml");
         }
     }
     
-    
-    /**
-     * Méthode pour ouvrir une fenetre pop-up de confirmation
-     * @param owner fenetre mère 
-     */
-    private Optional<ButtonType> showLogoutDialog() {
-        
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation déconnexion");
-        //alert.setHeaderText("Look, a Confirmation Dialog");
-        alert.setContentText("Etes-vous sur de vouloir vous déconnecter?");
-        alert.initOwner(rootNode.getScene().getWindow());
-        alert.initModality(Modality.WINDOW_MODAL);
-        
-        return alert.showAndWait();
-    }
-    
-
+   
     /**
      * Méthode qui gère l'évènement de fermeture de la fenetre principale
      * Gère la terminaison du programme notamment la déconnexion de la base
      * @param e 
      */
-    private void closeWindow(Event e)
-    {
+    private void closeWindow(Event e) throws Exception {
         // TODO
         // - verifier que la connxeion à la base de données est fermée
         // - terminer les transactions en cours
+                    // ferme la connection si elle n'a pas été fermée
+        Getter.close();
+        ConnectionSQL.closeConnection();
         ((Node)e.getSource()).getScene().getWindow().hide();
     }
    

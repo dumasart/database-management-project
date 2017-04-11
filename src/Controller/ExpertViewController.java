@@ -8,6 +8,7 @@ package Controller;
 import Model.Numero;
 import View.Utils;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
@@ -15,6 +16,8 @@ import javafx.collections.FXCollections;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -101,8 +104,15 @@ public class ExpertViewController extends ExpertController implements Initializa
             
         // ajoute l'évaluation dans la base
         if(!comment.isEmpty()) {
-            evaluerNumero( numSelect, comment, note);
-            updateListViewFromDB();
+            // ouvre un dialogue de confirmation
+            Optional<ButtonType> result = 
+                    JFXCommon.showConfirmationDialog("Voulez-vous confirmer votre évaluation?", 
+                            ((Node)event.getSource()).getScene().getWindow());
+           
+            if (result.get() == ButtonType.OK) {
+                evaluerNumero( numSelect, comment, note);
+                updateListViewFromDB();
+            }
         } else {
             // affiche un message en rouge pour prévenir qu'il doit saisi
             errorMessage.setVisible(true);
