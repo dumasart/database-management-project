@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
@@ -10,56 +11,42 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.collections.*?>
 
-<VBox id="centerRoot" alignment="CENTER" spacing="20.0" stylesheets="@../Resources/application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ExpertViewController">
-    
+<StackPane id="centerRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../Resources/application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ExpertViewController">
     <children>
-        <ListView fx:id="listView" items="${controller.listeNumero}" onMouseClicked="#itemSelectedAction" prefHeight="100.0" prefWidth="300.0">
-        </ListView>
-        <GridPane fx:id="grilleEvaluation" hgap="10.0" vgap="10.0" visible="false">
+        <VBox fx:id="mainVBox" alignment="CENTER" spacing="20.0">
+   
             <children>
-                <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <Text id="Title2" strokeWidth="0.0" text="Liste de numéros à évaluer" />
+                <ListView fx:id="listView" items="${controller.listeNumero}" prefHeight="100.0">
+                </ListView>
+                <GridPane hgap="10.0" vgap="10.0">
                     <children>
-                        <Button cancelButton="true" mnemonicParsing="false" text="Annuler">
-                            <HBox.margin>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                            </HBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" text="Valider" />
+                        <Label text="Commentaire : " GridPane.rowIndex="1" />
+                        <TextArea fx:id="textArea" prefHeight="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label text="Note : " GridPane.rowIndex="2" />
+                        <ChoiceBox fx:id="choiceBox" prefWidth="75.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                            <children>
+                                <Button fx:id="cancelButton" onMouseClicked="#cancelButtonClicked" text="Annuler">
+                                    <HBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <Button fx:id="valideButton" onMouseClicked="#validButtonClicked" text="Valider" />
+                            </children>
+                        </HBox>
+                        <Text fx:id="errorMessage" text="Vous devez saisir un commentaire" visible="false" GridPane.columnIndex="1" />
                     </children>
-                </HBox>
-                <Label text="Commentaire : " />
-                <TextArea fx:id="textArea" disable="true" prefHeight="100.0" prefWidth="300.0" GridPane.columnIndex="1" />
-                <Label text="Note : " GridPane.rowIndex="1" />
-                <ChoiceBox fx:id="choiceBox" disable="true" prefWidth="75.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <Integer fx:value="0" />
-                            <Integer fx:value="1" />
-                            <Integer fx:value="2" />
-                            <Integer fx:value="3" />
-                            <Integer fx:value="4" />
-                            <Integer fx:value="5" />
-                            <Integer fx:value="6" />
-                            <Integer fx:value="7" />
-                            <Integer fx:value="8" />
-                            <Integer fx:value="9" />
-                            <Integer fx:value="10" />
-                        </FXCollections>
-                    </items>
-                </ChoiceBox>
+                </GridPane>
             </children>
-         <columnConstraints>
-            <ColumnConstraints />
-            <ColumnConstraints />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-         </rowConstraints>
-        </GridPane>
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+        </VBox>
+        <Text id="Title1Warning" text="Vous n'avez aucun numéro à évaluer" visible="false"/>
     </children>
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
     </padding>
-</VBox>
+
+</StackPane>

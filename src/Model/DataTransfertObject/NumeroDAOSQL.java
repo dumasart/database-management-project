@@ -153,7 +153,6 @@ public class NumeroDAOSQL implements NumeroDAO {
                         b.getString("theme")                        
                 );
                 nums.add(num);
-                System.out.println("on y passe!");
             }
             return nums;
         }
@@ -190,7 +189,6 @@ public class NumeroDAOSQL implements NumeroDAO {
                         b.getString("theme")                        
                 );
                 nums.add(num);
-                System.out.println("on y passe!");
             }
             return nums;
         }

@@ -46,8 +46,7 @@ public class ExpertController extends MainController {
      */
     public List<Numero> getListeNumeros() {
         if (getConnectedUser() != null) {
-            System.out.println("je récupère la liste de numeros");
-            return numeroDAO.getNumeroNonEvalueByExpertID(this.getConnectedUser().getIdentifiant());
+            return numeroDAO.getNumeroNonEvalueByExpertID(getConnectedUser().getIdentifiant());
         } else {
             System.out.println("user est null");
         }
@@ -57,7 +56,10 @@ public class ExpertController extends MainController {
     public void evaluerNumero(Numero numero, String commentaire, int note) {
         Evaluation eval = new Evaluation(Integer.parseInt(getConnectedUser().getIdentifiant())
                 , numero.getID(), commentaire, note);
+        assert(eval!=null);
+        
         ConnectionSQL.savePoint();
+        //TODO vérifier la requête derière cet appel car ne semble pas fonctionner
         evaluationDAO.insert(eval, numero, getConnectedUser().getIdentifiant());
         ConnectionSQL.commit();
     }

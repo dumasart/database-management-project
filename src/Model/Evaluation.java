@@ -22,7 +22,7 @@ public class Evaluation {
     /**
      * comment of the evaluation set by the expert  
      */
-    private String evaluation;
+    private String comentaire;
     /**
      * note given by the expert
      */
@@ -37,7 +37,7 @@ public class Evaluation {
     public Evaluation(int codeArtiste, int codeNumero, String evaluation, int note){
         this.codeArtiste = codeArtiste;
         this.codeNumero = codeNumero;
-        this.evaluation = evaluation;
+        this.comentaire = evaluation;
         this.note = note;
     }
     /**
@@ -58,8 +58,8 @@ public class Evaluation {
      * 
      * @return return the comment of the evaluation 
      */
-    public String getEvaluation(){
-        return this.evaluation;
+    public String getCommentaire(){
+        return this.comentaire;
     }
     /**
      * 
@@ -76,6 +76,6 @@ public class Evaluation {
     public String toString() {
         return "Le numero: "+this.codeNumero+", evalué par: "+this.codeArtiste+
                 ", a reçus la note: "+this.note+".\n Le commentaire donné est: \n"+
-                this.evaluation;
+                this.comentaire;
     }
 }

@@ -32,7 +32,7 @@ public class EvaluationDAOSQL implements EvaluationDAO {
         String cmd = "UPDATE Evaluation SET note = "
                 + evaluation.getNote()
                 + " AND evaluation = "
-                + evaluation.getEvaluation()
+                + evaluation.getCommentaire()
                 + " WHERE codeArtiste = "
                 + evaluation.getID()
                 + " AND codeNumero = "
@@ -72,7 +72,7 @@ public class EvaluationDAOSQL implements EvaluationDAO {
         String cmd;
         if (evaluation != null) {
             cmd = "INSERT INTO Evaluation (codeArtiste, codeNumero, evaluation, note) VALUES (" + expertID + " , "
-                    + numero.getID() + " , " + evaluation.getEvaluation() + " , " + evaluation.getNote() + " ) ";
+                    + numero.getID() + " , " + evaluation.getCommentaire() + " , " + evaluation.getNote() + " ) ";
         } else {
             cmd = "INSERT INTO Evaluation VALUES (" + expertID + ", " + numero.getID() + ")";
         }
