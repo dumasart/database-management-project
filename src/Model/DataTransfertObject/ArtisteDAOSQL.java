@@ -92,30 +92,35 @@ public class ArtisteDAOSQL implements ArtisteDAO {
 
     @Override
     public List<Artiste> getAllArtistes() {
-        //TODO vérifier le bon fonctionnement
-        /*
+
         ArrayList<Artiste> arts = new ArrayList<>();
+        
         try {
-            ResultSet b = Getter.request("SELECT * FROM Artist");
+            ResultSet b = Getter.request("SELECT * FROM Artiste");
             while(b.next()) {
                 Artiste art = new Artiste(
                         b.getInt("codeArtiste"),
                         b.getInt("codeCirque"),
-                        b.getString("nom"),
-                        b.getString("prenom"),
-                        b.getString("dateNaissance"),
-                        b.getString("adresse"),
-                        null
+                        b.getString("nomArtiste"),
+                        b.getString("prenomArtiste"),
+                        b.getString("dateNaissanceArtiste"),
+                        b.getString("adresseArtiste"),
+                        new ArrayList<>()
                         );
                 arts.add(art);
+            }
+            int i;
+            for(i=0; i<arts.size();i++) {
+                ResultSet c = Getter.request("SELECT * FROM EstSurnomme WHERE codeArtiste="+arts.get(i).getID());
+                while(c.next()) {
+                    arts.get(i).getPseudos().add(c.getString("pseudo"));
+                }
             }
         }
         catch(SQLException e) {
             System.out.println("SQL erreur : Aucun artistes");
         }
         return arts;
-        */
-        return null;
     }
     
 }
