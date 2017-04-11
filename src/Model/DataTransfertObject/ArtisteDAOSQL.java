@@ -25,10 +25,10 @@ public class ArtisteDAOSQL implements ArtisteDAO {
     @Override
     public boolean update(Artiste artiste) {
         String up = "UPDATE Artiste SET codeCirque=" + artiste.getCodeCirque()
-                + " and nomArtiste=" + artiste.getNom()
-                + " and prenomArtiste=" + artiste.getPrenom()
-                + " and dateNaissanceArtiste" + artiste.getDate()
-                + " and adresseArtiste=" + artiste.getAdresse()
+                + " , nomArtiste=" + artiste.getNom()
+                + " , prenomArtiste=" + artiste.getPrenom()
+                + " , dateNaissanceArtiste" + artiste.getDate()
+                + " , adresseArtiste=" + artiste.getAdresse()
                 + " WHERE codeArtiste=" + artiste.getID();
         return Getter.update(up) == 1;
     }

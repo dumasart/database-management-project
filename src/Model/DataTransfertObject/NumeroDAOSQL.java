@@ -28,11 +28,22 @@ public class NumeroDAOSQL implements NumeroDAO {
      */
     @Override
     public boolean update(Numero numero) {
-        String up = "UPDATE Numero SET TitreNumero=" + numero.getTitre() + " and ResumeNumero="
-                + numero.getResume() + " and DureeNumero=" + numero.getDuree()
-                + " and NbArtisteNumero=" + numero.getNbArtiste() + " and EstCreation="
-                + numero.getCreation() + " and codeArtiste=" + numero.getArtistePrincipal()
-                + " and theme=" + numero.getTheme() + " WHERE codeNumero=" + numero.getID();
+        String up = "UPDATE Numero SET TitreNumero=" +
+                numero.getTitre() + 
+                " , ResumeNumero="+
+                numero.getResume() +
+                " , DureeNumero=" + 
+                numero.getDuree()+ 
+                " , NbArtisteNumero=" +
+                numero.getNbArtiste() + 
+                " , EstCreation="+
+                numero.getCreation() + 
+                " , codeArtiste=" + 
+                numero.getArtistePrincipal()+
+                " , theme=" + 
+                numero.getTheme() + 
+                " WHERE codeNumero=" +
+                numero.getID();
         int rs = Getter.update(up);
         if (rs == 0) {
             return false;
