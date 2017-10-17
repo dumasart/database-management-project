@@ -18,8 +18,8 @@ public class ConnectionSQL {
 
     /* parametres de connexion écrits en dur */
     private static final String BD_URL    = "jdbc:oracle:thin:@ensioracle1.imag.fr:1521:ensioracle1";
-    private static final String BD_USER   = "dumasart";
-    private static final String BD_PWD    = "dumasart";
+    // private static final String BD_USER   = ""; //Your tag
+    // private static final String BD_PWD    = ""; // Your pwd
     private static Connection connection=null;
     private static Savepoint svpt =null;
     /**
